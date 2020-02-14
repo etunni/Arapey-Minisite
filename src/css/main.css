@@ -7,4 +7,5 @@
 @import "./loading.css";
 @import "./variable-support.css";
 
+@import "variables.css";
 @import "arapey-hero.css";
