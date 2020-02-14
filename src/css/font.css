@@ -1,18 +1,20 @@
 @font-face {
-    font-family: "Arapey";
-    src: url("../fonts/Arapey[opsz,wght].ttf");
-    font-weight: 30 210;
+	font-family: "Arapey";
+	src: url("../fonts/Arapey[opsz,wght].ttf");
+	font-weight: 30 210;
 }
 
 body {
-    font-family: "Arapey", monospace;
+	font-family: "Arapey", monospace;
 }
 
 :root {
-    --wght: 72;
-    --opsz: 12;
+	--wght: 72;
+	--opsz: 12;
 }
 
-*, *::before, *::after {
-    font-variation-settings: "wght" var(--wght),"opsz" var(--opsz);
+*,
+*::before,
+*::after {
+	font-variation-settings: "opsz" var(--opsz);
 }
