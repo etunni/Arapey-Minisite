@@ -6,3 +6,7 @@
 @import "./layout.css";
 @import "./loading.css";
 @import "./variable-support.css";
+
+@import "variables.css";
+@import "button.css";
+@import "arapey-hero.css";

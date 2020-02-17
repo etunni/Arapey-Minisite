@@ -1,0 +1,18 @@
+.button-default {
+	background-color: var(--arapey-red);
+	border-radius: 100%;
+	box-shadow: 0 5px 0 0 var(--arapey-purple);
+	color: white;
+	font-size: 2rem;
+	font-weight: 72;
+	padding: 2rem;
+	text-decoration: none;
+	display: flex;
+	flex-direction: column;
+	height: 9.5rem;
+	text-align: center;
+}
+
+.button-container {
+	display: flex;
+}

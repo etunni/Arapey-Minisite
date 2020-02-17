@@ -1,13 +1,7 @@
 main {
-	max-width: 50rem;
-	margin: 0 auto;
 	display: none;
 }
 
 .fonts-loaded main {
 	display: block;
-}
-
-h2 {
-	color: hotpink;
 }
