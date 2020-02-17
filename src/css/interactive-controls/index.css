@@ -1,3 +1,6 @@
+@import "toggle.css";
+@import "sliders.css";
+
 .interactive-controls {
 	--label-width: 8em;
 }
@@ -19,8 +22,4 @@
 .interactive-controls-instances select,
 .interactive-controls-slider {
 	width: 100%;
-}
-
-input[type="checkbox"] {
-	display: none;
 }
