@@ -3,26 +3,11 @@
 	-webkit-appearance: none;
 }
 
-.interactive-controls-slider {
-	background-color: var(--arapey-blue);
-	height: 0.2rem;
-	outline: 0;
-	cursor: pointer;
-	width: 10rem;
-}
-
 .interactive-controls-sliders label {
 	--label-width: 4.5rem;
 
 	font-weight: 129;
 	font-size: 1.25rem;
-}
-
-[type="range"]::-webkit-slider-thumb {
-	background-color: var(--arapey-purple);
-	width: 1.25rem;
-	height: 1.25rem;
-	border-radius: 50%;
 }
 
 .interactive-controls-sliders {
@@ -31,4 +16,42 @@
 
 .interactive-controls-sliders li {
 	align-items: center;
+}
+
+.interactive-controls-slider {
+	height: 0.2rem;
+	outline: 0;
+	cursor: pointer;
+	width: 10rem;
+}
+
+/* Handle and color variants */
+.interactive-controls-slider::-webkit-slider-thumb {
+	width: 1.25rem;
+	height: 1.25rem;
+	border-radius: 50%;
+}
+
+.interactive-controls-slider[data-color="dark-blue-red"] {
+	background-color: var(--arapey-dark-blue);
+}
+
+.interactive-controls-slider[data-color="dark-blue-red"]::-webkit-slider-thumb {
+	background-color: var(--arapey-red);
+}
+
+.interactive-controls-slider[data-color="blue-red"] {
+	background-color: var(--arapey-blue);
+}
+
+.interactive-controls-slider[data-color="blue-red"]::-webkit-slider-thumb {
+	background-color: var(--arapey-red);
+}
+
+.interactive-controls-slider[data-color="blue-purple"] {
+	background-color: var(--arapey-blue);
+}
+
+.interactive-controls-slider[data-color="blue-purple"]::-webkit-slider-thumb {
+	background-color: var(--arapey-purple);
 }
