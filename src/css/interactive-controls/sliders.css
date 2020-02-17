@@ -3,9 +3,19 @@
 	-webkit-appearance: none;
 }
 
-.interactive-controls-sliders input {
+.interactive-controls-slider {
 	background-color: var(--arapey-blue);
-	height: 0.25rem;
+	height: 0.2rem;
+	outline: 0;
+	cursor: pointer;
+	width: 10rem;
+}
+
+.interactive-controls-sliders label {
+	--label-width: 4.5rem;
+
+	font-weight: 129;
+	font-size: 1.25rem;
 }
 
 [type="range"]::-webkit-slider-thumb {
@@ -13,4 +23,12 @@
 	width: 1.25rem;
 	height: 1.25rem;
 	border-radius: 50%;
+}
+
+.interactive-controls-sliders {
+	display: flex;
+}
+
+.interactive-controls-sliders li {
+	align-items: center;
 }
