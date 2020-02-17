@@ -1,0 +1,16 @@
+{% if type == "button" %}
+    <div class="button-container">
+       <button class="button-default" type="{{ type }}">{{ content }}</button>
+    </div>
+{% else %}
+    <div class="button-container">
+        <a href="{{ href }}" class="button-default">
+            <span>
+                Get
+            </span>
+            <span>
+                Arapey
+            </span>
+        </a>
+    </div>
+{% endif %}
