@@ -1,0 +1,73 @@
+/* The frame of the toggle */
+.interactive-controls-toggle {
+	border-radius: 2rem;
+	border-style: solid;
+	border-width: 2px;
+	display: block;
+	width: 3.25rem;
+	height: 1.75rem;
+	position: relative;
+	cursor: pointer;
+	transition: transform 0.4s ease;
+}
+
+/* The toggle button circle */
+.interactive-controls-toggle::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 2rem;
+	width: 1.5rem;
+	height: 100%;
+	display: block;
+	transition: 0.3s;
+}
+
+/* on press */
+.interactive-controls-toggle:active::after {
+	width: 2rem;
+}
+
+/* When pressed "on" */
+.interactive-controls-checkbox:checked + .interactive-controls-toggle::after {
+	left: 100%;
+	transform: translateX(-100%);
+}
+
+/* Different colors */
+.interactive-controls-toggle[data-color="blue-purple"] {
+	background-color: var(--arapey-blue);
+	border-color: var(--arapey-blue);
+}
+
+.interactive-controls-toggle[data-color="blue-purple"]::after {
+	background-color: var(--arapey-purple);
+}
+
+.interactive-controls-toggle[data-color="white-purple"] {
+	background-color: var(--arapey-white);
+	border-color: var(--arapey-white);
+}
+
+.interactive-controls-toggle[data-color="white-purple"]::after {
+	background-color: var(--arapey-purple);
+}
+
+.interactive-controls-toggle[data-color="white-red"] {
+	background-color: var(--arapey-white);
+	border-color: var(--arapey-white);
+}
+
+.interactive-controls-toggle[data-color="white-red"]::after {
+	background-color: var(--arapey-red);
+}
+
+.interactive-controls-toggle[data-color="red-purple"] {
+	background-color: var(--arapey-red);
+	border-color: var(--arapey-red);
+}
+
+.interactive-controls-toggle[data-color="red-purple"]::after {
+	background-color: var(--arapey-purple);
+}

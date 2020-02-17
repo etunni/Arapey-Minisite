@@ -20,3 +20,7 @@
 .interactive-controls-slider {
 	width: 100%;
 }
+
+input[type="checkbox"] {
+	display: none;
+}
