@@ -8,6 +8,8 @@
 @import "./variable-support.css";
 
 @import "interactive-controls/index.css";
+@import "interactive-controls/toggle.css";
+@import "interactive-controls/sliders.css";
 
 @import "button.css";
 
