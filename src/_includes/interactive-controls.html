@@ -17,6 +17,7 @@
 				id="interactive-controls-fontsize"
 				step="any"
 				class="interactive-controls-slider"
+				data-color="blue-purple"
 			/>
 		</li>
 		{% for axis in axes %}
@@ -31,6 +32,7 @@
 				id="axis-{{ axis.axis }}"
 				step="{{ axis.step | default: 0.1 }}"
 				class="interactive-controls-slider"
+				data-color="dark-blue-red"
 			/>
 		</li>
 		{% endfor %}
