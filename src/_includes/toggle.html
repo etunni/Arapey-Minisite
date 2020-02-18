@@ -1,4 +1,8 @@
 
+{% comment %} 
+    Usage: 
+        {% include toggle.html with color: "blue-purple" %} 
+{% endcomment %}
 
 {% if color %}
     {% capture counter %}switch-{% increment counter %}{% endcapture %}
@@ -12,7 +16,3 @@
 {% endif %}
 
 
-{% comment %} 
-        Usage: 
-        {% include toggle.html with color: "blue-purple" %} 
-{% endcomment %}
