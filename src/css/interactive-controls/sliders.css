@@ -7,15 +7,11 @@
 	outline: 0;
 }
 
-.interactive-controls-sliders label {
+.interactive-controls-list label {
 	--label-width: 4.5rem;
 
 	font-weight: 129;
 	font-size: 1.25rem;
-}
-
-.interactive-controls-sliders li {
-	align-items: center;
 }
 
 .interactive-controls-slider {
@@ -58,29 +54,37 @@
 
 /* Tick sliders */
 
-.interactive-controls-tick-slider {
-	display: flex;
+.interactive-controls-tick-slider-container {
+	max-width: 1400px;
 }
 
-.interactive-controls-tick-slider > div {
+.tick-list-item {
+	display: flex;
+
+	/* To remove */
+	justify-content: center;
+	margin: 4rem auto;
+}
+
+.tick-list-item > div {
 	width: 100%;
 	padding: 0 1rem;
 }
 
-.interactive-controls-tick-slider > span {
+.tick-list-item > span {
 	margin-top: 0.15rem;
 	font-size: 1.25rem;
 }
 
-.interactive-controls-tickmarks {
-	background: red;
-	height: 2px;
+.interactive-controls-tick-slider {
+	background-color: var(--arapey-dark-blue);
+	height: 1px;
 	width: 100%;
 	margin: 0;
 }
 
-.interactive-controls-tickmarks::-webkit-slider-thumb {
-	background-color: green;
+.interactive-controls-tick-slider::-webkit-slider-thumb {
+	background-color: var(--arapey-red);
 	width: 1.25rem;
 	height: 1.25rem;
 	border-radius: 50%;
@@ -96,21 +100,17 @@
 	justify-content: space-between;
 }
 
-.tick::before {
-	content: "";
-	display: flex;
-	justify-content: center;
-	width: 1px;
-	height: 1rem;
-	background: gray;
-}
 .tick {
 	display: flex;
 	justify-content: center;
 	width: 1px;
-	height: 1rem;
-	background: green;
-	padding-top: 1rem;
-	margin: 0.5rem 0;
+	height: 10px;
+	background: gray;
+	margin-top: 0.5rem;
 	font-size: 1.25rem;
+}
+
+.tick span {
+	margin-top: 1rem;
+	white-space: nowrap;
 }

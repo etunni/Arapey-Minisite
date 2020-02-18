@@ -1,0 +1,24 @@
+{% comment %} 
+    Usage: 
+		{% include tick-slider.html withInstances: instances %} 
+		{% include tick-slider.html with labelStart: "start" labelEnd: "end"  %} 
+		{% include tick-slider.html with labelStart: "start" labelEnd: "end" withInstances: instances %} 
+{% endcomment %}
+
+<li class="interactive-controls-list-item tick-list-item">
+    {% if labelStart %}<span>{{ labelStart }}</span>{% endif %}
+    <div class="interactive-controls-tick-slider-container">
+        <input type="range" class="interactive-controls-tick-slider">
+
+            {% if withInstances %}
+                <div class="ticks">
+                    {% for instance in withInstances %}
+                        <span class="tick">
+                            <span>{{ instance.name }}</span>
+                        </span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+    </div>
+    {% if labelEnd %}<span>{{ labelEnd }}</span>{% endif %}
+</li>
