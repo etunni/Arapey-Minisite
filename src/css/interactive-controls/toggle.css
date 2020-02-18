@@ -27,7 +27,8 @@ input[type="checkbox"] {
 	width: 1.5rem;
 	height: 100%;
 	display: block;
-	transition: 0.3s;
+	transition-property: left, width, transform;
+	transition-duration: 0.3s;
 }
 
 /* on press */
