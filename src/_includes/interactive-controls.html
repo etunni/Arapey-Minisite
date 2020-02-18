@@ -5,8 +5,8 @@
 	{% include toggle.html with color: "white-red" %} 
 	{% include toggle.html with color: "red-purple" %} 
 	<h2>Axes & Instances</h2>
-	<ul class="interactive-controls-sliders">
-		<li>
+	<ul class="interactive-controls-list">
+		<li class="interactive-controls-list-item">
 			<label for="interactive-controls-fontsize">Size</label>
 			<input
 				type="range"
@@ -20,7 +20,7 @@
 				data-color="blue-red"
 			/>
 		</li>
-		<li>
+		<li class="interactive-controls-list-item">
 			<label for="interactive-controls-fontsize">Size</label>
 			<input
 				type="range"
@@ -35,7 +35,7 @@
 			/>
 		</li>
 		{% for axis in axes %}
-		<li>
+		<li class="interactive-controls-list-item">
 			<label for="axis-{{ axis.axis }}">{{ axis.name }}</label>
 			<input
 				type="range"
@@ -54,26 +54,16 @@
 	</ul>
 
 	<h2>Long sliders </h2>
-	<ul class="interactive-controls-tick-sliders">
-		<li class="interactive-controls-tick-slider">
-			<span>label</span>
-			<div class="">
-				<input type="range" min="0" max="10" class="interactive-controls-tickmarks">
-
-				<div class="ticks">
-					{% for instance in instances %}
-						<span class="tick">{{ instance.name }}</span>
-					{% endfor %}
-				</div>
-			</div>
-			<span>label</span>
-		</li>
+	<ul class="interactive-controls-list">
+		{% include tick-slider.html withInstances: instances %} 
+		{% include tick-slider.html with labelStart: "start" labelEnd: "end"  %} 
+		{% include tick-slider.html with labelStart: "start" labelEnd: "end" withInstances: instances %} 
 	</ul>
 	<div>
 		<label for="interactive-controls-instances-select">Instances</label>
 		<select
 			id="interactive-controls-instances-select"
-			class="interactive-controls-instances"
+			class="interactive-controls-instances-select"
 		>
 			{% for instance in instances %}
 			<option value="{{ instance.axes | json_stringify | escape }}"
