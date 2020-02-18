@@ -17,7 +17,21 @@
 				id="interactive-controls-fontsize"
 				step="any"
 				class="interactive-controls-slider"
-				data-color="blue-purple"
+				data-color="blue-red"
+			/>
+		</li>
+		<li>
+			<label for="interactive-controls-fontsize">Size</label>
+			<input
+				type="range"
+				min="9"
+				max="48"
+				value="16"
+				name="font-size"
+				id="interactive-controls-fontsize"
+				step="any"
+				class="interactive-controls-slider"
+				data-color="dark-blue-red"
 			/>
 		</li>
 		{% for axis in axes %}
@@ -32,12 +46,29 @@
 				id="axis-{{ axis.axis }}"
 				step="{{ axis.step | default: 0.1 }}"
 				class="interactive-controls-slider"
-				data-color="dark-blue-red"
+				data-color="blue-purple"
+
 			/>
 		</li>
 		{% endfor %}
 	</ul>
 
+	<h2>Long sliders </h2>
+	<ul class="interactive-controls-tick-sliders">
+		<li class="interactive-controls-tick-slider">
+			<span>label</span>
+			<div class="">
+				<input type="range" min="0" max="10" class="interactive-controls-tickmarks">
+
+				<div class="ticks">
+					{% for instance in instances %}
+						<span class="tick">{{ instance.name }}</span>
+					{% endfor %}
+				</div>
+			</div>
+			<span>label</span>
+		</li>
+	</ul>
 	<div>
 		<label for="interactive-controls-instances-select">Instances</label>
 		<select

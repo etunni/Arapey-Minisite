@@ -3,15 +3,15 @@
 	-webkit-appearance: none;
 }
 
+[type="range"] {
+	outline: 0;
+}
+
 .interactive-controls-sliders label {
 	--label-width: 4.5rem;
 
 	font-weight: 129;
 	font-size: 1.25rem;
-}
-
-.interactive-controls-sliders {
-	display: flex;
 }
 
 .interactive-controls-sliders li {
@@ -54,4 +54,63 @@
 
 .interactive-controls-slider[data-color="blue-purple"]::-webkit-slider-thumb {
 	background-color: var(--arapey-purple);
+}
+
+/* Tick sliders */
+
+.interactive-controls-tick-slider {
+	display: flex;
+}
+
+.interactive-controls-tick-slider > div {
+	width: 100%;
+	padding: 0 1rem;
+}
+
+.interactive-controls-tick-slider > span {
+	margin-top: 0.15rem;
+	font-size: 1.25rem;
+}
+
+.interactive-controls-tickmarks {
+	background: red;
+	height: 2px;
+	width: 100%;
+	margin: 0;
+}
+
+.interactive-controls-tickmarks::-webkit-slider-thumb {
+	background-color: green;
+	width: 1.25rem;
+	height: 1.25rem;
+	border-radius: 50%;
+}
+
+.interactive-controls-tick-sliders li {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.ticks {
+	display: flex;
+	justify-content: space-between;
+}
+
+.tick::before {
+	content: "";
+	display: flex;
+	justify-content: center;
+	width: 1px;
+	height: 1rem;
+	background: gray;
+}
+.tick {
+	display: flex;
+	justify-content: center;
+	width: 1px;
+	height: 1rem;
+	background: green;
+	padding-top: 1rem;
+	margin: 0.5rem 0;
+	font-size: 1.25rem;
 }
