@@ -1,8 +1,7 @@
 
 
 {% if color %}
-    {% assign counter = 0 | plus: 1 %}
-    {% capture counter %} switch-{% increment counter %} {% endcapture %}
+    {% capture counter %}switch-{% increment counter %}{% endcapture %}
 
     <input id="{{ counter }}" type="checkbox" class="interactive-controls-checkbox" />
     <label
@@ -16,4 +15,4 @@
 {% comment %} 
         Usage: 
         {% include toggle.html with color: "blue-purple" %} 
- {% endcomment %}
+{% endcomment %}
