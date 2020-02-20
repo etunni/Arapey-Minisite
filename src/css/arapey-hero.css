@@ -27,7 +27,7 @@
 	margin: 0;
 	color: white;
 	font-size: 30rem;
-	font-weight: 156;
+	font-weight: var(--weight-extra-bold);
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -37,7 +37,7 @@
 .arapey-hero h2 {
 	color: var(--arapey-red);
 	font-size: 2.5rem;
-	font-weight: 210;
+	font-weight: var(--weight-black-display);
 	display: flex;
 	justify-content: center;
 }
@@ -47,5 +47,5 @@
 	justify-content: center;
 	color: white;
 	font-size: 1.5rem;
-	font-weight: 72;
+	font-weight: var(--weight-regular);
 }

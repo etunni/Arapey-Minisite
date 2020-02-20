@@ -1,7 +1,7 @@
 @font-face {
 	font-family: "Arapey";
 	src: url("../fonts/Arapey[opsz,wght].ttf");
-	font-weight: 30 210;
+	font-weight: 30 var(--weight-black-display);
 }
 
 body {

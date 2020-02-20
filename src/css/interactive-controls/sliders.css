@@ -11,7 +11,7 @@
 .interactive-controls-list label {
 	--label-width: 4.5rem;
 
-	font-weight: 129;
+	font-weight: var(--weight-bold);
 	font-size: 1.25rem;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .tick-list-item span {
-	font-weight: 129;
+	font-weight: var(--weight-bold);
 }
 
 .tick-list-item > span {

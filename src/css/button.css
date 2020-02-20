@@ -4,7 +4,7 @@
 	box-shadow: 0 5px 0 0 var(--arapey-purple);
 	color: white;
 	font-size: 2rem;
-	font-weight: 72;
+	font-weight: var(--weight-regular);
 	padding: 2rem;
 	text-decoration: none;
 	display: flex;

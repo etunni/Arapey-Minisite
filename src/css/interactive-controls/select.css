@@ -1,5 +1,5 @@
 .interactive-controls-select-handle {
-	font-weight: 106;
+	font-weight: var(--weight-semi-bold);
 	font-size: 1.125rem;
 	width: 100%;
 	display: flex;
@@ -37,7 +37,7 @@
 }
 
 .interactive-controls-option {
-	font-weight: 72;
+	font-weight: var(--weight-regular);
 	font-size: 1rem;
 	margin-bottom: 0.75rem;
 	background-color: transparent;
