@@ -11,6 +11,7 @@
 @import "interactive-controls/toggle.css";
 @import "interactive-controls/sliders.css";
 @import "interactive-controls/select.css";
+@import "interactive-controls/radio.css";
 
 @import "button.css";
 @import "icons.css";

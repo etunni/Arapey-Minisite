@@ -16,7 +16,6 @@
 	min-width: var(--label-width);
 }
 
-.interactive-controls-instances select,
 .interactive-controls-slider {
 	width: 100%;
 }

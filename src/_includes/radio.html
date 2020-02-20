@@ -1,0 +1,8 @@
+{% capture radio-counter %}radio-{% increment radio-counter %}{% endcapture %}
+
+{% if checked %}
+  <input class="interactive-controls-radio" type="radio" id="{{ radio-counter }}" name="{{ name }}" value="{{ value }}" checked />
+{% else %}
+  <input class="interactive-controls-radio" type="radio" id="{{ radio-counter }}" name="{{ name }}" value="{{ value }}"/>
+{% endif %}
+
