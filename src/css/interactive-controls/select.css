@@ -19,12 +19,21 @@
 }
 
 .interactive-controls-options-list {
+	--arapey-light-gray-transparent: rgba(247, 247, 247, 0.9);
+
 	background-color: var(--arapey-light-gray-transparent);
 	padding: 1rem 0;
+	display: none;
+	position: absolute;
+	width: 100%;
 }
 
 .interactive-controls-options-list li {
 	padding-bottom: 0.5rem;
+}
+
+.interactive-controls-options-list.show {
+	display: block;
 }
 
 .interactive-controls-option {
@@ -43,6 +52,7 @@
 
 .interactive-controls-select-group {
 	max-width: 225px;
+	position: relative;
 
 	/* Temporary code to center this thing */
 	margin: 0 auto;

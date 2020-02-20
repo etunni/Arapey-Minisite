@@ -104,3 +104,22 @@ grid.onmousemove = throttle(e => {
 		gridzoom.innerHTML = e.target.innerHTML;
 	}
 }, 100);
+
+const selectElements = {
+	handle: document.querySelector(".interactive-controls-select-handle"),
+	dropdown: document.querySelector(".interactive-controls-options-list")
+};
+
+selectElements.handle.addEventListener("click", e => {
+	selectElements.dropdown.classList.add("show");
+});
+
+selectElements.dropdown.addEventListener("click", e => {
+	if (e.target.type == "button") {
+		const textContainer = selectElements.handle.querySelector("span");
+		selectElements.handle.setAttribute("value", e.target.value);
+
+		textContainer.textContent = e.target.value;
+		selectElements.dropdown.classList.remove("show");
+	}
+});

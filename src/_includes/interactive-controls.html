@@ -62,34 +62,18 @@
 	
 
 	<div class="interactive-controls-select-group">
-		<button type="button" class="interactive-controls-select-handle">
-			<span>Instance</span>
+		<button type="button" class="interactive-controls-select-handle" value="Regular">
+			<span>Regular</span>
 			<img class="icon icon-arrow" src="{% webpackAssetPath '../img/down-arrow.svg' %}" />
 		</button>
 		<ul class="interactive-controls-options-list">
 			{% for instance in instances %}
 			<li>
-				<button type="button" class="interactive-controls-option">{{ instance.name }}</button>
+				<button value="{{instance.name}}" type="button" class="interactive-controls-option">{{ instance.name }}</button>
 			</li>
 			{% endfor %}
 		</ul>
 	</div>
-
-	<!-- <div>
-		<label for="interactive-controls-instances-select">Instances</label>
-		<span class="select-handle">handle</span>
-		<select 
-			size=15
-			id="interactive-controls-instances-select"
-			class="interactive-controls-instances-select"
-		>
-			{% for instance in instances %}
-			<option value="{{ instance.axes | json_stringify | escape }}"
-				>{{ instance.name }}</option
-			>
-			{% endfor %}
-		</select>
-	</div> -->
 
 	<div class="interactive-controls-text">
 		<h1>Lorem</h1>
