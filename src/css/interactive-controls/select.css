@@ -4,6 +4,7 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	transition: color 0.5s;
 }
 
 .interactive-controls-select-handle,
@@ -12,13 +13,8 @@
 	cursor: pointer;
 }
 
-.interactive-controls-option {
-	font-weight: 72;
-	font-size: 1rem;
-	margin-bottom: 0.75rem;
-	background-color: transparent;
-	width: 100%;
-	text-align: left;
+.interactive-controls-select-handle:hover {
+	color: var(--arapey-red);
 }
 
 .interactive-controls-options-list {
@@ -30,9 +26,18 @@
 	padding-bottom: 0.5rem;
 }
 
-.interactive-controls-options-list li:hover button {
-	color: var(--arapey-red);
+.interactive-controls-option {
+	font-weight: 72;
+	font-size: 1rem;
+	margin-bottom: 0.75rem;
+	background-color: transparent;
+	width: 100%;
+	text-align: left;
 	transition: color 0.5s;
+}
+
+.interactive-controls-options-list li:hover .interactive-controls-option {
+	color: var(--arapey-red);
 }
 
 .interactive-controls-select-group {
