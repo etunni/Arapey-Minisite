@@ -56,24 +56,12 @@
 	<h2>Long sliders </h2>
 	<ul class="interactive-controls-list">
 		{% include tick-slider.html withInstances: instances %} 
-		{% include tick-slider.html with labelStart: "start" labelEnd: "end"  %} 
-		{% include tick-slider.html with labelStart: "start" labelEnd: "end" withInstances: instances %} 
+		{% include tick-slider.html labelStart: "start" labelEnd: "end"  %} 
+		{% include tick-slider.html labelStart: "start" labelEnd: "end" withInstances: instances %} 
 	</ul>
 	
+	{% include select.html %} 
 
-	<div class="interactive-controls-select-group">
-		<button type="button" class="interactive-controls-select-handle" value="Regular">
-			<span>Regular</span>
-			<img class="icon icon-arrow" src="{% webpackAssetPath '../img/down-arrow.svg' %}" />
-		</button>
-		<ul class="interactive-controls-options-list">
-			{% for instance in instances %}
-			<li>
-				<button value="{{instance.name}}" type="button" class="interactive-controls-option">{{ instance.name }}</button>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
 
 	<div class="interactive-controls-text">
 		<h1>Lorem</h1>
