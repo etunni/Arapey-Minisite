@@ -1,0 +1,47 @@
+.interactive-controls-select-handle {
+	font-weight: 106;
+	font-size: 1.125rem;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.interactive-controls-select-handle,
+.interactive-controls-option {
+	padding: 0 2.5rem;
+	cursor: pointer;
+}
+
+.interactive-controls-option {
+	font-weight: 72;
+	font-size: 1rem;
+	margin-bottom: 0.75rem;
+	background-color: transparent;
+	width: 100%;
+	text-align: left;
+}
+
+.interactive-controls-options-list {
+	background-color: var(--arapey-light-gray-transparent);
+	padding: 1rem 0;
+}
+
+.interactive-controls-options-list li {
+	padding-bottom: 0.5rem;
+}
+
+.interactive-controls-options-list li:hover button {
+	color: var(--arapey-red);
+	transition: color 0.5s;
+}
+
+.interactive-controls-select-group {
+	max-width: 225px;
+
+	/* Temporary code to center this thing */
+	margin: 0 auto;
+}
+
+.interactive-controls-select-group * {
+	font-family: "Arapey";
+}

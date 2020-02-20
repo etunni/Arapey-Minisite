@@ -10,7 +10,9 @@
 @import "interactive-controls/index.css";
 @import "interactive-controls/toggle.css";
 @import "interactive-controls/sliders.css";
+@import "interactive-controls/select.css";
 
 @import "button.css";
+@import "icons.css";
 
 @import "arapey-hero.css";

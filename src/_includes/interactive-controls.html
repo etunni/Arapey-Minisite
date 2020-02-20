@@ -59,9 +59,27 @@
 		{% include tick-slider.html with labelStart: "start" labelEnd: "end"  %} 
 		{% include tick-slider.html with labelStart: "start" labelEnd: "end" withInstances: instances %} 
 	</ul>
-	<div>
+	
+
+	<div class="interactive-controls-select-group">
+		<button type="button" class="interactive-controls-select-handle">
+			<span>Instance</span>
+			<img class="icon icon-arrow" src="{% webpackAssetPath '../img/down-arrow.svg' %}" />
+		</button>
+		<ul class="interactive-controls-options-list">
+			{% for instance in instances %}
+			<li>
+				<button type="button" class="interactive-controls-option">{{ instance.name }}</button>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<!-- <div>
 		<label for="interactive-controls-instances-select">Instances</label>
-		<select
+		<span class="select-handle">handle</span>
+		<select 
+			size=15
 			id="interactive-controls-instances-select"
 			class="interactive-controls-instances-select"
 		>
@@ -71,7 +89,7 @@
 			>
 			{% endfor %}
 		</select>
-	</div>
+	</div> -->
 
 	<div class="interactive-controls-text">
 		<h1>Lorem</h1>

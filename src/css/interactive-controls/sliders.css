@@ -1,6 +1,7 @@
 [type="range"],
 [type="range"]::-webkit-slider-thumb {
 	-webkit-appearance: none;
+	cursor: pointer;
 }
 
 [type="range"] {
@@ -17,7 +18,6 @@
 .interactive-controls-slider {
 	height: 0.2rem;
 	outline: 0;
-	cursor: pointer;
 	width: 10rem;
 }
 
@@ -69,6 +69,10 @@
 .tick-list-item > div {
 	width: 100%;
 	padding: 0 1rem;
+}
+
+.tick-list-item span {
+	font-weight: 129;
 }
 
 .tick-list-item > span {
