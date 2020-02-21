@@ -34,12 +34,20 @@
 	justify-content: center;
 	align-items: center;
 	font-variation-settings: "wght" var(--weight-grid-slider);
+	cursor: pointer;
+	transition: transform 0.25s;
 }
 
 .character-grid > li:hover {
-	background-color: var(--arapey-red);
+	transform: scale(1.25);
 	border-radius: 50%;
 	padding: 2rem;
+	background-color: var(--arapey-light-red);
+}
+
+.character-grid > li:hover.character-grid-zoom-active {
+	background-color: var(--arapey-red);
+	transition: background-color 0.25s;
 }
 
 .character-grid-zoom {
@@ -49,6 +57,12 @@
 	justify-content: center;
 	align-items: center;
 	font-variation-settings: "wght" var(--weight-grid-slider);
+}
+
+.character-grid-zoom-active {
+	background-color: var(--arapey-red);
+	border-radius: 50%;
+	padding: 2rem;
 }
 
 .interactive-controls-tick-slider-container {

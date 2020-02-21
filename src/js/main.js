@@ -103,11 +103,25 @@ if ("IntersectionObserver" in window) {
 // Character grid
 const grid = document.querySelector(".character-grid");
 const gridzoom = document.querySelector(".character-grid-zoom");
-grid.onmousemove = throttle(e => {
+
+grid.onclick = e => {
+	removeActiveGridItem();
+
 	if (e.target.tagName === "LI") {
+		e.target.classList.add("character-grid-zoom-active");
 		gridzoom.innerHTML = e.target.innerHTML;
 	}
-}, 100);
+};
+
+const removeActiveGridItem = () => {
+	const gridItems = grid.querySelectorAll("li");
+
+	for (let item of gridItems) {
+		if (item.classList.contains("character-grid-zoom-active")) {
+			item.classList.remove("character-grid-zoom-active");
+		}
+	}
+};
 
 const gridSlider = document.querySelector(".weight-grid-slider");
 const gridContainer = document.querySelector(".character-grid-inner-container");
