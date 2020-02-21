@@ -10,8 +10,8 @@ input[type="checkbox"] {
 	border-style: solid;
 	border-width: 2px;
 	display: block;
-	width: 3.25rem;
-	height: 1.75rem;
+	width: 52px;
+	height: 28px;
 	position: relative;
 	cursor: pointer;
 	transition: transform 0.4s ease;
@@ -24,7 +24,7 @@ input[type="checkbox"] {
 	top: 0;
 	left: 0;
 	border-radius: 2rem;
-	width: 1.5rem;
+	width: 24px;
 	height: 100%;
 	display: block;
 	transition-property: left, width, transform;
@@ -33,7 +33,7 @@ input[type="checkbox"] {
 
 /* on press */
 .interactive-controls-toggle:active::after {
-	width: 2rem;
+	width: 32px;
 }
 
 /* When pressed "on" */
