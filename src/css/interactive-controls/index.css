@@ -15,7 +15,3 @@
 	flex: none;
 	min-width: var(--label-width);
 }
-
-.interactive-controls-slider {
-	width: 100%;
-}
