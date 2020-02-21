@@ -28,11 +28,13 @@ font.load(null, fontTimeOut).then(
 		// Font has loaded
 		document.documentElement.classList.add("fonts-loaded");
 		setGridSliderValue();
+		setInitialGridCharacter();
 	},
 	() => {
 		// Font didn't load
 		document.documentElement.classList.add("fonts-failed");
 		setGridSliderValue();
+		setInitialGridCharacter();
 	}
 );
 // Interactive controls (sliders that tweak axes)
@@ -104,12 +106,16 @@ if ("IntersectionObserver" in window) {
 const grid = document.querySelector(".character-grid");
 const gridzoom = document.querySelector(".character-grid-zoom");
 
+const setInitialGridCharacter = () => {
+	// How to do this?
+};
+
 grid.onclick = e => {
 	removeActiveGridItem();
 
 	if (e.target.tagName === "LI") {
 		e.target.classList.add("character-grid-zoom-active");
-		gridzoom.innerHTML = e.target.innerHTML;
+		gridzoom.textContent = e.target.textContent;
 	}
 };
 

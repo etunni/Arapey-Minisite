@@ -1,6 +1,6 @@
 :root {
-	--character-grid-cell: 4rem;
-	--character-grid-font-zize: 2rem;
+	--character-grid-cell: 4.5rem;
+	--character-grid-font-size: 2rem;
 	--character-grid-gap: 1rem;
 	--weight-grid-slider: 58;
 	--badge-position-x: 0;
@@ -20,9 +20,10 @@
 	);
 	column-gap: var(--character-grid-gap);
 	row-gap: var(--character-grid-gap);
-	font-size: var(--character-grid-font-zize);
+	font-size: var(--character-grid-font-size);
 	flex: 1; /* We don't want both of the elements to take in the space they need.  */
-	max-height: 600px;
+	min-height: 600px;
+	max-height: 45vw;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -47,7 +48,7 @@
 
 .character-grid > li:hover.character-grid-zoom-active {
 	background-color: var(--arapey-red);
-	transition: background-color 0.25s;
+	transition: transform 0.25s, background-color 0.25s;
 }
 
 .character-grid-zoom {
