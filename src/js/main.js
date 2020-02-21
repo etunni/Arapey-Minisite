@@ -135,6 +135,7 @@ const setBadgePosition = fontWeightValue => {
 	badge.style.transform = `translateX(${badgePosition}px)`;
 };
 
+// Handle select box
 const selectElements = {
 	handle: document.querySelector(".interactive-controls-select-handle"),
 	dropdown: document.querySelector(".interactive-controls-options-list")

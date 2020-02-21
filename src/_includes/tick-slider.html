@@ -8,8 +8,9 @@
 <li class="interactive-controls-list-item tick-list-item">
     {% if labelStart %}<span>{{ labelStart }}</span>{% endif %}
     <div class="interactive-controls-tick-slider-container">
-		<span class="interactive-controls-badge">123</span>
-        <input type="range" name="{{ name }}" min="{{ min }}" max="{{ max }}" class="interactive-controls-slider interactive-controls-tick-slider {{ name }}">
+		{% if badge %}<output class="interactive-controls-badge"></output>{% endif %}
+
+        <input type="range" value="" name="{{ name }}" min="{{ min }}" max="{{ max }}" class="interactive-controls-slider interactive-controls-tick-slider {{ name }}">
 
             {% if withInstances %}
                 <div class="ticks">
