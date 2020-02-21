@@ -1,7 +1,12 @@
 :root {
-	--character-grid-cell: 2rem;
+	--character-grid-cell: 4rem;
 	--character-grid-font-zize: 2rem;
 	--character-grid-gap: 1rem;
+	--font-weight: 56;
+}
+
+.character-grid-container {
+	display: flex;
 }
 
 .character-grid {
@@ -15,15 +20,31 @@
 	column-gap: var(--character-grid-gap);
 	row-gap: var(--character-grid-gap);
 	font-size: var(--character-grid-font-zize);
+	font-variation-settings: "wght" var(--font-weight);
+	flex: 1; /* We don't want both of the elements to take in the space they need.  */
+	max-height: 600px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .character-grid > li {
+	width: var(--character-grid-cell);
 	height: var(--character-grid-cell);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
+.character-grid > li:hover {
+	background-color: var(--arapey-red);
+	border-radius: 50%;
+	padding: 2rem;
+}
+
 .character-grid-zoom {
-	font-size: 100px;
+	font-size: 35vw;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
