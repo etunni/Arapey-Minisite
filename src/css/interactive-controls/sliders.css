@@ -120,7 +120,7 @@
  */
 
 .interactive-controls-tick-slider-container {
-	max-width: 1400px;
+	max-width: 1300px;
 }
 
 .tick-list-item {
@@ -197,4 +197,5 @@
 .tick span {
 	margin-top: 1rem;
 	white-space: nowrap;
+	font-size: 1rem;
 }

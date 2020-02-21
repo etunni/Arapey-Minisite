@@ -60,6 +60,8 @@ for (const interactive of interactives) {
 			if (instances) {
 				instances.selectedIndex = -1;
 			}
+
+			handleGridSlider();
 		};
 	}
 
@@ -68,6 +70,7 @@ for (const interactive of interactives) {
 			const axes = JSON.parse(
 				e.target.options[e.target.selectedIndex].value
 			);
+
 			for (const axis in axes) {
 				// Set new axis value on slider
 				interactive.querySelector(`[name=${axis}]`).value = axes[axis];
@@ -77,6 +80,14 @@ for (const interactive of interactives) {
 		};
 	}
 }
+
+const gridContainer = document.querySelector(".character-grid-inner-container");
+const badge = document.querySelector(".interactive-controls-badge");
+
+const handleGridSlider = () => {
+	const value = gridContainer.style.getPropertyValue("--weight-grid-slider");
+	badge.textContent = value;
+};
 
 // Watch if .am-i-in-view elements are visible on screen
 // and apply a class accordingly

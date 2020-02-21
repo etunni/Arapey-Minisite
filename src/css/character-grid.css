@@ -2,10 +2,10 @@
 	--character-grid-cell: 4rem;
 	--character-grid-font-zize: 2rem;
 	--character-grid-gap: 1rem;
-	--font-weight: 56;
+	--weight-grid-slider: 58;
 }
 
-.character-grid-container {
+.character-grid-inner-container {
 	display: flex;
 }
 
@@ -20,7 +20,6 @@
 	column-gap: var(--character-grid-gap);
 	row-gap: var(--character-grid-gap);
 	font-size: var(--character-grid-font-zize);
-	font-variation-settings: "wght" var(--font-weight);
 	flex: 1; /* We don't want both of the elements to take in the space they need.  */
 	max-height: 600px;
 	overflow-y: scroll;
@@ -33,6 +32,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-variation-settings: "wght" var(--weight-grid-slider);
 }
 
 .character-grid > li:hover {
@@ -47,4 +47,5 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-variation-settings: "wght" var(--weight-grid-slider);
 }
