@@ -27,13 +27,14 @@ font.load(null, fontTimeOut).then(
 	() => {
 		// Font has loaded
 		document.documentElement.classList.add("fonts-loaded");
+		setGridSliderValue();
 	},
 	() => {
 		// Font didn't load
 		document.documentElement.classList.add("fonts-failed");
+		setGridSliderValue();
 	}
 );
-
 // Interactive controls (sliders that tweak axes)
 const interactives = document.querySelectorAll(".interactive-controls");
 for (const interactive of interactives) {
@@ -61,7 +62,7 @@ for (const interactive of interactives) {
 				instances.selectedIndex = -1;
 			}
 
-			handleGridSlider();
+			setGridSliderValue();
 		};
 	}
 
@@ -80,14 +81,6 @@ for (const interactive of interactives) {
 		};
 	}
 }
-
-const gridContainer = document.querySelector(".character-grid-inner-container");
-const badge = document.querySelector(".interactive-controls-badge");
-
-const handleGridSlider = () => {
-	const value = gridContainer.style.getPropertyValue("--weight-grid-slider");
-	badge.textContent = value;
-};
 
 // Watch if .am-i-in-view elements are visible on screen
 // and apply a class accordingly
@@ -115,6 +108,32 @@ grid.onmousemove = throttle(e => {
 		gridzoom.innerHTML = e.target.innerHTML;
 	}
 }, 100);
+
+const gridSlider = document.querySelector(".weight-grid-slider");
+const gridContainer = document.querySelector(".character-grid-inner-container");
+const badge = document.querySelector(".interactive-controls-badge");
+
+const setGridSliderValue = () => {
+	const fontWeightValue = gridContainer.style.getPropertyValue(
+		"--weight-grid-slider"
+	);
+
+	badge.textContent = fontWeightValue;
+	setBadgePosition(fontWeightValue);
+};
+
+const setBadgePosition = fontWeightValue => {
+	const offset =
+		gridSlider.offsetWidth /
+		(parseInt(gridSlider.max) - parseInt(gridSlider.min));
+
+	const badgePosition =
+		(parseInt(fontWeightValue) - parseInt(gridSlider.min)) * offset -
+		badge.offsetWidth / 2;
+
+	badge.style.setProperty("--badge-position-x", badgePosition);
+	badge.style.transform = `translateX(${badgePosition}px)`;
+};
 
 const selectElements = {
 	handle: document.querySelector(".interactive-controls-select-handle"),
