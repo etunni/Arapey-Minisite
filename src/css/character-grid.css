@@ -10,9 +10,17 @@
 	display: flex;
 }
 
+.character-grid-section {
+	padding: 2rem;
+}
+
+.character-grid-section .interactive-controls-tick-slider-container {
+	margin: 0 auto;
+	margin-top: 4rem;
+}
+
 .character-grid {
 	list-style-type: none;
-	padding: 0;
 	display: grid;
 	grid-template-columns: repeat(
 		auto-fill,
@@ -26,6 +34,7 @@
 	max-height: 45vw;
 	overflow-y: scroll;
 	overflow-x: hidden;
+	padding: 1.75rem 0; /* Prevent cut-off hover. */
 }
 
 .character-grid > li {
