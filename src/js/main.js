@@ -101,35 +101,33 @@ if ("IntersectionObserver" in window) {
 }
 
 // Character grid
-const grid = document.querySelector(".character-grid");
-const gridzoom = document.querySelector(".character-grid-zoom");
+const gridSection = document.querySelector(".character-grid-section");
+const grid = gridSection.querySelector(".character-grid");
+const gridzoom = gridSection.querySelector(".character-grid-zoom");
 const initialCharacter = grid.querySelector("[data-character='A']");
 
 const setGridCharacter = e => {
 	if (!e) {
 		gridzoom.textContent = "A";
 		initialCharacter.classList.add("character-grid-zoom-active");
+		return;
 	}
 
 	if (e.target.tagName === "LI") {
-		e.target.classList.add("character-grid-zoom-active");
+		// e.target.classList.add("character-grid-zoom-active");
 		gridzoom.textContent = e.target.textContent;
 	}
 };
 
-grid.onmousemove = throttle(e => {
+grid.onmousemove = e => {
 	removeActiveGridItem();
 	setGridCharacter(e);
-});
+};
 
 const removeActiveGridItem = () => {
-	const gridItems = grid.querySelectorAll("li");
-
-	for (let item of gridItems) {
-		if (item.classList.contains("character-grid-zoom-active")) {
-			item.classList.remove("character-grid-zoom-active");
-		}
-	}
+	grid.querySelector(".character-grid-item").classList.remove(
+		"character-grid-zoom-active"
+	);
 };
 
 const gridSlider = document.querySelector(".weight-grid-slider");
