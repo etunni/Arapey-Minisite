@@ -141,9 +141,11 @@ const setGridSliderValue = value => {
 		value || gridContainer.style.getPropertyValue("--weight-grid-slider")
 	);
 
-	const badgePosition =
-		(parseInt(sliderValue) - parseInt(gridSlider.min)) * badgeOffset -
-		badgeOffsetWidth / 2;
+	const badgePosition = Math.round(
+		(parseInt(sliderValue, 10) - parseInt(gridSlider.min, 10)) *
+			badgeOffset -
+			badgeOffsetWidth / 2
+	);
 
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
 	badge.style.setProperty("--weight", `${sliderValue}`);
@@ -176,7 +178,7 @@ const initializeApp = () => {
 	// See https://github.com/undercasetype/fraunces-minisite/blob/master/src/js/main.js#L326
 	badgeOffset =
 		gridSlider.offsetWidth /
-		(parseInt(gridSlider.max) - parseInt(gridSlider.min));
+		(parseInt(gridSlider.max, 10) - parseInt(gridSlider.min, 10));
 	badgeOffsetWidth = badge.offsetWidth;
 
 	setGridSliderValue();
