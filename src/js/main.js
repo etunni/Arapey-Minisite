@@ -63,7 +63,7 @@ for (const interactive of interactives) {
 				instances.selectedIndex = -1;
 			}
 
-			setGridSliderValue(slider.value);
+			setGridSliderValue(e.target.value);
 		};
 	}
 
@@ -137,19 +137,17 @@ let badgeOffset;
 let badgeOffsetWidth;
 
 const setGridSliderValue = value => {
-	const sliderValue = Math.round(
+	const sliderValue = parseFloat(
 		value || gridContainer.style.getPropertyValue("--weight-grid-slider")
 	);
 
-	const badgePosition = Math.round(
-		(parseInt(sliderValue, 10) - parseInt(gridSlider.min, 10)) *
-			badgeOffset -
-			badgeOffsetWidth / 2
-	);
+	const badgePosition =
+		(parseFloat(sliderValue) - parseFloat(gridSlider.min)) * badgeOffset -
+		badgeOffsetWidth / 2;
 
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
 	badge.style.setProperty("--weight", `${sliderValue}`);
-	badge.style.setProperty("--weight-string", `"${sliderValue}"`);
+	badge.style.setProperty("--weight-string", `"${Math.round(sliderValue)}"`);
 };
 
 // Handle select box
@@ -178,7 +176,7 @@ const initializeApp = () => {
 	// See https://github.com/undercasetype/fraunces-minisite/blob/master/src/js/main.js#L326
 	badgeOffset =
 		gridSlider.offsetWidth /
-		(parseInt(gridSlider.max, 10) - parseInt(gridSlider.min, 10));
+		(parseFloat(gridSlider.max) - parseFloat(gridSlider.min));
 	badgeOffsetWidth = badge.offsetWidth;
 
 	setGridSliderValue();
