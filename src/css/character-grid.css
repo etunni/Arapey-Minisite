@@ -40,6 +40,7 @@
 	align-items: center;
 	border-radius: 50%;
 	cursor: pointer;
+	transition: transform 0.25s, background-color 0.25s;
 }
 
 .character-grid-item::before {
@@ -49,21 +50,20 @@
 	width: var(--character-grid-cell);
 	height: var(--character-grid-cell);
 	border-radius: 50%;
-	background-color: var(--arapey-red);
 	opacity: 0;
 	transform: scale(0.8);
 	transition: transform 100ms, opacity 100ms;
 }
 
-.character-grid-zoom-active::before {
-	transform: scale(1);
-	opacity: 1;
-}
-
-.character-grid-zoom-active {
+.character-grid-item:hover {
 	position: relative;
 	z-index: 1;
-	transition: transform 0.25s, background-color 0.25s;
+	background-color: var(--arapey-red);
+}
+
+.character-grid-item::before:hover {
+	transform: scale(1);
+	opacity: 1;
 }
 
 .character-grid-zoom {
