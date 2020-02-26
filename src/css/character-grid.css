@@ -110,11 +110,11 @@
 }
 
 .interactive-controls-badge::after {
-	position: absolute;
-	bottom: -9px;
-	left: 0;
 	content: "";
-	border-left: 42px solid transparent;
+	position: absolute;
+	bottom: -10px;
+	left: 0%;
+	border-left: 48px solid transparent;
 	border-top: 10px solid var(--arapey-light-gray);
-	border-right: 42px solid transparent;
+	border-right: 48px solid transparent;
 }
