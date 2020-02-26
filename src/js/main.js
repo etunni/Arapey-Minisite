@@ -5,21 +5,22 @@ import FontFaceObserver from "fontfaceobserver";
 const fontTimeOut = 5000; // In milliseconds
 
 // Generic: throttle
-const throttle = (fn, wait) => {
-	let last, queue;
+// COMMENTED OUT TILL WE NEED IT, TO SATISFY LINTER
+// const throttle = (fn, wait) => {
+// 	let last, queue;
 
-	return function runFn(...args) {
-		const now = Date.now();
-		queue = clearTimeout(queue);
+// 	return function runFn(...args) {
+// 		const now = Date.now();
+// 		queue = clearTimeout(queue);
 
-		if (!last || now - last >= wait) {
-			fn.apply(null, args);
-			last = now;
-		} else {
-			queue = setTimeout(runFn.bind(null, ...args), wait - (now - last));
-		}
-	};
-};
+// 		if (!last || now - last >= wait) {
+// 			fn.apply(null, args);
+// 			last = now;
+// 		} else {
+// 			queue = setTimeout(runFn.bind(null, ...args), wait - (now - last));
+// 		}
+// 	};
+// };
 
 // Set up FontFaceObserver
 const font = new FontFaceObserver(fontName);
@@ -62,7 +63,7 @@ for (const interactive of interactives) {
 				instances.selectedIndex = -1;
 			}
 
-			setGridSliderValue();
+			setGridSliderValue(slider.value);
 		};
 	}
 
@@ -104,7 +105,6 @@ if ("IntersectionObserver" in window) {
 const gridSection = document.querySelector(".character-grid-section");
 const grid = gridSection.querySelector(".character-grid");
 const gridzoom = gridSection.querySelector(".character-grid-zoom");
-const initialCharacter = grid.querySelector("[data-character='A']");
 let previousActiveElement = null;
 
 const setGridCharacter = e => {
@@ -121,7 +121,7 @@ const setGridCharacter = e => {
 	}
 };
 
-grid.onmouseleave = e => {
+grid.onmouseleave = () => {
 	previousActiveElement.classList.add("active");
 };
 
@@ -133,27 +133,22 @@ grid.onmousemove = e => {
 const gridSlider = document.querySelector(".weight-grid-slider");
 const gridContainer = document.querySelector(".character-grid-inner-container");
 const badge = document.querySelector(".interactive-controls-badge");
+let badgeOffset;
+let badgeOffsetWidth;
 
-const setGridSliderValue = () => {
-	const fontWeightValue = gridContainer.style.getPropertyValue(
-		"--weight-grid-slider"
+const setGridSliderValue = value => {
+	const sliderValue = Math.round(
+		value || gridContainer.style.getPropertyValue("--weight-grid-slider")
 	);
 
-	badge.textContent = fontWeightValue;
-	setBadgePosition(fontWeightValue);
-};
-
-const setBadgePosition = fontWeightValue => {
-	const offset =
-		gridSlider.offsetWidth /
-		(parseInt(gridSlider.max) - parseInt(gridSlider.min));
-
 	const badgePosition =
-		(parseInt(fontWeightValue) - parseInt(gridSlider.min)) * offset -
-		badge.offsetWidth / 2;
+		(parseInt(sliderValue) - parseInt(gridSlider.min)) * badgeOffset -
+		badgeOffsetWidth / 2;
 
-	badge.style.setProperty("--badge-position-x", badgePosition);
-	badge.style.transform = `translateX(${badgePosition}px)`;
+	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
+	badge.style.setProperty("--weight", `${sliderValue}`);
+
+	badge.textContent = sliderValue;
 };
 
 // Handle select box
@@ -162,7 +157,7 @@ const selectElements = {
 	dropdown: document.querySelector(".interactive-controls-options-list")
 };
 
-selectElements.handle.addEventListener("click", e => {
+selectElements.handle.addEventListener("click", () => {
 	selectElements.dropdown.classList.add("show");
 });
 
@@ -177,6 +172,14 @@ selectElements.dropdown.addEventListener("click", e => {
 });
 
 const initializeApp = () => {
+	// TODO: set these value in a generic function that
+	// can be recalculated on window resize
+	// See https://github.com/undercasetype/fraunces-minisite/blob/master/src/js/main.js#L326
+	badgeOffset =
+		gridSlider.offsetWidth /
+		(parseInt(gridSlider.max) - parseInt(gridSlider.min));
+	badgeOffsetWidth = badge.offsetWidth;
+
 	setGridSliderValue();
 	setGridCharacter();
 };

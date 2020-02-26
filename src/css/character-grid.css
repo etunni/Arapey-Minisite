@@ -88,14 +88,21 @@
 }
 
 .interactive-controls-badge {
+	--weight: var(--weight-regular);
+
 	position: absolute;
+	width: 6rem; /* Will hold up to three digits in fat font weight */
 	top: -60px;
 	transform: translateX(var(--badge-position-x));
+	transition: transform 50ms;
 	color: var(--arapey-red);
 	font-size: 2rem;
-	font-weight: var(--weight-regular);
-	padding: 0.5rem 1.25rem 0.25rem;
+	padding: 0.5rem 0 0.25rem 0;
+	text-align: center;
 	background-color: var(--arapey-light-gray);
+
+	/* Using wght axis directly as weight axis doesn't match CSS weight values */
+	font-variation-settings: "wght" var(--weight);
 }
 
 .interactive-controls-badge::after {

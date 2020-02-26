@@ -1,8 +1,8 @@
-{% comment %} 
-    Usage: 
-		{% include tick-slider.html withInstances: instances %} 
-		{% include tick-slider.html with labelStart: "start" labelEnd: "end"  %} 
-		{% include tick-slider.html with labelStart: "start" labelEnd: "end" withInstances: instances %} 
+{% comment %}
+    Usage:
+		{% include tick-slider.html withInstances: instances %}
+		{% include tick-slider.html with labelStart: "start" labelEnd: "end"  %}
+		{% include tick-slider.html with labelStart: "start" labelEnd: "end" withInstances: instances %}
 {% endcomment %}
 
 <li class="interactive-controls-list-item tick-list-item">
@@ -10,7 +10,7 @@
     <div class="interactive-controls-tick-slider-container">
 		{% if badge %}<output class="interactive-controls-badge"></output>{% endif %}
 
-        <input type="range" value="" name="{{ name }}" min="{{ min }}" max="{{ max }}" class="interactive-controls-slider interactive-controls-tick-slider {{ name }}">
+        <input type="range" value="" name="{{ name }}" min="{{ min }}" max="{{ max }}" step="any" class="interactive-controls-slider interactive-controls-tick-slider {{ name }}">
 
             {% if withInstances %}
                 <div class="ticks">
