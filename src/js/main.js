@@ -147,8 +147,7 @@ const setGridSliderValue = value => {
 
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
 	badge.style.setProperty("--weight", `${sliderValue}`);
-
-	badge.textContent = sliderValue;
+	badge.style.setProperty("--weight-string", `"${sliderValue}"`);
 };
 
 // Handle select box

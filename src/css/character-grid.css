@@ -105,6 +105,11 @@
 	font-variation-settings: "wght" var(--weight);
 }
 
+.interactive-controls-badge::before {
+	/* The content property can only take strings */
+	content: var(--weight-string);
+}
+
 .interactive-controls-badge::after {
 	position: absolute;
 	bottom: -9px;
