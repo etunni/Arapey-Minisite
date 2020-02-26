@@ -43,20 +43,28 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-variation-settings: "wght" var(--weight-grid-slider);
-	cursor: pointer;
-	transition: transform 0.25s;
+	border-radius: 50%;
 }
 
 .character-grid > li:hover {
-	transform: scale(1.25);
-	border-radius: 50%;
 	padding: 2rem;
 	background-color: var(--arapey-light-red);
 }
 
-.character-grid > li:hover.character-grid-zoom-active {
+.character-grid-zoom-active::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	transform: scale(1.25);
+	width: var(--character-grid-cell);
+	height: var(--character-grid-cell);
 	background-color: var(--arapey-red);
+	border-radius: 50%;
+}
+
+.character-grid-zoom-active {
+	position: relative;
+	z-index: 1;
 	transition: transform 0.25s, background-color 0.25s;
 }
 
@@ -67,12 +75,6 @@
 	justify-content: center;
 	align-items: center;
 	font-variation-settings: "wght" var(--weight-grid-slider);
-}
-
-.character-grid-zoom-active {
-	background-color: var(--arapey-red);
-	border-radius: 50%;
-	padding: 2rem;
 }
 
 .interactive-controls-tick-slider-container {
