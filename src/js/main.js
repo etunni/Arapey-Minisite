@@ -27,14 +27,12 @@ font.load(null, fontTimeOut).then(
 	() => {
 		// Font has loaded
 		document.documentElement.classList.add("fonts-loaded");
-		setGridSliderValue();
-		setInitialGridCharacter();
+		initializeApp();
 	},
 	() => {
 		// Font didn't load
 		document.documentElement.classList.add("fonts-failed");
-		setGridSliderValue();
-		setInitialGridCharacter();
+		initializeApp();
 	}
 );
 // Interactive controls (sliders that tweak axes)
@@ -174,3 +172,8 @@ selectElements.dropdown.addEventListener("click", e => {
 		selectElements.dropdown.classList.remove("show");
 	}
 });
+
+const initializeApp = () => {
+	setGridSliderValue();
+	setInitialGridCharacter();
+};
