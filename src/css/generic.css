@@ -16,6 +16,7 @@ body {
 	margin: 0;
 	background: var(--page-bg);
 	color: var(--page-text);
+	-webkit-font-smoothing: antialiased;
 }
 
 ol,
