@@ -103,18 +103,23 @@ if ("IntersectionObserver" in window) {
 // Character grid
 const grid = document.querySelector(".character-grid");
 const gridzoom = document.querySelector(".character-grid-zoom");
+const initialCharacter = grid.querySelector("[data-character='A']");
 
-const setInitialGridCharacter = () => {
-	// How to do this?
-};
-
-grid.onclick = e => {
-	removeActiveGridItem();
+const setGridCharacter = e => {
+	if (!e) {
+		gridzoom.textContent = "A";
+		initialCharacter.classList.add("character-grid-zoom-active");
+	}
 
 	if (e.target.tagName === "LI") {
 		e.target.classList.add("character-grid-zoom-active");
 		gridzoom.textContent = e.target.textContent;
 	}
+};
+
+grid.onclick = e => {
+	removeActiveGridItem();
+	setGridCharacter(e);
 };
 
 const removeActiveGridItem = () => {
@@ -175,5 +180,5 @@ selectElements.dropdown.addEventListener("click", e => {
 
 const initializeApp = () => {
 	setGridSliderValue();
-	setInitialGridCharacter();
+	setGridCharacter();
 };

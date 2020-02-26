@@ -2,7 +2,7 @@
 	<section class="character-grid-inner-container interactive-controls-text">
 		<ol class="character-grid">
 			{% for char in charset %}
-			<li>{{ char }}</li>
+			<li data-character="{{ char }}">{{ char }}</li>
 			{% endfor %}
 		</ol>
 		
