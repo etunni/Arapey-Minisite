@@ -1,8 +1,16 @@
 .arapey-hero {
-	background-color: var(--arapey-purple);
+	background-color: var(--arapey-white);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.hero-text-container {
+	max-width: 80rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .arapey-hero-text-container {
@@ -11,33 +19,27 @@
 
 .wave-characters-container {
 	/* Temporary styles until the wave will be implemented */
-	color: var(--arapey-blue);
+	color: var(--arapey-gray);
 	font-size: 2.25rem;
-	max-width: 80rem;
 	position: relative;
 }
 
 .wave-characters-container p {
 	word-break: break-all;
-	letter-spacing: 5px;
 	text-transform: uppercase;
 }
 
 .arapey-hero h1 {
 	margin: 0;
-	color: white;
-	font-size: 30rem;
+	color: var(--arapey-red);
+	font-size: 20rem;
 	font-weight: var(--weight-extra-bold);
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 }
 
 .arapey-hero h2 {
-	color: var(--arapey-red);
-	font-size: 2.5rem;
-	font-weight: var(--weight-black-display);
+	color: var(--arapey-black);
+	font-size: 1.75rem;
+	font-weight: var(--weight-regular);
 	display: flex;
 	justify-content: center;
 }
@@ -45,7 +47,7 @@
 .scroll-down {
 	display: flex;
 	justify-content: center;
-	color: white;
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	font-weight: var(--weight-regular);
+	color: var(--arapey-red);
 }

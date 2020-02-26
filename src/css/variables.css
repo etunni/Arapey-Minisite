@@ -1,12 +1,11 @@
 :root {
-	--arapey-red: #e03d2f;
-
-	/* Probably temporary, let Donald decide. context: hover character grid. */
-	--arapey-light-red: rgba(224, 61, 47, 0.5);
+	--arapey-red: #f83d43;
+	--arapey-black: #000;
+	--arapey-gray: #e7e7e7;
+	--arapey-white: #fff;
 	--arapey-purple: #480423;
 	--arapey-blue: #9fd2e9;
 	--arapey-dark-blue: #1e527f;
-	--arapey-white: #faf5ef;
 	--arapey-light-gray: #f7f7f7;
 	--weight-regular: 72;
 	--weight-semi-bold: 106;
