@@ -105,29 +105,29 @@ const gridSection = document.querySelector(".character-grid-section");
 const grid = gridSection.querySelector(".character-grid");
 const gridzoom = gridSection.querySelector(".character-grid-zoom");
 const initialCharacter = grid.querySelector("[data-character='A']");
+let previousActiveElement = null;
 
 const setGridCharacter = e => {
 	if (!e) {
 		gridzoom.textContent = "A";
-		initialCharacter.classList.add("character-grid-zoom-active");
+		// initialCharacter.classList.add("character-grid-zoom-active");
 		return;
 	}
 
 	if (e.target.tagName === "LI") {
 		// e.target.classList.add("character-grid-zoom-active");
 		gridzoom.textContent = e.target.textContent;
+		previousActiveElement = e.target;
 	}
 };
 
-grid.onmousemove = e => {
-	removeActiveGridItem();
-	setGridCharacter(e);
+grid.onmouseleave = e => {
+	previousActiveElement.classList.add("active");
 };
 
-const removeActiveGridItem = () => {
-	grid.querySelector(".character-grid-item").classList.remove(
-		"character-grid-zoom-active"
-	);
+grid.onmousemove = e => {
+	if (previousActiveElement) previousActiveElement.classList.remove("active");
+	setGridCharacter(e);
 };
 
 const gridSlider = document.querySelector(".weight-grid-slider");

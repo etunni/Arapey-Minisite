@@ -74,8 +74,8 @@
 	font-variation-settings: "wght" var(--weight-grid-slider);
 }
 
-.character-grid-zoom-active {
-	background: orange;
+.character-grid-item.active {
+	background-color: var(--arapey-red);
 }
 
 .interactive-controls-tick-slider-container {
