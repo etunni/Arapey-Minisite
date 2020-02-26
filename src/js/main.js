@@ -117,10 +117,10 @@ const setGridCharacter = e => {
 	}
 };
 
-grid.onclick = e => {
+grid.onmousemove = throttle(e => {
 	removeActiveGridItem();
 	setGridCharacter(e);
-};
+});
 
 const removeActiveGridItem = () => {
 	const gridItems = grid.querySelectorAll("li");
