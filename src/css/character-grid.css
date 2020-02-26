@@ -14,11 +14,6 @@
 	padding: 2rem;
 }
 
-.character-grid-section .interactive-controls-tick-slider-container {
-	margin: 0 auto;
-	margin-top: 4rem;
-}
-
 .character-grid {
 	list-style-type: none;
 	display: grid;
@@ -37,29 +32,32 @@
 	padding: 1.75rem 0; /* Prevent cut-off hover. */
 }
 
-.character-grid > li {
+.character-grid-item {
 	width: var(--character-grid-cell);
 	height: var(--character-grid-cell);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 50%;
+	cursor: pointer;
 }
 
-.character-grid > li:hover {
-	padding: 2rem;
-	background-color: var(--arapey-light-red);
-}
-
-.character-grid-zoom-active::before {
+.character-grid-item::before {
 	content: "";
 	position: absolute;
 	z-index: -1;
-	transform: scale(1.25);
 	width: var(--character-grid-cell);
 	height: var(--character-grid-cell);
-	background-color: var(--arapey-red);
 	border-radius: 50%;
+	background-color: var(--arapey-red);
+	opacity: 0;
+	transform: scale(0.8);
+	transition: transform 100ms, opacity 100ms;
+}
+
+.character-grid-zoom-active::before {
+	transform: scale(1);
+	opacity: 1;
 }
 
 .character-grid-zoom-active {
@@ -79,6 +77,11 @@
 
 .interactive-controls-tick-slider-container {
 	position: relative;
+}
+
+.character-grid-section .interactive-controls-tick-slider-container {
+	margin: 0 auto;
+	margin-top: 4rem;
 }
 
 .interactive-controls-badge {
