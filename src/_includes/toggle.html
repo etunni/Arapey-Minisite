@@ -6,8 +6,9 @@
 
 {% if color %}
     {% capture counter %}switch-{% increment counter %}{% endcapture %}
+    
 
-    <input id="{{ counter }}" type="checkbox" class="interactive-controls-checkbox" />
+    <input id="{{ counter }}" type="checkbox" class="interactive-controls-checkbox {{ checked }}" {{ checked }}  />
     <label
         for="{{ counter }}"
         class="interactive-controls-toggle {{ color }}"

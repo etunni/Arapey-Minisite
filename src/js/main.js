@@ -170,6 +170,30 @@ selectElements.dropdown.addEventListener("click", e => {
 	}
 });
 
+const toggleBlockContainer = document.querySelector(".toggle-block-container");
+const toggles = toggleBlockContainer.querySelectorAll(
+	".interactive-controls-checkbox"
+);
+
+const handleToggle = e => {
+	if (e.target.checked) {
+		e.target.setAttribute("checked", true);
+
+		e.target
+			.closest(".toggle-block")
+			.querySelector(".toggle-block-morphing-text")
+			.style.setProperty("--toggle-block-font-weight", 210);
+	} else {
+		e.target.removeAttribute("checked");
+		e.target
+			.closest(".toggle-block")
+			.querySelector(".toggle-block-morphing-text")
+			.style.setProperty("--toggle-block-font-weight", 30);
+	}
+};
+
+toggles.forEach(toggle => toggle.addEventListener("click", handleToggle));
+
 const initializeApp = () => {
 	// TODO: set these value in a generic function that
 	// can be recalculated on window resize
