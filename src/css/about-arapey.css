@@ -27,7 +27,7 @@
 	margin-top: 1rem;
 }
 
-.about-arapey-content + .about-arapey-content .prose-content {
+.about-arapey-content-detailed .prose-content {
 	font-size: 1.5rem;
 	line-height: 1.5;
 }
