@@ -17,11 +17,7 @@ layout: default.html
 	{% include about-arapey.html %}
 
 
-	<section class="toggle-block-container">
-		{% include toggle-section.html color: "black" content: "Termas del Arapey" toggle-color: "white-red" checked: "checked" %}
-		{% include toggle-section.html color: "red" content: "Salto Uruguay" toggle-color: "white-black" checked: "checked" %}
-		{% include toggle-section.html color: "gray" content: "Hot Springs" toggle-color: "red-black" %}
-	</section>
+	{% include toggle-block-container.html %}
 
 	{% include interactive-controls.html %} 
 

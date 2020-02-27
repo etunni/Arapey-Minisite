@@ -1,5 +1,5 @@
 .toggle-block {
-	padding: 5rem 2rem 2rem;
+	padding: 5rem 0 2rem;
 	text-align: center;
 	display: flex;
 	justify-content: center;
@@ -8,12 +8,12 @@
 }
 .toggle-block-morphing-text {
 	/* allow for smooth transition when toggling */
-	transition: font-variation-settings 0.25s ease-in;
+	transition: font-weight 0.25s ease-in;
 }
 
 .toggle-block .toggle-block-morphing-text {
 	font-size: 10vw;
-	font-variation-settings: "wght" var(--toggle-block-font-weight);
+	font-weight: var(--toggle-block-font-weight);
 }
 
 .toggle-block-black {
@@ -32,7 +32,7 @@
 
 .toggle-block-red .toggle-block-morphing-text {
 	font-size: 11vw;
-	font-variation-settings: "wght" var(--toggle-block-font-weight);
+	font-weight: var(--toggle-block-font-weight);
 }
 
 .toggle-block-gray {
@@ -44,7 +44,7 @@
 
 .toggle-block-gray .toggle-block-morphing-text {
 	font-size: 12vw;
-	font-variation-settings: "wght" var(--toggle-block-font-weight);
+	font-weight: var(--toggle-block-font-weight);
 }
 
 .toggle-content {
