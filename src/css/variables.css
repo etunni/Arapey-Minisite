@@ -7,6 +7,10 @@
 	--arapey-blue: #9fd2e9;
 	--arapey-dark-blue: #1e527f;
 	--arapey-light-gray: #f7f7f7;
+
+	/* Font weights */
+	--weight-thin: 40;
+	--weight-extra-light: 56;
 	--weight-regular: 72;
 	--weight-semi-bold: 106;
 	--weight-bold: 129;
