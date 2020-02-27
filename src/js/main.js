@@ -176,23 +176,13 @@ const toggles = toggleBlockContainer.querySelectorAll(
 );
 
 const handleToggle = e => {
-	if (e.target.checked) {
-		e.target.setAttribute("checked", true);
-
-		e.target
-			.closest(".toggle-block")
-			.querySelector(".toggle-block-morphing-text")
-			.style.setProperty("--toggle-block-font-weight", 210);
-	} else {
-		e.target.removeAttribute("checked");
-		e.target
-			.closest(".toggle-block")
-			.querySelector(".toggle-block-morphing-text")
-			.style.setProperty("--toggle-block-font-weight", 30);
-	}
+	const value = e.target.checked ? 210 : 30;
+	e.target
+		.closest(".toggle-block")
+		.style.setProperty("--toggle-block-font-weight", value);
 };
 
-toggles.forEach(toggle => toggle.addEventListener("click", handleToggle));
+toggles.forEach(toggle => toggle.addEventListener("change", handleToggle));
 
 const initializeApp = () => {
 	// TODO: set these value in a generic function that
