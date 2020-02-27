@@ -12,7 +12,7 @@
 }
 
 .toggle-block .toggle-block-morphing-text {
-	font-size: 9rem;
+	font-size: 10vw;
 	font-variation-settings: "wght" var(--toggle-block-font-weight);
 }
 
@@ -31,7 +31,7 @@
 }
 
 .toggle-block-red .toggle-block-morphing-text {
-	font-size: 13rem;
+	font-size: 11vw;
 	font-variation-settings: "wght" var(--toggle-block-font-weight);
 }
 
@@ -43,7 +43,7 @@
 }
 
 .toggle-block-gray .toggle-block-morphing-text {
-	font-size: 15rem;
+	font-size: 12vw;
 	font-variation-settings: "wght" var(--toggle-block-font-weight);
 }
 
