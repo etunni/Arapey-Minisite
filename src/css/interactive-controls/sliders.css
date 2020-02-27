@@ -120,7 +120,11 @@
  */
 
 .interactive-controls-tick-slider-container {
-	max-width: 1300px;
+	max-width: 1000px;
+}
+
+.tick-list-item {
+	display: flex;
 }
 
 .tick-list-item > div {
