@@ -24,8 +24,16 @@ ul {
 	padding: 0;
 }
 
+p {
+	margin: 0;
+}
+
 button {
 	border: 0;
 	outline: 0;
 	background-color: transparent;
+}
+
+[contenteditable] {
+	outline: 0;
 }

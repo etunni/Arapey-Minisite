@@ -1,0 +1,9 @@
+<section class="toggle-block toggle-block-{{ color }}">
+    <p contenteditable="" spellcheck="false">{{ content }}</p>
+    
+    <div class="toggle-content">
+        <span>Display thin</span>
+        {% include toggle.html with color: toggle-color %} 
+        <span>Display black</span>
+    </div>
+</section>

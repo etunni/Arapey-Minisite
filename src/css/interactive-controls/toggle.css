@@ -42,39 +42,29 @@ input[type="checkbox"] {
 	transform: translateX(-100%);
 }
 
-/* Different colors */
-.interactive-controls-toggle[data-color="blue-purple"] {
-	background-color: var(--arapey-blue);
-	border-color: var(--arapey-blue);
-}
-
-.interactive-controls-toggle[data-color="blue-purple"]::after {
-	background-color: var(--arapey-purple);
-}
-
-.interactive-controls-toggle[data-color="white-purple"] {
+.interactive-controls-toggle.white-red {
 	background-color: var(--arapey-white);
 	border-color: var(--arapey-white);
 }
 
-.interactive-controls-toggle[data-color="white-purple"]::after {
-	background-color: var(--arapey-purple);
-}
-
-.interactive-controls-toggle[data-color="white-red"] {
-	background-color: var(--arapey-white);
-	border-color: var(--arapey-white);
-}
-
-.interactive-controls-toggle[data-color="white-red"]::after {
+.interactive-controls-toggle.white-red::after {
 	background-color: var(--arapey-red);
 }
 
-.interactive-controls-toggle[data-color="red-purple"] {
+.interactive-controls-toggle.white-black {
+	background-color: var(--arapey-white);
+	border-color: var(--arapey-white);
+}
+
+.interactive-controls-toggle.white-black::after {
+	background-color: var(--arapey-black);
+}
+
+.interactive-controls-toggle.red-black {
 	background-color: var(--arapey-red);
 	border-color: var(--arapey-red);
 }
 
-.interactive-controls-toggle[data-color="red-purple"]::after {
-	background-color: var(--arapey-purple);
+.interactive-controls-toggle.red-black::after {
+	background-color: var(--arapey-black);
 }

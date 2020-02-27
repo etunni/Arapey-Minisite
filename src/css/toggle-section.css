@@ -1,0 +1,52 @@
+.toggle-block {
+	padding: 5rem 2rem 2rem;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.toggle-block p {
+	font-size: 9rem;
+	font-weight: var(--weight-extra-black);
+}
+
+.toggle-block-black {
+	background-color: var(--arapey-black);
+	color: var(--arapey-white);
+}
+
+.toggle-block-red {
+	background-color: var(--arapey-red);
+	color: var(--arapey-white);
+}
+
+.toggle-block-red p {
+	font-size: 13rem;
+	font-weight: var(--weight-black);
+}
+
+.toggle-block-gray {
+	background-color: var(--arapey-gray);
+	color: var(--arapey-red);
+}
+
+.toggle-block-gray p {
+	font-size: 15rem;
+	font-weight: var(--weight-thin);
+}
+
+.toggle-content {
+	display: flex;
+	margin-top: 2.5rem;
+}
+
+.toggle-content span {
+	font-size: 1.25rem;
+	font-weight: var(--weight-bold);
+}
+
+.toggle-content .interactive-controls-toggle {
+	margin: 0 1rem;
+}

@@ -16,7 +16,11 @@ layout: default.html
 	{% include arapey-hero.html %}
 	{% include about-arapey.html %}
 
-	{% comment %} {% include interactive-controls.html %} {% endcomment %}
+	{% include toggle-section.html color: "black" content: "Termas del Arapey" toggle-color: "white-red" %}
+	{% include toggle-section.html color: "red" content: "Salto Uruguay" toggle-color: "white-black" %}
+	{% include toggle-section.html color: "gray" content: "Hot Springs" toggle-color: "red-black" %}
+
+	{% include interactive-controls.html %} 
 
 
 	{% include character-grid.html %}
