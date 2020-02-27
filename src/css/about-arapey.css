@@ -29,4 +29,5 @@
 
 .about-arapey-content + .about-arapey-content .prose-content {
 	font-size: 1.5rem;
+	line-height: 1.5;
 }
