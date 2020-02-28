@@ -45,10 +45,5 @@
 
 .about-arapey-container .interactive-controls-list-container {
 	display: flex;
+	justify-content: center;
 }
-
-/* .about-arapey-content-interactive .interactive-controls-list {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-} */

@@ -113,6 +113,10 @@
 	background-color: var(--arapey-purple);
 }
 
+.about-arapey-content-interactive .interactive-controls-list {
+	min-width: 800px;
+}
+
 /* 
  *
  * Tick sliders

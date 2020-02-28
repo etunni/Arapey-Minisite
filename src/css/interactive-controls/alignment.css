@@ -1,0 +1,25 @@
+.interactive-controls-alignment {
+	display: flex;
+}
+
+.alignment-item {
+	margin-right: 1rem;
+}
+
+.alignment-input + label {
+	cursor: pointer;
+	transition: color 200ms;
+}
+
+.alignment-input + label:hover {
+	color: var(--arapey-red);
+}
+
+.alignment-input:checked + label {
+	color: var(--arapey-red);
+}
+
+.about-arapey-content-interactive .interactive-controls-alignment {
+	align-items: center;
+	margin-left: 1rem;
+}

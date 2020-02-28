@@ -17,11 +17,13 @@
       <ul class="interactive-controls-list">
         {% include tick-slider.html labelStart: "start"  %} 
         {% include tick-slider.html labelStart: "start"  %} 
-
+        
       </ul>
-      <span>hoi</span>
-      <span>hoi</span>
-      <span>hoi</span>
+      <ul class="interactive-controls-alignment">
+        <li class="alignment-item"><input class="alignment-input" type="radio" name="alignment" id="alignment-left" checked/><label for="alignment-left">left</label></li>
+        <li class="alignment-item"><input class="alignment-input" type="radio" name="alignment" id="alignment-center" /><label for="alignment-center">center</label></li>
+        <li class="alignment-item"><input class="alignment-input" type="radio" name="alignment" id="alignment-right" /><label for="alignment-right">right</label></li>
+      </ul>
     </section>
   </section>
 

@@ -12,6 +12,7 @@
 @import "interactive-controls/sliders.css";
 @import "interactive-controls/select.css";
 @import "interactive-controls/radio.css";
+@import "interactive-controls/alignment.css";
 
 @import "button.css";
 @import "icons.css";
