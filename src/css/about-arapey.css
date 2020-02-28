@@ -39,6 +39,7 @@
 
 .about-arapey-content-interactive {
 	--text-alignment: center;
+	--wght: var(--weight-regular);
 
 	max-width: 50rem;
 	margin: 0 auto;
@@ -57,4 +58,6 @@
 
 .about-arapey-interactive-paragraph {
 	text-align: var(--text-alignment);
+	font-weight: var(--wght);
+	transition: font-weight 200ms;
 }

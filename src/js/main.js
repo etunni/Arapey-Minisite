@@ -152,8 +152,9 @@ const setGridSliderValue = value => {
 
 // Handle select box
 const selectElements = {
-	handle: document.querySelector(".interactive-controls-select-handle"),
-	dropdown: document.querySelector(".interactive-controls-options-list")
+	handle: document.querySelector("#about-arapey-select-controls"),
+	dropdown: document.querySelector(".interactive-controls-options-list"),
+	content: document.querySelector(".about-arapey-content-interactive")
 };
 
 selectElements.handle.addEventListener("click", () => {
@@ -167,6 +168,11 @@ selectElements.dropdown.addEventListener("click", e => {
 
 		textContainer.textContent = e.target.value;
 		selectElements.dropdown.classList.remove("show");
+
+		selectElements.content.style.setProperty(
+			"--wght",
+			e.target.getAttribute("data-wght")
+		);
 	}
 });
 
