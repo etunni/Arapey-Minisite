@@ -37,6 +37,13 @@
 	line-height: 1.5;
 }
 
+.about-arapey-content-interactive {
+	--text-alignment: center;
+
+	max-width: 50rem;
+	margin: 0 auto;
+}
+
 .about-arapey-content-interactive .about-arapey-content {
 	font-size: 5rem;
 	font-weight: var(--weight-thin);
@@ -46,4 +53,8 @@
 .about-arapey-container .interactive-controls-list-container {
 	display: flex;
 	justify-content: center;
+}
+
+.about-arapey-interactive-paragraph {
+	text-align: var(--text-alignment);
 }

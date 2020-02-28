@@ -184,6 +184,22 @@ const handleToggle = e => {
 
 toggles.forEach(toggle => toggle.addEventListener("change", handleToggle));
 
+const alignmentHandle = document.querySelector(
+	"#about-arapey-alignment-controls"
+);
+const alignmentInputs = alignmentHandle.querySelectorAll(".alignment-input");
+const alignmentContent = document.querySelector(
+	".about-arapey-content-interactive"
+);
+
+const handleAlignmentClick = e => {
+	alignmentContent.style.setProperty("--text-alignment", e.target.value);
+};
+
+alignmentInputs.forEach(item =>
+	item.addEventListener("click", handleAlignmentClick)
+);
+
 const initializeApp = () => {
 	// TODO: set these value in a generic function that
 	// can be recalculated on window resize
