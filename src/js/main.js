@@ -157,7 +157,7 @@ const toggles = toggleBlockContainer.querySelectorAll(
 );
 
 const handleToggle = e => {
-	const value = e.target.checked ? 210 : 30;
+	const value = e.target.checked ? 900 : 100;
 	e.target
 		.closest(".toggle-block")
 		.style.setProperty("--toggle-block-font-weight", value);

@@ -5,11 +5,9 @@
 			<li class="character-grid-item" data-character="{{ char }}">{{ char }}</li>
 			{% endfor %}
 		</ol>
-		
 		<div class="character-grid-zoom"></div>
-	
-	</section>	
+	</section>
 	<ul class="interactive-controls-list">
-		{% include tick-slider.html withInstances: instances name: "weight-grid-slider" min: 40 max: 210 badge: true %}
+		{% include tick-slider.html withInstances: instances name: "weight-grid-slider" min: 100 max: 900 badge: true %}
 	</ul>
-</section>	
+</section>

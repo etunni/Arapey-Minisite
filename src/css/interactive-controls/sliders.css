@@ -117,7 +117,7 @@
 	min-width: 800px;
 }
 
-/* 
+/*
  *
  * Tick sliders
  *
@@ -138,7 +138,6 @@
 
 .tick-list-item span {
 	font-weight: var(--weight-bold);
-	min-width: 150px;
 	text-align: right;
 }
 
