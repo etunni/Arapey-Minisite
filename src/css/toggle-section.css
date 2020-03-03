@@ -7,6 +7,8 @@
 	flex-direction: column;
 }
 .toggle-block-morphing-text {
+	--opsz: 128;
+
 	/* allow for smooth transition when toggling */
 	transition: font-weight 0.25s ease-in;
 }

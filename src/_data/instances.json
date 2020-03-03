@@ -2,78 +2,77 @@
 	{
 		"name": "Thin",
 		"axes": {
-			"wght": 40,
+			"wght": 100,
 			"opsz": 12
 		}
 	},
 	{
 		"name": "Extralight",
 		"axes": {
-			"wght": 49,
+			"wght": 200,
 			"opsz": 12
 		}
 	},
 	{
 		"name": "Light",
 		"axes": {
-			"wght": 59,
+			"wght": 300,
 			"opsz": 12
 		}
 	},
 	{
 		"name": "Regular",
 		"axes": {
-			"wght": 72,
+			"wght": 400,
 			"opsz": 12
 		}
 	},
 	{
 		"name": "Medium",
 		"axes": {
-			"wght": 87,
-
+			"wght": 500,
 			"opsz": 12
 		}
 	},
 	{
 		"name": "Semibold",
 		"axes": {
-			"wght": 106,
+			"wght": 600,
 			"opsz": 12
 		}
 	},
 	{
 		"name": "Bold",
 		"axes": {
-			"wght": 129,
+			"wght": 700,
 			"opsz": 12
 		}
 	},
 	{
 		"name": "Extrabold",
 		"axes": {
-			"wght": 156,
+			"wght": 800,
 			"opsz": 12
 		}
 	},
 	{
 		"name": "Black",
 		"axes": {
-			"wght": 190,
+			"wght": 900,
 			"opsz": 12
 		}
 	},
 	{
 		"name": "Thin Display",
 		"axes": {
-			"wght": 30,
+			"wght": 100,
 			"opsz": 128
 		}
 	},
 	{
 		"name": "Black Display",
 		"axes": {
-			"wght": 210,
+			"wght": 900,
 			"opsz": 128
 		}
 	}

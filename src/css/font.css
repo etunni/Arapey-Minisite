@@ -1,7 +1,7 @@
 @font-face {
 	font-family: "Arapey";
 	src: url("../fonts/Arapey[opsz,wght].ttf");
-	font-weight: 30 210;
+	font-weight: 100 900;
 }
 
 body {
@@ -9,7 +9,7 @@ body {
 }
 
 :root {
-	--wght: 72;
+	--wght: 400;
 	--opsz: 12;
 }
 

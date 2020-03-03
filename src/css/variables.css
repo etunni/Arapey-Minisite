@@ -9,12 +9,13 @@
 	--arapey-light-gray: #f7f7f7;
 
 	/* Font weights */
-	--weight-thin: 30;
-	--weight-extra-light: 56;
-	--weight-regular: 72;
-	--weight-semi-bold: 106;
-	--weight-bold: 129;
-	--weight-extra-bold: 156;
-	--weight-black: 190;
-	--weight-black-display: 210;
+	--weight-thin: 100;
+	--weight-extra-light: 200;
+	--weight-light: 300;
+	--weight-regular: 400;
+	--weight-medium: 500;
+	--weight-semi-bold: 600;
+	--weight-bold: 700;
+	--weight-extra-bold: 800;
+	--weight-black: 900;
 }

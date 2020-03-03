@@ -2,13 +2,13 @@
 	{
 		"axis": "wght",
 		"name": "Weight",
-		"min": 30,
-		"max": 210,
-		"default": 72
+		"min": 100,
+		"max": 900,
+		"default": 400
 	},
 	{
 		"axis": "opsz",
-		"name": "Optical",
+		"name": "Optical size",
 		"min": 12,
 		"max": 128,
 		"default": 12
