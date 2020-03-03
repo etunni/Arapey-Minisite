@@ -113,6 +113,10 @@
 	background-color: var(--arapey-purple);
 }
 
+.about-arapey-content-interactive .interactive-controls-list {
+	min-width: 800px;
+}
+
 /* 
  *
  * Tick sliders
@@ -120,7 +124,11 @@
  */
 
 .interactive-controls-tick-slider-container {
-	max-width: 1300px;
+	max-width: 1000px;
+}
+
+.tick-list-item {
+	display: flex;
 }
 
 .tick-list-item > div {
@@ -130,6 +138,8 @@
 
 .tick-list-item span {
 	font-weight: var(--weight-bold);
+	min-width: 150px;
+	text-align: right;
 }
 
 .tick-list-item > span {

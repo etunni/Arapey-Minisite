@@ -2,6 +2,11 @@
 	margin: 5rem 0;
 }
 
+.about-arapey-container article {
+	margin-top: 8rem;
+	margin-bottom: 11rem;
+}
+
 .about-arapey-content {
 	text-align: center;
 }
@@ -30,4 +35,25 @@
 .about-arapey-content-detailed .prose-content {
 	font-size: 1.5rem;
 	line-height: 1.5;
+}
+
+.about-arapey-content-interactive {
+	--text-alignment: center;
+	--wght: var(--weight-regular);
+	--font-size: 0;
+
+	max-width: 50rem;
+	margin: 0 auto;
+}
+
+.about-arapey-container .interactive-controls-list-container {
+	display: flex;
+	justify-content: center;
+}
+
+.about-arapey-interactive-paragraph {
+	text-align: var(--text-alignment);
+	font-weight: var(--wght);
+	color: var(--arapey-red);
+	transition: font-weight 200ms;
 }

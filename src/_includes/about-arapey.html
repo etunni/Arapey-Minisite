@@ -6,6 +6,24 @@
     </p>
   </article>
 
+	{% include select.html handle:"about-arapey-select-controls" %} 
+
+  <section class="about-arapey-content-interactive interactive-controls">
+    <article class="about-arapey-content">
+      <p contenteditable="" spellcheck="false" class="about-arapey-interactive-paragraph interactive-controls-text">Say hello to Arapey <br /> Write something</p>
+    </article>
+
+    <section class="interactive-controls-list-container">
+      <ul class="interactive-controls-list">
+        {% include tick-slider.html labelStart: "Size" name: "font-size" min: 20 max: 120  %} 
+        {% include tick-slider.html labelStart: "Optical size" name: "opsz"  %} 
+        
+      </ul>
+      {% include alignment.html handle:"about-arapey-alignment-controls" %}
+    </section>
+  </section>
+
+
   <article class="about-arapey-content about-arapey-content-detailed">
       <h1 class="about-arapey-title" contenteditable="" spellcheck="false">About Arapey</h1>
       <p class="prose-content" contenteditable="" spellcheck="false">

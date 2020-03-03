@@ -64,6 +64,7 @@ for (const interactive of interactives) {
 			}
 
 			setGridSliderValue(e.target.value);
+			// setSizeSliderValue(e.target.value);
 		};
 	}
 
@@ -150,26 +151,6 @@ const setGridSliderValue = value => {
 	badge.style.setProperty("--weight-string", `"${Math.round(sliderValue)}"`);
 };
 
-// Handle select box
-const selectElements = {
-	handle: document.querySelector(".interactive-controls-select-handle"),
-	dropdown: document.querySelector(".interactive-controls-options-list")
-};
-
-selectElements.handle.addEventListener("click", () => {
-	selectElements.dropdown.classList.add("show");
-});
-
-selectElements.dropdown.addEventListener("click", e => {
-	if (e.target.type == "button") {
-		const textContainer = selectElements.handle.querySelector("span");
-		selectElements.handle.setAttribute("value", e.target.value);
-
-		textContainer.textContent = e.target.value;
-		selectElements.dropdown.classList.remove("show");
-	}
-});
-
 const toggleBlockContainer = document.querySelector(".toggle-block-container");
 const toggles = toggleBlockContainer.querySelectorAll(
 	".interactive-controls-checkbox"
@@ -184,6 +165,51 @@ const handleToggle = e => {
 
 toggles.forEach(toggle => toggle.addEventListener("change", handleToggle));
 
+const aboutInteractiveElement = document.querySelector(
+	".about-arapey-content-interactive"
+);
+
+const alignmentHandle = document.querySelector(
+	"#about-arapey-alignment-controls"
+);
+const alignmentInputs = alignmentHandle.querySelectorAll(".alignment-input");
+
+const handleAlignmentClick = e => {
+	aboutInteractiveElement.style.setProperty(
+		"--text-alignment",
+		e.target.value
+	);
+};
+
+alignmentInputs.forEach(item =>
+	item.addEventListener("click", handleAlignmentClick)
+);
+
+// Handle select box
+const selectElements = {
+	handle: document.querySelector("#about-arapey-select-controls"),
+	dropdown: document.querySelector(".interactive-controls-options-list")
+};
+
+selectElements.handle.addEventListener("click", () => {
+	selectElements.dropdown.classList.add("show");
+});
+
+selectElements.dropdown.addEventListener("click", e => {
+	if (e.target.type == "button") {
+		const textContainer = selectElements.handle.querySelector("span");
+		selectElements.handle.setAttribute("value", e.target.value);
+
+		textContainer.textContent = e.target.value;
+		selectElements.dropdown.classList.remove("show");
+
+		aboutInteractiveElement.style.setProperty(
+			"--wght",
+			e.target.getAttribute("data-wght")
+		);
+	}
+});
+
 const initializeApp = () => {
 	// TODO: set these value in a generic function that
 	// can be recalculated on window resize
@@ -194,5 +220,6 @@ const initializeApp = () => {
 	badgeOffsetWidth = badge.offsetWidth;
 
 	setGridSliderValue();
+	// setSizeSliderValue();
 	setGridCharacter();
 };
