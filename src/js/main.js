@@ -5,22 +5,21 @@ import FontFaceObserver from "fontfaceobserver";
 const fontTimeOut = 5000; // In milliseconds
 
 // Generic: throttle
-// COMMENTED OUT TILL WE NEED IT, TO SATISFY LINTER
-// const throttle = (fn, wait) => {
-// 	let last, queue;
+const throttle = (fn, wait) => {
+	let last, queue;
 
-// 	return function runFn(...args) {
-// 		const now = Date.now();
-// 		queue = clearTimeout(queue);
+	return function runFn(...args) {
+		const now = Date.now();
+		queue = clearTimeout(queue);
 
-// 		if (!last || now - last >= wait) {
-// 			fn.apply(null, args);
-// 			last = now;
-// 		} else {
-// 			queue = setTimeout(runFn.bind(null, ...args), wait - (now - last));
-// 		}
-// 	};
-// };
+		if (!last || now - last >= wait) {
+			fn.apply(null, args);
+			last = now;
+		} else {
+			queue = setTimeout(runFn.bind(null, ...args), wait - (now - last));
+		}
+	};
+};
 
 // Set up FontFaceObserver
 const font = new FontFaceObserver(fontName);
@@ -106,30 +105,22 @@ if ("IntersectionObserver" in window) {
 const gridSection = document.querySelector(".character-grid-section");
 const grid = gridSection.querySelector(".character-grid");
 const gridzoom = gridSection.querySelector(".character-grid-zoom");
-let previousActiveElement = null;
-
+let previousCharacterGrid = null;
 const setGridCharacter = e => {
 	if (!e) {
+		// Init on first view
 		gridzoom.textContent = "A";
-		// initialCharacter.classList.add("character-grid-zoom-active");
-		return;
+		grid.querySelector("[data-character=A]").classList.add("active");
+	} else if (e.target.tagName === "LI") {
+		if (e.target.textContent !== previousCharacterGrid) {
+			grid.querySelector(".active").classList.remove("active");
+			e.target.classList.add("active");
+			gridzoom.textContent = previousCharacterGrid = e.target.textContent;
+		}
 	}
-
-	if (e.target.tagName === "LI") {
-		// e.target.classList.add("character-grid-zoom-active");
-		gridzoom.textContent = e.target.textContent;
-		previousActiveElement = e.target;
-	}
 };
 
-grid.onmouseleave = () => {
-	previousActiveElement.classList.add("active");
-};
-
-grid.onmousemove = e => {
-	if (previousActiveElement) previousActiveElement.classList.remove("active");
-	setGridCharacter(e);
-};
+grid.onmousemove = throttle(setGridCharacter, 100);
 
 // Sliders
 const gridSlider = document.querySelector(".weight-grid-slider");
