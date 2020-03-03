@@ -17,12 +17,7 @@
 .character-grid {
 	list-style-type: none;
 	display: grid;
-	grid-template-columns: repeat(
-		auto-fill,
-		minmax(var(--character-grid-cell), 1fr)
-	);
-	column-gap: var(--character-grid-gap);
-	row-gap: var(--character-grid-gap);
+	grid-template-columns: repeat(auto-fill, var(--character-grid-cell));
 	font-size: var(--character-grid-font-size);
 	flex: 1; /* We don't want both of the elements to take in the space they need.  */
 	min-height: 600px;
@@ -38,7 +33,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 50%;
 	cursor: pointer;
 }
 
@@ -55,11 +49,13 @@
 	transition: transform 100ms, opacity 300ms;
 }
 
+.character-grid-item.active,
 .character-grid-item:hover {
 	position: relative;
 	z-index: 1;
 }
 
+.character-grid-item.active::before,
 .character-grid-item:hover::before {
 	transform: scale(1);
 	opacity: 1;
@@ -72,10 +68,6 @@
 	justify-content: center;
 	align-items: center;
 	font-variation-settings: "wght" var(--weight-grid-slider);
-}
-
-.character-grid-item.active {
-	background-color: var(--arapey-red);
 }
 
 .interactive-controls-tick-slider-container {

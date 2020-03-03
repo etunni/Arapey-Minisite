@@ -131,6 +131,7 @@ grid.onmousemove = e => {
 	setGridCharacter(e);
 };
 
+// Sliders
 const gridSlider = document.querySelector(".weight-grid-slider");
 const gridContainer = document.querySelector(".character-grid-inner-container");
 const badge = document.querySelector(".interactive-controls-badge");
