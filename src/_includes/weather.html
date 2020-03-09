@@ -1,30 +1,31 @@
-<section class="weather-section">
+<section class="weather-section interactive-controls">
     <article class="weather-content-container">
         <div class="weather-text-container">
-            <span>Arapey Weather</span>
-            <span class="temperature">33 C</span>
+            <small>Arapey Weather</small>
+            <span class="temperature interactive-controls-text">33 C</span>
         </div>
-		<ul class="interactive-controls-list">
-            {% include tick-slider.html labels: instances labelStart: "10C" labelEnd: "50C" name: "temperature-slider" min: 10 max: 50 badge: true %}
+        <ul class="interactive-controls-list">
+            {% include tick-slider.html name: "temperature-slider" labels: weight-instances labelStart: "10C" labelEnd: "50C" min: 100 max: 900 badge: true %}
+            
         </ul>
     </article>
 
     <article class="weather-content-container">
         <div class="weather-text-container">
-            <span class="wind">Wind N. at 24 km/h 52% Humidity</span>
+            <span class="wind interactive-controls-text">Wind N. at 24 km/h 52% Humidity</span>
         </div>
 		<ul class="interactive-controls-list">
-            {% include tick-slider.html labels: instances labelStart: "10C" labelEnd: "50C" name: "temperature-slider" min: 10 max: 50 badge: true %}
+            {% include tick-slider.html labels: weight-instances labelStart: "10C" labelEnd: "50C" name: "wind-slider" min: 100 max: 900 badge: true %}
         </ul>
     </article>
 
     <article class="weather-content-container">
         <div class="weather-text-container">
-            <span>Local time</span>
-            <time class="time">Wednesday 01:20</time>
+            <small>Local time</small>
+            <time class="time interactive-controls-text">Wednesday 01:20</time>
         </div>
 		<ul class="interactive-controls-list">
-            {% include tick-slider.html labels: instances labelStart: "10C" labelEnd: "50C" name: "temperature-slider" min: 10 max: 50 badge: true %}
+            {% include tick-slider.html labels: weight-instances labelStart: "10C" labelEnd: "50C" name: "time-slider" min: 100 max: 900 badge: true %}
         </ul>
     </article>
 </section>

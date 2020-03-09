@@ -3,7 +3,6 @@
 	--character-grid-font-size: 2rem;
 	--character-grid-gap: 1rem;
 	--weight-grid-slider: 58;
-	--badge-position-x: 0;
 }
 
 .character-grid-inner-container {
@@ -72,36 +71,4 @@
 .character-grid-section .interactive-controls-tick-slider-container {
 	margin: 0 auto;
 	margin-top: 4rem;
-}
-
-.interactive-controls-badge {
-	--weight: var(--weight-regular);
-
-	position: absolute;
-	width: 6rem; /* Will hold up to three digits in fat font weight */
-	top: -60px;
-	transform: translateX(var(--badge-position-x));
-	color: var(--arapey-red);
-	font-size: 2rem;
-	padding: 0.5rem 0 0.25rem 0;
-	text-align: center;
-	background-color: var(--arapey-light-gray);
-}
-
-.interactive-controls-badge::before {
-	/* The content property can only take strings */
-	content: var(--weight-string);
-
-	/* Using wght axis directly as weight axis doesn't match CSS weight values */
-	font-variation-settings: "wght" var(--weight);
-}
-
-.interactive-controls-badge::after {
-	content: "";
-	position: absolute;
-	bottom: -10px;
-	left: 0%;
-	border-left: 48px solid transparent;
-	border-top: 10px solid var(--arapey-light-gray);
-	border-right: 48px solid transparent;
 }

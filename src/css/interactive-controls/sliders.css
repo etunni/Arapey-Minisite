@@ -49,6 +49,10 @@
 	background-color: var(--arapey-blue);
 }
 
+.interactive-controls-list {
+	margin-top: 3.25rem;
+}
+
 .interactive-controls-list label {
 	--label-width: 4.5rem;
 
