@@ -194,6 +194,13 @@ selectElements.dropdown.addEventListener("click", e => {
 		const textContainer = selectElements.handle.querySelector("span");
 		selectElements.handle.setAttribute("value", e.target.value);
 
+		console.log(selectElements.dropdown.querySelector(".active").classList);
+		selectElements.dropdown
+			.querySelector(".active")
+			.classList.remove("active");
+
+		e.target.classList.add("active");
+
 		textContainer.textContent = e.target.value;
 		selectElements.dropdown.classList.remove("show");
 
@@ -223,4 +230,8 @@ const initializeApp = () => {
 	setGridSliderValue();
 	// setSizeSliderValue();
 	setGridCharacter();
+
+	selectElements.dropdown
+		.querySelector("[value='Regular']")
+		.classList.add("active");
 };
