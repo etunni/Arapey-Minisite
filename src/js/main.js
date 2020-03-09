@@ -183,7 +183,9 @@ const selectElements = {
 	dropdown: document.querySelector(".interactive-controls-options-list")
 };
 
-selectElements.handle.addEventListener("click", () => {
+selectElements.handle.addEventListener("click", e => {
+	e.stopPropagation();
+
 	selectElements.dropdown.classList.add("show");
 });
 
@@ -191,6 +193,12 @@ selectElements.dropdown.addEventListener("click", e => {
 	if (e.target.type == "button") {
 		const textContainer = selectElements.handle.querySelector("span");
 		selectElements.handle.setAttribute("value", e.target.value);
+
+		selectElements.dropdown
+			.querySelector(".active")
+			.classList.remove("active");
+
+		e.target.classList.add("active");
 
 		textContainer.textContent = e.target.value;
 		selectElements.dropdown.classList.remove("show");
@@ -201,6 +209,16 @@ selectElements.dropdown.addEventListener("click", e => {
 		);
 	}
 });
+
+const onClickOutside = e => {
+	if (
+		selectElements.dropdown.classList.contains("show") &&
+		e.target.contains(selectElements.handle)
+	)
+		selectElements.dropdown.classList.remove("show");
+};
+
+window.addEventListener("click", onClickOutside);
 
 const initializeApp = () => {
 	// TODO: set these value in a generic function that
@@ -214,4 +232,8 @@ const initializeApp = () => {
 	setGridSliderValue();
 	// setSizeSliderValue();
 	setGridCharacter();
+
+	selectElements.dropdown
+		.querySelector("[value='Regular']")
+		.classList.add("active");
 };

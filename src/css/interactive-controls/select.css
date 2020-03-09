@@ -47,6 +47,10 @@
 	transition: color 0.5s;
 }
 
+.interactive-controls-option.active {
+	color: var(--arapey-red);
+}
+
 .interactive-controls-options-list li:hover .interactive-controls-option {
 	color: var(--arapey-red);
 }
