@@ -1,0 +1,43 @@
+.weather-section {
+	padding: 2rem;
+	padding-top: 10rem;
+	padding-bottom: 10rem;
+}
+
+.weather-section .tick-list-item {
+	justify-content: center;
+}
+
+.weather-section .label-text {
+	color: var(--arapey-green);
+}
+
+.weather-content-container {
+	margin-bottom: 8rem;
+}
+
+.weather-text-container {
+	display: flex;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.weather-text-container .temperature {
+	margin: 0 auto;
+	color: var(--arapey-green);
+	font-size: 10rem;
+}
+
+.weather-text-container .wind {
+	margin: 0 auto;
+	color: var(--arapey-green);
+	font-size: 5rem;
+	max-width: 46rem;
+	text-align: center;
+}
+
+.weather-text-container .time {
+	margin: 0 auto;
+	color: var(--arapey-green);
+	font-size: 6rem;
+}

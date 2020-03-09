@@ -6,7 +6,7 @@
 {% endcomment %}
 
 <li class="interactive-controls-list-item tick-list-item">
-    {% if labelStart %}<span>{{ labelStart }}</span>{% endif %}
+    {% if labelStart %}<span class="label-text">{{ labelStart }}</span>{% endif %}
     <div class="interactive-controls-tick-slider-container">
 		{% if badge %}<output class="interactive-controls-badge"></output>{% endif %}
 
@@ -22,5 +22,5 @@
                 </div>
             {% endif %}
     </div>
-    {% if labelEnd %}<span>{{ labelEnd }}</span>{% endif %}
+    {% if labelEnd %}<span class="label-text">{{ labelEnd }}</span>{% endif %}
 </li>

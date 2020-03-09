@@ -124,7 +124,7 @@
  */
 
 .interactive-controls-tick-slider-container {
-	max-width: 1000px;
+	max-width: 1200px;
 }
 
 .tick-list-item {
@@ -173,6 +173,18 @@
 	width: var(--thumb-size);
 	height: var(--thumb-size);
 	border-radius: 50%;
+}
+
+.weather-section .interactive-controls-tick-slider::-webkit-slider-thumb {
+	background-color: var(--arapey-green);
+}
+
+.weather-section .interactive-controls-tick-slider::-moz-range-thumb {
+	background-color: var(--arapey-green);
+}
+
+.weather-section .interactive-controls-tick-slider::-ms-thumb {
+	background-color: var(--arapey-green);
 }
 
 .interactive-controls-tick-sliders li {

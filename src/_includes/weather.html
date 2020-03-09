@@ -1,0 +1,30 @@
+<section class="weather-section">
+    <article class="weather-content-container">
+        <div class="weather-text-container">
+            <span>Arapey Weather</span>
+            <span class="temperature">33 C</span>
+        </div>
+		<ul class="interactive-controls-list">
+            {% include tick-slider.html labels: instances labelStart: "10C" labelEnd: "50C" name: "temperature-slider" min: 10 max: 50 badge: true %}
+        </ul>
+    </article>
+
+    <article class="weather-content-container">
+        <div class="weather-text-container">
+            <span class="wind">Wind N. at 24 km/h 52% Humidity</span>
+        </div>
+		<ul class="interactive-controls-list">
+            {% include tick-slider.html labels: instances labelStart: "10C" labelEnd: "50C" name: "temperature-slider" min: 10 max: 50 badge: true %}
+        </ul>
+    </article>
+
+    <article class="weather-content-container">
+        <div class="weather-text-container">
+            <span>Local time</span>
+            <time class="time">Wednesday 01:20</time>
+        </div>
+		<ul class="interactive-controls-list">
+            {% include tick-slider.html labels: instances labelStart: "10C" labelEnd: "50C" name: "temperature-slider" min: 10 max: 50 badge: true %}
+        </ul>
+    </article>
+</section>
