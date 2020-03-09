@@ -183,7 +183,9 @@ const selectElements = {
 	dropdown: document.querySelector(".interactive-controls-options-list")
 };
 
-selectElements.handle.addEventListener("click", () => {
+selectElements.handle.addEventListener("click", e => {
+	e.stopPropagation();
+
 	selectElements.dropdown.classList.add("show");
 });
 
@@ -201,6 +203,13 @@ selectElements.dropdown.addEventListener("click", e => {
 		);
 	}
 });
+
+const onClickOutside = e => {
+	if (e.target.contains(selectElements.handle))
+		selectElements.dropdown.classList.remove("show");
+};
+
+window.addEventListener("click", onClickOutside);
 
 const initializeApp = () => {
 	// TODO: set these value in a generic function that
