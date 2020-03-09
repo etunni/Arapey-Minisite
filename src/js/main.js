@@ -211,7 +211,10 @@ selectElements.dropdown.addEventListener("click", e => {
 });
 
 const onClickOutside = e => {
-	if (e.target.contains(selectElements.handle))
+	if (
+		selectElements.dropdown.classList.contains("show") &&
+		e.target.contains(selectElements.handle)
+	)
 		selectElements.dropdown.classList.remove("show");
 };
 
