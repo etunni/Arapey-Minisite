@@ -64,5 +64,5 @@
 }
 
 .interactive-controls-select-group * {
-	font-family: "Arapey", monospace;
+	font-family: inherit;
 }
