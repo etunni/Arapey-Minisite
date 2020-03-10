@@ -41,7 +41,6 @@
 }
 
 .weather-content-label {
-	display: block;
 	text-align: center;
 	font-size: 1.5rem;
 	font-weight: var(--weight-semi-bold);
