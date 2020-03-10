@@ -46,11 +46,6 @@
 	margin: 0 auto;
 }
 
-.about-arapey-container .interactive-controls-list-container {
-	display: flex;
-	justify-content: center;
-}
-
 .about-arapey-interactive-paragraph {
 	text-align: var(--text-alignment);
 	font-weight: var(--wght);

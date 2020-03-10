@@ -55,6 +55,7 @@ const setupInputs = () => {
 
 		for (const slider of sliders) {
 			// Apply initial axis value to text area
+
 			varset(slider.name, slider.value);
 			setupBadge(slider, slider.value);
 
@@ -129,8 +130,6 @@ const setGridCharacter = e => {
 grid.onmousemove = throttle(setGridCharacter, 100);
 
 // Sliders
-const gridSlider = document.querySelector(".weight-grid-slider");
-
 const setupBadge = (slider, value) => {
 	const sliderContainer = slider.closest(`.${slider.name}-container`);
 	const badge = sliderContainer.querySelector(".interactive-controls-badge");
@@ -229,12 +228,6 @@ const initializeApp = () => {
 	// TODO: set these value in a generic function that
 	// can be recalculated on window resize
 	// See https://github.com/undercasetype/fraunces-minisite/blob/master/src/js/main.js#L326
-
-	// badgeOffsetWidth = badge.offsetWidth;
-
-	// setGridSliderValue();
-
-	// setupBadge();
 
 	setupInputs();
 	setGridCharacter();

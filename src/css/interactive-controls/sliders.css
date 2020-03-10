@@ -121,13 +121,22 @@
 	min-width: 800px;
 }
 
+.about-arapey-container .interactive-controls-list-container {
+	display: flex;
+	justify-content: center;
+}
+
+.about-arapey-container .interactive-controls-list li {
+	padding: 2rem 0;
+}
+
 /*
  *
  * Tick sliders
  *
  */
 
-.interactive-controls-tick-slider-container {
+.character-grid-section .interactive-controls-tick-slider-container {
 	max-width: 1200px;
 }
 
