@@ -14,10 +14,6 @@
 	justify-content: center;
 }
 
-.weather-section .label-text {
-	color: var(--arapey-green);
-}
-
 .weather-content-container {
 	margin-bottom: 8rem;
 }
@@ -36,6 +32,7 @@
 
 .weather-text-container small {
 	font-size: 1.5rem;
+	font-weight: var(--weight-semi-bold);
 }
 
 .weather-text-container .wind {

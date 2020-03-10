@@ -117,6 +117,11 @@
 	background-color: var(--arapey-purple);
 }
 
+.interactive-controls-tick-sliders li {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
 .about-arapey-content-interactive .interactive-controls-list {
 	min-width: 800px;
 }
@@ -200,11 +205,6 @@
 	background-color: var(--arapey-green);
 }
 
-.interactive-controls-tick-sliders li {
-	max-width: 1400px;
-	margin: 0 auto;
-}
-
 .ticks {
 	display: flex;
 	justify-content: space-between;
@@ -223,5 +223,5 @@
 .tick span {
 	margin-top: 1rem;
 	white-space: nowrap;
-	font-size: 1rem;
+	font-size: 1.25rem;
 }
