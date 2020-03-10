@@ -6,7 +6,7 @@
 }
 
 .hero-text-container {
-	max-width: 80rem;
+	max-width: var(--max-content-width);
 	position: absolute;
 	top: 50%;
 	left: 50%;

@@ -118,7 +118,7 @@
 }
 
 .interactive-controls-tick-sliders li {
-	max-width: 1400px;
+	max-width: var(--max-content-width);
 	margin: 0 auto;
 }
 
@@ -142,7 +142,7 @@
  */
 
 .interactive-controls-tick-slider-container {
-	max-width: 75rem;
+	max-width: var(--max-content-width);
 }
 
 .tick-list-item {
