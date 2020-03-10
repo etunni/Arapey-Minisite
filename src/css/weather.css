@@ -19,34 +19,36 @@
 }
 
 .weather-text-container {
+	position: relative;
 	display: flex;
 	align-items: center;
 }
 
-.weather-text-container .temperature {
+.weather-text-container .interactive-controls-text {
 	margin: 0 auto;
 	color: var(--arapey-green);
+	text-align: center;
+}
+
+.weather-text-container .temperature {
 	font-size: 12rem;
 	font-weight: var(--temperature-slider);
 }
 
-.weather-text-container small {
-	font-size: 1.5rem;
-	font-weight: var(--weight-semi-bold);
-}
-
 .weather-text-container .wind {
-	margin: 0 auto;
-	color: var(--arapey-green);
 	font-size: 5rem;
 	font-weight: var(--wind-slider);
-	max-width: 46rem;
-	text-align: center;
 }
 
 .weather-text-container .time {
-	margin: 0 auto;
-	color: var(--arapey-green);
 	font-size: 7rem;
 	font-weight: var(--time-slider);
+}
+
+.weather-text-container small {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	font-size: 1.5rem;
+	font-weight: var(--weight-semi-bold);
 }

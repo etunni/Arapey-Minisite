@@ -2,17 +2,18 @@
     <article class="weather-content-container interactive-controls">
         <div class="weather-text-container">
             <small>Arapey Weather</small>
-            <span class="temperature interactive-controls-text">33 C</span>
+            <span class="temperature interactive-controls-text">33°C</span>
         </div>
         <ul class="interactive-controls-list">
             {% include tick-slider.html value: 300 labels: weight-instances name: "temperature-slider" min: 100 max: 900 badge: true %}
-            
         </ul>
     </article>
 
     <article class="weather-content-container interactive-controls">
         <div class="weather-text-container">
-            <span class="wind interactive-controls-text">Wind N. at 24 km/h 52% Humidity</span>
+            <span class="wind interactive-controls-text">
+                Wind N. at 24 km/h<br>52% Humidity
+            </span>
         </div>
 		<ul class="interactive-controls-list">
             {% include tick-slider.html value: 400 labels: weight-instances name: "wind-slider" min: 100 max: 900 badge: true %}
