@@ -19,4 +19,7 @@
 	--weight-bold: 700;
 	--weight-extra-bold: 800;
 	--weight-black: 900;
+
+	/* Content */
+	--max-content-width: 75rem;
 }

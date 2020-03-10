@@ -6,7 +6,7 @@
 	padding: 2rem;
 	padding-top: 10rem;
 	padding-bottom: 10rem;
-	max-width: 1400px;
+	max-width: var(--max-content-width);
 	margin: 0 auto;
 }
 
@@ -16,37 +16,32 @@
 
 .weather-content-container {
 	margin-bottom: 8rem;
+	position: relative;
 }
 
-.weather-text-container {
-	display: flex;
-	align-items: center;
-}
-
-.weather-text-container .temperature {
-	margin: 0 auto;
+.weather-content-container .interactive-controls-text {
+	margin: 0 auto 5rem auto;
 	color: var(--arapey-green);
+	text-align: center;
+}
+
+.weather-content-container .temperature {
 	font-size: 12rem;
 	font-weight: var(--temperature-slider);
 }
 
-.weather-text-container small {
-	font-size: 1.5rem;
-	font-weight: var(--weight-semi-bold);
-}
-
-.weather-text-container .wind {
-	margin: 0 auto;
-	color: var(--arapey-green);
+.weather-content-container .wind {
 	font-size: 5rem;
 	font-weight: var(--wind-slider);
-	max-width: 46rem;
-	text-align: center;
 }
 
-.weather-text-container .time {
-	margin: 0 auto;
-	color: var(--arapey-green);
+.weather-content-container .time {
 	font-size: 7rem;
 	font-weight: var(--time-slider);
+}
+
+.weather-content-label {
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: var(--weight-semi-bold);
 }

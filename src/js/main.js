@@ -130,6 +130,10 @@ const setGridCharacter = e => {
 grid.onmousemove = throttle(setGridCharacter, 100);
 
 // Sliders
+// TODO: maybe we can cache the value of slide.offsetWidth and
+// badge.offsetWidth, as they won't change unless the viewport
+// size changes (in which we can recalculate them, see comment
+// around initializeApp)
 const setupBadge = (slider, value) => {
 	const sliderContainer = slider.closest(`.${slider.name}-container`);
 	const badge = sliderContainer.querySelector(".interactive-controls-badge");
