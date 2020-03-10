@@ -220,6 +220,41 @@ const onClickOutside = e => {
 
 window.addEventListener("click", onClickOutside);
 
+const characterSlide = {
+	x: 0,
+	oldX: 0,
+	isDown: false,
+	scrollLeft: 0
+};
+
+const characterSlideSection = document.querySelector(
+	".character-slide-section"
+);
+
+const characterSlideList = characterSlideSection.querySelector(
+	".character-slide-list-container"
+);
+
+characterSlideList.addEventListener("mousedown", e => {
+	characterSlide.isDown = true;
+	characterSlide.x = e.pageX - e.currentTarget.offsetLeft;
+	characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling
+	characterSlideList.classList.add("active");
+});
+
+characterSlideList.addEventListener("mousemove", e => {
+	if (!characterSlide.isDown) return;
+	characterSlide.oldX = e.pageX - e.currentTarget.offsetLeft;
+	const slideSpeed = characterSlide.oldX - characterSlide.x;
+
+	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideSpeed;
+});
+
+characterSlideList.addEventListener("mouseup", e => {
+	characterSlide.isDown = false;
+	characterSlideList.classList.remove("active");
+});
+
 const initializeApp = () => {
 	// TODO: set these value in a generic function that
 	// can be recalculated on window resize

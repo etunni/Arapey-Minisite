@@ -1,0 +1,16 @@
+<section class="character-slide-section">
+	<section class="character-slide-inner-container">
+		<div class="character-slide-list-container">
+            <ol class="character-slide-list">
+                {% for char in charset %}
+                <li class="character-slide-item" data-character="{{ char }}">{{ char }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+	</section>
+	<ul class="caps-switch-list">
+		<li>lowercase</li>
+		<li>uppercase</li>
+		<li>numerals</li>
+	</ul>
+</section>

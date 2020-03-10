@@ -1,0 +1,56 @@
+.character-slide-section {
+	margin: 0 auto;
+}
+
+.character-slide-list-container {
+	overflow-y: scroll;
+
+	/* This scaling stuff causes a bug somehow... */
+
+	/* transform: scale(1); */
+
+	/* transition: transform 500ms; */
+	cursor: grab;
+}
+
+.character-slide-list-container.active {
+	/* transform: scale(1.15); */
+	cursor: grabbing;
+}
+
+.character-slide-list {
+	display: flex;
+	user-select: none;
+}
+
+.character-slide-item {
+	font-size: 26rem;
+	padding: 0 1rem;
+}
+
+.caps-switch-list {
+	display: flex;
+	justify-content: center;
+}
+
+.caps-switch-list li {
+	font-size: 1.25rem;
+	font-weight: var(--weight-semi-bold);
+	cursor: pointer;
+	transition: 400ms color;
+}
+
+.caps-switch-list li:hover,
+.caps-switch-list li.active {
+	color: var(--arapey-green);
+}
+
+.caps-switch-list li::after {
+	content: "|";
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+}
+
+.caps-switch-list li:last-child::after {
+	content: "";
+}
