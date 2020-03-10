@@ -6,11 +6,11 @@
 {% endcomment %}
 
 <li class="interactive-controls-list-item tick-list-item">
-    {% if labelStart %}<span>{{ labelStart }}</span>{% endif %}
-    <div class="interactive-controls-tick-slider-container">
+    {% if labelStart %}<span class="label-text">{{ labelStart }}</span>{% endif %}
+    <div class="interactive-controls-tick-slider-container {{ name }}-container">
 		{% if badge %}<output class="interactive-controls-badge"></output>{% endif %}
 
-        <input type="range" value="" name="{{ name }}" min="{{ min }}" max="{{ max }}" step="any" class="interactive-controls-slider interactive-controls-tick-slider {{ name }}">
+        <input type="range" value="{{ value }}" name="{{ name }}" min="{{ min }}" max="{{ max }}" step="any" class="interactive-controls-slider interactive-controls-tick-slider {{ name }}">
 
             {% if labels %}
                 <div class="ticks">
@@ -22,5 +22,5 @@
                 </div>
             {% endif %}
     </div>
-    {% if labelEnd %}<span>{{ labelEnd }}</span>{% endif %}
+    {% if labelEnd %}<span class="label-text">{{ labelEnd }}</span>{% endif %}
 </li>

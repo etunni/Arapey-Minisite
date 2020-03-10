@@ -49,6 +49,10 @@
 	background-color: var(--arapey-blue);
 }
 
+.interactive-controls-list {
+	margin-top: 3.25rem;
+}
+
 .interactive-controls-list label {
 	--label-width: 4.5rem;
 
@@ -113,8 +117,22 @@
 	background-color: var(--arapey-purple);
 }
 
+.interactive-controls-tick-sliders li {
+	max-width: var(--max-content-width);
+	margin: 0 auto;
+}
+
 .about-arapey-content-interactive .interactive-controls-list {
 	min-width: 800px;
+}
+
+.about-arapey-container .interactive-controls-list-container {
+	display: flex;
+	justify-content: center;
+}
+
+.about-arapey-container .interactive-controls-list li {
+	padding: 2rem 0;
 }
 
 /*
@@ -124,7 +142,7 @@
  */
 
 .interactive-controls-tick-slider-container {
-	max-width: 1000px;
+	max-width: var(--max-content-width);
 }
 
 .tick-list-item {
@@ -175,9 +193,16 @@
 	border-radius: 50%;
 }
 
-.interactive-controls-tick-sliders li {
-	max-width: 1400px;
-	margin: 0 auto;
+.weather-section .interactive-controls-tick-slider::-webkit-slider-thumb {
+	background-color: var(--arapey-green);
+}
+
+.weather-section .interactive-controls-tick-slider::-moz-range-thumb {
+	background-color: var(--arapey-green);
+}
+
+.weather-section .interactive-controls-tick-slider::-ms-thumb {
+	background-color: var(--arapey-green);
 }
 
 .ticks {
@@ -198,5 +223,5 @@
 .tick span {
 	margin-top: 1rem;
 	white-space: nowrap;
-	font-size: 1rem;
+	font-size: 1.25rem;
 }

@@ -1,0 +1,38 @@
+.interactive-controls-badge {
+	--badge-position-x: 0;
+	--weight: var(--weight-regular);
+
+	position: absolute;
+	width: 6rem; /* Will hold up to three digits in fat font weight */
+	top: -60px;
+	transform: translateX(var(--badge-position-x));
+	color: var(--arapey-red);
+	font-size: 2rem;
+	padding: 0.5rem 0 0.25rem 0;
+	text-align: center;
+	background-color: var(--arapey-light-gray);
+}
+
+.temperature-slider-container .interactive-controls-badge,
+.wind-slider-container .interactive-controls-badge,
+.time-slider-container .interactive-controls-badge {
+	color: var(--arapey-green);
+}
+
+.interactive-controls-badge::before {
+	/* The content property can only take strings */
+	content: var(--weight-string);
+
+	/* Using wght axis directly as weight axis doesn't match CSS weight values */
+	font-variation-settings: "wght" var(--weight);
+}
+
+.interactive-controls-badge::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: 0%;
+	border-left: 48px solid transparent;
+	border-top: 10px solid var(--arapey-light-gray);
+	border-right: 48px solid transparent;
+}

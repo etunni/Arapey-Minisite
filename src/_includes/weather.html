@@ -1,0 +1,28 @@
+<section class="weather-section">
+    <article class="weather-content-container interactive-controls">
+        <div class="weather-content-label">Arapey Weather</div>
+        <div class="temperature interactive-controls-text">33°C</div>
+        <ul class="interactive-controls-list">
+            {% include tick-slider.html value: 300 labels: weight-instances name: "temperature-slider" min: 100 max: 900 badge: true %}
+        </ul>
+    </article>
+
+    <article class="weather-content-container interactive-controls">
+        <div class="wind interactive-controls-text">
+                Wind N. at 24 km/h<br>52% Humidity
+        </div>
+		<ul class="interactive-controls-list">
+            {% include tick-slider.html value: 400 labels: weight-instances name: "wind-slider" min: 100 max: 900 badge: true %}
+        </ul>
+    </article>
+
+    <article class="weather-content-container interactive-controls">
+        <div class="weather-content-label">Local time</div>
+        <div class="time interactive-controls-text">
+            Wednesday 01:20
+        </div>
+		<ul class="interactive-controls-list">
+            {% include tick-slider.html value: 500 labels: weight-instances name: "time-slider" min: 100 max: 900 badge: true %}
+        </ul>
+    </article>
+</section>

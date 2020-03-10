@@ -35,53 +35,60 @@ font.load(null, fontTimeOut).then(
 		initializeApp();
 	}
 );
-// Interactive controls (sliders that tweak axes)
-const interactives = document.querySelectorAll(".interactive-controls");
-for (const interactive of interactives) {
-	const area = interactive.querySelector(".interactive-controls-text");
-	const sliders = interactive.querySelectorAll(
-		".interactive-controls-slider"
-	);
-	const instances = interactive.querySelector(
-		".interactive-controls-instances"
-	);
 
-	const varset = (name, value) => {
-		area.style.setProperty(`--${name}`, value);
-	};
+const setupInputs = () => {
+	// Interactive controls (sliders that tweak axes)
+	const interactives = document.querySelectorAll(".interactive-controls");
+	for (const interactive of interactives) {
+		const area = interactive.querySelector(".interactive-controls-text");
+		const sliders = interactive.querySelectorAll(
+			".interactive-controls-slider"
+		);
 
-	for (const slider of sliders) {
-		// Apply initial axis value to text area
-		varset(slider.name, slider.value);
-		slider.oninput = e => {
-			// Set new axis value to text area
-			varset(e.target.name, e.target.value);
-			// Unselect named instance dropdown
-			// Optionally, see if current axes match instance and select that
-			if (instances) {
-				instances.selectedIndex = -1;
-			}
+		const instances = interactive.querySelector(
+			".interactive-controls-instances"
+		);
 
-			setGridSliderValue(e.target.value);
-			// setSizeSliderValue(e.target.value);
+		const varset = (name, value) => {
+			area.style.setProperty(`--${name}`, value);
 		};
-	}
 
-	if (instances) {
-		instances.onchange = e => {
-			const axes = JSON.parse(
-				e.target.options[e.target.selectedIndex].value
-			);
+		for (const slider of sliders) {
+			// Apply initial axis value to text area
 
-			for (const axis in axes) {
-				// Set new axis value on slider
-				interactive.querySelector(`[name=${axis}]`).value = axes[axis];
-				// Apply new axis value to text area
-				varset(axis, axes[axis]);
-			}
-		};
+			varset(slider.name, slider.value);
+			setupBadge(slider, slider.value);
+
+			slider.oninput = e => {
+				// Set new axis value to text area
+				varset(e.target.name, e.target.value);
+				// Unselect named instance dropdown
+				// Optionally, see if current axes match instance and select that
+				if (instances) {
+					instances.selectedIndex = -1;
+				}
+
+				setupBadge(slider, e.target.value);
+			};
+		}
+
+		if (instances) {
+			instances.onchange = e => {
+				const axes = JSON.parse(
+					e.target.options[e.target.selectedIndex].value
+				);
+
+				for (const axis in axes) {
+					// Set new axis value on slider
+					interactive.querySelector(`[name=${axis}]`).value =
+						axes[axis];
+					// Apply new axis value to text area
+					varset(axis, axes[axis]);
+				}
+			};
+		}
 	}
-}
+};
 
 // Watch if .am-i-in-view elements are visible on screen
 // and apply a class accordingly
@@ -123,24 +130,25 @@ const setGridCharacter = e => {
 grid.onmousemove = throttle(setGridCharacter, 100);
 
 // Sliders
-const gridSlider = document.querySelector(".weight-grid-slider");
-const gridContainer = document.querySelector(".character-grid-inner-container");
-const badge = document.querySelector(".interactive-controls-badge");
-let badgeOffset;
-let badgeOffsetWidth;
+// TODO: maybe we can cache the value of slide.offsetWidth and
+// badge.offsetWidth, as they won't change unless the viewport
+// size changes (in which we can recalculate them, see comment
+// around initializeApp)
+const setupBadge = (slider, value) => {
+	const sliderContainer = slider.closest(`.${slider.name}-container`);
+	const badge = sliderContainer.querySelector(".interactive-controls-badge");
+	const badgeOffset =
+		slider.offsetWidth / (parseFloat(slider.max) - parseFloat(slider.min));
 
-const setGridSliderValue = value => {
-	const sliderValue = parseFloat(
-		value || gridContainer.style.getPropertyValue("--weight-grid-slider")
-	);
+	if (!badge) return;
 
 	const badgePosition =
-		(parseFloat(sliderValue) - parseFloat(gridSlider.min)) * badgeOffset -
-		badgeOffsetWidth / 2;
+		(parseFloat(value) - parseFloat(slider.min)) * badgeOffset -
+		badge.offsetWidth / 2;
 
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
-	badge.style.setProperty("--weight", `${sliderValue}`);
-	badge.style.setProperty("--weight-string", `"${Math.round(sliderValue)}"`);
+	badge.style.setProperty("--weight", `${value}`);
+	badge.style.setProperty("--weight-string", `"${Math.round(value)}"`);
 };
 
 const toggleBlockContainer = document.querySelector(".toggle-block-container");
@@ -259,13 +267,8 @@ const initializeApp = () => {
 	// TODO: set these value in a generic function that
 	// can be recalculated on window resize
 	// See https://github.com/undercasetype/fraunces-minisite/blob/master/src/js/main.js#L326
-	badgeOffset =
-		gridSlider.offsetWidth /
-		(parseFloat(gridSlider.max) - parseFloat(gridSlider.min));
-	badgeOffsetWidth = badge.offsetWidth;
 
-	setGridSliderValue();
-	// setSizeSliderValue();
+	setupInputs();
 	setGridCharacter();
 
 	selectElements.dropdown

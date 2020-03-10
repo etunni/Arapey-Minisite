@@ -1,0 +1,47 @@
+.weather-section {
+	--temperature-slider: 500;
+	--wind-slider: 500;
+	--time-slider: 500;
+
+	padding: 2rem;
+	padding-top: 10rem;
+	padding-bottom: 10rem;
+	max-width: var(--max-content-width);
+	margin: 0 auto;
+}
+
+.weather-section .tick-list-item {
+	justify-content: center;
+}
+
+.weather-content-container {
+	margin-bottom: 8rem;
+	position: relative;
+}
+
+.weather-content-container .interactive-controls-text {
+	margin: 0 auto 5rem auto;
+	color: var(--arapey-green);
+	text-align: center;
+}
+
+.weather-content-container .temperature {
+	font-size: 12rem;
+	font-weight: var(--temperature-slider);
+}
+
+.weather-content-container .wind {
+	font-size: 5rem;
+	font-weight: var(--wind-slider);
+}
+
+.weather-content-container .time {
+	font-size: 7rem;
+	font-weight: var(--time-slider);
+}
+
+.weather-content-label {
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: var(--weight-semi-bold);
+}

@@ -56,7 +56,7 @@
 }
 
 .interactive-controls-select-group {
-	max-width: 225px;
+	max-width: 14rem;
 	position: relative;
 
 	/* Temporary code to center this thing */
@@ -64,5 +64,5 @@
 }
 
 .interactive-controls-select-group * {
-	font-family: "Arapey";
+	font-family: inherit;
 }
