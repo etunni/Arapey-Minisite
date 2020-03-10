@@ -16,39 +16,33 @@
 
 .weather-content-container {
 	margin-bottom: 8rem;
-}
-
-.weather-text-container {
 	position: relative;
-	display: flex;
-	align-items: center;
 }
 
-.weather-text-container .interactive-controls-text {
-	margin: 0 auto;
+.weather-content-container .interactive-controls-text {
+	margin: 0 auto 5rem auto;
 	color: var(--arapey-green);
 	text-align: center;
 }
 
-.weather-text-container .temperature {
+.weather-content-container .temperature {
 	font-size: 12rem;
 	font-weight: var(--temperature-slider);
 }
 
-.weather-text-container .wind {
+.weather-content-container .wind {
 	font-size: 5rem;
 	font-weight: var(--wind-slider);
 }
 
-.weather-text-container .time {
+.weather-content-container .time {
 	font-size: 7rem;
 	font-weight: var(--time-slider);
 }
 
-.weather-text-container small {
-	position: absolute;
-	top: 50%;
-	left: 0;
+.weather-content-label {
+	display: block;
+	text-align: center;
 	font-size: 1.5rem;
 	font-weight: var(--weight-semi-bold);
 }
