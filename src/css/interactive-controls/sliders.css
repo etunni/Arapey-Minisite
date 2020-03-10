@@ -141,8 +141,8 @@
  *
  */
 
-.character-grid-section .interactive-controls-tick-slider-container {
-	max-width: 1200px;
+.interactive-controls-tick-slider-container {
+	max-width: 75rem;
 }
 
 .tick-list-item {
