@@ -1,5 +1,6 @@
 :root {
 	--arapey-red: #f83d43;
+	--arapey-green: #37caa1;
 	--arapey-black: #000;
 	--arapey-gray: #e7e7e7;
 	--arapey-white: #fff;
@@ -18,4 +19,7 @@
 	--weight-bold: 700;
 	--weight-extra-bold: 800;
 	--weight-black: 900;
+
+	/* Content */
+	--max-content-width: 75rem;
 }

@@ -13,6 +13,7 @@
 @import "interactive-controls/select.css";
 @import "interactive-controls/radio.css";
 @import "interactive-controls/alignment.css";
+@import "interactive-controls/badge.css";
 
 @import "button.css";
 @import "icons.css";
@@ -20,3 +21,4 @@
 @import "arapey-hero.css";
 @import "about-arapey.css";
 @import "toggle-section.css";
+@import "weather.css";
