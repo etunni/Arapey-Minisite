@@ -192,8 +192,6 @@ const selectElements = {
 };
 
 selectElements.handle.forEach(handle => {
-	console.log("handle", handle);
-
 	handle.addEventListener("click", e => {
 		e.stopPropagation();
 		e.currentTarget.nextElementSibling.classList.add("show");
