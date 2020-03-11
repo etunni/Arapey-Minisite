@@ -1,5 +1,9 @@
 .character-slide-section {
+	--wght: var(--weight-regular);
+
 	margin: 0 auto;
+	margin-top: 5rem;
+	user-select: none;
 }
 
 .character-slide-list-container {
@@ -19,8 +23,13 @@
 }
 
 .character-slide-list {
+	display: none;
+	margin: 0;
+	font-weight: var(--wght);
+	transition: font-weight 200ms;
+}
+.character-slide-list.active {
 	display: flex;
-	user-select: none;
 }
 
 .character-slide-item {
@@ -31,23 +40,23 @@
 .caps-switch-list {
 	display: flex;
 	justify-content: center;
+	margin-bottom: 0;
 }
 
-.caps-switch-list li {
+.caps-switch-list button {
 	font-size: 1.25rem;
 	font-weight: var(--weight-semi-bold);
 	cursor: pointer;
 	transition: 400ms color;
 }
 
-.caps-switch-list li:hover,
-.caps-switch-list li.active {
+.caps-switch-list button:hover,
+.caps-switch-list button.active {
 	color: var(--arapey-green);
 }
 
 .caps-switch-list li::after {
 	content: "|";
-	margin-left: 0.25rem;
 	margin-right: 0.25rem;
 }
 
