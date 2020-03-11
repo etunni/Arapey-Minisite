@@ -242,7 +242,9 @@ const characterSlide = {
 	x: 0,
 	oldX: 0,
 	isDown: false,
-	scrollLeft: 0
+	scrollLeft: 0,
+	velX: 0,
+	momentumID: null
 };
 
 const characterSlideSection = document.querySelector(
@@ -266,12 +268,30 @@ characterSlideListContainer.addEventListener("mousemove", e => {
 	const slideSpeed = characterSlide.oldX - characterSlide.x;
 
 	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideSpeed;
+	characterSlide.velX =
+		e.currentTarget.scrollLeft - characterSlide.scrollLeft;
 });
 
 characterSlideListContainer.addEventListener("mouseup", e => {
 	characterSlide.isDown = false;
 	characterSlideListContainer.classList.remove("active");
+	const currentTarget = e.currentTarget;
+	cancelAnimationFrame(characterSlide.momentumID);
+	characterSlide.momentumID = requestAnimationFrame(() => {
+		loop(currentTarget);
+	});
 });
+
+const loop = currentTarget => {
+	currentTarget.scrollLeft += characterSlide.velX;
+	characterSlide.velX *= 0.85;
+
+	if (Math.abs(characterSlide.velX) > 0.5) {
+		characterSlide.momentumID = requestAnimationFrame(() =>
+			loop(currentTarget)
+		);
+	}
+};
 
 const capsSelectionList = characterSlideSection.querySelector(
 	".caps-switch-list"
