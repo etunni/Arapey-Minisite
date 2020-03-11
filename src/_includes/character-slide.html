@@ -1,16 +1,33 @@
-<section class="character-slide-section">
-	<section class="character-slide-inner-container">
+<section class="character-slide-section interactive-controls">
+	<section class="character-slide-inner-container ">
+	    {% include select.html handle:"interactive-controls-select" %} 
+
+        <ul class="caps-switch-list">
+            <li>
+                <button type="button" class="active" data-value="lowercase">lowercase</button>
+            </li>
+            <li>
+                <button type="button" data-value="uppercase">uppercase</button>
+            </li>
+            <li>
+                <button type="button" data-value="numerals">numerals</button>
+            </li>
+        </ul>
+
 		<div class="character-slide-list-container">
-            <ol class="character-slide-list">
-                {% for char in charset %}
+            <ol class="character-slide-list active interactive-controls-text" data-value="lowercase">
+                {% for char in charset-letters %}
                 <li class="character-slide-item" data-character="{{ char }}">{{ char }}</li>
                 {% endfor %}
             </ol>
+            <ol class="character-slide-list interactive-controls-text" data-value="uppercase">
+                {% for char in charset-numbers %}
+                <li class="character-slide-item" data-character="{{ char }}">{{ char}}</li>
+                {% endfor %}
+            </ol>
+            <ol class="character-slide-list interactive-controls-text" data-value="numerals">
+                <li>12345</li>
+            </ol>
         </div>
 	</section>
-	<ul class="caps-switch-list">
-		<li>lowercase</li>
-		<li>uppercase</li>
-		<li>numerals</li>
-	</ul>
 </section>

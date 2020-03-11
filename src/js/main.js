@@ -187,43 +187,53 @@ alignmentInputs.forEach(item =>
 
 // Handle select box
 const selectElements = {
-	handle: document.querySelector("#about-arapey-select-controls"),
-	dropdown: document.querySelector(".interactive-controls-options-list")
+	handle: document.querySelectorAll("#interactive-controls-select"),
+	dropdown: document.querySelectorAll(".interactive-controls-options-list")
 };
 
-selectElements.handle.addEventListener("click", e => {
-	e.stopPropagation();
+selectElements.handle.forEach(handle => {
+	console.log("handle", handle);
 
-	selectElements.dropdown.classList.add("show");
+	handle.addEventListener("click", e => {
+		e.stopPropagation();
+		e.currentTarget.nextElementSibling.classList.add("show");
+	});
 });
 
-selectElements.dropdown.addEventListener("click", e => {
-	if (e.target.type == "button") {
-		const textContainer = selectElements.handle.querySelector("span");
-		selectElements.handle.setAttribute("value", e.target.value);
+selectElements.dropdown.forEach(dropdown => {
+	dropdown.addEventListener("click", e => {
+		const interactiveElement = dropdown.closest(".interactive-controls");
 
-		selectElements.dropdown
-			.querySelector(".active")
-			.classList.remove("active");
+		if (e.target.type == "button") {
+			const textContainer = e.currentTarget.previousElementSibling.querySelector(
+				"span"
+			);
+			e.currentTarget.previousElementSibling.setAttribute(
+				"value",
+				e.target.value
+			);
 
-		e.target.classList.add("active");
+			e.currentTarget.querySelector(".active").classList.remove("active");
 
-		textContainer.textContent = e.target.value;
-		selectElements.dropdown.classList.remove("show");
+			e.target.classList.add("active");
 
-		aboutInteractiveElement.style.setProperty(
-			"--wght",
-			e.target.getAttribute("data-wght")
-		);
-	}
+			textContainer.textContent = e.target.value;
+			e.currentTarget.classList.remove("show");
+
+			interactiveElement.style.setProperty(
+				"--wght",
+				e.target.getAttribute("data-wght")
+			);
+		}
+	});
 });
 
-const onClickOutside = e => {
-	if (
-		selectElements.dropdown.classList.contains("show") &&
-		e.target.contains(selectElements.handle)
-	)
-		selectElements.dropdown.classList.remove("show");
+const onClickOutside = () => {
+	selectElements.dropdown.forEach(dropdown => {
+		if (dropdown.classList.contains("show")) {
+			dropdown.classList.remove("show");
+		}
+	});
 };
 
 window.addEventListener("click", onClickOutside);
@@ -239,18 +249,18 @@ const characterSlideSection = document.querySelector(
 	".character-slide-section"
 );
 
-const characterSlideList = characterSlideSection.querySelector(
+const characterSlideListContainer = characterSlideSection.querySelector(
 	".character-slide-list-container"
 );
 
-characterSlideList.addEventListener("mousedown", e => {
+characterSlideListContainer.addEventListener("mousedown", e => {
 	characterSlide.isDown = true;
 	characterSlide.x = e.pageX - e.currentTarget.offsetLeft;
-	characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling
-	characterSlideList.classList.add("active");
+	characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling in the scroll container
+	characterSlideListContainer.classList.add("active");
 });
 
-characterSlideList.addEventListener("mousemove", e => {
+characterSlideListContainer.addEventListener("mousemove", e => {
 	if (!characterSlide.isDown) return;
 	characterSlide.oldX = e.pageX - e.currentTarget.offsetLeft;
 	const slideSpeed = characterSlide.oldX - characterSlide.x;
@@ -258,10 +268,32 @@ characterSlideList.addEventListener("mousemove", e => {
 	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideSpeed;
 });
 
-characterSlideList.addEventListener("mouseup", e => {
+characterSlideListContainer.addEventListener("mouseup", e => {
 	characterSlide.isDown = false;
-	characterSlideList.classList.remove("active");
+	characterSlideListContainer.classList.remove("active");
 });
+
+const capsSelectionList = characterSlideSection.querySelector(
+	".caps-switch-list"
+);
+
+const capsListItems = capsSelectionList.querySelectorAll("button");
+
+const onSwitchCase = e => {
+	capsSelectionList.querySelector(".active").classList.remove("active");
+	e.target.classList.add("active");
+
+	characterSlideListContainer
+		.querySelector(".active")
+		.classList.remove("active");
+
+	const buttonValue = e.target.getAttribute("data-value");
+	characterSlideListContainer
+		.querySelector(`[data-value=${buttonValue}]`)
+		.classList.add("active");
+};
+
+capsListItems.forEach(item => item.addEventListener("click", onSwitchCase));
 
 const initializeApp = () => {
 	// TODO: set these value in a generic function that
@@ -271,7 +303,7 @@ const initializeApp = () => {
 	setupInputs();
 	setGridCharacter();
 
-	selectElements.dropdown
-		.querySelector("[value='Regular']")
-		.classList.add("active");
+	selectElements.dropdown.forEach(dropdown =>
+		dropdown.querySelector("[value='Regular']").classList.add("active")
+	);
 };
