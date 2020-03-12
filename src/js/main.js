@@ -242,53 +242,65 @@ const characterSlide = {
 	isDown: false,
 	scrollLeft: 0,
 	velX: 0,
-	momentumID: null
+	momentumID: null,
+	slideSpeed: 0,
+	dir: null
 };
-
 const characterSlideSection = document.querySelector(
 	".character-slide-section"
 );
-
 const characterSlideListContainer = characterSlideSection.querySelector(
 	".character-slide-list-container"
 );
-
 characterSlideListContainer.addEventListener("mousedown", e => {
 	characterSlide.isDown = true;
+	characterSlide.oldX = e.pageX;
 	characterSlide.x = e.pageX - e.currentTarget.offsetLeft;
 	characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling in the scroll container
 	characterSlideListContainer.classList.add("active");
 });
-
 characterSlideListContainer.addEventListener("mousemove", e => {
 	if (!characterSlide.isDown) return;
-	characterSlide.oldX = e.pageX - e.currentTarget.offsetLeft;
-	const slideSpeed = characterSlide.oldX - characterSlide.x;
-
-	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideSpeed;
-	characterSlide.velX =
-		e.currentTarget.scrollLeft - characterSlide.scrollLeft;
+	// Keep track of current "speed", we need this when
+	// user releases mouse
+	// ...
+	// Keep track of distance moved since last time, and move
+	const slideSpeed = e.pageX - characterSlide.oldX;
+	characterSlide.oldX = e.pageX;
+	const slideDistance = characterSlide.oldX - characterSlide.x;
+	// console.log(slideDistance);
+	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
+	characterSlide.slideSpeed = slideSpeed;
 });
-
 characterSlideListContainer.addEventListener("mouseup", e => {
 	characterSlide.isDown = false;
 	characterSlideListContainer.classList.remove("active");
 	const currentTarget = e.currentTarget;
 	cancelAnimationFrame(characterSlide.momentumID);
+	characterSlide.dir = characterSlide.slideSpeed > 0 ? "left" : "right";
 	characterSlide.momentumID = requestAnimationFrame(() => {
 		loop(currentTarget);
 	});
 });
-
 const loop = currentTarget => {
-	currentTarget.scrollLeft += characterSlide.velX;
-	characterSlide.velX *= 0.85;
-
-	if (Math.abs(characterSlide.velX) > 0.5) {
-		characterSlide.momentumID = requestAnimationFrame(() =>
-			loop(currentTarget)
-		);
+	currentTarget.scrollLeft -= characterSlide.slideSpeed;
+	// characterSlide.velX *= 0.85;
+	// if (Math.abs(characterSlide.velX) > 0.5) {
+	// 	characterSlide.momentumID = requestAnimationFrame(() =>
+	// 		loop(currentTarget)
+	// 	);
+	// }
+	console.log(characterSlide.slideSpeed);
+	if (characterSlide.slideSpeed !== 0) {
+		if (characterSlide.dir === "left") {
+			characterSlide.slideSpeed--;
+		} else {
+			characterSlide.slideSpeed++;
+		}
 	}
+	characterSlide.momentumID = requestAnimationFrame(() =>
+		loop(currentTarget)
+	);
 };
 
 const capsSelectionList = characterSlideSection.querySelector(
