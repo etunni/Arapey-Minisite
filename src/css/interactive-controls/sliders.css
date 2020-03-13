@@ -155,7 +155,6 @@
 }
 
 .tick-list-item span {
-	font-weight: var(--weight-bold);
 	text-align: right;
 }
 
@@ -193,6 +192,11 @@
 	border-radius: 50%;
 }
 
+.interactive-controls-tick-slider-container .label-text-center {
+	text-align: center;
+	font-weight: var(--weight-semi-bold);
+}
+
 .weather-section .interactive-controls-tick-slider::-webkit-slider-thumb {
 	background-color: var(--arapey-green);
 }
@@ -223,5 +227,6 @@
 .tick span {
 	margin-top: 1rem;
 	white-space: nowrap;
-	font-size: 1.25rem;
+	font-size: 1rem;
+	font-weight: var(--weight-medium);
 }
