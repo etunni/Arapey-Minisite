@@ -1,0 +1,33 @@
+<section class="about-variable-fonts-section">
+    <article class="about-variable-fonts-container">
+        <h1>About variable fonts </h1>
+        <p>
+            A variable font is a collection of master styles, with one central ‘default’ master (usually the Regular font style) and multiple registered “axes” which tie the central master to the other masters. For example, the Weight axis might connect a Light style master to the default style and through to the Bold style master. The individual styles that can be located along this axis are called instances.
+        </p>
+        <p>
+            The Optical Size axis controls the overall contrast between thicks and thins. But the Optical Size axis goes a step further, however, and factors in additional changes depending on the size of the font. At smaller sizes, the letterspacing opens up, x-height increases, and contrast decreases to allow for easier reading.
+        </p>
+    </article>
+    
+
+    <section class="about-variable-fonts-interactive">
+        Interactive
+        <ul class="interactive-controls-list">
+            {% include tick-slider.html value: 100 labels: instances name: "font-size" min: 12 max: 128  badge: true %} 
+            {% include tick-slider.html value: 100 labels: instances name: "font-size" min: 12 max: 128  badge: true %} 
+        </ul>
+        
+        <div class="code-container">
+            <code>
+                .arapey {
+                    <br />
+                    <span class="property">font-family:</span><span class="string-value">"ArapeyVF;"</span><br  />
+                    <span class="property">font-variation-settings:</span><span class="string-value">"opsz"</span><span class="int-value">120;</span><br />
+                    <span class="property">font-weight:</span><span class="int-value">34;</span><br />
+                }
+            </code>
+        </div>
+    </section>
+
+ 
+</section>

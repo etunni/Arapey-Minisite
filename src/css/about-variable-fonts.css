@@ -1,0 +1,55 @@
+.about-variable-fonts-section {
+	max-width: var(--max-content-width);
+	margin: 0 auto;
+	padding-top: 4rem;
+}
+
+.about-variable-fonts-container h1 {
+	font-size: 3.5rem;
+	font-weight: var(--weight-semi-bold);
+	color: var(--arapey-dark-blue);
+	margin-bottom: 0;
+}
+
+.about-variable-fonts-container {
+	font-size: 1.5rem;
+	line-height: 1.5;
+	text-align: center;
+}
+
+.about-variable-fonts-container p {
+	margin-bottom: 2.5rem;
+}
+
+.about-variable-fonts-section .interactive-controls-list {
+	margin-bottom: 5rem;
+}
+
+.about-variable-fonts-section .interactive-controls-list-item {
+	margin-bottom: 3.5rem;
+}
+
+.code-container {
+	background-color: var(--arapey-gray);
+	padding: 1.5rem;
+}
+
+.about-variable-fonts-section code {
+	font-size: 1.25rem;
+	line-height: 1.25;
+}
+
+code .property {
+	margin-left: 1.5rem;
+	color: var(--arapey-dark-blue);
+}
+
+code .int-value {
+	margin-left: 0.5rem;
+	color: var(--arapey-red);
+}
+
+code .string-value {
+	margin-left: 0.5rem;
+	color: var(--arapey-green);
+}
