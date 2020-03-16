@@ -240,11 +240,11 @@ const characterSlide = {
 	x: 0,
 	oldX: 0,
 	isDown: false,
+	shouldSlide: true,
 	scrollLeft: 0,
-	velX: 0,
 	momentumID: null,
-	slideSpeed: 0,
-	dir: null
+	slideSpeed: -1,
+	dir: "right"
 };
 const characterSlideSection = document.querySelector(
 	".character-slide-section"
@@ -252,6 +252,12 @@ const characterSlideSection = document.querySelector(
 const characterSlideListContainer = characterSlideSection.querySelector(
 	".character-slide-list-container"
 );
+characterSlideListContainer.addEventListener("mouseover", () => {
+	characterSlide.shouldSlide = false;
+});
+characterSlideListContainer.addEventListener("mouseoout", () => {
+	characterSlide.shouldSlide = true;
+});
 characterSlideListContainer.addEventListener("mousedown", e => {
 	characterSlide.isDown = true;
 	characterSlide.oldX = e.pageX;
@@ -266,33 +272,28 @@ characterSlideListContainer.addEventListener("mousemove", e => {
 	characterSlide.oldX = e.pageX;
 	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
 });
-characterSlideListContainer.addEventListener("mouseup", e => {
+characterSlideListContainer.addEventListener("mouseup", () => {
 	characterSlide.isDown = false;
 	characterSlideListContainer.classList.remove("active");
-	const currentTarget = e.currentTarget;
 	cancelAnimationFrame(characterSlide.momentumID);
-	characterSlide.dir = characterSlide.slideSpeed > 0 ? "right" : "left";
-	characterSlide.momentumID = requestAnimationFrame(() => {
-		loop(currentTarget);
-	});
+	loop();
 });
-const loop = currentTarget => {
-	const factor = 0.85;
-	if (
-		(characterSlide.dir === "right" && characterSlide.slideSpeed > 2) ||
-		(characterSlide.dir === "left" && characterSlide.slideSpeed < -2)
-	) {
+const loop = () => {
+	const factor = 0.9;
+	if (characterSlide.slideSpeed > 1.5 || characterSlide.slideSpeed < -1.5) {
 		characterSlide.slideSpeed *= factor;
 	} else {
 		// "Round" last speed to a sane minimum
-		characterSlide.slideSpeed = characterSlide.slideSpeed > 0 ? 1 : -1;
+		if (characterSlide.shouldSlide) {
+			characterSlide.slideSpeed = characterSlide.slideSpeed >= 0 ? 1 : -1;
+		} else {
+			characterSlide.slideSpeed = 0;
+		}
 	}
 
-	currentTarget.scrollLeft -= characterSlide.slideSpeed;
+	characterSlideListContainer.scrollLeft -= characterSlide.slideSpeed;
 
-	characterSlide.momentumID = requestAnimationFrame(() =>
-		loop(currentTarget)
-	);
+	characterSlide.momentumID = requestAnimationFrame(() => loop());
 };
 
 const capsSelectionList = characterSlideSection.querySelector(
@@ -328,4 +329,6 @@ const initializeApp = () => {
 	selectElements.dropdown.forEach(dropdown =>
 		dropdown.querySelector("[value='Regular']").classList.add("active")
 	);
+
+	loop();
 };
