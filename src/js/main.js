@@ -261,43 +261,35 @@ characterSlideListContainer.addEventListener("mousedown", e => {
 });
 characterSlideListContainer.addEventListener("mousemove", e => {
 	if (!characterSlide.isDown) return;
-	// Keep track of current "speed", we need this when
-	// user releases mouse
-	// ...
-	// Keep track of distance moved since last time, and move
-	const slideSpeed = e.pageX - characterSlide.oldX;
+	const slideDistance = e.pageX - characterSlide.x;
+	characterSlide.slideSpeed = e.pageX - characterSlide.oldX;
 	characterSlide.oldX = e.pageX;
-	const slideDistance = characterSlide.oldX - characterSlide.x;
-	// console.log(slideDistance);
 	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
-	characterSlide.slideSpeed = slideSpeed;
 });
 characterSlideListContainer.addEventListener("mouseup", e => {
 	characterSlide.isDown = false;
 	characterSlideListContainer.classList.remove("active");
 	const currentTarget = e.currentTarget;
 	cancelAnimationFrame(characterSlide.momentumID);
-	characterSlide.dir = characterSlide.slideSpeed > 0 ? "left" : "right";
+	characterSlide.dir = characterSlide.slideSpeed > 0 ? "right" : "left";
 	characterSlide.momentumID = requestAnimationFrame(() => {
 		loop(currentTarget);
 	});
 });
 const loop = currentTarget => {
-	currentTarget.scrollLeft -= characterSlide.slideSpeed;
-	// characterSlide.velX *= 0.85;
-	// if (Math.abs(characterSlide.velX) > 0.5) {
-	// 	characterSlide.momentumID = requestAnimationFrame(() =>
-	// 		loop(currentTarget)
-	// 	);
-	// }
-	console.log(characterSlide.slideSpeed);
-	if (characterSlide.slideSpeed !== 0) {
-		if (characterSlide.dir === "left") {
-			characterSlide.slideSpeed--;
-		} else {
-			characterSlide.slideSpeed++;
-		}
+	const factor = 0.85;
+	if (
+		(characterSlide.dir === "right" && characterSlide.slideSpeed > 2) ||
+		(characterSlide.dir === "left" && characterSlide.slideSpeed < -2)
+	) {
+		characterSlide.slideSpeed *= factor;
+	} else {
+		// "Round" last speed to a sane minimum
+		characterSlide.slideSpeed = characterSlide.slideSpeed > 0 ? 1 : -1;
 	}
+
+	currentTarget.scrollLeft -= characterSlide.slideSpeed;
+
 	characterSlide.momentumID = requestAnimationFrame(() =>
 		loop(currentTarget)
 	);
