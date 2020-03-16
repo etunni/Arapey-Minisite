@@ -1,33 +1,31 @@
 <section class="character-slide-section interactive-controls">
-	<section class="character-slide-inner-container">
-	    {% include select.html handle:"interactive-controls-select" %}
+    <div class="character-slide-section-controls">
+        {% include select.html handle:"interactive-controls-select" %}
 
-        <ul class="caps-switch-list">
-            <li>
-                <button type="button" class="active" data-value="lowercase">lowercase</button>
-            </li>
-            <li>
-                <button type="button" data-value="uppercase">uppercase</button>
-            </li>
-            <li>
-                <button type="button" data-value="numerals">numerals</button>
-            </li>
-        </ul>
-
-		<div class="character-slide-list-container">
-            <div class="character-slide-list active interactive-controls-text" data-value="lowercase">
-                &nbsp;{% for char in charset-letters -%}
-                {{ char }}
-                {%- endfor %}&nbsp;
-            </div>
-            <div class="character-slide-list interactive-controls-text" data-value="uppercase">
-                &nbsp;{% for char in charset-numbers -%}
-                {{ char }}
-                {%- endfor %}&nbsp;
-            </div>
-            <div class="character-slide-list interactive-controls-text" data-value="numerals">
-                12345
-            </div>
+        <div class="slider-selector">
+            <button type="button" class="active" value="lowercase">lowercase</button>
+            |
+            <button type="button" value="uppercase">uppercase</button>
+            |
+            <button type="button" value="numerals">numerals</button>
         </div>
-	</section>
+    </div>
+
+    <div class="character-slide-list-container interactive-controls-text">
+        <div class="character-slide-list active" data-value="lowercase">
+            &nbsp;{% for char in charset-letters -%}
+            {{ char }}
+            {%- endfor %}&nbsp;
+        </div>
+        <div class="character-slide-list" data-value="uppercase">
+            &nbsp;{% for char in charset-letters -%}
+            {{ char | capitalize }}
+            {%- endfor %}&nbsp;
+        </div>
+        <div class="character-slide-list" data-value="numerals">
+            &nbsp;{% for char in charset-numerals -%}
+            {{ char }}
+            {%- endfor %}&nbsp;
+        </div>
+    </div>
 </section>

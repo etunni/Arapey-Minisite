@@ -201,7 +201,6 @@ selectElements.handle.forEach(handle => {
 selectElements.dropdown.forEach(dropdown => {
 	dropdown.addEventListener("click", e => {
 		const interactiveElement = dropdown.closest(".interactive-controls");
-
 		if (e.target.type == "button") {
 			const textContainer = e.currentTarget.previousElementSibling.querySelector(
 				"span"
@@ -310,26 +309,21 @@ const loop = () => {
 };
 
 const capsSelectionList = characterSlideSection.querySelector(
-	".caps-switch-list"
+	".slider-selector"
 );
-
-const capsListItems = capsSelectionList.querySelectorAll("button");
-
 const onSwitchCase = e => {
+	if (e.target.tagName !== "BUTTON") return;
 	capsSelectionList.querySelector(".active").classList.remove("active");
-	e.target.classList.add("active");
-
 	characterSlideListContainer
 		.querySelector(".active")
 		.classList.remove("active");
 
-	const buttonValue = e.target.getAttribute("data-value");
+	e.target.classList.add("active");
 	characterSlideListContainer
-		.querySelector(`[data-value=${buttonValue}]`)
+		.querySelector(`[data-value=${e.target.value}]`)
 		.classList.add("active");
 };
-
-capsListItems.forEach(item => item.addEventListener("click", onSwitchCase));
+capsSelectionList.addEventListener("click", onSwitchCase);
 
 const initializeApp = () => {
 	// TODO: set these value in a generic function that

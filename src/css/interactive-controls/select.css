@@ -58,9 +58,7 @@
 .interactive-controls-select-group {
 	max-width: 14rem;
 	position: relative;
-
-	/* Temporary code to center this thing */
-	margin: 0 auto;
+	flex: auto;
 }
 
 .interactive-controls-select-group * {
