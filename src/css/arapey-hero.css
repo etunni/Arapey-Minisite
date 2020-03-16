@@ -7,12 +7,12 @@
 
 .arapey-hero {
 	height: 90vh;
-	background: #eee;
 	position: relative;
 }
 
 .arapey-hero-title {
 	position: absolute;
+	z-index: 2;
 	top: 45%;
 	left: 0;
 	right: 0;
@@ -45,11 +45,17 @@
 
 .arapey-hero-text {
 	position: absolute;
+	z-index: 2;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	padding: 2rem 0;
 	text-align: center;
+	background: linear-gradient(
+		to bottom,
+		rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 1)
+	);
 }
 
 .arapey-hero-text h2 {
@@ -59,4 +65,16 @@
 .arapey-hero-text span {
 	font-weight: var(--weight-light);
 	color: var(--arapey-red);
+}
+
+.arapey-hero-canvas {
+	pointer-events: none;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
 }
