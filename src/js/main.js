@@ -246,26 +246,6 @@ const onClickOutside = e => {
 
 window.addEventListener("click", onClickOutside);
 
-const initializeApp = () => {
-	// TODO: set these value in a generic function that
-	// can be recalculated on window resize
-	// See https://github.com/undercasetype/fraunces-minisite/blob/master/src/js/main.js#L326
-
-	setupInputs();
-	setGridCharacter();
-
-	selectElements.dropdown
-		.querySelector("[value='Regular']")
-		.classList.add("active");
-
-	// Timeout as poor man's font loading strategy
-	const topWave = Object.create(letterWave);
-	topWave.setup(".arapey-hero-canvas");
-	setRAFInterval(() => {
-		topWave.renderWave();
-	}, 100);
-};
-
 // Letterwave
 const letterWave = {
 	// Setup stuff:
@@ -296,6 +276,10 @@ const letterWave = {
 	setLetter(letter) {
 		this.letter = letter;
 		this.preRenderChars();
+	},
+	resizeCanvas() {
+		topWave.setupCanvas();
+		topWave.setupLetterPositions();
 	},
 	// Pre-render chars
 	// We need to do this as rendering (variable) fonts directly
@@ -344,6 +328,7 @@ const letterWave = {
 		const columns = Math.floor(this.width / this.cellSize);
 		const rows = Math.floor(this.height / this.cellSize);
 
+		this.letters = [];
 		for (let i = 0; i <= rows; i++) {
 			for (let j = 0; j <= columns; j++) {
 				this.letters.push({
@@ -355,6 +340,7 @@ const letterWave = {
 	},
 	// Array weights to loop through
 	setupWeightMap() {
+		this.weightMap = [];
 		for (let i = 0; i <= this.steps; i++) {
 			this.weightMap.push(i);
 			this.weightMap.unshift(i);
@@ -398,3 +384,30 @@ const letterWave = {
 		this.waveOffset += this.waveStep;
 	}
 };
+
+const topWave = Object.create(letterWave);
+const initializeApp = () => {
+	// TODO: set these value in a generic function that
+	// can be recalculated on window resize
+	// See https://github.com/undercasetype/fraunces-minisite/blob/master/src/js/main.js#L326
+
+	setupInputs();
+	setGridCharacter();
+
+	selectElements.dropdown
+		.querySelector("[value='Regular']")
+		.classList.add("active");
+
+	// Timeout as poor man's font loading strategy
+	topWave.setup(".arapey-hero-canvas");
+	setRAFInterval(() => {
+		topWave.renderWave();
+	}, 100);
+};
+
+// Update variables related to the viewport
+const setViewportValues = () => {
+	// Recalculate letterWave canvas dimensions
+	topWave.resizeCanvas();
+};
+window.onresize = throttle(setViewportValues, 100);
