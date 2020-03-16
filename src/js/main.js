@@ -255,8 +255,9 @@ const characterSlideListContainer = characterSlideSection.querySelector(
 characterSlideListContainer.addEventListener("mouseover", () => {
 	characterSlide.shouldSlide = false;
 });
-characterSlideListContainer.addEventListener("mouseoout", () => {
+characterSlideListContainer.addEventListener("mouseout", () => {
 	characterSlide.shouldSlide = true;
+	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
 });
 characterSlideListContainer.addEventListener("mousedown", e => {
 	characterSlide.isDown = true;
@@ -281,9 +282,11 @@ characterSlideListContainer.addEventListener("mouseup", () => {
 const loop = () => {
 	const factor = 0.9;
 	if (characterSlide.slideSpeed > 1.5 || characterSlide.slideSpeed < -1.5) {
+		// Finish momentum slide
 		characterSlide.slideSpeed *= factor;
+		characterSlide.lastSlideSpeed = characterSlide.slideSpeed;
 	} else {
-		// "Round" last speed to a sane minimum
+		// Done slowing down, round last speed to a sane minimum
 		if (characterSlide.shouldSlide) {
 			characterSlide.slideSpeed = characterSlide.slideSpeed >= 0 ? 1 : -1;
 		} else {
@@ -291,8 +294,18 @@ const loop = () => {
 		}
 	}
 
-	characterSlideListContainer.scrollLeft -= characterSlide.slideSpeed;
+	// If edge is reached, reverse scroll direction
+	if (
+		characterSlideListContainer.scrollWidth -
+			characterSlideSection.scrollWidth ===
+			characterSlideListContainer.scrollLeft ||
+		characterSlideListContainer.scrollLeft === 0
+	) {
+		characterSlide.slideSpeed = characterSlide.slideSpeed * -1;
+		characterSlide.lastSlideSpeed = characterSlide.slideSpeed;
+	}
 
+	characterSlideListContainer.scrollLeft -= characterSlide.slideSpeed;
 	characterSlide.momentumID = requestAnimationFrame(() => loop());
 };
 
