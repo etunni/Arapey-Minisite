@@ -385,12 +385,19 @@ const letterWave = {
 	}
 };
 
+// On hover, put new letter in top letterwave
+document.querySelector(".arapey-hero-title").addEventListener(
+	"mouseover",
+	throttle(e => {
+		if (e.target.tagName === "SPAN") {
+			const newLetter = e.target.textContent;
+			topWave.setLetter(newLetter.toUpperCase());
+		}
+	}, 100)
+);
+
 const topWave = Object.create(letterWave);
 const initializeApp = () => {
-	// TODO: set these value in a generic function that
-	// can be recalculated on window resize
-	// See https://github.com/undercasetype/fraunces-minisite/blob/master/src/js/main.js#L326
-
 	setupInputs();
 	setGridCharacter();
 
@@ -398,7 +405,7 @@ const initializeApp = () => {
 		.querySelector("[value='Regular']")
 		.classList.add("active");
 
-	// Timeout as poor man's font loading strategy
+	// Animate top letterwave ("AAAAAA")
 	topWave.setup(".arapey-hero-canvas");
 	setRAFInterval(() => {
 		topWave.renderWave();
