@@ -53,3 +53,21 @@ code .string-value {
 	margin-left: 0.5rem;
 	color: var(--arapey-green);
 }
+
+.character-container {
+	position: relative;
+	height: 500px;
+}
+
+.character-container .character {
+	--character-pos-x: 50%;
+	--weight: 450;
+
+	position: absolute;
+	top: 0;
+	left: var(--character-pos-x);
+	transform: translateX(-50%);
+	font-size: 35rem;
+	user-select: none;
+	font-weight: var(--weight);
+}

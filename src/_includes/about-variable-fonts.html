@@ -11,7 +11,12 @@
     
 
     <section class="about-variable-fonts-interactive">
-        Interactive
+        <section class="character-container">
+            <!-- <input type="range" value="A" name="" min="12" max="128" step="any" class="interactive-controls-slider"> -->
+            <div class="character">a</div>
+
+            
+        </section>
         <ul class="interactive-controls-list">
             {% include tick-slider.html value: 100 labels: opsz labelCenter: "Optical Size" name: "font-size" min: 12 max: 128  badge: true %} 
             {% include tick-slider.html value: 100 labels: instances name: "font-size" min: 12 max: 128  badge: true %} 
