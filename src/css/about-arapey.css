@@ -42,8 +42,9 @@
 .about-arapey-content-interactive {
 	--text-alignment: center;
 	--font-size: 0;
+}
 
-	max-width: 50rem;
+.about-arapey-content-interactive .interactive-controls-select-group {
 	margin: 0 auto;
 }
 

@@ -1,3 +1,13 @@
+.interactive-controls-select-group {
+	width: 14rem;
+	position: relative;
+	flex: none;
+}
+
+.interactive-controls-select-group * {
+	font-family: inherit;
+}
+
 .interactive-controls-select-handle {
 	font-weight: var(--weight-semi-bold);
 	font-size: 1.125rem;
@@ -51,14 +61,4 @@
 
 .interactive-controls-options-list li:hover .interactive-controls-option {
 	color: var(--arapey-red);
-}
-
-.interactive-controls-select-group {
-	max-width: 14rem;
-	position: relative;
-	flex: auto;
-}
-
-.interactive-controls-select-group * {
-	font-family: inherit;
 }
