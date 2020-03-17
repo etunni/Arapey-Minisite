@@ -11,6 +11,8 @@
 }
 
 .arapey-hero-title {
+	--opsz: 128;
+
 	position: absolute;
 	z-index: 2;
 	top: 45%;

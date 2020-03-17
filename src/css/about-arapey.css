@@ -27,9 +27,11 @@
 }
 
 .about-arapey-title {
+	--opsz: 128;
+
 	color: var(--arapey-red);
 	font-size: 4rem;
-	font-weight: var(--weight-medium); /* TODO: title styles */
+	font-weight: var(--weight-bold);
 	margin-bottom: 2rem;
 }
 
