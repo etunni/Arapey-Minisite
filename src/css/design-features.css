@@ -1,8 +1,119 @@
 .design-features-section {
 	max-width: var(--max-content-width);
 	margin: 0 auto;
+	min-height: 600px;
+	margin-bottom: 4rem;
 }
 
 .design-features-section .arapey-title-green {
 	text-align: center;
+}
+
+.floating-letter-container {
+	position: relative;
+	min-height: inherit;
+}
+
+.floating-letter {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	user-select: none;
+	cursor: pointer;
+	animation-duration: 5.5s;
+	animation-name: float;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: ease-in-out;
+	transition: left 1s, top 1s;
+
+	/* TODO: Remove when replaced with images */
+	font-size: 20rem;
+}
+
+.floating-letter:nth-child(1) {
+	--x: 60%;
+	--y: 60%;
+
+	left: var(--x);
+	top: var(--y);
+}
+.floating-letter:nth-child(2) {
+	--x: 20%;
+	--y: 30%;
+
+	left: var(--x);
+	top: var(--y);
+}
+
+.floating-letter:nth-child(2) {
+	--x: 3%;
+	--y: 10%;
+
+	left: var(--x);
+	top: var(--y);
+	animation-delay: 0.2s;
+	animation-duration: 7s;
+}
+
+.floating-letter:nth-child(3) {
+	--x: 10%;
+	--y: 49%;
+
+	left: var(--x);
+	top: var(--y);
+	animation-delay: 0.4s;
+	animation-duration: 3s;
+}
+
+.floating-letter:nth-child(4) {
+	--x: 70%;
+	--y: -6%;
+
+	left: var(--x);
+	top: var(--y);
+	animation-delay: 0.6s;
+	animation-duration: 8s;
+}
+
+.floating-letter:nth-child(5) {
+	--x: 34%;
+	--y: -22%;
+
+	left: var(--x);
+	top: var(--y);
+	animation-delay: 0.8s;
+	animation-duration: 9s;
+}
+
+.floating-letter:nth-child(6) {
+	--x: 84%;
+	--y: 60%;
+
+	left: var(--x);
+	top: var(--y);
+	animation-delay: 0.8s;
+}
+
+.floating-letter.active {
+	--x: calc(50% - 100px);
+	--y: calc(50% - 175px);
+
+	left: var(--x);
+	top: var(--y);
+}
+
+@keyframes float {
+	0% {
+		transform: translate(0, 0);
+	}
+	25% {
+		transform: translate(16px, 0);
+	}
+	50% {
+		transform: translate(0, 16px);
+	}
+	75% {
+		transform: translate(10px, 10px);
+	}
 }

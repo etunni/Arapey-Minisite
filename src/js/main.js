@@ -581,3 +581,21 @@ aboutFonts.containerEl.addEventListener(
 
 aboutFonts.containerEl.addEventListener("mouseup", aboutFonts.onDropCharacter);
 window.onresize = throttle(setViewportValues, 100);
+
+const designFeatures = {
+	container: document.querySelector(".floating-letter-container"),
+	setActiveLetter(e) {
+		console.log("!");
+		if (e.target.nodeName == "SPAN") {
+			designFeatures.container
+				.querySelector(".active")
+				.classList.remove("active");
+			e.target.classList.add("active");
+		}
+	}
+};
+
+designFeatures.container.addEventListener(
+	"click",
+	designFeatures.setActiveLetter
+);
