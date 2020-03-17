@@ -10,16 +10,19 @@
     </article>
     
 
-    <section class="about-variable-fonts-interactive">
+    <section class="about-variable-fonts-interactive interactive-controls">
         <section class="character-container">
             <!-- <input type="range" value="A" name="" min="12" max="128" step="any" class="interactive-controls-slider"> -->
-            <div class="character">a</div>
-
+            <div class="character interactive-controls-text">a</div>
+            <div class="character-outline-container">
+                <div class="character-outline thin">a</div>
+                <div class="character-outline fat">a</div>
+            </div>
             
         </section>
         <ul class="interactive-controls-list">
-            {% include tick-slider.html value: 100 labels: opsz labelCenter: "Optical Size" name: "font-size" min: 12 max: 128  badge: true %} 
-            {% include tick-slider.html value: 100 labels: instances name: "font-size" min: 12 max: 128  badge: true %} 
+            {% include tick-slider.html value: 100 labels: opsz labelCenter: "Optical Size" name: "opsz-slider" min: 12 max: 128  badge: true %} 
+            {% include tick-slider.html value: 500 labels: instances name: "wght-slider" min: 100 max: 900  badge: true %} 
         </ul>
         
         <div class="code-container">

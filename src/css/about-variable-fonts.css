@@ -61,7 +61,6 @@ code .string-value {
 
 .character-container .character {
 	--character-pos-x: 50%;
-	--weight: 450;
 
 	position: absolute;
 	top: 0;
@@ -70,4 +69,26 @@ code .string-value {
 	font-size: 35rem;
 	user-select: none;
 	font-weight: var(--weight);
+	cursor: pointer;
+}
+
+.character-outline-container {
+	display: flex;
+	justify-content: space-between;
+	user-select: none;
+}
+
+.character-outline {
+	font-size: 35rem;
+	color: white;
+	text-shadow: -1px -1px 0 var(--arapey-blue), 1px -1px 0 var(--arapey-blue),
+		-1px 1px 0 var(--arapey-blue), 1px 1px 0 var(--arapey-blue);
+}
+
+.character-outline.thin {
+	font-weight: 100;
+}
+
+.character-outline.fat {
+	font-weight: 900;
 }
