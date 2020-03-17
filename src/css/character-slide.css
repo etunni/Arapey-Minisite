@@ -1,0 +1,80 @@
+.character-slide-section {
+	--wght: var(--weight-regular);
+
+	margin: 10rem auto;
+	user-select: none;
+}
+
+.character-slide-lists-container {
+	position: relative;
+}
+
+.character-slide-lists {
+	overflow-x: hidden;
+	cursor: grab;
+}
+
+.character-slide-lists.active {
+	cursor: grabbing;
+}
+
+.character-slide-list {
+	position: relative;
+	display: none;
+	margin: 0;
+	font-weight: var(--wght);
+	transition: font-weight 200ms;
+	font-size: 40vw;
+	white-space: nowrap;
+	z-index: 2;
+}
+
+.character-slide-list.active {
+	display: block;
+}
+
+.character-slide-section-controls {
+	display: flex;
+	justify-content: center;
+}
+
+.slider-selector {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.25rem;
+}
+
+.slider-selector button {
+	font-size: 1.25rem;
+	font-weight: var(--weight-semi-bold);
+	cursor: pointer;
+	transition: 400ms color;
+}
+
+.slider-selector button:hover,
+.slider-selector button.active {
+	color: var(--arapey-green);
+}
+
+.character-slide-lists-container .line {
+	border-top: 1px solid var(--arapey-green);
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+.character-slide-lists-container .line-1 {
+	top: 19.5%;
+}
+.character-slide-lists-container .line-2 {
+	top: 20.5%;
+}
+.character-slide-lists-container .line-3 {
+	top: 39.8%;
+}
+.character-slide-lists-container .line-4 {
+	top: 79%;
+}
+.character-slide-lists-container .line-5 {
+	top: 98%;
+}

@@ -1,4 +1,6 @@
 .about-arapey-container {
+	--wght: var(--weight-regular);
+
 	margin: 5rem 0;
 }
 
@@ -39,7 +41,6 @@
 
 .about-arapey-content-interactive {
 	--text-alignment: center;
-	--wght: var(--weight-regular);
 	--font-size: 0;
 
 	max-width: 50rem;

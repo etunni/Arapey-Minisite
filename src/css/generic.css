@@ -32,6 +32,7 @@ button {
 	border: 0;
 	outline: 0;
 	background-color: transparent;
+	font-family: inherit;
 }
 
 [contenteditable] {

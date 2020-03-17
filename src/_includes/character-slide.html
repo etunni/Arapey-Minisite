@@ -1,0 +1,38 @@
+<section class="character-slide-section interactive-controls">
+    <div class="character-slide-section-controls">
+        {% include select.html handle:"interactive-controls-select" %}
+
+        <div class="slider-selector">
+            <button type="button" class="active" value="lowercase">lowercase</button>
+            |
+            <button type="button" value="uppercase">uppercase</button>
+            |
+            <button type="button" value="numerals">numerals</button>
+        </div>
+    </div>
+
+    <div class="character-slide-lists-container">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <div class="line line-4"></div>
+        <div class="line line-5"></div>
+        <div class="character-slide-lists interactive-controls-text">
+            <div class="character-slide-list active" data-value="lowercase">
+                &nbsp;{% for char in charset-letters -%}
+                {{ char }}
+                {%- endfor %}&nbsp;
+            </div>
+            <div class="character-slide-list" data-value="uppercase">
+                &nbsp;{% for char in charset-letters -%}
+                {{ char | capitalize }}
+                {%- endfor %}&nbsp;
+            </div>
+            <div class="character-slide-list" data-value="numerals">
+                &nbsp;{% for char in charset-numerals -%}
+                {{ char }}
+                {%- endfor %}&nbsp;
+            </div>
+        </div>
+    </div>
+</section>
