@@ -64,6 +64,7 @@
 }
 
 .arapey-hero-text span {
+	font-size: 1.25rem;
 	font-weight: var(--weight-light);
 	color: var(--arapey-red);
 }
