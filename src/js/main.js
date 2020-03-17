@@ -249,7 +249,7 @@ const characterSlideSection = document.querySelector(
 	".character-slide-section"
 );
 const characterSlideListContainer = characterSlideSection.querySelector(
-	".character-slide-list-container"
+	".character-slide-lists"
 );
 characterSlideListContainer.addEventListener("mouseover", () => {
 	characterSlide.shouldSlide = false;
