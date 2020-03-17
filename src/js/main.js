@@ -21,6 +21,24 @@ const throttle = (fn, wait) => {
 	};
 };
 
+// Generic: Like setInterval, but with rAF for better performance
+function setRAFInterval(fn, delay) {
+	let start = Date.now();
+	const data = {};
+	data.id = requestAnimationFrame(loop);
+
+	return data;
+
+	function loop() {
+		data.id = requestAnimationFrame(loop);
+
+		if (Date.now() - start >= delay) {
+			fn();
+			start = Date.now();
+		}
+	}
+}
+
 // Set up FontFaceObserver
 const font = new FontFaceObserver(fontName);
 font.load(null, fontTimeOut).then(
@@ -328,11 +346,158 @@ const onSwitchCase = e => {
 };
 capsSelectionList.addEventListener("click", onSwitchCase);
 
-const initializeApp = () => {
-	// TODO: set these value in a generic function that
-	// can be recalculated on window resize
-	// See https://github.com/undercasetype/fraunces-minisite/blob/master/src/js/main.js#L326
+// Letterwave
+const letterWave = {
+	// Setup stuff:
+	letter: "A",
+	color: "eeeeee",
+	cellSize: 30, // Smaller = more letters
+	steps: 16, // How many frames in animation from lowest to highest weight
+	waveStep: 3, // Speed to step through weightMap
+	waveAngle: 0.5, // Use this to determine steepness/angle
+	lineOffsetLines: 3, // How many "jagged starts"
+	darkenFactor: 2, // How much to darken bolder weight
+	// Internal stuff:
+	letters: [],
+	waveOffset: 0,
+	canvas: null,
+	ctx: null,
+	width: 0,
+	height: 0,
+	weightMap: [],
+	letterCanvases: [],
+	setup(selector) {
+		this.canvas = document.querySelector(selector);
+		this.setupCanvas();
+		this.setupLetterPositions();
+		this.setupWeightMap();
+		this.preRenderChars();
+	},
+	setLetter(letter) {
+		this.letter = letter;
+		this.preRenderChars();
+	},
+	resizeCanvas() {
+		topWave.setupCanvas();
+		topWave.setupLetterPositions();
+	},
+	// Pre-render chars
+	// We need to do this as rendering (variable) fonts directly
+	// to canvas each frame is too slow. We now build a cache of
+	// canvassed of the letter at each desired weight, and render
+	// those to the main canvas.
+	preRenderChars() {
+		const weighStep = Math.round(800 / this.steps); // Weight 100 to 900 = 800 steps
+		let weight = 100; // Weight starts at this value
+		let hexColor = parseInt(this.color, 16);
 
+		// Generate pre-rendered letters for weights 100 to 900
+		this.letterCanvases = [];
+		for (let i = 0; i <= this.steps; i++) {
+			const letterCanvas = document.createElement("canvas");
+			const letterCtx = letterCanvas.getContext("2d");
+			letterCtx.canvas.width = this.cellSize;
+			letterCtx.canvas.height = this.cellSize;
+			letterCtx.fillStyle = `#${hexColor.toString(16)}`;
+
+			letterCtx.font = `${weight} ${this.cellSize}px Arapey`;
+			letterCtx.textAlign = "center";
+			letterCtx.textBaseline = "middle";
+			letterCtx.fillText(
+				this.letter,
+				this.cellSize / 2,
+				this.cellSize / 2
+			);
+			this.letterCanvases.push(letterCanvas);
+
+			weight += weighStep;
+
+			// 65793 = 0x0101010, so turns #CCCCCC into #CBCBCB etc.
+			hexColor -= this.darkenFactor * 65793;
+		}
+	},
+	setupCanvas() {
+		this.width = this.canvas.offsetWidth;
+		this.height = this.canvas.offsetHeight;
+		this.ctx = this.canvas.getContext("2d");
+		this.ctx.canvas.width = this.width;
+		this.ctx.canvas.height = this.height;
+	},
+	// Array of each letter's position
+	setupLetterPositions() {
+		const columns = Math.floor(this.width / this.cellSize);
+		const rows = Math.floor(this.height / this.cellSize);
+
+		this.letters = [];
+		for (let i = 0; i <= rows; i++) {
+			for (let j = 0; j <= columns; j++) {
+				this.letters.push({
+					x: j * this.cellSize,
+					y: i * this.cellSize
+				});
+			}
+		}
+	},
+	// Array weights to loop through
+	setupWeightMap() {
+		this.weightMap = [];
+		for (let i = 0; i <= this.steps; i++) {
+			this.weightMap.push(i);
+			this.weightMap.unshift(i);
+			this.weightMap.unshift(i);
+			this.weightMap.unshift(i);
+		}
+	},
+	// Draw a new iteration of the wave to canvas
+	renderWave() {
+		let lineStartOffset = 0;
+		let count = this.waveOffset;
+		let localCount = this.waveOffset;
+		let previousLetterY;
+		let offsetX;
+
+		// Clear canvas
+		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+		// Draw each letter
+		for (const letter of this.letters) {
+			if (previousLetterY !== letter.y) {
+				// New row, shift starting weight
+				localCount += this.waveAngle;
+				count = Math.round(localCount);
+				lineStartOffset++;
+				lineStartOffset %= this.lineOffsetLines;
+				offsetX =
+					(lineStartOffset / this.lineOffsetLines) * this.cellSize;
+			}
+
+			// Determine weight based on wave
+			const weight = this.weightMap[count++ % this.weightMap.length];
+
+			this.ctx.drawImage(
+				this.letterCanvases[weight],
+				Math.round(letter.x - offsetX),
+				letter.y
+			);
+			previousLetterY = letter.y;
+		}
+		this.waveOffset += this.waveStep;
+	}
+};
+
+// On hover, put new letter in top letterwave
+document.querySelector(".arapey-hero-title").addEventListener(
+	"mouseover",
+	throttle(e => {
+		if (e.target.tagName === "SPAN") {
+			const newLetter = e.target.textContent;
+			topWave.setLetter(newLetter.toUpperCase());
+		}
+	}, 100)
+);
+
+const topWave = Object.create(letterWave);
+const initializeApp = () => {
 	setupInputs();
 	setGridCharacter();
 
@@ -340,5 +505,19 @@ const initializeApp = () => {
 		dropdown.querySelector("[value='Regular']").classList.add("active")
 	);
 
+	// Animate top letterwave ("AAAAAA")
+	topWave.setup(".arapey-hero-canvas");
+	setRAFInterval(() => {
+		topWave.renderWave();
+	}, 100);
+
+	// Slide wall of characters
 	loop();
 };
+
+// Update variables related to the viewport
+const setViewportValues = () => {
+	// Recalculate letterWave canvas dimensions
+	topWave.resizeCanvas();
+};
+window.onresize = throttle(setViewportValues, 100);
