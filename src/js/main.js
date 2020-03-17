@@ -235,6 +235,9 @@ const onClickOutside = () => {
 
 window.addEventListener("click", onClickOutside);
 
+// Sliding wall of characters
+// TODO: avoid layout thrashing by caching offset values,
+//       especially in the loop
 const characterSlide = {
 	x: 0,
 	oldX: 0,
