@@ -85,26 +85,25 @@
  *
  */
 .interactive-controls-tick-slider-container {
+	width: 100%;
 	max-width: var(--max-content-width);
+}
+
+.label-text {
+	white-space: nowrap;
+	font-weight: var(--weight-bold);
+	text-align: right;
+	font-size: 1.25rem;
+	padding-right: 0.5rem;
+	min-width: 6em; /* Picked to match the widest label */
 }
 
 .tick-list-item {
 	display: flex;
 }
 
-.tick-list-item > div {
-	width: 100%;
-	padding: 0 1rem;
-}
-
-.tick-list-item span {
-	font-weight: var(--weight-bold);
-	text-align: right;
-}
-
-.tick-list-item > span {
-	margin-top: 0.15rem;
-	font-size: 1.25rem;
+.tick-list-item + .tick-list-item {
+	margin-top: 2rem;
 }
 
 .interactive-controls-tick-slider {
