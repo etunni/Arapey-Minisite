@@ -205,46 +205,146 @@ alignmentInputs.forEach(item =>
 
 // Handle select box
 const selectElements = {
-	handle: document.querySelector("#about-arapey-select-controls"),
-	dropdown: document.querySelector(".interactive-controls-options-list")
+	handle: document.querySelectorAll("#interactive-controls-select"),
+	dropdown: document.querySelectorAll(".interactive-controls-options-list")
 };
 
-selectElements.handle.addEventListener("click", e => {
-	e.stopPropagation();
-
-	selectElements.dropdown.classList.add("show");
+selectElements.handle.forEach(handle => {
+	handle.addEventListener("click", e => {
+		e.stopPropagation();
+		e.currentTarget.nextElementSibling.classList.add("show");
+	});
 });
 
-selectElements.dropdown.addEventListener("click", e => {
-	if (e.target.type == "button") {
-		const textContainer = selectElements.handle.querySelector("span");
-		selectElements.handle.setAttribute("value", e.target.value);
+selectElements.dropdown.forEach(dropdown => {
+	dropdown.addEventListener("click", e => {
+		const interactiveElement = dropdown.closest(".interactive-controls");
+		if (e.target.type == "button") {
+			const textContainer = e.currentTarget.previousElementSibling.querySelector(
+				"span"
+			);
+			e.currentTarget.previousElementSibling.setAttribute(
+				"value",
+				e.target.value
+			);
 
-		selectElements.dropdown
-			.querySelector(".active")
-			.classList.remove("active");
+			e.currentTarget.querySelector(".active").classList.remove("active");
 
-		e.target.classList.add("active");
+			e.target.classList.add("active");
 
-		textContainer.textContent = e.target.value;
-		selectElements.dropdown.classList.remove("show");
+			textContainer.textContent = e.target.value;
+			e.currentTarget.classList.remove("show");
 
-		aboutInteractiveElement.style.setProperty(
-			"--wght",
-			e.target.getAttribute("data-wght")
-		);
-	}
+			interactiveElement.style.setProperty(
+				"--wght",
+				e.target.getAttribute("data-wght")
+			);
+		}
+	});
 });
 
-const onClickOutside = e => {
-	if (
-		selectElements.dropdown.classList.contains("show") &&
-		e.target.contains(selectElements.handle)
-	)
-		selectElements.dropdown.classList.remove("show");
+const onClickOutside = () => {
+	selectElements.dropdown.forEach(dropdown => {
+		if (dropdown.classList.contains("show")) {
+			dropdown.classList.remove("show");
+		}
+	});
 };
 
 window.addEventListener("click", onClickOutside);
+
+// Sliding wall of characters
+// TODO: avoid layout thrashing by caching offset values,
+//       especially in the loop
+const characterSlide = {
+	x: 0,
+	oldX: 0,
+	isDown: false,
+	shouldSlide: true,
+	scrollLeft: 0,
+	momentumID: null,
+	slideSpeed: -1,
+	dir: "right"
+};
+const characterSlideSection = document.querySelector(
+	".character-slide-section"
+);
+const characterSlideListContainer = characterSlideSection.querySelector(
+	".character-slide-lists"
+);
+characterSlideListContainer.addEventListener("mouseover", () => {
+	characterSlide.shouldSlide = false;
+});
+characterSlideListContainer.addEventListener("mouseout", () => {
+	characterSlide.shouldSlide = true;
+	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
+});
+characterSlideListContainer.addEventListener("mousedown", e => {
+	characterSlide.isDown = true;
+	characterSlide.oldX = e.pageX;
+	characterSlide.x = e.pageX - e.currentTarget.offsetLeft;
+	characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling in the scroll container
+	characterSlideListContainer.classList.add("active");
+});
+characterSlideListContainer.addEventListener("mousemove", e => {
+	if (!characterSlide.isDown) return;
+	const slideDistance = e.pageX - characterSlide.x;
+	characterSlide.slideSpeed = e.pageX - characterSlide.oldX;
+	characterSlide.oldX = e.pageX;
+	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
+});
+characterSlideListContainer.addEventListener("mouseup", () => {
+	characterSlide.isDown = false;
+	characterSlideListContainer.classList.remove("active");
+	cancelAnimationFrame(characterSlide.momentumID);
+	loop();
+});
+const loop = () => {
+	const factor = 0.9;
+	if (characterSlide.slideSpeed > 1.5 || characterSlide.slideSpeed < -1.5) {
+		// Finish momentum slide
+		characterSlide.slideSpeed *= factor;
+		characterSlide.lastSlideSpeed = characterSlide.slideSpeed;
+	} else {
+		// Done slowing down, round last speed to a sane minimum
+		if (characterSlide.shouldSlide) {
+			characterSlide.slideSpeed = characterSlide.slideSpeed >= 0 ? 1 : -1;
+		} else {
+			characterSlide.slideSpeed = 0;
+		}
+	}
+
+	// If edge is reached, reverse scroll direction
+	if (
+		characterSlideListContainer.scrollWidth -
+			characterSlideSection.scrollWidth ===
+			characterSlideListContainer.scrollLeft ||
+		characterSlideListContainer.scrollLeft === 0
+	) {
+		characterSlide.slideSpeed = characterSlide.slideSpeed * -1;
+		characterSlide.lastSlideSpeed = characterSlide.slideSpeed;
+	}
+
+	characterSlideListContainer.scrollLeft -= characterSlide.slideSpeed;
+	characterSlide.momentumID = requestAnimationFrame(() => loop());
+};
+
+const capsSelectionList = characterSlideSection.querySelector(
+	".slider-selector"
+);
+const onSwitchCase = e => {
+	if (e.target.tagName !== "BUTTON") return;
+	capsSelectionList.querySelector(".active").classList.remove("active");
+	characterSlideListContainer
+		.querySelector(".active")
+		.classList.remove("active");
+
+	e.target.classList.add("active");
+	characterSlideListContainer
+		.querySelector(`[data-value=${e.target.value}]`)
+		.classList.add("active");
+};
+capsSelectionList.addEventListener("click", onSwitchCase);
 
 // Letterwave
 const letterWave = {
@@ -401,15 +501,18 @@ const initializeApp = () => {
 	setupInputs();
 	setGridCharacter();
 
-	selectElements.dropdown
-		.querySelector("[value='Regular']")
-		.classList.add("active");
+	selectElements.dropdown.forEach(dropdown =>
+		dropdown.querySelector("[value='Regular']").classList.add("active")
+	);
 
 	// Animate top letterwave ("AAAAAA")
 	topWave.setup(".arapey-hero-canvas");
 	setRAFInterval(() => {
 		topWave.renderWave();
 	}, 100);
+
+	// Slide wall of characters
+	loop();
 };
 
 // Update variables related to the viewport
