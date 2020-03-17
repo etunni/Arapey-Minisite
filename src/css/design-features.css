@@ -1,0 +1,8 @@
+.design-features-section {
+	max-width: var(--max-content-width);
+	margin: 0 auto;
+}
+
+.design-features-section .arapey-title-green {
+	text-align: center;
+}
