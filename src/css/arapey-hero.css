@@ -1,53 +1,81 @@
+/*
+	Stylelint messes up with the .nth-child spans, so
+	we disable that specific rule:
+*/
+
+/* stylelint-disable no-descending-specificity */
+
 .arapey-hero {
-	background-color: var(--arapey-white);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.hero-text-container {
-	max-width: var(--max-content-width);
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.arapey-hero-text-container {
-	padding: 5rem 0;
-}
-
-.wave-characters-container {
-	/* Temporary styles until the wave will be implemented */
-	color: var(--arapey-gray);
-	font-size: 2.25rem;
+	height: 90vh;
 	position: relative;
 }
 
-.wave-characters-container p {
-	word-break: break-all;
-	text-transform: uppercase;
-}
-
-.arapey-hero h1 {
+.arapey-hero-title {
+	position: absolute;
+	z-index: 2;
+	top: 45%;
+	left: 0;
+	right: 0;
+	transform: translateY(-50%);
+	font-size: 25vw;
 	margin: 0;
-	color: var(--arapey-red);
-	font-size: 20rem;
-	font-weight: var(--weight-extra-bold);
-}
-
-.arapey-hero h2 {
-	color: var(--arapey-black);
-	font-size: 1.75rem;
-	font-weight: var(--weight-regular);
 	display: flex;
 	justify-content: center;
+	color: var(--arapey-red);
+	line-height: 0.8; /* Prevent hover-area from growing too large */
 }
 
-.scroll-down {
-	display: flex;
-	justify-content: center;
-	font-size: 1.25rem;
-	font-weight: var(--weight-regular);
+.arapey-hero-title span:nth-child(1) {
+	font-weight: 900;
+}
+.arapey-hero-title span:nth-child(2) {
+	font-weight: 740;
+}
+.arapey-hero-title span:nth-child(3) {
+	font-weight: 580;
+}
+.arapey-hero-title span:nth-child(4) {
+	font-weight: 420;
+}
+.arapey-hero-title span:nth-child(5) {
+	font-weight: 260;
+}
+.arapey-hero-title span:nth-child(6) {
+	font-weight: 100;
+}
+
+.arapey-hero-text {
+	position: absolute;
+	z-index: 2;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 2rem 0;
+	text-align: center;
+	background: linear-gradient(
+		to bottom,
+		rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 1)
+	);
+}
+
+.arapey-hero-text h2 {
+	font-weight: var(--weight-light);
+}
+
+.arapey-hero-text span {
+	font-weight: var(--weight-light);
 	color: var(--arapey-red);
+}
+
+.arapey-hero-canvas {
+	pointer-events: none;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
 }
