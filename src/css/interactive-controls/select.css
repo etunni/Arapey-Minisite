@@ -19,8 +19,6 @@
 }
 
 .interactive-controls-options-list {
-	--arapey-light-gray-transparent: rgba(247, 247, 247, 0.9);
-
 	background-color: var(--arapey-light-gray-transparent);
 	padding: 1rem 0;
 	display: none;
