@@ -93,8 +93,8 @@
 }
 
 .floating-letter.active {
-	--x: calc(50% - 200px);
-	--y: calc(50%);
+	--x: calc(50% - 170px);
+	--y: calc(50% - 10px);
 
 	left: var(--x);
 	top: var(--y);
