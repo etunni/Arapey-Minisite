@@ -589,7 +589,17 @@ const designFeatures = {
 			designFeatures.container
 				.querySelector(".active")
 				.classList.remove("active");
+
+			designFeatures.container
+				.querySelector(".floating-letter-inside.active")
+				.classList.remove("active");
+
 			e.target.classList.add("active");
+
+			console.log(e.target);
+			e.target
+				.querySelector(".floating-letter-inside")
+				.classList.add("active");
 		}
 	}
 };

@@ -27,9 +27,6 @@
 	animation-direction: alternate;
 	animation-timing-function: ease-in-out;
 	transition: left 1s, top 1s;
-
-	/* TODO: Remove when replaced with images */
-	font-size: 20rem;
 }
 
 .floating-letter.a {
@@ -96,16 +93,28 @@
 }
 
 .floating-letter.active {
-	--x: calc(50% - 250px);
-	--y: calc(50% + 20px);
+	--x: calc(50% - 200px);
+	--y: calc(50%);
 
 	left: var(--x);
 	top: var(--y);
+	transition: left 1s, top 1s;
+}
+
+.floating-letter-inside {
+	display: block;
+	pointer-events: none;
+	transform: scale(1);
+	transition: transform 1s;
+}
+
+.floating-letter-inside.active {
+	transform: scale(1.5);
 }
 
 .floating-letter.g.active {
 	/* Make the "G" centered! */
-	--x: calc(50% - 350px);
+	--x: calc(50% - 200px);
 	--y: calc(50% - 120px);
 
 	left: var(--x);
@@ -115,7 +124,6 @@
 .floating-letter svg {
 	width: 25vw;
 	height: 25vh;
-	pointer-events: none;
 }
 
 .floating-letter.g svg {
@@ -147,8 +155,8 @@
 		top: var(--y);
 	}
 	.floating-letter.d {
-		--x: 15%;
-		--y: 45%;
+		--x: 30%;
+		--y: 55%;
 
 		left: var(--x);
 		top: var(--y);
@@ -172,23 +180,23 @@
 
 	.floating-letter.r {
 		--x: 6%;
-		--y: 78%;
+		--y: 68%;
 
 		left: var(--x);
 		top: var(--y);
 	}
 
 	.floating-letter.u {
-		--x: 64%;
-		--y: 37%;
+		--x: 78%;
+		--y: 27%;
 
 		left: var(--x);
 		top: var(--y);
 	}
 
 	.floating-letter.v {
-		--x: 58%;
-		--y: 59%;
+		--x: 67%;
+		--y: 55%;
 
 		left: var(--x);
 		top: var(--y);
@@ -196,6 +204,16 @@
 
 	.floating-letter.active {
 		--x: calc(50% - 150px);
+		--y: calc(50% - 200px);
+
+		animation-delay: 0s;
+		left: var(--x);
+		top: var(--y);
+	}
+
+	.floating-letter.g.active {
+		/* Make the "G" centered! */
+		--x: calc(50% - 250px);
 		--y: calc(50% - 200px);
 
 		left: var(--x);
