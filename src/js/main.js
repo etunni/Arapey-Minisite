@@ -596,7 +596,6 @@ const designFeatures = {
 
 			e.target.classList.add("active");
 
-			console.log(e.target);
 			e.target
 				.querySelector(".floating-letter-inside")
 				.classList.add("active");
