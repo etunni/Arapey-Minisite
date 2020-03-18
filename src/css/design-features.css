@@ -2,7 +2,6 @@
 	max-width: var(--max-content-width);
 	margin: 0 auto;
 	min-height: 600px;
-	margin-bottom: 4rem;
 }
 
 .design-features-section .arapey-title-green {
@@ -12,6 +11,8 @@
 .floating-letter-container {
 	position: relative;
 	min-height: inherit;
+	margin-top: 10rem;
+	margin-bottom: 10rem;
 }
 
 .floating-letter {
@@ -31,34 +32,24 @@
 	font-size: 20rem;
 }
 
-.floating-letter:nth-child(1) {
-	--x: 60%;
-	--y: 60%;
+.floating-letter.a {
+	--x: -10%;
+	--y: -20%;
 
 	left: var(--x);
 	top: var(--y);
 }
-.floating-letter:nth-child(2) {
-	--x: 20%;
-	--y: 30%;
+.floating-letter.d {
+	--x: -10%;
+	--y: 50%;
 
 	left: var(--x);
 	top: var(--y);
 }
 
-.floating-letter:nth-child(2) {
-	--x: 3%;
-	--y: 10%;
-
-	left: var(--x);
-	top: var(--y);
-	animation-delay: 0.2s;
-	animation-duration: 7s;
-}
-
-.floating-letter:nth-child(3) {
-	--x: 10%;
-	--y: 49%;
+.floating-letter.g {
+	--x: 23%;
+	--y: -27%;
 
 	left: var(--x);
 	top: var(--y);
@@ -66,8 +57,8 @@
 	animation-duration: 3s;
 }
 
-.floating-letter:nth-child(4) {
-	--x: 70%;
+.floating-letter.m {
+	--x: 80%;
 	--y: -6%;
 
 	left: var(--x);
@@ -76,9 +67,9 @@
 	animation-duration: 8s;
 }
 
-.floating-letter:nth-child(5) {
-	--x: 34%;
-	--y: -22%;
+.floating-letter.r {
+	--x: 6%;
+	--y: 101%;
 
 	left: var(--x);
 	top: var(--y);
@@ -86,8 +77,8 @@
 	animation-duration: 9s;
 }
 
-.floating-letter:nth-child(6) {
-	--x: 84%;
+.floating-letter.u {
+	--x: 74%;
 	--y: 60%;
 
 	left: var(--x);
@@ -95,12 +86,131 @@
 	animation-delay: 0.8s;
 }
 
-.floating-letter.active {
-	--x: calc(50% - 100px);
-	--y: calc(50% - 175px);
+.floating-letter.v {
+	--x: 58%;
+	--y: 89%;
 
 	left: var(--x);
 	top: var(--y);
+	animation-delay: 0.8s;
+}
+
+.floating-letter.active {
+	--x: calc(50% - 250px);
+	--y: calc(50% + 20px);
+
+	left: var(--x);
+	top: var(--y);
+}
+
+.floating-letter.g.active {
+	/* Make the "G" centered! */
+	--x: calc(50% - 350px);
+	--y: calc(50% - 120px);
+
+	left: var(--x);
+	top: var(--y);
+}
+
+.floating-letter svg {
+	width: 25vw;
+	height: 25vh;
+	pointer-events: none;
+}
+
+.floating-letter.g svg {
+	width: 35vw;
+	height: 35vh;
+}
+
+.floating-letter.m svg {
+	width: 20vw;
+	height: 20vh;
+}
+
+.floating-letter.u svg {
+	width: 23vw;
+	height: 23vh;
+}
+
+@media screen and (max-width: 70em) {
+	.floating-letter svg {
+		width: 17vw;
+		height: 17vh;
+	}
+
+	.floating-letter.a {
+		--x: 3%;
+		--y: -20%;
+
+		left: var(--x);
+		top: var(--y);
+	}
+	.floating-letter.d {
+		--x: 15%;
+		--y: 45%;
+
+		left: var(--x);
+		top: var(--y);
+	}
+
+	.floating-letter.g {
+		--x: 43%;
+		--y: -27%;
+
+		left: var(--x);
+		top: var(--y);
+	}
+
+	.floating-letter.m {
+		--x: 80%;
+		--y: -6%;
+
+		left: var(--x);
+		top: var(--y);
+	}
+
+	.floating-letter.r {
+		--x: 6%;
+		--y: 78%;
+
+		left: var(--x);
+		top: var(--y);
+	}
+
+	.floating-letter.u {
+		--x: 64%;
+		--y: 37%;
+
+		left: var(--x);
+		top: var(--y);
+	}
+
+	.floating-letter.v {
+		--x: 58%;
+		--y: 59%;
+
+		left: var(--x);
+		top: var(--y);
+	}
+
+	.floating-letter.active {
+		--x: calc(50% - 150px);
+		--y: calc(50% - 200px);
+
+		left: var(--x);
+		top: var(--y);
+	}
+
+	.floating-letter.g svg {
+		width: 20vw;
+		height: 20vh;
+	}
+
+	.floating-letter.u svg {
+		width: 15vw;
+		height: 15vh;
+	}
 }
 
 @keyframes float {

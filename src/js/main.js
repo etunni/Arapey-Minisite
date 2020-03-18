@@ -585,7 +585,6 @@ window.onresize = throttle(setViewportValues, 100);
 const designFeatures = {
 	container: document.querySelector(".floating-letter-container"),
 	setActiveLetter(e) {
-		console.log("!");
 		if (e.target.nodeName == "SPAN") {
 			designFeatures.container
 				.querySelector(".active")
