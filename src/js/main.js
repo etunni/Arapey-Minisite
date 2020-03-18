@@ -520,4 +520,64 @@ const setViewportValues = () => {
 	// Recalculate letterWave canvas dimensions
 	topWave.resizeCanvas();
 };
+
+// General mouse object.
+const mouse = {
+	x: 0,
+	y: 0
+};
+
+window.addEventListener("mousemove", e => {
+	mouse.x = e.clientX;
+	mouse.y = e.clientY;
+});
+
+const aboutFontsSection = document.querySelector(
+	".about-variable-fonts-section"
+);
+
+const aboutFonts = {
+	containerEl: aboutFontsSection.querySelector(".character-container"),
+	characterEl: aboutFontsSection.querySelector(".character"),
+	isDown: false,
+	maxFontWeight: 900,
+	onDragCharacter: () => {
+		if (!aboutFonts.isDown) return;
+		aboutFonts.calculateCharacterPos();
+	},
+	onDropCharacter: () => {
+		aboutFonts.isDown = false;
+	},
+	onMouseDown: () => {
+		aboutFonts.isDown = true;
+	},
+	calculateCharacterPos: () => {
+		const distX = mouse.x - aboutFonts.containerEl.offsetLeft;
+		const percentageWidth = (
+			distX /
+			(aboutFonts.containerEl.offsetWidth / 100)
+		).toFixed(2);
+
+		const boundaries = Math.max(1, Math.min(percentageWidth, 100));
+		const weight = Math.round(
+			(boundaries * aboutFonts.maxFontWeight) / 100
+		);
+
+		aboutFonts.characterEl.style.setProperty(
+			"--character-pos-x",
+			`${boundaries}%`
+		);
+
+		aboutFonts.characterEl.style.setProperty("--weight", `${weight}`);
+	}
+};
+
+aboutFonts.characterEl.addEventListener("mousedown", aboutFonts.onMouseDown);
+
+aboutFonts.containerEl.addEventListener(
+	"mousemove",
+	aboutFonts.onDragCharacter
+);
+
+aboutFonts.containerEl.addEventListener("mouseup", aboutFonts.onDropCharacter);
 window.onresize = throttle(setViewportValues, 100);

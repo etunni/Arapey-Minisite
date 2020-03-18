@@ -1,0 +1,119 @@
+.about-variable-fonts-section {
+	max-width: var(--max-content-width);
+	margin: 0 auto;
+	padding-top: 4rem;
+}
+
+.about-variable-fonts-container h1 {
+	margin-bottom: 0;
+	color: var(--arapey-blue);
+}
+
+.about-variable-fonts-container {
+	font-size: 1.5rem;
+	line-height: 1.5;
+	text-align: center;
+	padding: 2rem;
+}
+
+.about-variable-fonts-container p {
+	margin-bottom: 2.5rem;
+}
+
+.about-variable-fonts-section .interactive-controls-list {
+	margin-bottom: 5rem;
+}
+
+.about-variable-fonts-section .interactive-controls-list-item {
+	margin-bottom: 3.5rem;
+}
+
+.code-container {
+	background-color: var(--arapey-gray);
+	padding: 1.5rem;
+}
+
+.about-variable-fonts-section code {
+	font-size: 1.25rem;
+	line-height: 1.25;
+}
+
+code .property {
+	margin-left: 1.5rem;
+	color: var(--arapey-blue);
+}
+
+code .int-value {
+	margin-left: 0.5rem;
+	color: var(--arapey-red);
+}
+
+code .string-value {
+	margin-left: 0.5rem;
+	color: var(--arapey-green);
+}
+
+.character-container {
+	position: relative;
+	height: 500px;
+}
+
+.character-container .character {
+	--character-pos-x: 50%;
+
+	position: absolute;
+	top: 0;
+	left: var(--character-pos-x);
+	transform: translateX(-50%);
+	font-size: 35rem;
+	user-select: none;
+	font-weight: var(--weight);
+	cursor: pointer;
+}
+
+.character-outline-container {
+	display: flex;
+	justify-content: space-between;
+	user-select: none;
+}
+
+.character-outline {
+	font-size: 35rem;
+	color: white;
+	text-shadow: -1px -1px 0 var(--arapey-blue), 1px -1px 0 var(--arapey-blue),
+		-1px 1px 0 var(--arapey-blue), 1px 1px 0 var(--arapey-blue);
+}
+
+.character-outline.thin {
+	font-weight: 100;
+}
+
+.character-outline.fat {
+	font-weight: 900;
+}
+
+.arapey-styles-container {
+	margin-top: 2.5rem;
+}
+
+.arapey-styles-container h2 {
+	margin-bottom: 1rem;
+}
+
+.arapey-styles-list-container {
+	display: flex;
+	font-size: 1.25rem;
+}
+
+.arapey-styles-container ul {
+	font-weight: var(--weight-regular);
+}
+
+.arapey-styles-container li {
+	margin-bottom: 0.5em;
+}
+
+.arapey-styles-container ul + ul {
+	font-weight: var(--weight-bold);
+	margin-left: 3.5rem;
+}
