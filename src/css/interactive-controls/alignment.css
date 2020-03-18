@@ -2,24 +2,21 @@
 	display: flex;
 }
 
-.alignment-item {
-	margin-right: 1rem;
+.alignment-item + .alignment-item {
+	margin-left: 0.5rem;
 }
 
-.alignment-input + label {
-	cursor: pointer;
-	transition: color 200ms;
+.alignment-item:hover svg {
+	fill: var(--arapey-red);
+	transition: fill 200ms;
 }
 
-.alignment-input + label:hover {
-	color: var(--arapey-red);
-}
-
-.alignment-input:checked + label {
-	color: var(--arapey-red);
+.alignment-input:checked + label svg {
+	fill: var(--arapey-red);
 }
 
 .about-arapey-content-interactive .interactive-controls-alignment {
 	align-items: center;
+	padding-top: 2.5rem;
 	margin-left: 1rem;
 }
