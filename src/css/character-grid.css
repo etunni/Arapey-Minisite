@@ -5,12 +5,13 @@
 	--weight-grid-slider: 58;
 }
 
-.character-grid-inner-container {
-	display: flex;
+.character-grid-section {
+	max-width: var(--max-content-width);
+	margin: 0 auto;
 }
 
-.character-grid-section {
-	padding: 2rem;
+.character-grid-inner-container {
+	display: flex;
 }
 
 .character-grid {
@@ -20,10 +21,10 @@
 	font-size: var(--character-grid-font-size);
 	flex: 1; /* We don't want both of the elements to take in the space they need.  */
 	min-height: 600px;
-	max-height: 45vw;
+	height: 46rem;
 	overflow-y: scroll;
 	overflow-x: hidden;
-	padding: 1.75rem 0; /* Prevent cut-off hover. */
+	margin: 0;
 }
 
 .character-grid-item {
@@ -68,7 +69,6 @@
 	position: relative;
 }
 
-.character-grid-section .interactive-controls-tick-slider-container {
-	margin: 0 auto;
-	margin-top: 4rem;
+.character-grid-section .interactive-controls-list {
+	margin: 4rem auto 10rem auto;
 }
