@@ -6,6 +6,7 @@
 
 .about-variable-fonts-container h1 {
 	margin-bottom: 0;
+	color: var(--arapey-blue);
 }
 
 .about-variable-fonts-container {
@@ -39,7 +40,7 @@
 
 code .property {
 	margin-left: 1.5rem;
-	color: var(--arapey-dark-blue);
+	color: var(--arapey-blue);
 }
 
 code .int-value {

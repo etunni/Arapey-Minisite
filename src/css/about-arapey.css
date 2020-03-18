@@ -11,39 +11,40 @@
 
 .about-arapey-content {
 	text-align: center;
+	font-weight: var(--weight-regular);
+	max-width: var(--max-prose-content-width);
+	margin: 0 auto;
 }
 
-.about-arapey-content .prose-content {
-	font-size: 2.5rem;
-	font-weight: var(--weight-regular);
-	line-height: 1.35;
+.about-arapey-content-large {
+	font-size: 2rem;
+	line-height: 1.5;
+}
+
+.about-arapey-content-small {
+	font-size: 1.35rem;
+	line-height: 1.5;
+}
+
+.about-arapey-title {
+	--opsz: 128;
+
+	color: var(--arapey-red);
+	font-size: 4rem;
+	font-weight: var(--weight-bold);
+	margin-bottom: 2rem;
 }
 
 .arapey-pronounced {
 	color: var(--arapey-red);
 }
 
-.about-arapey-title {
-	color: var(--arapey-red);
-	font-size: 4.5rem;
-	font-weight: var(--weight-thin);
-	margin-bottom: 0;
-}
-
-.about-arapey-title + .prose-content {
-	margin-top: 1rem;
-}
-
-.about-arapey-content-detailed .prose-content {
-	font-size: 1.5rem;
-	line-height: 1.5;
-}
-
 .about-arapey-content-interactive {
 	--text-alignment: center;
 	--font-size: 0;
+}
 
-	max-width: 50rem;
+.about-arapey-content-interactive .interactive-controls-select-group {
 	margin: 0 auto;
 }
 

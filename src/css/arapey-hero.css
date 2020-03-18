@@ -11,6 +11,8 @@
 }
 
 .arapey-hero-title {
+	--opsz: 128;
+
 	position: absolute;
 	z-index: 2;
 	top: 45%;
@@ -64,6 +66,7 @@
 }
 
 .arapey-hero-text span {
+	font-size: 1.25rem;
 	font-weight: var(--weight-light);
 	color: var(--arapey-red);
 }
@@ -78,4 +81,29 @@
 	bottom: 0;
 	width: 100%;
 	height: 100%;
+}
+
+.faux-placeholder-button {
+	width: 10rem;
+	height: 10rem;
+	background: var(--arapey-green);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 3rem;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 10;
+	text-align: center;
+	border-radius: 50%;
+	font-size: 2rem;
+	line-height: 1;
+}
+.faux-placeholder-button span {
+	display: block;
+	padding-top: 0.5rem;
+	margin-bottom: -0.5rem;
 }

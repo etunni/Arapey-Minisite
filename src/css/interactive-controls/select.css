@@ -1,3 +1,13 @@
+.interactive-controls-select-group {
+	width: 14rem;
+	position: relative;
+	flex: none;
+}
+
+.interactive-controls-select-group * {
+	font-family: inherit;
+}
+
 .interactive-controls-select-handle {
 	font-weight: var(--weight-semi-bold);
 	font-size: 1.125rem;
@@ -19,8 +29,6 @@
 }
 
 .interactive-controls-options-list {
-	--arapey-light-gray-transparent: rgba(247, 247, 247, 0.9);
-
 	background-color: var(--arapey-light-gray-transparent);
 	padding: 1rem 0;
 	display: none;
@@ -53,14 +61,4 @@
 
 .interactive-controls-options-list li:hover .interactive-controls-option {
 	color: var(--arapey-red);
-}
-
-.interactive-controls-select-group {
-	max-width: 14rem;
-	position: relative;
-	flex: auto;
-}
-
-.interactive-controls-select-group * {
-	font-family: inherit;
 }

@@ -1,12 +1,12 @@
 
-{% comment %} 
-    Usage: 
-        {% include toggle.html with color: "blue-purple" %} 
+{% comment %}
+    Usage:
+        {% include toggle.html with color: "color-color" %}
 {% endcomment %}
 
 {% if color %}
     {% capture counter %}switch-{% increment counter %}{% endcapture %}
-    
+
 
     <input id="{{ counter }}" type="checkbox" class="interactive-controls-checkbox" {{ checked }}  />
     <label

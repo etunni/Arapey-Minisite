@@ -37,18 +37,6 @@
 	font-weight: var(--toggle-block-font-weight);
 }
 
-.toggle-block-gray {
-	--toggle-block-font-weight: var(--weight-thin);
-
-	background-color: var(--arapey-gray);
-	color: var(--arapey-red);
-}
-
-.toggle-block-gray .toggle-block-morphing-text {
-	font-size: 12vw;
-	font-weight: var(--toggle-block-font-weight);
-}
-
 .toggle-content {
 	display: flex;
 	margin-top: 2.5rem;
