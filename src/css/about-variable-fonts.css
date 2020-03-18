@@ -60,6 +60,7 @@ code .string-value {
 
 .character-container .character {
 	--character-pos-x: 50%;
+	--opsz-slider: 128;
 
 	position: absolute;
 	top: 0;
@@ -67,7 +68,8 @@ code .string-value {
 	transform: translateX(-50%);
 	font-size: 35rem;
 	user-select: none;
-	font-weight: var(--weight);
+	font-weight: var(--wght-slider);
+	font-variation-settings: "opsz" var(--opsz-slider);
 	cursor: pointer;
 }
 

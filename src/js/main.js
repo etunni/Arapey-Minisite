@@ -539,6 +539,9 @@ const aboutFontsSection = document.querySelector(
 const aboutFonts = {
 	containerEl: aboutFontsSection.querySelector(".character-container"),
 	characterEl: aboutFontsSection.querySelector(".character"),
+	weightSliderContainer: aboutFontsSection.querySelector(
+		".wght-slider-container"
+	),
 	isDown: false,
 	maxFontWeight: 900,
 	onDragCharacter: () => {
@@ -553,6 +556,9 @@ const aboutFonts = {
 	},
 	calculateCharacterPos: () => {
 		const distX = mouse.x - aboutFonts.containerEl.offsetLeft;
+
+		console.log(distX);
+
 		const percentageWidth = (
 			distX /
 			(aboutFonts.containerEl.offsetWidth / 100)
@@ -568,7 +574,14 @@ const aboutFonts = {
 			`${boundaries}%`
 		);
 
-		aboutFonts.characterEl.style.setProperty("--weight", `${weight}`);
+		aboutFonts.characterEl.style.setProperty("--wght-slider", `${weight}`);
+
+		const weightSlider = aboutFonts.weightSliderContainer.querySelector(
+			".wght-slider"
+		);
+
+		setupBadge(weightSlider, distX);
+		weightSlider.value = distX;
 	}
 };
 
