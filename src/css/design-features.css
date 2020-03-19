@@ -1,7 +1,7 @@
 .design-features-section {
 	max-width: var(--max-content-width);
 	margin: 0 auto;
-	min-height: 60vh;
+	min-height: 50vh;
 }
 
 .design-features-section .arapey-title-green {
@@ -11,8 +11,8 @@
 .floating-letter-container {
 	position: relative;
 	min-height: inherit;
-	margin-top: 10rem;
-	margin-bottom: 10rem;
+	margin-top: 7.5rem;
+	margin-bottom: 1rem;
 }
 
 .floating-letter {
@@ -76,7 +76,7 @@
 
 .floating-letter.u {
 	--x: 74%;
-	--y: 60%;
+	--y: 48%;
 
 	left: var(--x);
 	top: var(--y);
@@ -84,8 +84,8 @@
 }
 
 .floating-letter.v {
-	--x: 58%;
-	--y: 89%;
+	--x: 66%;
+	--y: 94%;
 
 	left: var(--x);
 	top: var(--y);
@@ -122,13 +122,13 @@
 }
 
 .floating-letter svg {
-	width: 25vw;
-	height: 25vh;
+	width: 20vw;
+	height: 20vh;
 }
 
 .floating-letter.g svg {
-	width: 35vw;
-	height: 35vh;
+	width: 30vw;
+	height: 30vh;
 }
 
 .floating-letter.m svg {
@@ -155,8 +155,8 @@
 		top: var(--y);
 	}
 	.floating-letter.d {
-		--x: 30%;
-		--y: 55%;
+		--x: 38%;
+		--y: 72%;
 
 		left: var(--x);
 		top: var(--y);
@@ -172,7 +172,7 @@
 
 	.floating-letter.m {
 		--x: 80%;
-		--y: -6%;
+		--y: -16%;
 
 		left: var(--x);
 		top: var(--y);
@@ -204,7 +204,7 @@
 
 	.floating-letter.active {
 		--x: calc(50% - 150px);
-		--y: calc(50% - 200px);
+		--y: calc(50% - 100px);
 
 		animation-delay: 0s;
 		left: var(--x);
@@ -213,7 +213,7 @@
 
 	.floating-letter.g.active {
 		/* Make the "G" centered! */
-		--x: calc(50% - 250px);
+		--x: calc(50% - 150px);
 		--y: calc(50% - 200px);
 
 		left: var(--x);
