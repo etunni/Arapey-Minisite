@@ -8,7 +8,6 @@
             The <strong class="emphasized">Optical Size</strong> axis controls the overall contrast between thicks and thins. But the Optical Size axis goes a step further, however, and factors in additional changes depending on the size of the font. At smaller sizes, the letterspacing opens up, x-height increases, and contrast decreases to allow for easier reading.
         </p>
     </article>
-    
 
     <section class="about-variable-fonts-interactive interactive-controls">
         <section class="character-container">
@@ -17,30 +16,32 @@
                 <div class="character-outline thin">a</div>
                 <div class="character-outline fat">a</div>
             </div>
-            
+
         </section>
         <ul class="interactive-controls-list">
-            {% include tick-slider.html value: 100 labels: opsz labelCenter: "Optical Size" name: "opsz-slider" min: 12 max: 128  badge: true %} 
-            {% include tick-slider.html value: 500 labels: instances name: "wght-slider" min: 100 max: 900  badge: true %} 
+            {% include tick-slider.html value: 100 labels: opsz labelCenter: "Optical Size" name: "opsz-slider" min: 12 max: 128 badge: true %} {% include tick-slider.html value: 500 labels: instances name: "wght-slider" min: 100 max: 900 badge: true %}
         </ul>
-        
+
         <div class="code-container">
             <code>
-                .arapey {
-                    <br />
-                    <span class="property">font-family:</span><span class="string-value">"ArapeyVF;"</span><br  />
-                    <span class="property">font-variation-settings:</span><span class="string-value">"opsz"</span><span class="int-value opsz-slider">120;</span><br />
-                    <span class="property">font-weight:</span><span class="int-value wght-slider">34;</span><br />
+                .arapey {<br>
+                    <span class="property">font-family:</span>
+                    <span class="string-value">"ArapeyVF;"</span><br>
+                    <span class="property">font-variation-settings:</span>
+                    <span class="string-value">"opsz"</span>
+                    <span class="int-value opsz-slider"></span>;<br>
+                    <span class="property">font-weight:</span>
+                    <span class="int-value wght-slider"></span>;<br>
                 }
             </code>
         </div>
 
         <section class="arapey-styles-container">
             <h2 class="arapey-title-blue">Arapey Styles</h2>
-           <div class="arapey-styles-list-container">
+            <div class="arapey-styles-list-container">
                 <ul>
                     <li>With 2 styles</li>
-                    <li>8 Weights</li>
+                    <li>9 Weights</li>
                     <li>2 Display Options</li>
                     <li>Variable Weights</li>
                     <li>Optical Sizes</li>
@@ -48,14 +49,12 @@
 
                 <ul>
                     <li>Roman & Italic (available later)</li>
-                    <li>Thin, ExtraLight, Light, Regular, Medium, Semibold, Bold, Black</li>
+                    <li>Thin, Extralight, Light, Regular, Medium, Semibold, Bold, Extrabold, Black</li>
                     <li>Display Thin, Display Black</li>
-                    <li>30 — 240</li>
+                    <li>100 — 900</li>
                     <li>12 — 128</li>
                 </ul>
-           </div>
+            </div>
         </section>
     </section>
-
- 
 </section>

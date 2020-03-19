@@ -35,21 +35,19 @@
 
 .about-variable-fonts-section code {
 	font-size: 1.25rem;
-	line-height: 1.25;
+	line-height: 1.5;
 }
 
 code .property {
-	margin-left: 1.5rem;
+	margin-left: 2em;
 	color: var(--arapey-blue);
 }
 
 code .int-value {
-	margin-left: 0.5rem;
 	color: var(--arapey-red);
 }
 
 code .string-value {
-	margin-left: 0.5rem;
 	color: var(--arapey-green);
 }
 
