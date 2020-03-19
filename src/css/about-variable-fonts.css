@@ -1,5 +1,5 @@
 .about-variable-fonts-section {
-	max-width: var(--max-content-width);
+	/* max-width: var(--max-content-width); */
 	margin: 0 auto;
 	padding-top: 4rem;
 }
@@ -14,6 +14,13 @@
 	line-height: 1.5;
 	text-align: center;
 	padding: 2rem;
+	max-width: var(--max-content-width);
+	margin: 0 auto;
+}
+
+.xxx {
+	max-width: var(--max-content-width);
+	margin: 0 auto;
 }
 
 .about-variable-fonts-container p {
@@ -48,14 +55,20 @@ code .string-value {
 	color: var(--arapey-green);
 }
 
+.character-container-container {
+	width: 100vw;
+}
+
 .character-container {
+	--opsz-slider: 128;
+
 	position: relative;
-	line-height: 1;
+	max-width: var(--max-content-width);
+	margin: 0 auto;
 }
 
 .character-container .character {
 	--character-pos-x: 50%;
-	--opsz-slider: 128;
 
 	position: absolute;
 	top: 0;
@@ -66,6 +79,7 @@ code .string-value {
 	font-weight: var(--wght-slider);
 	font-variation-settings: "opsz" var(--opsz-slider);
 	cursor: pointer;
+	z-index: 2;
 }
 
 .character-outline-container {
@@ -75,6 +89,7 @@ code .string-value {
 }
 
 .character-outline {
+	font-variation-settings: "opsz" var(--opsz-slider);
 	font-size: 35rem;
 	color: white;
 	text-shadow: -1px -1px 0 var(--arapey-blue), 1px -1px 0 var(--arapey-blue),
@@ -83,10 +98,12 @@ code .string-value {
 
 .character-outline.thin {
 	font-weight: 100;
+	transform: translateX(-50%);
 }
 
 .character-outline.fat {
 	font-weight: 900;
+	transform: translateX(50%);
 }
 
 .arapey-styles-container {

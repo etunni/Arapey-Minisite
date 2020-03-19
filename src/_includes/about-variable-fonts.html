@@ -10,51 +10,55 @@
     </article>
 
     <section class="about-variable-fonts-interactive interactive-controls">
-        <section class="character-container">
-            <div class="character interactive-controls-text">a</div>
-            <div class="character-outline-container">
-                <div class="character-outline thin">a</div>
-                <div class="character-outline fat">a</div>
+        <section class="character-container-container">
+            <section class="character-container interactive-controls-text">
+                <div class="character">a</div>
+                <div class="character-outline-container">
+                    <div class="character-outline thin">a</div>
+                    <div class="character-outline fat">a</div>
+                </div>
+            </section>
+        </section>
+
+        <div class="xxx">
+            <ul class="interactive-controls-list">
+                {% include tick-slider.html value: 100 labels: opsz labelCenter: "Optical Size" name: "opsz-slider" min: 12 max: 128 badge: true %} {% include tick-slider.html value: 500 labels: instances name: "wght-slider" min: 100 max: 900 badge: true %}
+            </ul>
+
+            <div class="code-container">
+                <code>
+                    .arapey {<br>
+                        <span class="property">font-family:</span>
+                        <span class="string-value">"ArapeyVF;"</span><br>
+                        <span class="property">font-variation-settings:</span>
+                        <span class="string-value">"opsz"</span>
+                        <span class="int-value opsz-slider"></span>;<br>
+                        <span class="property">font-weight:</span>
+                        <span class="int-value wght-slider"></span>;<br>
+                    }
+                </code>
             </div>
 
-        </section>
-        <ul class="interactive-controls-list">
-            {% include tick-slider.html value: 100 labels: opsz labelCenter: "Optical Size" name: "opsz-slider" min: 12 max: 128 badge: true %} {% include tick-slider.html value: 500 labels: instances name: "wght-slider" min: 100 max: 900 badge: true %}
-        </ul>
+            <section class="arapey-styles-container">
+                <h2 class="arapey-title-blue">Arapey Styles</h2>
+                <div class="arapey-styles-list-container">
+                    <ul>
+                        <li>With 2 styles</li>
+                        <li>9 Weights</li>
+                        <li>2 Display Options</li>
+                        <li>Weight range</li>
+                        <li>Optical Sizes</li>
+                    </ul>
 
-        <div class="code-container">
-            <code>
-                .arapey {<br>
-                    <span class="property">font-family:</span>
-                    <span class="string-value">"ArapeyVF;"</span><br>
-                    <span class="property">font-variation-settings:</span>
-                    <span class="string-value">"opsz"</span>
-                    <span class="int-value opsz-slider"></span>;<br>
-                    <span class="property">font-weight:</span>
-                    <span class="int-value wght-slider"></span>;<br>
-                }
-            </code>
+                    <ul>
+                        <li>Roman & Italic (available later)</li>
+                        <li>Thin, Extralight, Light, Regular, Medium, Semibold, Bold, Extrabold, Black</li>
+                        <li>Display Thin, Display Black</li>
+                        <li>100 — 900</li>
+                        <li>12 — 128</li>
+                    </ul>
+                </div>
+            </section>
         </div>
-
-        <section class="arapey-styles-container">
-            <h2 class="arapey-title-blue">Arapey Styles</h2>
-            <div class="arapey-styles-list-container">
-                <ul>
-                    <li>With 2 styles</li>
-                    <li>9 Weights</li>
-                    <li>2 Display Options</li>
-                    <li>Weight range</li>
-                    <li>Optical Sizes</li>
-                </ul>
-
-                <ul>
-                    <li>Roman & Italic (available later)</li>
-                    <li>Thin, Extralight, Light, Regular, Medium, Semibold, Bold, Extrabold, Black</li>
-                    <li>Display Thin, Display Black</li>
-                    <li>100 — 900</li>
-                    <li>12 — 128</li>
-                </ul>
-            </div>
-        </section>
     </section>
 </section>

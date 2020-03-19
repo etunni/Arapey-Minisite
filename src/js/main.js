@@ -543,10 +543,19 @@ const aboutFontsSection = document.querySelector(
 
 const aboutFonts = {
 	init() {
-		this.characterEl.addEventListener("mousedown", this.onMouseDown);
-		this.containerEl.addEventListener("mousemove", this.onDragCharacter);
-		this.containerEl.addEventListener("mouseup", this.onDropCharacter);
+		this.parentContainerEl.addEventListener("mousedown", this.onMouseDown);
+		this.parentContainerEl.addEventListener(
+			"mousemove",
+			this.onDragCharacter
+		);
+		this.parentContainerEl.addEventListener(
+			"mouseup",
+			this.onDropCharacter
+		);
 	},
+	parentContainerEl: aboutFontsSection.querySelector(
+		".character-container-container"
+	),
 	containerEl: aboutFontsSection.querySelector(".character-container"),
 	characterEl: aboutFontsSection.querySelector(".character"),
 	weightSliderContainer: aboutFontsSection.querySelector(
@@ -579,25 +588,22 @@ const aboutFonts = {
 			(this.containerEl.offsetWidth / 100)
 		).toFixed(2);
 
-		const boundaries = Math.max(1, Math.min(percentageWidth, 100));
-		console.log(this.containerEl.offsetWidth);
-		const weight = Math.round((boundaries * this.maxFontWeight) / 100);
-
-		this.characterEl.style.setProperty(
-			"--character-pos-x",
-			`${boundaries}%`
-		);
-
-		this.characterEl.style.setProperty("--wght-slider", `${weight}`);
+		// console.log(distX);
+		let weight = 100 + percentageWidth * 8;
+		weight = Math.max(100, Math.min(weight, 900));
 
 		const weightSlider = this.weightSliderContainer.querySelector(
 			".wght-slider"
 		);
+		weightSlider.value = weight;
 
+		const posX = Math.max(0, Math.min(percentageWidth, 100));
+		this.characterEl.style.setProperty("--character-pos-x", `${posX}%`);
+
+		this.characterEl.style.setProperty("--wght-slider", `${weight}`);
 		this.syncCodeBlock(weightSlider.name, weight);
 
-		setupBadge(weightSlider, Math.max(1, Math.min(distX, 1040)));
-		weightSlider.value = Math.max(1, Math.min(distX, 1040));
+		setupBadge(weightSlider, weight);
 	}
 };
 
