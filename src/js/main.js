@@ -77,6 +77,9 @@ const setupInputs = () => {
 			varset(slider.name, slider.value);
 			setupBadge(slider, slider.value);
 
+			if (slider.name == "opsz-slider" || slider.name == "wght-slider")
+				aboutFonts.syncCodeBlock(slider.name, slider.value);
+
 			slider.oninput = e => {
 				// Set new axis value to text area
 				varset(e.target.name, e.target.value);
@@ -87,6 +90,8 @@ const setupInputs = () => {
 				}
 
 				setupBadge(slider, e.target.value);
+				aboutFonts.syncCodeBlock(slider.name, e.target.value);
+				// console.log(slider.name, slider.value);
 			};
 		}
 
@@ -537,6 +542,11 @@ const aboutFontsSection = document.querySelector(
 );
 
 const aboutFonts = {
+	init() {
+		this.characterEl.addEventListener("mousedown", this.onMouseDown);
+		this.containerEl.addEventListener("mousemove", this.onDragCharacter);
+		this.containerEl.addEventListener("mouseup", this.onDropCharacter);
+	},
 	containerEl: aboutFontsSection.querySelector(".character-container"),
 	characterEl: aboutFontsSection.querySelector(".character"),
 	weightSliderContainer: aboutFontsSection.querySelector(
@@ -554,43 +564,43 @@ const aboutFonts = {
 	onMouseDown: () => {
 		aboutFonts.isDown = true;
 	},
-	calculateCharacterPos: () => {
-		const distX = mouse.x - aboutFonts.containerEl.offsetLeft;
+	syncCodeBlock(name, value) {
+		const sliderValue = Math.round(value);
 
-		console.log(distX);
+		aboutFontsSection
+			.querySelector("code")
+			.querySelector(`.${name}`).textContent = sliderValue;
+	},
 
+	calculateCharacterPos() {
+		const distX = mouse.x - this.containerEl.offsetLeft;
 		const percentageWidth = (
 			distX /
-			(aboutFonts.containerEl.offsetWidth / 100)
+			(this.containerEl.offsetWidth / 100)
 		).toFixed(2);
 
 		const boundaries = Math.max(1, Math.min(percentageWidth, 100));
-		const weight = Math.round(
-			(boundaries * aboutFonts.maxFontWeight) / 100
-		);
+		console.log(this.containerEl.offsetWidth);
+		const weight = Math.round((boundaries * this.maxFontWeight) / 100);
 
-		aboutFonts.characterEl.style.setProperty(
+		this.characterEl.style.setProperty(
 			"--character-pos-x",
 			`${boundaries}%`
 		);
 
-		aboutFonts.characterEl.style.setProperty("--wght-slider", `${weight}`);
+		this.characterEl.style.setProperty("--wght-slider", `${weight}`);
 
-		const weightSlider = aboutFonts.weightSliderContainer.querySelector(
+		const weightSlider = this.weightSliderContainer.querySelector(
 			".wght-slider"
 		);
 
-		setupBadge(weightSlider, distX);
-		weightSlider.value = distX;
+		this.syncCodeBlock(weightSlider.name, weight);
+
+		setupBadge(weightSlider, Math.max(1, Math.min(distX, 1040)));
+		weightSlider.value = Math.max(1, Math.min(distX, 1040));
 	}
 };
 
-aboutFonts.characterEl.addEventListener("mousedown", aboutFonts.onMouseDown);
+aboutFonts.init();
 
-aboutFonts.containerEl.addEventListener(
-	"mousemove",
-	aboutFonts.onDragCharacter
-);
-
-aboutFonts.containerEl.addEventListener("mouseup", aboutFonts.onDropCharacter);
 window.onresize = throttle(setViewportValues, 100);
