@@ -357,6 +357,7 @@ const letterWave = {
 	waveAngle: 0.5, // Use this to determine steepness/angle
 	lineOffsetLines: 3, // How many "jagged starts"
 	darkenFactor: 2, // How much to darken bolder weight
+	cursorSize: 1,
 	// Internal stuff:
 	letters: [],
 	waveOffset: 0,
@@ -366,20 +367,23 @@ const letterWave = {
 	height: 0,
 	weightMap: [],
 	letterCanvases: [],
-	setup(selector) {
+	row: 0,
+	columns: 0,
+	setup(selector, mapType) {
 		this.canvas = document.querySelector(selector);
 		this.setupCanvas();
 		this.setupLetterPositions();
-		this.setupWeightMap();
+		this.setupWeightMap(mapType);
 		this.preRenderChars();
 	},
-	setLetter(letter) {
-		this.letter = letter;
+	setLetter(letter, color) {
+		this.letter = letter ? letter : this.letter;
+		this.color = color ? color : this.color;
 		this.preRenderChars();
 	},
 	resizeCanvas() {
-		topWave.setupCanvas();
-		topWave.setupLetterPositions();
+		this.setupCanvas();
+		this.setupLetterPositions();
 	},
 	// Pre-render chars
 	// We need to do this as rendering (variable) fonts directly
@@ -425,12 +429,12 @@ const letterWave = {
 	},
 	// Array of each letter's position
 	setupLetterPositions() {
-		const columns = Math.floor(this.width / this.cellSize);
-		const rows = Math.floor(this.height / this.cellSize);
+		this.columns = Math.floor(this.width / this.cellSize);
+		this.rows = Math.floor(this.height / this.cellSize);
 
 		this.letters = [];
-		for (let i = 0; i <= rows; i++) {
-			for (let j = 0; j <= columns; j++) {
+		for (let i = 0; i <= this.rows; i++) {
+			for (let j = 0; j <= this.columns; j++) {
 				this.letters.push({
 					x: j * this.cellSize,
 					y: i * this.cellSize
@@ -439,13 +443,17 @@ const letterWave = {
 		}
 	},
 	// Array weights to loop through
-	setupWeightMap() {
+	setupWeightMap(mapType) {
 		this.weightMap = [];
 		for (let i = 0; i <= this.steps; i++) {
-			this.weightMap.push(i);
-			this.weightMap.unshift(i);
-			this.weightMap.unshift(i);
-			this.weightMap.unshift(i);
+			if (mapType === "flat") {
+				this.weightMap.push(0);
+			} else {
+				this.weightMap.push(i);
+				this.weightMap.unshift(i);
+				this.weightMap.unshift(i);
+				this.weightMap.unshift(i);
+			}
 		}
 	},
 	// Draw a new iteration of the wave to canvas
@@ -471,8 +479,23 @@ const letterWave = {
 					(lineStartOffset / this.lineOffsetLines) * this.cellSize;
 			}
 
+			// Determine weight based on cursor distance
+			const topOffset = this.canvas.getBoundingClientRect().top; // TODO: perf heavy!
+			const spotLightRatio = this.columns / this.rows;
+			const weightX = Math.abs((letter.x - mouse.x) / this.columns);
+			const weightY = Math.abs(
+				(letter.y - mouse.y + topOffset) / this.rows
+			);
+			let spotLightWeight = Math.round(
+				Math.hypot(weightX * spotLightRatio, weightY) * this.cursorSize
+			);
+			spotLightWeight =
+				this.steps - Math.min(Math.max(spotLightWeight, 0), this.steps);
+
 			// Determine weight based on wave
-			const weight = this.weightMap[count++ % this.weightMap.length];
+			const waveWeight = this.weightMap[count++ % this.weightMap.length];
+
+			const weight = Math.max(waveWeight, spotLightWeight);
 
 			this.ctx.drawImage(
 				this.letterCanvases[weight],
@@ -497,6 +520,7 @@ document.querySelector(".arapey-hero-title").addEventListener(
 );
 
 const topWave = Object.create(letterWave);
+const bottomWave = Object.create(letterWave);
 const initializeApp = () => {
 	setupInputs();
 	setGridCharacter();
@@ -507,8 +531,11 @@ const initializeApp = () => {
 
 	// Animate top letterwave ("AAAAAA")
 	topWave.setup(".arapey-hero-canvas");
+	bottomWave.setup(".arapey-zzzz-canvas", "flat");
+	bottomWave.setLetter("Z", "c02020");
 	setRAFInterval(() => {
 		topWave.renderWave();
+		bottomWave.renderWave();
 	}, 100);
 
 	// Slide wall of characters
@@ -519,6 +546,7 @@ const initializeApp = () => {
 const setViewportValues = () => {
 	// Recalculate letterWave canvas dimensions
 	topWave.resizeCanvas();
+	bottomWave.resizeCanvas();
 };
 
 // General mouse object.
