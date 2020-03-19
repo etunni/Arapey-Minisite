@@ -497,6 +497,7 @@ document.querySelector(".arapey-hero-title").addEventListener(
 );
 
 const topWave = Object.create(letterWave);
+const bottomWave = Object.create(letterWave);
 const initializeApp = () => {
 	setupInputs();
 	setGridCharacter();
@@ -507,8 +508,11 @@ const initializeApp = () => {
 
 	// Animate top letterwave ("AAAAAA")
 	topWave.setup(".arapey-hero-canvas");
+	bottomWave.setup(".arapey-zzzz-canvas");
+	bottomWave.setLetter("Z");
 	setRAFInterval(() => {
 		topWave.renderWave();
+		bottomWave.renderWave();
 	}, 100);
 
 	// Slide wall of characters
