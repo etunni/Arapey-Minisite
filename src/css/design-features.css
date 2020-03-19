@@ -1,7 +1,7 @@
 .design-features-section {
 	max-width: var(--max-content-width);
 	margin: 0 auto;
-	min-height: 600px;
+	min-height: 60vh;
 }
 
 .design-features-section .arapey-title-green {
@@ -94,7 +94,7 @@
 
 .floating-letter.active {
 	--x: calc(50% - 170px);
-	--y: calc(50% - 10px);
+	--y: calc(50% + 50px);
 
 	left: var(--x);
 	top: var(--y);
