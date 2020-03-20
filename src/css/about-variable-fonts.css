@@ -1,12 +1,5 @@
 .about-variable-fonts-section {
-	/* max-width: var(--max-content-width); */
-	margin: 0 auto;
-	padding-top: 4rem;
-}
-
-.about-variable-fonts-container h1 {
-	margin-bottom: 0;
-	color: var(--arapey-blue);
+	margin-top: 4rem;
 }
 
 .about-variable-fonts-container {
@@ -14,13 +7,13 @@
 	line-height: 1.5;
 	text-align: center;
 	padding: 2rem;
-	max-width: var(--max-content-width);
+	max-width: var(--max-prose-content-width);
 	margin: 0 auto;
 }
 
-.xxx {
-	max-width: var(--max-content-width);
-	margin: 0 auto;
+.about-variable-fonts-container h1 {
+	margin-bottom: 0;
+	color: var(--arapey-blue);
 }
 
 .about-variable-fonts-container p {
@@ -31,50 +24,28 @@
 	margin-top: 6rem;
 }
 
-.code-container {
-	background-color: var(--arapey-gray);
-	margin-top: 6rem;
-	padding: 1.5rem;
-}
-
-.about-variable-fonts-section code {
-	font-size: 1.25rem;
-	line-height: 1.5;
-}
-
-code .property {
-	margin-left: 2em;
-	color: var(--arapey-blue);
-}
-
-code .int-value {
-	color: var(--arapey-red);
-}
-
-code .string-value {
-	color: var(--arapey-green);
-}
-
-.character-container-container {
-	width: 100vw;
-}
-
-.character-container {
+.character-slider {
 	--opsz-slider: 128;
 
 	position: relative;
+	width: 70vw;
 	max-width: var(--max-content-width);
 	margin: 0 auto;
+	font-size: 30vw;
+
+	/* Trickery to prevent full line height from
+	   making this a huge element */
+	line-height: 0.5;
+	padding-bottom: 8vw;
 }
 
-.character-container .character {
+.character-slider .character {
 	--character-pos-x: 50%;
 
 	position: absolute;
 	top: 0;
 	left: var(--character-pos-x);
 	transform: translateX(-50%);
-	font-size: 35rem;
 	user-select: none;
 	font-weight: var(--wght-slider);
 	font-variation-settings: "opsz" var(--opsz-slider);
@@ -90,7 +61,6 @@ code .string-value {
 
 .character-outline {
 	font-variation-settings: "opsz" var(--opsz-slider);
-	font-size: 35rem;
 	color: white;
 	text-shadow: -1px -1px 0 var(--arapey-blue), 1px -1px 0 var(--arapey-blue),
 		-1px 1px 0 var(--arapey-blue), 1px 1px 0 var(--arapey-blue);
@@ -104,6 +74,35 @@ code .string-value {
 .character-outline.fat {
 	font-weight: 900;
 	transform: translateX(50%);
+}
+
+.about-variable-fonts-interactive {
+	max-width: var(--max-prose-content-width);
+	margin: 0 auto;
+}
+
+.code-container {
+	background-color: var(--arapey-gray);
+	margin-top: 6rem;
+	padding: 1.5rem;
+}
+
+.code-container code {
+	font-size: 1.25rem;
+	line-height: 1.5;
+}
+
+code .property {
+	margin-left: 2em;
+	color: var(--arapey-blue);
+}
+
+code .int-value {
+	color: var(--arapey-red);
+}
+
+code .string-value {
+	color: var(--arapey-green);
 }
 
 .arapey-styles-container {

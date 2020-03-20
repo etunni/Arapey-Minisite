@@ -582,9 +582,9 @@ const aboutFonts = {
 		);
 	},
 	parentContainerEl: aboutFontsSection.querySelector(
-		".character-container-container"
+		".character-slider-container"
 	),
-	containerEl: aboutFontsSection.querySelector(".character-container"),
+	containerEl: aboutFontsSection.querySelector(".character-slider"),
 	characterEl: aboutFontsSection.querySelector(".character"),
 	weightSliderContainer: aboutFontsSection.querySelector(
 		".wght-slider-container"
