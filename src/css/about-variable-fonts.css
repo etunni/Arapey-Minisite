@@ -61,9 +61,7 @@
 
 .character-outline {
 	font-variation-settings: "opsz" var(--opsz-slider);
-	color: white;
-	text-shadow: -1px -1px 0 var(--arapey-blue), 1px -1px 0 var(--arapey-blue),
-		-1px 1px 0 var(--arapey-blue), 1px 1px 0 var(--arapey-blue);
+	color: var(--arapey-light-gray);
 }
 
 .character-outline.thin {
