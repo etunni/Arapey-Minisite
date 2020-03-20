@@ -580,6 +580,7 @@ const aboutFonts = {
 			"mouseup",
 			this.onDropCharacter
 		);
+		this.weightSlider.addEventListener("input", this.onDragInput);
 	},
 	parentContainerEl: aboutFontsSection.querySelector(
 		".character-slider-container"
@@ -591,6 +592,9 @@ const aboutFonts = {
 	maxFontWeight: 900,
 	onDragCharacter: () => {
 		if (!aboutFonts.isDown) return;
+		aboutFonts.calculateCharacterPos();
+	},
+	onDragInput: () => {
 		aboutFonts.calculateCharacterPos();
 	},
 	onDropCharacter: () => {
