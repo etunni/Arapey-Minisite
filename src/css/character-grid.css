@@ -51,6 +51,10 @@
 	transition: transform 100ms, opacity 300ms;
 }
 
+.character-grid-item.active {
+	color: var(--arapey-white);
+}
+
 .character-grid-item.active::before {
 	transform: scale(1);
 	opacity: 1;
