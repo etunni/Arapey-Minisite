@@ -108,12 +108,28 @@ const setupInputs = () => {
 	}
 };
 
+const stickyButton = button => {
+	const stickButton = document.querySelector(
+		".faux-placeholder-button-stick"
+	);
+
+	if (button.classList.contains("in-view")) {
+		stickButton.classList.remove("hide");
+		stickButton.classList.add("stick");
+	} else {
+		stickButton.classList.add("hide");
+		stickButton.classList.remove("stick");
+	}
+};
+
 // Watch if .am-i-in-view elements are visible on screen
 // and apply a class accordingly
 if ("IntersectionObserver" in window) {
 	// eslint-disable-next-line compat/compat
 	const obs = new IntersectionObserver(els => {
 		els.forEach(el => {
+			stickyButton(el.target);
+
 			el.intersectionRatio > 0
 				? el.target.classList.add("in-view")
 				: el.target.classList.remove("in-view");
@@ -121,6 +137,7 @@ if ("IntersectionObserver" in window) {
 	});
 
 	const elements = document.querySelectorAll(".am-i-in-view");
+
 	elements.forEach(el => {
 		obs.observe(el);
 	});
@@ -581,44 +598,3 @@ aboutFonts.containerEl.addEventListener(
 
 aboutFonts.containerEl.addEventListener("mouseup", aboutFonts.onDropCharacter);
 window.onresize = throttle(setViewportValues, 100);
-
-const options = {
-	root: null,
-	rootMargin: "600px",
-	threshold: 1
-};
-
-const callback = el => {
-	console.log(el);
-
-	if (!el[0].isIntersecting) {
-		document
-			.querySelector(".faux-placeholder-button")
-			.classList.add("stick");
-
-		document
-			.querySelector(".faux-placeholder-button")
-			.classList.add("animate-in");
-
-		document
-			.querySelector(".faux-placeholder-button")
-			.classList.remove("animate-out");
-	} else {
-		document
-			.querySelector(".faux-placeholder-button")
-			.classList.remove("animate-in");
-
-		document
-			.querySelector(".faux-placeholder-button")
-			.classList.add("animate-out");
-
-		document
-			.querySelector(".faux-placeholder-button")
-			.classList.remove("stick");
-	}
-};
-
-let observer = new IntersectionObserver(callback, options);
-
-const element = document.querySelector(".arapey-hero");
-observer.observe(element);

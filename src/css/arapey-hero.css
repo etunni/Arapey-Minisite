@@ -109,28 +109,24 @@
 	margin-bottom: -0.5rem;
 }
 
-.faux-placeholder-button.stick {
+.faux-placeholder-button-stick {
 	position: fixed;
-	transform: translate(0, -100%);
-	animation-name: stick;
-	animation-duration: 0.75s;
+	left: 0;
+	transform: translate(10px, 0);
+	transition: transform 0.5s;
 }
 
-.faux-placeholder-button.animate-in {
-	transform: translate(-400%, -25%) rotate(-15deg) scale(0.65);
+.faux-placeholder-button.hide {
+	transform: translate(10px, -200%);
+	transition: transform 0.25s;
 }
 
-.faux-placeholder-button.animate-out {
+.faux-placeholder-button.am-i-in-view {
+	opacity: 0;
+	transition: opacity 0.5s;
 }
 
-@keyframes stick {
-	0% {
-		transform: translate(-50%, -150%);
-	}
-	50% {
-		transform: translate(-50%, 0);
-	}
-	100% {
-		transform: translate(-400%, -25%) rotate(-15deg) scale(0.65);
-	}
+.faux-placeholder-button.in-view {
+	opacity: 1;
+	transition: opacity 0.5s;
 }
