@@ -586,9 +586,7 @@ const aboutFonts = {
 	),
 	containerEl: aboutFontsSection.querySelector(".character-slider"),
 	characterEl: aboutFontsSection.querySelector(".character"),
-	weightSliderContainer: aboutFontsSection.querySelector(
-		".wght-slider-container"
-	),
+	weightSlider: aboutFontsSection.querySelector(".wght-slider"),
 	isDown: false,
 	maxFontWeight: 900,
 	onDragCharacter: () => {
@@ -608,30 +606,22 @@ const aboutFonts = {
 			.querySelector("code")
 			.querySelector(`.${name}`).textContent = sliderValue;
 	},
-
 	calculateCharacterPos() {
 		const distX = mouse.x - this.containerEl.offsetLeft;
 		const percentageWidth = (
 			distX /
 			(this.containerEl.offsetWidth / 100)
 		).toFixed(2);
-
-		// console.log(distX);
+		const posX = Math.max(0, Math.min(percentageWidth, 100));
 		let weight = 100 + percentageWidth * 8;
 		weight = Math.max(100, Math.min(weight, 900));
 
-		const weightSlider = this.weightSliderContainer.querySelector(
-			".wght-slider"
-		);
-		weightSlider.value = weight;
-
-		const posX = Math.max(0, Math.min(percentageWidth, 100));
+		this.weightSlider.value = weight;
 		this.characterEl.style.setProperty("--character-pos-x", `${posX}%`);
-
 		this.characterEl.style.setProperty("--wght-slider", `${weight}`);
-		this.syncCodeBlock(weightSlider.name, weight);
+		this.syncCodeBlock(this.weightSlider.name, weight);
 
-		setupBadge(weightSlider, weight);
+		setupBadge(this.weightSlider, weight);
 	}
 };
 
