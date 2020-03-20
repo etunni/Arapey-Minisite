@@ -6,6 +6,7 @@
 	align-items: center;
 	flex-direction: column;
 }
+
 .toggle-block-morphing-text {
 	--opsz: 128;
 
@@ -32,9 +33,11 @@
 	color: var(--arapey-white);
 }
 
-.toggle-block-red .toggle-block-morphing-text {
-	font-size: 11vw;
-	font-weight: var(--toggle-block-font-weight);
+.toggle-block-gray {
+	--toggle-block-font-weight: var(--weight-light);
+
+	background-color: var(--arapey-gray);
+	color: var(--arapey-red);
 }
 
 .toggle-content {
@@ -46,12 +49,9 @@
 	font-size: 1.25rem;
 	font-weight: var(--weight-bold);
 	color: var(--arapey-black);
+	margin: 0 1rem;
 }
 
 .toggle-block-black .toggle-label {
 	color: var(--arapey-red);
-}
-
-.toggle-content .interactive-controls-toggle {
-	margin: 0 1rem;
 }
