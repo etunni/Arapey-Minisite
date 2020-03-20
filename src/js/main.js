@@ -581,3 +581,45 @@ aboutFonts.containerEl.addEventListener(
 
 aboutFonts.containerEl.addEventListener("mouseup", aboutFonts.onDropCharacter);
 window.onresize = throttle(setViewportValues, 100);
+
+const options = {
+	root: null,
+	rootMargin: "300px",
+	threshold: 0.75
+};
+
+const callback = el => {
+	console.log(el);
+	if (!el[0].isIntersecting) {
+		document
+			.querySelector(".faux-placeholder-button")
+			.classList.remove("forward");
+
+		document
+			.querySelector(".faux-placeholder-button")
+			.classList.add("backward");
+
+		setTimeout(() => {
+			document
+				.querySelector(".faux-placeholder-button")
+				.classList.add("stick");
+		}, 1000);
+	} else {
+		document
+			.querySelector(".faux-placeholder-button")
+			.classList.remove("backward");
+
+		document
+			.querySelector(".faux-placeholder-button")
+			.classList.add("forward");
+
+		document
+			.querySelector(".faux-placeholder-button")
+			.classList.remove("stick");
+	}
+};
+
+let observer = new IntersectionObserver(callback, options);
+
+const element = document.querySelector(".arapey-hero");
+observer.observe(element);
