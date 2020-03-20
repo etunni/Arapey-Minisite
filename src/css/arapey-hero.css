@@ -101,10 +101,6 @@
 	border-radius: 50%;
 	font-size: 2rem;
 	line-height: 1;
-	transition-property: transform;
-	transition-duration: 1s;
-
-	/* transition-delay: 2s; */
 }
 
 .faux-placeholder-button span {
@@ -113,37 +109,18 @@
 	margin-bottom: -0.5rem;
 }
 
-.faux-placeholder-button.backward {
-	transform: translate(0%, 0%);
-}
-
-.faux-placeholder-button.forward {
-	/* transition-delay: 2s; */
-	transform: translate(-50%, 0);
-}
 .faux-placeholder-button.stick {
 	position: fixed;
-	transform: translate(-400%, -40%) rotate(-15deg) scale(0.65);
-
-	/* rotate(-15deg) scale(0.65); */
-
-	/* transition-property: transform;
-	transition-duration: 0.1s; */
+	transform: translate(0, -100%);
+	animation-name: stick;
+	animation-duration: 0.75s;
 }
 
-/* .faux-placeholder-button.stick {
-	position: fixed;
-
-
-	transform: translate(-425%, -40%) rotate(-15deg) scale(0.65);
+.faux-placeholder-button.animate-in {
+	transform: translate(-400%, -25%) rotate(-15deg) scale(0.65);
 }
 
-.faux-placeholder-button.forward-stick {
-	animation-direction: normal;
-}
-
-.faux-placeholder-button.reverse-stick {
-	animation-direction: reverse;
+.faux-placeholder-button.animate-out {
 }
 
 @keyframes stick {
@@ -154,6 +131,6 @@
 		transform: translate(-50%, 0);
 	}
 	100% {
-		transform: translate(-425%, -40%) rotate(-15deg) scale(0.65);
+		transform: translate(-400%, -25%) rotate(-15deg) scale(0.65);
 	}
-} */
+}

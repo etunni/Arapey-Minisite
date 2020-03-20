@@ -584,34 +584,33 @@ window.onresize = throttle(setViewportValues, 100);
 
 const options = {
 	root: null,
-	rootMargin: "300px",
-	threshold: 0.75
+	rootMargin: "600px",
+	threshold: 1
 };
 
 const callback = el => {
 	console.log(el);
+
 	if (!el[0].isIntersecting) {
 		document
 			.querySelector(".faux-placeholder-button")
-			.classList.remove("forward");
+			.classList.add("stick");
 
 		document
 			.querySelector(".faux-placeholder-button")
-			.classList.add("backward");
+			.classList.add("animate-in");
 
-		setTimeout(() => {
-			document
-				.querySelector(".faux-placeholder-button")
-				.classList.add("stick");
-		}, 1000);
+		document
+			.querySelector(".faux-placeholder-button")
+			.classList.remove("animate-out");
 	} else {
 		document
 			.querySelector(".faux-placeholder-button")
-			.classList.remove("backward");
+			.classList.remove("animate-in");
 
 		document
 			.querySelector(".faux-placeholder-button")
-			.classList.add("forward");
+			.classList.add("animate-out");
 
 		document
 			.querySelector(".faux-placeholder-button")
