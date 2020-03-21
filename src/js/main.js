@@ -77,6 +77,9 @@ const setupInputs = () => {
 			varset(slider.name, slider.value);
 			setupBadge(slider, slider.value);
 
+			if (slider.name == "opsz-slider" || slider.name == "wght-slider")
+				aboutFonts.syncCodeBlock(slider.name, slider.value);
+
 			slider.oninput = e => {
 				// Set new axis value to text area
 				varset(e.target.name, e.target.value);
@@ -87,6 +90,8 @@ const setupInputs = () => {
 				}
 
 				setupBadge(slider, e.target.value);
+				aboutFonts.syncCodeBlock(slider.name, e.target.value);
+				// console.log(slider.name, slider.value);
 			};
 		}
 
@@ -293,12 +298,14 @@ characterSlideListContainer.addEventListener("mousemove", e => {
 	characterSlide.oldX = e.pageX;
 	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
 });
-characterSlideListContainer.addEventListener("mouseup", () => {
+const stopCharacterSlider = () => {
 	characterSlide.isDown = false;
 	characterSlideListContainer.classList.remove("active");
 	cancelAnimationFrame(characterSlide.momentumID);
 	loop();
-});
+};
+characterSlideListContainer.addEventListener("mouseup", stopCharacterSlider);
+characterSlideListContainer.addEventListener("mouseleave", stopCharacterSlider);
 const loop = () => {
 	const factor = 0.9;
 	if (characterSlide.slideSpeed > 1.5 || characterSlide.slideSpeed < -1.5) {
@@ -565,12 +572,35 @@ const aboutFontsSection = document.querySelector(
 );
 
 const aboutFonts = {
-	containerEl: aboutFontsSection.querySelector(".character-container"),
+	init() {
+		this.parentContainerEl.addEventListener("mousedown", this.onMouseDown);
+		this.parentContainerEl.addEventListener(
+			"mousemove",
+			this.onDragCharacter
+		);
+		this.parentContainerEl.addEventListener(
+			"mouseup",
+			this.onDropCharacter
+		);
+		this.parentContainerEl.addEventListener(
+			"mouseleave",
+			this.onDropCharacter
+		);
+		this.weightSlider.addEventListener("input", this.onDragInput);
+	},
+	parentContainerEl: aboutFontsSection.querySelector(
+		".character-slider-container"
+	),
+	containerEl: aboutFontsSection.querySelector(".character-slider"),
 	characterEl: aboutFontsSection.querySelector(".character"),
+	weightSlider: aboutFontsSection.querySelector(".wght-slider"),
 	isDown: false,
 	maxFontWeight: 900,
 	onDragCharacter: () => {
 		if (!aboutFonts.isDown) return;
+		aboutFonts.calculateCharacterPos();
+	},
+	onDragInput: () => {
 		aboutFonts.calculateCharacterPos();
 	},
 	onDropCharacter: () => {
@@ -579,33 +609,32 @@ const aboutFonts = {
 	onMouseDown: () => {
 		aboutFonts.isDown = true;
 	},
-	calculateCharacterPos: () => {
-		const distX = mouse.x - aboutFonts.containerEl.offsetLeft;
+	syncCodeBlock(name, value) {
+		const sliderValue = Math.round(value);
+
+		aboutFontsSection
+			.querySelector("code")
+			.querySelector(`.${name}`).textContent = sliderValue;
+	},
+	calculateCharacterPos() {
+		const distX = mouse.x - this.containerEl.offsetLeft;
 		const percentageWidth = (
 			distX /
-			(aboutFonts.containerEl.offsetWidth / 100)
+			(this.containerEl.offsetWidth / 100)
 		).toFixed(2);
+		const posX = Math.max(0, Math.min(percentageWidth, 100));
+		let weight = 100 + percentageWidth * 8;
+		weight = Math.max(100, Math.min(weight, 900));
 
-		const boundaries = Math.max(1, Math.min(percentageWidth, 100));
-		const weight = Math.round(
-			(boundaries * aboutFonts.maxFontWeight) / 100
-		);
+		this.weightSlider.value = weight;
+		this.characterEl.style.setProperty("--character-pos-x", `${posX}%`);
+		this.characterEl.style.setProperty("--wght-slider", `${weight}`);
+		this.syncCodeBlock(this.weightSlider.name, weight);
 
-		aboutFonts.characterEl.style.setProperty(
-			"--character-pos-x",
-			`${boundaries}%`
-		);
-
-		aboutFonts.characterEl.style.setProperty("--weight", `${weight}`);
+		setupBadge(this.weightSlider, weight);
 	}
 };
 
-aboutFonts.characterEl.addEventListener("mousedown", aboutFonts.onMouseDown);
+aboutFonts.init();
 
-aboutFonts.containerEl.addEventListener(
-	"mousemove",
-	aboutFonts.onDragCharacter
-);
-
-aboutFonts.containerEl.addEventListener("mouseup", aboutFonts.onDropCharacter);
 window.onresize = throttle(setViewportValues, 100);

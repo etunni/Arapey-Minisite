@@ -60,6 +60,15 @@ input[type="checkbox"] {
 	background-color: var(--arapey-black);
 }
 
+.interactive-controls-toggle.black-white {
+	background-color: var(--arapey-black);
+	border-color: var(--arapey-black);
+}
+
+.interactive-controls-toggle.black-white::after {
+	background-color: var(--arapey-white);
+}
+
 .interactive-controls-toggle.red-black {
 	background-color: var(--arapey-red);
 	border-color: var(--arapey-red);
