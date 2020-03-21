@@ -109,9 +109,7 @@ const setupInputs = () => {
 };
 
 const stickyButton = button => {
-	const stickButton = document.querySelector(
-		".faux-placeholder-button-stick"
-	);
+	const stickButton = document.querySelector(".get-arapey-button-sticky");
 
 	if (button.classList.contains("in-view")) {
 		stickButton.classList.remove("hide");
