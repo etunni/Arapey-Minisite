@@ -108,26 +108,12 @@ const setupInputs = () => {
 	}
 };
 
-const stickyButton = button => {
-	const stickButton = document.querySelector(".get-arapey-button-sticky");
-
-	if (button.classList.contains("in-view")) {
-		stickButton.classList.remove("hide");
-		stickButton.classList.add("stick");
-	} else {
-		stickButton.classList.add("hide");
-		stickButton.classList.remove("stick");
-	}
-};
-
 // Watch if .am-i-in-view elements are visible on screen
 // and apply a class accordingly
 if ("IntersectionObserver" in window) {
 	// eslint-disable-next-line compat/compat
 	const obs = new IntersectionObserver(els => {
 		els.forEach(el => {
-			stickyButton(el.target);
-
 			el.intersectionRatio > 0
 				? el.target.classList.add("in-view")
 				: el.target.classList.remove("in-view");
