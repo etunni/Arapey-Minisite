@@ -114,7 +114,7 @@ if ("IntersectionObserver" in window) {
 	// eslint-disable-next-line compat/compat
 	const obs = new IntersectionObserver(els => {
 		els.forEach(el => {
-			el.intersectionRatio > 0
+			el.isIntersecting
 				? el.target.classList.add("in-view")
 				: el.target.classList.remove("in-view");
 		});
