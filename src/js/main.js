@@ -298,12 +298,14 @@ characterSlideListContainer.addEventListener("mousemove", e => {
 	characterSlide.oldX = e.pageX;
 	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
 });
-characterSlideListContainer.addEventListener("mouseup", () => {
+const stopCharacterSlider = () => {
 	characterSlide.isDown = false;
 	characterSlideListContainer.classList.remove("active");
 	cancelAnimationFrame(characterSlide.momentumID);
 	loop();
-});
+};
+characterSlideListContainer.addEventListener("mouseup", stopCharacterSlider);
+characterSlideListContainer.addEventListener("mouseleave", stopCharacterSlider);
 const loop = () => {
 	const factor = 0.9;
 	if (characterSlide.slideSpeed > 1.5 || characterSlide.slideSpeed < -1.5) {
@@ -578,6 +580,10 @@ const aboutFonts = {
 		);
 		this.parentContainerEl.addEventListener(
 			"mouseup",
+			this.onDropCharacter
+		);
+		this.parentContainerEl.addEventListener(
+			"mouseleave",
 			this.onDropCharacter
 		);
 		this.weightSlider.addEventListener("input", this.onDragInput);
