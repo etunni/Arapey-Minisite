@@ -585,21 +585,11 @@ window.onresize = throttle(setViewportValues, 100);
 const designFeatures = {
 	container: document.querySelector(".floating-letter-container"),
 	setActiveLetter(e) {
-		if (e.target.nodeName == "SPAN") {
-			designFeatures.container
-				.querySelector(".active")
-				.classList.remove("active");
-
-			designFeatures.container
-				.querySelector(".floating-letter-inside.active")
-				.classList.remove("active");
-
-			e.target.classList.add("active");
-
-			e.target
-				.querySelector(".floating-letter-inside")
-				.classList.add("active");
-		}
+		const letter = e.target.closest(".floating-letter") || e.target;
+		designFeatures.container
+			.querySelector(".active")
+			.classList.remove("active");
+		letter.classList.add("active");
 	}
 };
 
