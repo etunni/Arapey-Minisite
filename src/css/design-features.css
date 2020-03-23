@@ -16,7 +16,8 @@
 	position: absolute;
 	user-select: none;
 	cursor: pointer;
-	transition: left 1s, top 1s, transform 1s;
+	transition: left 400ms, top 400ms, transform 400ms;
+	transition-timing-function: ease-in-out;
 	transform: translate(-50%, -50%) scale(0.75);
 	left: var(--x);
 	top: var(--y);
@@ -33,7 +34,7 @@
 }
 
 .floating-letter.a {
-	--x: 15%;
+	--x: 25%;
 	--y: 10%;
 }
 
@@ -60,7 +61,7 @@
 }
 
 .floating-letter.m {
-	--x: 85%;
+	--x: 75%;
 	--y: 10%;
 }
 
@@ -69,7 +70,7 @@
 }
 
 .floating-letter.r {
-	--x: 15%;
+	--x: 25%;
 	--y: 100%;
 }
 
@@ -87,7 +88,7 @@
 }
 
 .floating-letter.v {
-	--x: 85%;
+	--x: 75%;
 	--y: 100%;
 }
 
