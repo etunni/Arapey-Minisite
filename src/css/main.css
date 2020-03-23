@@ -1,5 +1,4 @@
 @import "variables.css";
-@import "./animation.css";
 @import "./character-grid.css";
 @import "./font.css";
 @import "./generic.css";
@@ -25,3 +24,4 @@
 @import "weather.css";
 @import "about-variable-fonts.css";
 @import "design-features.css";
+@import "zzzz.css";

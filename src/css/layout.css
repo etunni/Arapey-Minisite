@@ -1,7 +1,7 @@
 main {
-	display: none;
+	opacity: 0;
 }
 
 .fonts-loaded main {
-	display: block;
+	opacity: 1;
 }

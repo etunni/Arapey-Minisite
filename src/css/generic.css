@@ -41,13 +41,13 @@ button {
 
 .emphasized {
 	font-weight: var(--weight-semi-bold);
-	color: var(--arapey-dark-blue);
+	color: var(--arapey-blue);
 }
 
 .arapey-title-blue {
 	font-size: 3.5rem;
 	font-weight: var(--weight-semi-bold);
-	color: var(--arapey-dark-blue);
+	color: var(--arapey-blue);
 }
 
 .arapey-title-green {

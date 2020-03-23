@@ -23,30 +23,10 @@
 	outline: 0;
 	width: 10rem;
 }
-[type="range"][data-color="dark-blue-red"]::-webkit-slider-runnable-track {
-	background-color: var(--arapey-dark-blue);
-}
-[type="range"][data-color="blue-red"]::-webkit-slider-runnable-track {
-	background-color: var(--arapey-blue);
-}
-
-[type="range"][data-color="dark-blue-red"]::-moz-range-track {
-	background-color: var(--arapey-dark-blue);
-}
-[type="range"][data-color="blue-red"]::-moz-range-track {
-	background-color: var(--arapey-blue);
-}
-
 [type="range"]::-ms-track {
 	border: none;
 	height: 0.2em;
 	width: 10rem;
-}
-[type="range"][data-color="dark-blue-red"]::-ms-track {
-	background-color: var(--arapey-dark-blue);
-}
-[type="range"][data-color="blue-red"]::-ms-track {
-	background-color: var(--arapey-blue);
 }
 
 .interactive-controls-list {
@@ -81,42 +61,6 @@
 	margin-top: 0;
 }
 
-.interactive-controls-slider[data-color="dark-blue-red"]::-webkit-slider-thumb {
-	background-color: var(--arapey-red);
-}
-
-.interactive-controls-slider[data-color="dark-blue-red"]::-moz-range-thumb {
-	background-color: var(--arapey-red);
-}
-
-.interactive-controls-slider[data-color="dark-blue-red"]::-ms-thumb {
-	background-color: var(--arapey-red);
-}
-
-.interactive-controls-slider[data-color="blue-red"]::-webkit-slider-thumb {
-	background-color: var(--arapey-red);
-}
-
-.interactive-controls-slider[data-color="blue-red"]::-moz-range-thumb {
-	background-color: var(--arapey-red);
-}
-
-.interactive-controls-slider[data-color="blue-red"]::-ms-thumb {
-	background-color: var(--arapey-red);
-}
-
-.interactive-controls-slider[data-color="blue-purple"]::-webkit-slider-thumb {
-	background-color: var(--arapey-purple);
-}
-
-.interactive-controls-slider[data-color="blue-purple"]::-moz-range-thumb {
-	background-color: var(--arapey-purple);
-}
-
-.interactive-controls-slider[data-color="blue-purple"]::-ms-thumb {
-	background-color: var(--arapey-purple);
-}
-
 .interactive-controls-tick-sliders li {
 	max-width: var(--max-content-width);
 	margin: 0 auto;
@@ -131,40 +75,35 @@
 	justify-content: center;
 }
 
-.about-arapey-container .interactive-controls-list li {
-	padding: 2rem 0;
-}
-
 /*
  *
  * Tick sliders
  *
  */
-
 .interactive-controls-tick-slider-container {
+	width: 100%;
 	max-width: var(--max-content-width);
+}
+
+.label-text {
+	white-space: nowrap;
+	font-weight: var(--weight-bold);
+	text-align: right;
+	font-size: 1.25rem;
+	padding-right: 0.5rem;
+	min-width: 6em; /* Picked to match the widest label */
 }
 
 .tick-list-item {
 	display: flex;
 }
 
-.tick-list-item > div {
-	width: 100%;
-	padding: 0 1rem;
-}
-
-.tick-list-item span {
-	text-align: right;
-}
-
-.tick-list-item > span {
-	margin-top: 0.15rem;
-	font-size: 1.25rem;
+.tick-list-item + .tick-list-item {
+	margin-top: 6rem;
 }
 
 .interactive-controls-tick-slider {
-	background-color: var(--arapey-dark-blue);
+	background-color: var(--arapey-black);
 	height: 1px;
 	width: 100%;
 	margin: 0;
