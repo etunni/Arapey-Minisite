@@ -1,21 +1,28 @@
 .fonts-in-use {
 	margin: 10rem 0;
 	position: relative;
-	min-height: 925px;
+	height: 925px;
 	overflow: hidden;
 }
 
 .svg-container {
+	--mouseX: 0%;
+	--mouseY: 0%;
+
 	width: 15vw;
 	height: 15vh;
 	position: absolute;
+}
+
+.svg-container svg {
+	pointer-events: none;
 }
 
 .five-star-rating {
 	width: 15vw;
 	height: 15vh;
 	left: 50%;
-	transform: translate(-50%, 0);
+	transform: translate(var(--mouseX), var(--mouseY));
 }
 
 .book {
@@ -23,9 +30,11 @@
 	height: 50vh;
 	right: -200px;
 	bottom: 60px;
+	transform: translate(var(--mouseX), var(--mouseY));
 }
 
 .card {
+	transform: translate(var(--mouseX), var(--mouseY));
 	width: 25vw;
 	height: 25vh;
 	right: 160px;
@@ -36,28 +45,31 @@
 	width: 25vw;
 	height: 25vh;
 	right: -90px;
+	transform: translate(var(--mouseX), var(--mouseY));
 }
 
 .soap {
 	width: 25vw;
 	height: 25vh;
 	top: 110px;
-	left: 50%;
-	transform: translate(-65%, 0);
+	left: 33%;
+	transform: translate(var(--mouseX), var(--mouseY));
 }
 
 .signs {
 	left: -60px;
-	bottom: 50px;
+	bottom: 20px;
 	width: 23vw;
 	height: 23vh;
+	transform: translate(var(--mouseX), var(--mouseY));
 }
 
 .magazine {
-	left: -40px;
+	left: -60px;
 	top: 50px;
 	width: 37vw;
 	height: 37vh;
+	transform: translate(var(--mouseX), var(--mouseY));
 }
 
 .reserved {
@@ -65,6 +77,7 @@
 	top: 510px;
 	width: 22vw;
 	height: 22vh;
+	transform: translate(var(--mouseX), var(--mouseY));
 }
 
 .napkin {
@@ -72,6 +85,7 @@
 	top: 360px;
 	width: 33vw;
 	height: 33vh;
+	transform: translate(var(--mouseX), var(--mouseY));
 }
 
 .kids-menu {
@@ -79,4 +93,5 @@
 	bottom: 90px;
 	width: 23vw;
 	height: 23vh;
+	transform: translate(var(--mouseX), var(--mouseY));
 }

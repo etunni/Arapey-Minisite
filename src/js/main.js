@@ -638,4 +638,36 @@ const aboutFonts = {
 
 aboutFonts.init();
 
+const fontsInUse = document.querySelector(".fonts-in-use");
+const fontsInUseItems = fontsInUse.querySelectorAll(".svg-container");
+const fontsInUseWidth = fontsInUse.offsetWidth;
+const fontsInUseHeight = fontsInUse.offsetHeight;
+
+const parallaxify = (item, mouseX, mouseY, speed) => {
+	item.style.setProperty(
+		"--mouseX",
+		Math.round((mouseX * speed) / fontsInUseWidth) + "%"
+	);
+
+	item.style.setProperty(
+		"--mouseY",
+		Math.round((mouseY * speed) / fontsInUseHeight) + "%"
+	);
+};
+
+const mouseMove = e => {
+	parallaxify(fontsInUseItems[0], e.clientX, e.clientY, 20);
+	parallaxify(fontsInUseItems[1], e.clientX, e.clientY, 20);
+	parallaxify(fontsInUseItems[2], e.clientX, e.clientY, 20);
+	parallaxify(fontsInUseItems[3], e.clientX, e.clientY, 20);
+	parallaxify(fontsInUseItems[4], e.clientX, e.clientY, 20);
+	parallaxify(fontsInUseItems[5], e.clientX, e.clientY, 20);
+	parallaxify(fontsInUseItems[6], e.clientX, e.clientY, 20);
+	parallaxify(fontsInUseItems[7], e.clientX, e.clientY, 20);
+	parallaxify(fontsInUseItems[8], e.clientX, e.clientY, 20);
+	parallaxify(fontsInUseItems[9], e.clientX, e.clientY, 20);
+};
+
+fontsInUse.addEventListener("mousemove", mouseMove);
+
 window.onresize = throttle(setViewportValues, 100);
