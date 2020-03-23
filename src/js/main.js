@@ -642,6 +642,7 @@ const fontsInUse = document.querySelector(".fonts-in-use");
 const fontsInUseItems = fontsInUse.querySelectorAll(".svg-container");
 const fontsInUseWidth = fontsInUse.offsetWidth;
 const fontsInUseHeight = fontsInUse.offsetHeight;
+const speeds = [20, 40, 45, 34, 44, 24, 10, 12, 20, 10];
 
 const parallaxify = (item, mouseX, mouseY, speed) => {
 	item.style.setProperty(
@@ -656,16 +657,9 @@ const parallaxify = (item, mouseX, mouseY, speed) => {
 };
 
 const mouseMove = e => {
-	parallaxify(fontsInUseItems[0], e.clientX, e.clientY, 20);
-	parallaxify(fontsInUseItems[1], e.clientX, e.clientY, 20);
-	parallaxify(fontsInUseItems[2], e.clientX, e.clientY, 20);
-	parallaxify(fontsInUseItems[3], e.clientX, e.clientY, 20);
-	parallaxify(fontsInUseItems[4], e.clientX, e.clientY, 20);
-	parallaxify(fontsInUseItems[5], e.clientX, e.clientY, 20);
-	parallaxify(fontsInUseItems[6], e.clientX, e.clientY, 20);
-	parallaxify(fontsInUseItems[7], e.clientX, e.clientY, 20);
-	parallaxify(fontsInUseItems[8], e.clientX, e.clientY, 20);
-	parallaxify(fontsInUseItems[9], e.clientX, e.clientY, 20);
+	fontsInUseItems.forEach((item, i) => {
+		parallaxify(item, e.clientX, e.clientY, speeds[i]);
+	});
 };
 
 fontsInUse.addEventListener("mousemove", mouseMove);
