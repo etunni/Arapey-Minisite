@@ -39,6 +39,21 @@ function setRAFInterval(fn, delay) {
 	}
 }
 
+// Generic: detect passive
+let supportsPassive = false;
+try {
+	const opts = Object.defineProperty({}, "passive", {
+		get: function() {
+			supportsPassive = true;
+			return true; // Abide getter-return linter check
+		}
+	});
+	window.addEventListener("testPassive", null, opts);
+	window.removeEventListener("testPassive", null, opts);
+} catch (e) {
+	// Do nothing
+}
+
 // Set up FontFaceObserver
 const font = new FontFaceObserver(fontName);
 font.load(null, fontTimeOut).then(
@@ -555,17 +570,43 @@ const setViewportValues = () => {
 	// Recalculate letterWave canvas dimensions
 	topWave.resizeCanvas();
 	bottomWave.resizeCanvas();
+
+	// Determine opsz container width
+	const opszWidth =
+		document.querySelector(".opsz-text .prose-content").offsetWidth - 48; // 48 = 3rem = handle size
+	document
+		.querySelector(".opsz-demo")
+		.style.setProperty("--width", `${opszWidth}px`);
 };
 
-// General mouse object.
+// Generic mousemove
 const mouse = {
 	x: 0,
-	y: 0
+	y: 0,
+	dragCallback: false, // What to do when a dragged element is moved
+	endCallback: false, // What to do when a dragging stops
+	executeCallback: function(e) {
+		if (mouse.dragCallback) {
+			if (e.cancelable) {
+				e.preventDefault();
+			}
+			mouse.dragCallback(e);
+		}
+	}
 };
-
 window.addEventListener("mousemove", e => {
 	mouse.x = e.clientX;
 	mouse.y = e.clientY;
+	mouse.executeCallback(e);
+});
+window.addEventListener("touchstart", e => {
+	mouse.x = e.changedTouches[0].clientX;
+	mouse.y = e.changedTouches[0].clientY;
+	mouse.executeCallback(e);
+});
+window.addEventListener("mouseup", () => {
+	mouse.endCallback && mouse.endCallback();
+	mouse.dragCallback = mouse.endCallback = false;
 });
 
 const aboutFontsSection = document.querySelector(
@@ -656,4 +697,36 @@ const designFeatures = {
 designFeatures.container.addEventListener(
 	"click",
 	designFeatures.setActiveLetter
+);
+
+// Swiper for opsz demo
+const swiper = document.querySelector(".opsz-demo");
+const swiperHandle = document.querySelector(".opsz-slider-handle");
+const calculateSwiperOffset = () => {
+	const x = mouse.x - swiper.offsetLeft;
+	const perc = (x / (swiper.offsetWidth / 100)).toFixed(2);
+	const clampedPerc = Math.max(1, Math.min(perc, 100));
+	swiper.style.setProperty("--offset", `${clampedPerc}%`);
+};
+swiperHandle.addEventListener("mousedown", e => {
+	e.preventDefault();
+	swiperHandle.classList.add("dragging");
+	mouse.dragCallback = () => calculateSwiperOffset();
+	mouse.endCallback = () => {
+		swiperHandle.classList.remove("dragging");
+	};
+});
+swiperHandle.addEventListener(
+	"touchmove",
+	e => {
+		swiperHandle.classList.add("dragging");
+		mouse.x = e.touches[0].clientX;
+		mouse.y = e.touches[0].clientY;
+		calculateSwiperOffset();
+
+		mouse.endCallback = () => {
+			swiperHandle.classList.remove("dragging");
+		};
+	},
+	supportsPassive ? { passive: true } : false
 );

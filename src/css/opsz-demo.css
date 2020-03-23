@@ -1,0 +1,156 @@
+.opsz-demo {
+	--offset: 50%;
+	--width: 864px; /* Line up with prose content */
+
+	/* Simulate .prose */
+	--opsz: 12;
+	--WONK: 1;
+
+	font-weight: 300;
+	font-size: 1.375rem;
+	line-height: 1.25;
+	position: relative;
+	margin: 10rem auto;
+	width: var(--width);
+	user-select: none;
+}
+
+.opsz-demo p {
+	/* Simulate .prose */
+	margin: 0 0 3rem 0;
+}
+
+.with-opsz,
+.without-opsz {
+	padding-top: 1rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	width: var(--width);
+}
+
+.opsz-demo h3 {
+	font-size: 1.25rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	color: var(--arapey-blue);
+}
+
+.without-opsz h3 {
+	justify-content: flex-end;
+}
+
+.with-opsz {
+	font-optical-sizing: none;
+	background: var(--arapey-white);
+}
+
+.without-opsz {
+	--opsz: 12;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.opsz-slider-window {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	width: var(--offset);
+	border-right: 2px solid var(--arapey-blue);
+}
+
+.opsz-slider-handle {
+	position: absolute;
+	width: 2rem;
+	height: 2rem;
+	background: var(--arapey-blue);
+	border-radius: 50%;
+	left: var(--offset);
+	top: 50%;
+	transform: translate(calc(-50% - 1px), -50%);
+	z-index: 2;
+	cursor: grab;
+}
+
+.opsz-slider-handle.dragging {
+	cursor: grabbing;
+}
+
+.opsz-small {
+	line-height: 1.375;
+	font-size: 1rem;
+}
+
+.opsz-small-with {
+	--opsz: 12;
+
+	line-height: 1.375;
+	font-size: 1rem;
+}
+
+.opsz-medium {
+	font-size: 2.5rem;
+}
+
+.opsz-medium-with {
+	--opsz: 32;
+
+	font-size: 2.5rem;
+}
+
+.opsz-large {
+	font-size: 5rem;
+}
+
+.opsz-large-with {
+	--opsz: 128;
+
+	font-size: 5rem;
+}
+
+@media screen and (max-width: 28rem) {
+	.with-opsz,
+	.without-opsz {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
+	.opsz-demo h3 {
+		flex-direction: column-reverse;
+	}
+
+	.without-opsz h3 {
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width: 70em) {
+	.opsz-demo .happy {
+		left: 0;
+	}
+
+	.opsz-demo .sad {
+		right: 0;
+	}
+}
+
+@media screen and (max-width: 48em) {
+	.opsz-medium,
+	.opsz-medium-with {
+		font-size: 1.5rem;
+	}
+
+	.opsz-large,
+	.opsz-large-with {
+		font-size: 2.5rem;
+	}
+
+	.opsz-demo p {
+		margin: 0 0 2.25rem 0;
+	}
+}
