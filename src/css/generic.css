@@ -49,3 +49,9 @@ button {
 	font-weight: var(--weight-semi-bold);
 	color: var(--arapey-blue);
 }
+
+.arapey-title-green {
+	font-size: 3.5rem;
+	font-weight: var(--weight-semi-bold);
+	color: var(--arapey-green);
+}

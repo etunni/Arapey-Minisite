@@ -1,0 +1,125 @@
+.design-features-section {
+	/* Height also determines scale of letters */
+	--height: 50vh;
+
+	text-align: center;
+}
+
+.floating-letter-container {
+	max-width: var(--max-content-width);
+	margin: 12.5vh auto;
+	position: relative;
+	height: var(--height);
+}
+
+.floating-letter {
+	position: absolute;
+	user-select: none;
+	cursor: pointer;
+	transition: left 400ms, top 400ms, transform 400ms;
+	transition-timing-function: ease-in-out;
+	transform: translate(-50%, -50%) scale(0.75);
+	left: var(--x);
+	top: var(--y);
+}
+
+.floating-letter svg {
+	animation-duration: 16s;
+	animation-name: float;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: ease-in-out;
+	animation-delay: inherit;
+	height: calc(var(--height) * 0.5);
+}
+
+.floating-letter.a {
+	--x: 25%;
+	--y: 10%;
+}
+
+.floating-letter.a svg {
+	animation-delay: 0s;
+}
+
+.floating-letter.d {
+	--x: 10%;
+	--y: 60%;
+}
+
+.floating-letter.d svg {
+	animation-delay: -2s;
+}
+
+.floating-letter.g {
+	--x: 50%;
+	--y: 0%;
+}
+
+.floating-letter.g svg {
+	animation-delay: -4s;
+}
+
+.floating-letter.m {
+	--x: 75%;
+	--y: 10%;
+}
+
+.floating-letter.m svg {
+	animation-delay: -6s;
+}
+
+.floating-letter.r {
+	--x: 25%;
+	--y: 100%;
+}
+
+.floating-letter.r svg {
+	animation-delay: -8s;
+}
+
+.floating-letter.u {
+	--x: 90%;
+	--y: 60%;
+}
+
+.floating-letter.u svg {
+	animation-delay: -10s;
+}
+
+.floating-letter.v {
+	--x: 75%;
+	--y: 100%;
+}
+
+.floating-letter.v svg {
+	animation-delay: -12s;
+}
+
+.floating-letter.active {
+	--x: 50%;
+	--y: 50%;
+
+	transform: translate(-50%, -50%) scale(1.5);
+}
+
+@keyframes float {
+	0% {
+		transform: translate(0, -4px);
+	}
+	25% {
+		transform: translate(16px, 0);
+	}
+	50% {
+		transform: translate(6px, 12px);
+	}
+	75% {
+		transform: translate(10px, 6px);
+	}
+}
+
+@media screen and (max-width: 50em) {
+	.floating-letter svg {
+		height: calc(var(--height) * 0.25);
+	}
+}
