@@ -1,0 +1,82 @@
+.fonts-in-use {
+	margin: 10rem 0;
+	position: relative;
+	min-height: 925px;
+	overflow: hidden;
+}
+
+.svg-container {
+	width: 15vw;
+	height: 15vh;
+	position: absolute;
+}
+
+.five-star-rating {
+	width: 15vw;
+	height: 15vh;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.book {
+	width: 50vw;
+	height: 50vh;
+	right: -200px;
+	bottom: 60px;
+}
+
+.card {
+	width: 25vw;
+	height: 25vh;
+	right: 160px;
+	top: 160px;
+}
+
+.card-2 {
+	width: 25vw;
+	height: 25vh;
+	right: -90px;
+}
+
+.soap {
+	width: 25vw;
+	height: 25vh;
+	top: 110px;
+	left: 50%;
+	transform: translate(-65%, 0);
+}
+
+.signs {
+	left: -60px;
+	bottom: 50px;
+	width: 23vw;
+	height: 23vh;
+}
+
+.magazine {
+	left: -40px;
+	top: 50px;
+	width: 37vw;
+	height: 37vh;
+}
+
+.reserved {
+	left: 320px;
+	top: 510px;
+	width: 22vw;
+	height: 22vh;
+}
+
+.napkin {
+	left: 370px;
+	top: 360px;
+	width: 33vw;
+	height: 33vh;
+}
+
+.kids-menu {
+	right: 420px;
+	bottom: 90px;
+	width: 23vw;
+	height: 23vh;
+}
