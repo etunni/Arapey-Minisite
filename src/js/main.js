@@ -39,21 +39,6 @@ function setRAFInterval(fn, delay) {
 	}
 }
 
-// Set up FontFaceObserver
-const font = new FontFaceObserver(fontName);
-font.load(null, fontTimeOut).then(
-	() => {
-		// Font has loaded
-		document.documentElement.classList.add("fonts-loaded");
-		initializeApp();
-	},
-	() => {
-		// Font didn't load
-		document.documentElement.classList.add("fonts-failed");
-		initializeApp();
-	}
-);
-
 const setupInputs = () => {
 	// Interactive controls (sliders that tweak axes)
 	const interactives = document.querySelectorAll(".interactive-controls");
@@ -113,6 +98,27 @@ const setupInputs = () => {
 	}
 };
 
+// Set up FontFaceObserver
+const font = new FontFaceObserver(fontName);
+font.load(null, fontTimeOut).then(
+	() => {
+		// Font has loaded
+		document.documentElement.classList.add("fonts-loaded");
+		initializeApp();
+		setupInputs();
+		setViewportValues();
+		aboutFonts.init();
+	},
+	() => {
+		// Font didn't load
+		document.documentElement.classList.add("fonts-failed");
+		initializeApp();
+		setupInputs();
+		setViewportValues();
+		aboutFonts.init();
+	}
+);
+
 // Watch if .am-i-in-view elements are visible on screen
 // and apply a class accordingly
 if ("IntersectionObserver" in window) {
@@ -170,9 +176,9 @@ const setupBadge = (slider, value) => {
 		(parseFloat(value) - parseFloat(slider.min)) * badgeOffset -
 		badge.offsetWidth / 2;
 
+	badge.textContent = Math.round(value);
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
 	badge.style.setProperty("--weight", `${value}`);
-	badge.style.setProperty("--weight-string", `"${Math.round(value)}"`);
 };
 
 const toggleBlockContainer = document.querySelector(".toggle-block-container");
@@ -636,10 +642,6 @@ const aboutFonts = {
 	}
 };
 
-aboutFonts.init();
-
-window.onresize = throttle(setViewportValues, 100);
-
 const designFeatures = {
 	container: document.querySelector(".floating-letter-container"),
 	setActiveLetter(e) {
@@ -657,3 +659,5 @@ designFeatures.container.addEventListener(
 	"click",
 	designFeatures.setActiveLetter
 );
+
+window.onresize = throttle(setViewportValues, 100);
