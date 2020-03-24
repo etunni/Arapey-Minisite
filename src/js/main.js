@@ -46,11 +46,13 @@ font.load(null, fontTimeOut).then(
 		// Font has loaded
 		document.documentElement.classList.add("fonts-loaded");
 		initializeApp();
+		setViewportValues();
 	},
 	() => {
 		// Font didn't load
 		document.documentElement.classList.add("fonts-failed");
 		initializeApp();
+		setViewportValues();
 	}
 );
 
@@ -550,13 +552,6 @@ const initializeApp = () => {
 	loop();
 };
 
-// Update variables related to the viewport
-const setViewportValues = () => {
-	// Recalculate letterWave canvas dimensions
-	topWave.resizeCanvas();
-	bottomWave.resizeCanvas();
-};
-
 // General mouse object.
 const mouse = {
 	x: 0,
@@ -638,30 +633,39 @@ const aboutFonts = {
 
 aboutFonts.init();
 
-const fontsInUse = document.querySelector(".fonts-in-use");
-const fontsInUseItems = fontsInUse.querySelectorAll(".svg-container");
-const fontsInUseWidth = fontsInUse.offsetWidth;
-const fontsInUseHeight = fontsInUse.offsetHeight;
-const speeds = [20, 40, 45, 34, 44, 24, 10, 12, 20, 10];
-
-const parallaxify = (item, mouseX, mouseY, speed) => {
-	item.style.setProperty(
-		"--mouseX",
-		Math.round((mouseX * speed) / fontsInUseWidth) + "%"
-	);
-
-	item.style.setProperty(
-		"--mouseY",
-		Math.round((mouseY * speed) / fontsInUseHeight) + "%"
-	);
+const fontsInUse = {
+	element: document.querySelector(".fonts-in-use"),
+	scrollPos: 0,
+	start: null,
+	end: null,
+	perc: null
 };
 
-const mouseMove = e => {
-	fontsInUseItems.forEach((item, i) => {
-		parallaxify(item, e.clientX, e.clientY, speeds[i]);
-	});
-};
+window.onscroll = throttle(() => {
+	fontsInUse.scrollPos = window.scrollY;
 
-fontsInUse.addEventListener("mousemove", mouseMove);
+	if (
+		fontsInUse.scrollPos > fontsInUse.start &&
+		fontsInUse.scrollPos < fontsInUse.uvEnd
+	) {
+		const offset = (
+			(fontsInUse.scrollPos - fontsInUse.start) /
+			fontsInUse.perc
+		).toFixed(2);
+		fontsInUse.element.style.setProperty("--offset", offset);
+	}
+}, 100);
+
+// Update variables related to the viewport
+const setViewportValues = () => {
+	// Recalculate letterWave canvas dimensions
+	topWave.resizeCanvas();
+	bottomWave.resizeCanvas();
+
+	fontsInUse.start = fontsInUse.element.offsetTop - window.innerHeight;
+	fontsInUse.uvEnd =
+		fontsInUse.element.offsetTop + fontsInUse.element.offsetHeight;
+	fontsInUse.perc = fontsInUse.uvEnd - fontsInUse.start;
+};
 
 window.onresize = throttle(setViewportValues, 100);
