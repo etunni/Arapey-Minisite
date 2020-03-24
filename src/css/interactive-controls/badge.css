@@ -20,9 +20,6 @@
 }
 
 .interactive-controls-badge::before {
-	/* The content property can only take strings */
-	content: var(--weight-string);
-
 	/* Using wght axis directly as weight axis doesn't match CSS weight values */
 	font-variation-settings: "wght" var(--weight);
 }
