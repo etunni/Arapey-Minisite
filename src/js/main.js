@@ -39,6 +39,25 @@ function setRAFInterval(fn, delay) {
 	}
 }
 
+// Set up FontFaceObserver
+const font = new FontFaceObserver(fontName);
+font.load(null, fontTimeOut).then(
+	() => {
+		// Font has loaded
+		document.documentElement.classList.add("fonts-loaded");
+		initializeApp();
+		setViewportValues();
+		aboutFonts.init();
+	},
+	() => {
+		// Font didn't load
+		document.documentElement.classList.add("fonts-failed");
+		initializeApp();
+		setViewportValues();
+		aboutFonts.init();
+	}
+);
+
 const setupInputs = () => {
 	// Interactive controls (sliders that tweak axes)
 	const interactives = document.querySelectorAll(".interactive-controls");
@@ -97,27 +116,6 @@ const setupInputs = () => {
 		}
 	}
 };
-
-// Set up FontFaceObserver
-const font = new FontFaceObserver(fontName);
-font.load(null, fontTimeOut).then(
-	() => {
-		// Font has loaded
-		document.documentElement.classList.add("fonts-loaded");
-		initializeApp();
-		setupInputs();
-		setViewportValues();
-		aboutFonts.init();
-	},
-	() => {
-		// Font didn't load
-		document.documentElement.classList.add("fonts-failed");
-		initializeApp();
-		setupInputs();
-		setViewportValues();
-		aboutFonts.init();
-	}
-);
 
 // Watch if .am-i-in-view elements are visible on screen
 // and apply a class accordingly
