@@ -648,10 +648,12 @@ window.onscroll = throttle(() => {
 		fontsInUse.scrollPos > fontsInUse.start &&
 		fontsInUse.scrollPos < fontsInUse.uvEnd
 	) {
-		const offset = (
-			(fontsInUse.scrollPos - fontsInUse.start) /
-			fontsInUse.perc
-		).toFixed(2);
+		const offset =
+			10 *
+			(
+				(fontsInUse.scrollPos - fontsInUse.start) /
+				fontsInUse.perc
+			).toFixed(4);
 		fontsInUse.element.style.setProperty("--offset", offset);
 	}
 }, 100);
