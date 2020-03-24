@@ -31,7 +31,7 @@
 	--height: 80;
 
 	bottom: 0;
-	left: 85%;
+	left: 90%;
 }
 
 .card {
@@ -88,7 +88,7 @@
 	--height: 50;
 	--offset-factor: 0.5;
 
-	top: 40%;
+	top: 35%;
 	left: 40%;
 }
 
@@ -98,4 +98,52 @@
 
 	bottom: 5%;
 	left: 55%;
+}
+
+/* Based on CSS generated with Wakamai Fondue, to be used in SVG images */
+
+.fonts-in-use [font-family*="Thin"] * {
+	font-variation-settings: "wght" 100, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Extralight"] * {
+	font-variation-settings: "wght" 200, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Light"] * {
+	font-variation-settings: "wght" 300, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Regular"] * {
+	font-variation-settings: "wght" 400, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Medium"] * {
+	font-variation-settings: "wght" 500, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Semibold"] * {
+	font-variation-settings: "wght" 600, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Bold"] * {
+	font-variation-settings: "wght" 700, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Extrabold"] * {
+	font-variation-settings: "wght" 800, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Black"] * {
+	font-variation-settings: "wght" 900, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="ThinDisplay"] *,
+.fonts-in-use [font-family*="Thin-Display"] * {
+	font-variation-settings: "wght" 100, "opsz" 128;
+}
+
+.fonts-in-use [font-family*="BlackDisplay"] *,
+.fonts-in-use [font-family*="Black-Display"] * {
+	font-variation-settings: "wght" 900, "opsz" 128;
 }
