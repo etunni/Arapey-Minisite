@@ -1,6 +1,14 @@
 .about-variable-fonts-section {
 	margin-top: 4rem;
 }
+@media screen and (max-width: 34em) {
+	.about-variable-fonts-section {
+		margin-top: 0;
+	}
+	.arapey-title-blue {
+		margin-top: 0;
+	}
+}
 
 .about-variable-fonts-container {
 	font-size: 1.5rem;
@@ -123,4 +131,14 @@ code .string-value {
 .arapey-styles-container ul + ul {
 	font-weight: var(--weight-bold);
 	margin-left: 3.5rem;
+}
+
+@media screen and (max-width: 34em) {
+	.arapey-styles-container {
+		padding: 2rem;
+	}
+
+	.arapey-styles-list-container {
+		font-size: 1rem;
+	}
 }

@@ -9,6 +9,13 @@
 	margin-bottom: 11rem;
 }
 
+@media screen and (max-width: 34em) {
+	.about-arapey-container article {
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+	}
+}
+
 .about-arapey-content {
 	text-align: center;
 	font-weight: var(--weight-regular);

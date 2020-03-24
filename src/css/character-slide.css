@@ -5,6 +5,12 @@
 	user-select: none;
 }
 
+@media screen and (max-width: 34em) {
+	.character-slide-section {
+		margin: 2.5rem auto;
+	}
+}
+
 .character-slide-lists-container {
 	position: relative;
 }
@@ -36,6 +42,17 @@
 .character-slide-section-controls {
 	display: flex;
 	justify-content: center;
+}
+
+@media screen and (max-width: 34em) {
+	.character-slide-section-controls {
+		flex-direction: column;
+		align-content: center;
+	}
+	.character-slide-section-controls .interactive-controls-select-group {
+		margin: auto;
+		margin-bottom: 0.5rem;
+	}
 }
 
 .slider-selector {

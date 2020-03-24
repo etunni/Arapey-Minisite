@@ -20,3 +20,15 @@
 	padding-top: 2.5rem;
 	margin-left: 1rem;
 }
+
+@media screen and (max-width: 34em) {
+	.about-arapey-content-interactive .interactive-controls-list-container {
+		flex-direction: column-reverse;
+		align-content: center;
+	}
+
+	.interactive-controls-alignment {
+		justify-content: center;
+		padding-top: 0;
+	}
+}
