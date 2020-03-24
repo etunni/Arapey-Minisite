@@ -1,0 +1,150 @@
+.fonts-in-use {
+	--offset: 0;
+	--scale-factor: 55vw;
+	--offset-factor: 0;
+
+	margin: 10rem auto;
+	position: relative;
+	overflow: hidden;
+	width: 100vw;
+	padding-top: 60%;
+}
+
+.svg-container {
+	position: absolute;
+}
+
+.svg-container svg {
+	height: calc(var(--height) / 100 * var(--scale-factor));
+	transform: translate(-50%, calc(var(--offset-factor) * var(--offset) * 1%));
+}
+
+.five-star-rating {
+	--height: 10;
+	--offset-factor: 1;
+
+	top: 0%;
+	left: 50%;
+}
+
+.book {
+	--height: 80;
+
+	bottom: 0;
+	left: 90%;
+}
+
+.card {
+	--height: 30;
+	--offset-factor: 2;
+
+	top: 20%;
+	left: 75%;
+	z-index: 10;
+}
+
+.card-2 {
+	--height: 30;
+	--offset-factor: 1;
+
+	top: 0%;
+	left: 95%;
+	z-index: 10;
+}
+
+.soap {
+	--height: 32;
+	--offset-factor: 2.5;
+
+	top: 10%;
+	left: 45%;
+	z-index: 10;
+}
+
+.signs {
+	--height: 20;
+	--offset-factor: 1.5;
+
+	top: 77%;
+	left: 10%;
+}
+
+.magazine {
+	--height: 80;
+	--offset-factor: 1;
+
+	top: 0;
+	left: 15%;
+}
+
+.reserved {
+	--height: 24;
+	--offset-factor: 4;
+
+	top: 60%;
+	left: 30%;
+}
+
+.napkin {
+	--height: 50;
+	--offset-factor: 0.5;
+
+	top: 35%;
+	left: 40%;
+}
+
+.kids-menu {
+	--height: 35;
+	--offset-factor: 2;
+
+	bottom: 5%;
+	left: 55%;
+}
+
+/* Based on CSS generated with Wakamai Fondue, to be used in SVG images */
+
+.fonts-in-use [font-family*="Thin"] * {
+	font-variation-settings: "wght" 100, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Extralight"] * {
+	font-variation-settings: "wght" 200, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Light"] * {
+	font-variation-settings: "wght" 300, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Regular"] * {
+	font-variation-settings: "wght" 400, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Medium"] * {
+	font-variation-settings: "wght" 500, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Semibold"] * {
+	font-variation-settings: "wght" 600, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Bold"] * {
+	font-variation-settings: "wght" 700, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Extrabold"] * {
+	font-variation-settings: "wght" 800, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="Black"] * {
+	font-variation-settings: "wght" 900, "opsz" 12;
+}
+
+.fonts-in-use [font-family*="ThinDisplay"] *,
+.fonts-in-use [font-family*="Thin-Display"] * {
+	font-variation-settings: "wght" 100, "opsz" 128;
+}
+
+.fonts-in-use [font-family*="BlackDisplay"] *,
+.fonts-in-use [font-family*="Black-Display"] * {
+	font-variation-settings: "wght" 900, "opsz" 128;
+}
