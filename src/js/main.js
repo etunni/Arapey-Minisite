@@ -671,3 +671,21 @@ const setViewportValues = () => {
 };
 
 window.onresize = throttle(setViewportValues, 100);
+
+const designFeatures = {
+	container: document.querySelector(".floating-letter-container"),
+	setActiveLetter(e) {
+		const letter = e.target.closest(".floating-letter");
+		if (letter) {
+			designFeatures.container
+				.querySelector(".active")
+				.classList.remove("active");
+			letter.classList.add("active");
+		}
+	}
+};
+
+designFeatures.container.addEventListener(
+	"click",
+	designFeatures.setActiveLetter
+);
