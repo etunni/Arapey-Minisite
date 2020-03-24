@@ -94,6 +94,12 @@
 	max-width: var(--max-content-width);
 }
 
+@media screen and (max-width: 64em) {
+	.interactive-controls-tick-slider-container {
+		margin: auto;
+	}
+}
+
 .label-text {
 	white-space: nowrap;
 	font-weight: var(--weight-bold);
