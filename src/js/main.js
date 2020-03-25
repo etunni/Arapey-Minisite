@@ -47,14 +47,12 @@ font.load(null, fontTimeOut).then(
 		document.documentElement.classList.add("fonts-loaded");
 		initializeApp();
 		setViewportValues();
-		aboutFonts.init();
 	},
 	() => {
 		// Font didn't load
 		document.documentElement.classList.add("fonts-failed");
 		initializeApp();
 		setViewportValues();
-		aboutFonts.init();
 	}
 );
 
@@ -176,6 +174,7 @@ const setupBadge = (slider, value) => {
 
 	badge.textContent = Math.round(value);
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
+	badge.style.setProperty("--weight", `${value}`);
 };
 
 const toggleBlockContainer = document.querySelector(".toggle-block-container");
@@ -553,13 +552,6 @@ const initializeApp = () => {
 	loop();
 };
 
-// Update variables related to the viewport
-const setViewportValues = () => {
-	// Recalculate letterWave canvas dimensions
-	topWave.resizeCanvas();
-	bottomWave.resizeCanvas();
-};
-
 // General mouse object.
 const mouse = {
 	x: 0,
@@ -639,6 +631,47 @@ const aboutFonts = {
 	}
 };
 
+aboutFonts.init();
+
+const fontsInUse = {
+	element: document.querySelector(".fonts-in-use"),
+	scrollPos: 0,
+	start: null,
+	end: null,
+	perc: null
+};
+
+window.onscroll = throttle(() => {
+	fontsInUse.scrollPos = window.scrollY;
+
+	if (
+		fontsInUse.scrollPos > fontsInUse.start &&
+		fontsInUse.scrollPos < fontsInUse.uvEnd
+	) {
+		const offset =
+			10 *
+			(
+				(fontsInUse.scrollPos - fontsInUse.start) /
+				fontsInUse.perc
+			).toFixed(4);
+		fontsInUse.element.style.setProperty("--offset", offset);
+	}
+}, 100);
+
+// Update variables related to the viewport
+const setViewportValues = () => {
+	// Recalculate letterWave canvas dimensions
+	topWave.resizeCanvas();
+	bottomWave.resizeCanvas();
+
+	fontsInUse.start = fontsInUse.element.offsetTop - window.innerHeight;
+	fontsInUse.uvEnd =
+		fontsInUse.element.offsetTop + fontsInUse.element.offsetHeight;
+	fontsInUse.perc = fontsInUse.uvEnd - fontsInUse.start;
+};
+
+window.onresize = throttle(setViewportValues, 100);
+
 const designFeatures = {
 	container: document.querySelector(".floating-letter-container"),
 	setActiveLetter(e) {
@@ -656,5 +689,3 @@ designFeatures.container.addEventListener(
 	"click",
 	designFeatures.setActiveLetter
 );
-
-window.onresize = throttle(setViewportValues, 100);
