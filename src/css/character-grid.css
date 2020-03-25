@@ -77,23 +77,6 @@
 	margin: 4rem auto 10rem auto;
 }
 
-@media screen and (max-width: 45em) {
-	.character-grid-inner-container {
-		flex-direction: column;
-	}
-
-	.character-grid {
-		height: 55vh;
-		min-height: auto;
-		flex: auto;
-	}
-
-	.character-grid-zoom {
-		flex: auto;
-		font-size: 12rem;
-	}
-}
-
 @media screen and (max-width: 64em) {
 	.character-grid {
 		height: 60vh;
@@ -105,5 +88,23 @@
 
 	.character-grid-section .interactive-controls-list {
 		margin: 4rem auto 4rem auto;
+	}
+}
+
+@media screen and (max-width: 45em) {
+	.character-grid-inner-container {
+		flex-direction: column;
+		padding: 0;
+	}
+
+	.character-grid {
+		height: 55vh;
+		min-height: auto;
+		flex: auto;
+	}
+
+	.character-grid-zoom {
+		flex: auto;
+		font-size: 12rem;
 	}
 }
