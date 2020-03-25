@@ -11,7 +11,6 @@
 	padding: 0.5rem 0 0.25rem 0;
 	text-align: center;
 	background-color: var(--arapey-light-gray);
-	font-variation-settings: "wght" var(--weight);
 }
 
 .temperature-slider-container .interactive-controls-badge,
