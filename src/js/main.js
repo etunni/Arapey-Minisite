@@ -584,9 +584,19 @@ const mouse = {
 	y: 0
 };
 
+const touch = {
+	x: 0,
+	y: 0
+};
+
 window.addEventListener("mousemove", e => {
 	mouse.x = e.clientX;
 	mouse.y = e.clientY;
+});
+
+window.addEventListener("touchmove", e => {
+	touch.x = e.touches[0].clientX;
+	touch.y = e.touches[0].clientY;
 });
 
 const aboutFontsSection = document.querySelector(
@@ -596,8 +606,13 @@ const aboutFontsSection = document.querySelector(
 const aboutFonts = {
 	init() {
 		this.parentContainerEl.addEventListener("mousedown", this.onMouseDown);
+		this.parentContainerEl.addEventListener("touchstart", this.onMouseDown);
 		this.parentContainerEl.addEventListener(
 			"mousemove",
+			this.onDragCharacter
+		);
+		this.parentContainerEl.addEventListener(
+			"touchmove",
 			this.onDragCharacter
 		);
 		this.parentContainerEl.addEventListener(
@@ -605,10 +620,16 @@ const aboutFonts = {
 			this.onDropCharacter
 		);
 		this.parentContainerEl.addEventListener(
+			"touchend",
+			this.onDropCharacter
+		);
+		this.parentContainerEl.addEventListener(
 			"mouseleave",
 			this.onDropCharacter
 		);
 		this.weightSlider.addEventListener("input", this.onDragInput);
+		this.weightSlider.addEventListener("touchstart", this.onDragInput);
+		this.weightSlider.addEventListener("touchmove", this.onDragInput);
 	},
 	parentContainerEl: aboutFontsSection.querySelector(
 		".character-slider-container"
@@ -618,12 +639,14 @@ const aboutFonts = {
 	weightSlider: aboutFontsSection.querySelector(".wght-slider"),
 	isDown: false,
 	maxFontWeight: 900,
-	onDragCharacter: () => {
+	isTouch: false,
+	onDragCharacter: e => {
 		if (!aboutFonts.isDown) return;
-		aboutFonts.calculateCharacterPos();
+		aboutFonts.calculateCharacterPos(e);
 	},
-	onDragInput: () => {
-		aboutFonts.calculateCharacterPos();
+	onDragInput: e => {
+		if (e.touches) aboutFonts.isTouch = true;
+		aboutFonts.calculateCharacterPos(e);
 	},
 	onDropCharacter: () => {
 		aboutFonts.isDown = false;
@@ -639,7 +662,9 @@ const aboutFonts = {
 			.querySelector(`.${name}`).textContent = sliderValue;
 	},
 	calculateCharacterPos() {
-		const distX = mouse.x - this.containerEl.offsetLeft;
+		const distX = aboutFonts.isTouch
+			? touch.x - this.containerEl.offsetLeft
+			: mouse.x - this.containerEl.offsetLeft;
 		const percentageWidth = (
 			distX /
 			(this.containerEl.offsetWidth / 100)
