@@ -289,20 +289,36 @@ characterSlideListContainer.addEventListener("mouseout", () => {
 	characterSlide.shouldSlide = true;
 	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
 });
-characterSlideListContainer.addEventListener("mousedown", e => {
+
+const onPressCharacterSlide = e => {
 	characterSlide.isDown = true;
 	characterSlide.oldX = e.pageX;
 	characterSlide.x = e.pageX - e.currentTarget.offsetLeft;
 	characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling in the scroll container
 	characterSlideListContainer.classList.add("active");
-});
-characterSlideListContainer.addEventListener("mousemove", e => {
+};
+
+const onMoveCharacterSlide = e => {
 	if (!characterSlide.isDown) return;
 	const slideDistance = e.pageX - characterSlide.x;
 	characterSlide.slideSpeed = e.pageX - characterSlide.oldX;
 	characterSlide.oldX = e.pageX;
 	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
-});
+};
+
+characterSlideListContainer.addEventListener(
+	"mousedown",
+	onPressCharacterSlide
+);
+
+characterSlideListContainer.addEventListener(
+	"touchstart",
+	onPressCharacterSlide
+);
+
+characterSlideListContainer.addEventListener("mousemove", onMoveCharacterSlide);
+characterSlideListContainer.addEventListener("touchmove", onMoveCharacterSlide);
+
 const stopCharacterSlider = () => {
 	characterSlide.isDown = false;
 	characterSlideListContainer.classList.remove("active");
