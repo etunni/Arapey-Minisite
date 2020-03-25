@@ -12,7 +12,8 @@
 
 @media screen and (max-width: 45em) {
 	.fonts-in-use {
-		display: none;
+		margin: 0 auto;
+		margin-bottom: 3rem;
 	}
 }
 
