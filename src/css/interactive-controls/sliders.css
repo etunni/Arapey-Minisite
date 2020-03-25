@@ -41,6 +41,12 @@
 	margin-top: 3.25rem;
 }
 
+@media screen and (max-width: 48em) {
+	.interactive-controls-list {
+		padding: 1rem;
+	}
+}
+
 .interactive-controls-list label {
 	--label-width: 4.5rem;
 
@@ -77,7 +83,7 @@
 }
 
 .about-arapey-content-interactive .interactive-controls-list {
-	min-width: 800px;
+	width: 100%;
 }
 
 .about-arapey-container .interactive-controls-list-container {
@@ -93,6 +99,12 @@
 .interactive-controls-tick-slider-container {
 	width: 100%;
 	max-width: var(--max-content-width);
+}
+
+@media screen and (max-width: 64em) {
+	.interactive-controls-tick-slider-container {
+		margin: auto;
+	}
 }
 
 .label-text {
@@ -161,6 +173,12 @@
 .ticks {
 	display: flex;
 	justify-content: space-between;
+}
+
+@media screen and (max-width: 48em) {
+	.ticks {
+		display: none;
+	}
 }
 
 .tick {

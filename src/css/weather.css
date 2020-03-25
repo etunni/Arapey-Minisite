@@ -45,3 +45,29 @@
 	font-size: 1.5rem;
 	font-weight: var(--weight-semi-bold);
 }
+
+@media screen and (max-width: 45em) {
+	.weather-section {
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+
+	.weather-content-container:last-child {
+		margin-bottom: 0;
+	}
+
+	.weather-content-container .temperature {
+		font-size: 8rem;
+		font-weight: var(--temperature-slider);
+	}
+
+	.weather-content-container .wind {
+		font-size: 3rem;
+		font-weight: var(--wind-slider);
+	}
+
+	.weather-content-container .time {
+		font-size: 4rem;
+		font-weight: var(--time-slider);
+	}
+}
