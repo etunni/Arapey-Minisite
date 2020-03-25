@@ -290,8 +290,15 @@ characterSlideListContainer.addEventListener("mouseout", () => {
 	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
 });
 
+characterSlideListContainer.addEventListener("touchend", () => {
+	characterSlide.shouldSlide = true;
+	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
+});
+
 const onPressCharacterSlide = e => {
 	characterSlide.isDown = true;
+	characterSlide.shouldSlide = false;
+
 	characterSlide.oldX = e.pageX;
 	characterSlide.x = e.pageX - e.currentTarget.offsetLeft;
 	characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling in the scroll container
@@ -300,6 +307,7 @@ const onPressCharacterSlide = e => {
 
 const onMoveCharacterSlide = e => {
 	if (!characterSlide.isDown) return;
+
 	const slideDistance = e.pageX - characterSlide.x;
 	characterSlide.slideSpeed = e.pageX - characterSlide.oldX;
 	characterSlide.oldX = e.pageX;
