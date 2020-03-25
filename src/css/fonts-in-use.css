@@ -10,6 +10,12 @@
 	padding-top: 60%;
 }
 
+@media screen and (max-width: 45em) {
+	.fonts-in-use {
+		display: none;
+	}
+}
+
 .svg-container {
 	position: absolute;
 }

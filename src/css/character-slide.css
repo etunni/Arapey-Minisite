@@ -5,7 +5,7 @@
 	user-select: none;
 }
 
-@media screen and (max-width: 34em) {
+@media screen and (max-width: 45em) {
 	.character-slide-section {
 		margin: 2.5rem auto;
 	}
@@ -44,7 +44,7 @@
 	justify-content: center;
 }
 
-@media screen and (max-width: 34em) {
+@media screen and (max-width: 45em) {
 	.character-slide-section-controls {
 		flex-direction: column;
 		align-content: center;

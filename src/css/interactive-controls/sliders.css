@@ -33,7 +33,7 @@
 	margin-top: 3.25rem;
 }
 
-@media screen and (max-width: 34em) {
+@media screen and (max-width: 45em) {
 	.interactive-controls-list {
 		padding: 1rem;
 	}
@@ -168,7 +168,7 @@
 	justify-content: space-between;
 }
 
-@media screen and (max-width: 34em) {
+@media screen and (max-width: 45em) {
 	.ticks {
 		display: none;
 	}

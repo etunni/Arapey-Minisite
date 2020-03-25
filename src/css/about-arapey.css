@@ -9,7 +9,15 @@
 	margin-bottom: 11rem;
 }
 
-@media screen and (max-width: 34em) {
+@media screen and (max-width: 45em) {
+	.about-arapey-container {
+		padding: 1rem;
+	}
+
+	.about-arapey-container .interactive-controls-list {
+		padding: 0;
+	}
+
 	.about-arapey-container article {
 		margin-top: 3rem;
 		margin-bottom: 3rem;

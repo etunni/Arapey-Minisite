@@ -77,7 +77,7 @@
 	margin: 4rem auto 10rem auto;
 }
 
-@media screen and (max-width: 34em) {
+@media screen and (max-width: 45em) {
 	.character-grid-section {
 		display: none;
 	}
