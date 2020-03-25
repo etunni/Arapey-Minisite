@@ -19,11 +19,6 @@
 	color: var(--arapey-green);
 }
 
-.interactive-controls-badge::before {
-	/* Using wght axis directly as weight axis doesn't match CSS weight values */
-	font-variation-settings: "wght" var(--weight);
-}
-
 .interactive-controls-badge::after {
 	content: "";
 	position: absolute;

@@ -176,7 +176,6 @@ const setupBadge = (slider, value) => {
 
 	badge.textContent = Math.round(value);
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
-	badge.style.setProperty("--weight", `${value}`);
 };
 
 const toggleBlockContainer = document.querySelector(".toggle-block-container");
