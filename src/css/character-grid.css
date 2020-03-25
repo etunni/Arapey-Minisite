@@ -78,7 +78,25 @@
 }
 
 @media screen and (max-width: 45em) {
-	.character-grid-section {
-		display: none;
+	.character-grid-inner-container {
+		flex-direction: column;
+		height: 500px;
+	}
+
+	.character-grid {
+		height: 500px;
+		min-height: auto;
+		flex: auto;
+	}
+
+	.character-grid-zoom {
+		flex: auto;
+		font-size: 12rem;
+	}
+}
+
+@media screen and (max-width: 64em) {
+	.character-grid {
+		height: 35rem;
 	}
 }
