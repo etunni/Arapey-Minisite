@@ -11,20 +11,13 @@
 	padding: 0.5rem 0 0.25rem 0;
 	text-align: center;
 	background-color: var(--arapey-light-gray);
+	font-variation-settings: "wght" var(--weight);
 }
 
 .temperature-slider-container .interactive-controls-badge,
 .wind-slider-container .interactive-controls-badge,
 .time-slider-container .interactive-controls-badge {
 	color: var(--arapey-green);
-}
-
-.interactive-controls-badge::before {
-	/* The content property can only take strings */
-	content: var(--weight-string);
-
-	/* Using wght axis directly as weight axis doesn't match CSS weight values */
-	font-variation-settings: "wght" var(--weight);
 }
 
 .interactive-controls-badge::after {

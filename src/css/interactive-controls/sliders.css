@@ -15,18 +15,26 @@
 }
 
 [type="range"]::-webkit-slider-thumb {
-	margin-top: -0.5em;
+	background-color: var(--arapey-black);
+	height: 1px;
+}
+
+[type="range"]::-moz-range-track {
+	height: 1px;
+	background-color: var(--arapey-black);
 }
 
 [type="range"]::-webkit-slider-runnable-track {
-	height: 0.2em;
+	height: 1px;
 	outline: 0;
 	width: 10rem;
+	background-color: var(--arapey-black);
 }
 [type="range"]::-ms-track {
 	border: none;
-	height: 0.2em;
-	width: 10rem;
+	height: 1px;
+	margin-top: -0.5rem;
+	background-color: var(--arapey-black);
 }
 
 .interactive-controls-list {
@@ -42,6 +50,7 @@
 
 /* Handle and color variants */
 .interactive-controls-slider::-webkit-slider-thumb {
+	margin-top: -0.5rem;
 	width: var(--thumb-size);
 	height: var(--thumb-size);
 	border-radius: 50%;
@@ -59,6 +68,7 @@
 	width: var(--thumb-size);
 	height: var(--thumb-size);
 	margin-top: 0;
+	box-sizing: border-box;
 }
 
 .interactive-controls-tick-sliders li {
@@ -103,8 +113,8 @@
 }
 
 .interactive-controls-tick-slider {
-	background-color: var(--arapey-black);
-	height: 1px;
+	background-color: transparent;
+	height: 2.25em;
 	width: 100%;
 	margin: 0;
 }

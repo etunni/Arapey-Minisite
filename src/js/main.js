@@ -47,12 +47,14 @@ font.load(null, fontTimeOut).then(
 		document.documentElement.classList.add("fonts-loaded");
 		initializeApp();
 		setViewportValues();
+		aboutFonts.init();
 	},
 	() => {
 		// Font didn't load
 		document.documentElement.classList.add("fonts-failed");
 		initializeApp();
 		setViewportValues();
+		aboutFonts.init();
 	}
 );
 
@@ -172,9 +174,9 @@ const setupBadge = (slider, value) => {
 		(parseFloat(value) - parseFloat(slider.min)) * badgeOffset -
 		badge.offsetWidth / 2;
 
+	badge.textContent = Math.round(value);
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
 	badge.style.setProperty("--weight", `${value}`);
-	badge.style.setProperty("--weight-string", `"${Math.round(value)}"`);
 };
 
 const toggleBlockContainer = document.querySelector(".toggle-block-container");
@@ -631,8 +633,6 @@ const aboutFonts = {
 	}
 };
 
-aboutFonts.init();
-
 const fontsInUse = {
 	element: document.querySelector(".fonts-in-use"),
 	scrollPos: 0,
@@ -670,8 +670,6 @@ const setViewportValues = () => {
 	fontsInUse.perc = fontsInUse.uvEnd - fontsInUse.start;
 };
 
-window.onresize = throttle(setViewportValues, 100);
-
 const designFeatures = {
 	container: document.querySelector(".floating-letter-container"),
 	setActiveLetter(e) {
@@ -689,3 +687,5 @@ designFeatures.container.addEventListener(
 	"click",
 	designFeatures.setActiveLetter
 );
+
+window.onresize = throttle(setViewportValues, 100);
