@@ -61,11 +61,13 @@ font.load(null, fontTimeOut).then(
 		// Font has loaded
 		document.documentElement.classList.add("fonts-loaded");
 		initializeApp();
+		setViewportValues();
 	},
 	() => {
 		// Font didn't load
 		document.documentElement.classList.add("fonts-failed");
 		initializeApp();
+		setViewportValues();
 	}
 );
 
@@ -565,21 +567,7 @@ const initializeApp = () => {
 	loop();
 };
 
-// Update variables related to the viewport
-const setViewportValues = () => {
-	// Recalculate letterWave canvas dimensions
-	topWave.resizeCanvas();
-	bottomWave.resizeCanvas();
-
-	// Determine opsz container width
-	const opszWidth =
-		document.querySelector(".opsz-text .prose-content").offsetWidth - 48; // 48 = 3rem = handle size
-	document
-		.querySelector(".opsz-demo")
-		.style.setProperty("--width", `${opszWidth}px`);
-};
-
-// Generic mousemove
+// General mouse object.
 const mouse = {
 	x: 0,
 	y: 0,
@@ -678,6 +666,50 @@ const aboutFonts = {
 };
 
 aboutFonts.init();
+
+const fontsInUse = {
+	element: document.querySelector(".fonts-in-use"),
+	scrollPos: 0,
+	start: null,
+	end: null,
+	perc: null
+};
+
+window.onscroll = throttle(() => {
+	fontsInUse.scrollPos = window.scrollY;
+
+	if (
+		fontsInUse.scrollPos > fontsInUse.start &&
+		fontsInUse.scrollPos < fontsInUse.uvEnd
+	) {
+		const offset =
+			10 *
+			(
+				(fontsInUse.scrollPos - fontsInUse.start) /
+				fontsInUse.perc
+			).toFixed(4);
+		fontsInUse.element.style.setProperty("--offset", offset);
+	}
+}, 100);
+
+// Update variables related to the viewport
+const setViewportValues = () => {
+	// Recalculate letterWave canvas dimensions
+	topWave.resizeCanvas();
+	bottomWave.resizeCanvas();
+
+	fontsInUse.start = fontsInUse.element.offsetTop - window.innerHeight;
+	fontsInUse.uvEnd =
+		fontsInUse.element.offsetTop + fontsInUse.element.offsetHeight;
+	fontsInUse.perc = fontsInUse.uvEnd - fontsInUse.start;
+
+	// Determine opsz container width
+	const opszWidth =
+		document.querySelector(".opsz-text .prose-content").offsetWidth - 48; // 48 = 3rem = handle size
+	document
+		.querySelector(".opsz-demo")
+		.style.setProperty("--width", `${opszWidth}px`);
+};
 
 window.onresize = throttle(setViewportValues, 100);
 
