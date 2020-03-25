@@ -10,7 +10,7 @@
 	padding-top: 60%;
 }
 
-@media screen and (max-width: 45em) {
+@media screen and (max-width: 64em) {
 	.fonts-in-use {
 		margin: 0 auto;
 		margin-bottom: 3rem;
