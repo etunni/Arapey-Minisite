@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="7px" viewBox="0 0 14 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>dropdown_200313</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Arapey-Site" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Arapey_Single_Page_Colors" transform="translate(-797.000000, -1389.000000)" stroke="#B30C00">
+            <g id="Test" transform="translate(0.000000, 1360.000000)">
+                <g id="Dropdown" transform="translate(631.000000, 22.000000)">
+                    <g id="Dropdown-Select" transform="translate(43.000000, 0.000000)">
+                        <polyline id="dropdown" transform="translate(130.000000, 10.454545) rotate(180.000000) translate(-130.000000, -10.454545) " points="124 13.5909091 130 7.31818182 136 13.5909091"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

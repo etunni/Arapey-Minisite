@@ -53,7 +53,7 @@
 	user-select: none;
 	font-weight: var(--wght-slider);
 	font-variation-settings: "opsz" var(--opsz-slider);
-	cursor: pointer;
+	cursor: url("../img/drag_arrow_blue_200313.svg"), auto;
 	z-index: 2;
 }
 

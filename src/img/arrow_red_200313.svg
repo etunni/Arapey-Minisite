@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="29px" viewBox="0 0 20 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>arrow_200313</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Arapey-Site" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Arapey_Single_Page_Colors" transform="translate(-710.000000, -943.000000)" stroke="#B30C00">
+            <g id="Landing" transform="translate(-151.000000, -365.000000)">
+                <g id="Group" transform="translate(752.500000, 1274.000000)">
+                    <g id="arrow" transform="translate(109.000000, 35.000000)">
+                        <line x1="9.5" y1="0.288888889" x2="9.5" y2="25.7111111" id="Line-2" stroke-linecap="square"></line>
+                        <polyline id="Path" transform="translate(9.500000, 22.000000) rotate(180.000000) translate(-9.500000, -22.000000) " points="0 28 9.5 16 19 28"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
