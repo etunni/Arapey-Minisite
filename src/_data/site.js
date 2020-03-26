@@ -1,6 +1,6 @@
 module.exports = {
-	title: "Specimen Skeleton",
-	description: "A small boilerplate for custom variable font specimen sites!",
+	title: "Arapey",
+	description: "Arapey (Ah-ra-pay) is a contemporary modern typeface.",
 
 	// More info: https://css-tricks.com/essential-meta-tags-social-media/
 	metatags: [
