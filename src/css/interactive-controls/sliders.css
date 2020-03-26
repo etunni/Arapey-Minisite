@@ -43,7 +43,8 @@
 
 @media screen and (max-width: 48em) {
 	.interactive-controls-list {
-		padding: 1rem;
+		padding-left: 3.5rem;
+		padding-right: 3.5rem;
 	}
 }
 

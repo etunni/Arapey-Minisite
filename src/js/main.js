@@ -289,20 +289,44 @@ characterSlideListContainer.addEventListener("mouseout", () => {
 	characterSlide.shouldSlide = true;
 	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
 });
-characterSlideListContainer.addEventListener("mousedown", e => {
+
+characterSlideListContainer.addEventListener("touchend", () => {
+	characterSlide.shouldSlide = true;
+	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
+});
+
+const onPressCharacterSlide = e => {
 	characterSlide.isDown = true;
+	characterSlide.shouldSlide = false;
+
 	characterSlide.oldX = e.pageX;
 	characterSlide.x = e.pageX - e.currentTarget.offsetLeft;
 	characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling in the scroll container
 	characterSlideListContainer.classList.add("active");
-});
-characterSlideListContainer.addEventListener("mousemove", e => {
+};
+
+const onMoveCharacterSlide = e => {
 	if (!characterSlide.isDown) return;
+
 	const slideDistance = e.pageX - characterSlide.x;
 	characterSlide.slideSpeed = e.pageX - characterSlide.oldX;
 	characterSlide.oldX = e.pageX;
 	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
-});
+};
+
+characterSlideListContainer.addEventListener(
+	"mousedown",
+	onPressCharacterSlide
+);
+
+characterSlideListContainer.addEventListener(
+	"touchstart",
+	onPressCharacterSlide
+);
+
+characterSlideListContainer.addEventListener("mousemove", onMoveCharacterSlide);
+characterSlideListContainer.addEventListener("touchmove", onMoveCharacterSlide);
+
 const stopCharacterSlider = () => {
 	characterSlide.isDown = false;
 	characterSlideListContainer.classList.remove("active");
@@ -565,6 +589,11 @@ window.addEventListener("mousemove", e => {
 	mouse.y = e.clientY;
 });
 
+window.addEventListener("touchmove", e => {
+	mouse.x = e.changedTouches[0].clientX;
+	mouse.y = e.changedTouches[0].clientY;
+});
+
 const aboutFontsSection = document.querySelector(
 	".about-variable-fonts-section"
 );
@@ -572,8 +601,13 @@ const aboutFontsSection = document.querySelector(
 const aboutFonts = {
 	init() {
 		this.parentContainerEl.addEventListener("mousedown", this.onMouseDown);
+		this.parentContainerEl.addEventListener("touchstart", this.onMouseDown);
 		this.parentContainerEl.addEventListener(
 			"mousemove",
+			this.onDragCharacter
+		);
+		this.parentContainerEl.addEventListener(
+			"touchmove",
 			this.onDragCharacter
 		);
 		this.parentContainerEl.addEventListener(
@@ -581,10 +615,16 @@ const aboutFonts = {
 			this.onDropCharacter
 		);
 		this.parentContainerEl.addEventListener(
+			"touchend",
+			this.onDropCharacter
+		);
+		this.parentContainerEl.addEventListener(
 			"mouseleave",
 			this.onDropCharacter
 		);
 		this.weightSlider.addEventListener("input", this.onDragInput);
+		this.weightSlider.addEventListener("touchstart", this.onDragInput);
+		this.weightSlider.addEventListener("touchmove", this.onDragInput);
 	},
 	parentContainerEl: aboutFontsSection.querySelector(
 		".character-slider-container"
@@ -594,8 +634,10 @@ const aboutFonts = {
 	weightSlider: aboutFontsSection.querySelector(".wght-slider"),
 	isDown: false,
 	maxFontWeight: 900,
-	onDragCharacter: () => {
+	onDragCharacter: e => {
 		if (!aboutFonts.isDown) return;
+		e.preventDefault();
+
 		aboutFonts.calculateCharacterPos();
 	},
 	onDragInput: () => {

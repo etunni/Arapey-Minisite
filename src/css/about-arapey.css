@@ -74,5 +74,12 @@
 @media screen and (max-width: 64em) {
 	.about-arapey-content-interactive .interactive-controls-list-container {
 		padding: 1rem;
+		padding-right: 2.25rem;
+	}
+
+	.label-text {
+		white-space: normal;
+		min-width: 4.5em;
+		padding-right: 1.75rem;
 	}
 }
