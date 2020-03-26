@@ -2,6 +2,7 @@ input[type="radio"] {
 	-webkit-appearance: none;
 	cursor: pointer;
 	outline: 0;
+	border: 0;
 }
 
 .interactive-controls-radio {

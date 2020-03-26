@@ -15,22 +15,37 @@
 }
 
 [type="range"]::-webkit-slider-thumb {
-	margin-top: -0.5em;
+	background-color: var(--arapey-black);
+	height: 1px;
+}
+
+[type="range"]::-moz-range-track {
+	height: 1px;
+	background-color: var(--arapey-black);
 }
 
 [type="range"]::-webkit-slider-runnable-track {
-	height: 0.2em;
+	height: 1px;
 	outline: 0;
 	width: 10rem;
+	background-color: var(--arapey-black);
 }
 [type="range"]::-ms-track {
 	border: none;
-	height: 0.2em;
-	width: 10rem;
+	height: 1px;
+	margin-top: -0.5rem;
+	background-color: var(--arapey-black);
 }
 
 .interactive-controls-list {
 	margin-top: 3.25rem;
+}
+
+@media screen and (max-width: 48em) {
+	.interactive-controls-list {
+		padding-left: 3.5rem;
+		padding-right: 3.5rem;
+	}
 }
 
 .interactive-controls-list label {
@@ -42,6 +57,7 @@
 
 /* Handle and color variants */
 .interactive-controls-slider::-webkit-slider-thumb {
+	margin-top: -0.5rem;
 	width: var(--thumb-size);
 	height: var(--thumb-size);
 	border-radius: 50%;
@@ -59,6 +75,7 @@
 	width: var(--thumb-size);
 	height: var(--thumb-size);
 	margin-top: 0;
+	box-sizing: border-box;
 }
 
 .interactive-controls-tick-sliders li {
@@ -67,7 +84,7 @@
 }
 
 .about-arapey-content-interactive .interactive-controls-list {
-	min-width: 800px;
+	width: 100%;
 }
 
 .about-arapey-container .interactive-controls-list-container {
@@ -83,6 +100,12 @@
 .interactive-controls-tick-slider-container {
 	width: 100%;
 	max-width: var(--max-content-width);
+}
+
+@media screen and (max-width: 64em) {
+	.interactive-controls-tick-slider-container {
+		margin: auto;
+	}
 }
 
 .label-text {
@@ -103,8 +126,8 @@
 }
 
 .interactive-controls-tick-slider {
-	background-color: var(--arapey-black);
-	height: 1px;
+	background-color: transparent;
+	height: 2.25em;
 	width: 100%;
 	margin: 0;
 }
@@ -151,6 +174,12 @@
 .ticks {
 	display: flex;
 	justify-content: space-between;
+}
+
+@media screen and (max-width: 48em) {
+	.ticks {
+		display: none;
+	}
 }
 
 .tick {

@@ -9,6 +9,22 @@
 	margin-bottom: 11rem;
 }
 
+@media screen and (max-width: 45em) {
+	.about-arapey-container {
+		padding: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.about-arapey-container .interactive-controls-list {
+		padding: 0;
+	}
+
+	.about-arapey-container article {
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+	}
+}
+
 .about-arapey-content {
 	text-align: center;
 	font-weight: var(--weight-regular);
@@ -53,4 +69,17 @@
 	font-weight: var(--wght);
 	color: var(--arapey-red);
 	transition: font-weight 200ms;
+}
+
+@media screen and (max-width: 64em) {
+	.about-arapey-content-interactive .interactive-controls-list-container {
+		padding: 1rem;
+		padding-right: 2.25rem;
+	}
+
+	.label-text {
+		white-space: normal;
+		min-width: 4.5em;
+		padding-right: 1.75rem;
+	}
 }

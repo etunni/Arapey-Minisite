@@ -62,12 +62,14 @@ font.load(null, fontTimeOut).then(
 		document.documentElement.classList.add("fonts-loaded");
 		initializeApp();
 		setViewportValues();
+		aboutFonts.init();
 	},
 	() => {
 		// Font didn't load
 		document.documentElement.classList.add("fonts-failed");
 		initializeApp();
 		setViewportValues();
+		aboutFonts.init();
 	}
 );
 
@@ -187,9 +189,9 @@ const setupBadge = (slider, value) => {
 		(parseFloat(value) - parseFloat(slider.min)) * badgeOffset -
 		badge.offsetWidth / 2;
 
+	badge.textContent = Math.round(value);
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
 	badge.style.setProperty("--weight", `${value}`);
-	badge.style.setProperty("--weight-string", `"${Math.round(value)}"`);
 };
 
 const toggleBlockContainer = document.querySelector(".toggle-block-container");
@@ -302,20 +304,44 @@ characterSlideListContainer.addEventListener("mouseout", () => {
 	characterSlide.shouldSlide = true;
 	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
 });
-characterSlideListContainer.addEventListener("mousedown", e => {
+
+characterSlideListContainer.addEventListener("touchend", () => {
+	characterSlide.shouldSlide = true;
+	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
+});
+
+const onPressCharacterSlide = e => {
 	characterSlide.isDown = true;
+	characterSlide.shouldSlide = false;
+
 	characterSlide.oldX = e.pageX;
 	characterSlide.x = e.pageX - e.currentTarget.offsetLeft;
 	characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling in the scroll container
 	characterSlideListContainer.classList.add("active");
-});
-characterSlideListContainer.addEventListener("mousemove", e => {
+};
+
+const onMoveCharacterSlide = e => {
 	if (!characterSlide.isDown) return;
+
 	const slideDistance = e.pageX - characterSlide.x;
 	characterSlide.slideSpeed = e.pageX - characterSlide.oldX;
 	characterSlide.oldX = e.pageX;
 	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
-});
+};
+
+characterSlideListContainer.addEventListener(
+	"mousedown",
+	onPressCharacterSlide
+);
+
+characterSlideListContainer.addEventListener(
+	"touchstart",
+	onPressCharacterSlide
+);
+
+characterSlideListContainer.addEventListener("mousemove", onMoveCharacterSlide);
+characterSlideListContainer.addEventListener("touchmove", onMoveCharacterSlide);
+
 const stopCharacterSlider = () => {
 	characterSlide.isDown = false;
 	characterSlideListContainer.classList.remove("active");
@@ -597,6 +623,11 @@ window.addEventListener("mouseup", () => {
 	mouse.dragCallback = mouse.endCallback = false;
 });
 
+window.addEventListener("touchmove", e => {
+	mouse.x = e.changedTouches[0].clientX;
+	mouse.y = e.changedTouches[0].clientY;
+});
+
 const aboutFontsSection = document.querySelector(
 	".about-variable-fonts-section"
 );
@@ -604,8 +635,13 @@ const aboutFontsSection = document.querySelector(
 const aboutFonts = {
 	init() {
 		this.parentContainerEl.addEventListener("mousedown", this.onMouseDown);
+		this.parentContainerEl.addEventListener("touchstart", this.onMouseDown);
 		this.parentContainerEl.addEventListener(
 			"mousemove",
+			this.onDragCharacter
+		);
+		this.parentContainerEl.addEventListener(
+			"touchmove",
 			this.onDragCharacter
 		);
 		this.parentContainerEl.addEventListener(
@@ -613,10 +649,16 @@ const aboutFonts = {
 			this.onDropCharacter
 		);
 		this.parentContainerEl.addEventListener(
+			"touchend",
+			this.onDropCharacter
+		);
+		this.parentContainerEl.addEventListener(
 			"mouseleave",
 			this.onDropCharacter
 		);
 		this.weightSlider.addEventListener("input", this.onDragInput);
+		this.weightSlider.addEventListener("touchstart", this.onDragInput);
+		this.weightSlider.addEventListener("touchmove", this.onDragInput);
 	},
 	parentContainerEl: aboutFontsSection.querySelector(
 		".character-slider-container"
@@ -626,8 +668,10 @@ const aboutFonts = {
 	weightSlider: aboutFontsSection.querySelector(".wght-slider"),
 	isDown: false,
 	maxFontWeight: 900,
-	onDragCharacter: () => {
+	onDragCharacter: e => {
 		if (!aboutFonts.isDown) return;
+		e.preventDefault();
+
 		aboutFonts.calculateCharacterPos();
 	},
 	onDragInput: () => {
@@ -664,8 +708,6 @@ const aboutFonts = {
 		setupBadge(this.weightSlider, weight);
 	}
 };
-
-aboutFonts.init();
 
 const fontsInUse = {
 	element: document.querySelector(".fonts-in-use"),
@@ -710,8 +752,6 @@ const setViewportValues = () => {
 		.querySelector(".opsz-demo")
 		.style.setProperty("--width", `${opszWidth}px`);
 };
-
-window.onresize = throttle(setViewportValues, 100);
 
 const designFeatures = {
 	container: document.querySelector(".floating-letter-container"),
@@ -762,3 +802,5 @@ swiperHandle.addEventListener(
 	},
 	supportsPassive ? { passive: true } : false
 );
+
+window.onresize = throttle(setViewportValues, 100);
