@@ -94,8 +94,12 @@ const setupInputs = () => {
 				}
 
 				setupBadge(slider, e.target.value);
-				aboutFonts.syncCodeBlock(slider.name, e.target.value);
-				// console.log(slider.name, slider.value);
+
+				if (
+					slider.name == "opsz-slider" ||
+					slider.name == "wght-slider"
+				)
+					aboutFonts.syncCodeBlock(slider.name, e.target.value);
 			};
 		}
 
@@ -229,6 +233,7 @@ selectElements.handle.forEach(handle => {
 selectElements.dropdown.forEach(dropdown => {
 	dropdown.addEventListener("click", e => {
 		const interactiveElement = dropdown.closest(".interactive-controls");
+		const opszSlider = interactiveElement.querySelector(".opsz");
 		if (e.target.type == "button") {
 			const textContainer = e.currentTarget.previousElementSibling.querySelector(
 				"span"
@@ -249,6 +254,20 @@ selectElements.dropdown.forEach(dropdown => {
 				"--wght",
 				e.target.getAttribute("data-wght")
 			);
+
+			interactiveElement.style.setProperty(
+				"--opsz",
+				e.target.getAttribute("data-opsz")
+			);
+
+			if (opszSlider) {
+				opszSlider.value = e.target.getAttribute("data-opsz");
+
+				setupBadge(
+					interactiveElement.querySelector(".opsz"),
+					e.target.getAttribute("data-opsz")
+				);
+			}
 		}
 	});
 });

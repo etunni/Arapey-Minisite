@@ -6,7 +6,7 @@
     <ul class="interactive-controls-options-list">
         {% for instance in instances %}
         <li>
-            <button value="{{instance.name}}" data-wght="{{ instance.axes.wght }}" type="button" class="interactive-controls-option">{{ instance.name }}</button>
+            <button value="{{instance.name}}" data-opsz="{{ instance.axes.opsz }}" data-wght="{{ instance.axes.wght }}" type="button" class="interactive-controls-option">{{ instance.name }}</button>
         </li>
         {% endfor %}
     </ul>
