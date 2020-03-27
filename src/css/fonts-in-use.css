@@ -23,7 +23,10 @@
 
 .svg-container svg {
 	height: calc(var(--height) / 100 * var(--scale-factor));
-	transform: translate(-50%, calc(var(--offset-factor) * var(--offset) * 1%));
+	transform: translate(
+		-50%,
+		calc(var(--offset-factor) * var(--offset) * 2.5%)
+	);
 }
 
 .five-star-rating {
