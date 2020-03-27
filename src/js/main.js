@@ -212,27 +212,6 @@ const handleToggle = e => {
 
 toggles.forEach(toggle => toggle.addEventListener("change", handleToggle));
 
-const aboutInteractiveElement = document.querySelector(
-	".about-arapey-content-interactive"
-);
-
-// TODO: Wasn't sure if we needed this later on?
-// const alignmentHandle = document.querySelector(
-// 	"#about-arapey-alignment-controls"
-// );
-// const alignmentInputs = alignmentHandle.querySelectorAll(".alignment-input");
-
-// const handleAlignmentClick = e => {
-// 	aboutInteractiveElement.style.setProperty(
-// 		"--text-alignment",
-// 		e.target.value
-// 	);
-// };
-
-// alignmentInputs.forEach(item =>
-// 	item.addEventListener("click", handleAlignmentClick)
-// );
-
 // Handle select box
 const selectElements = {
 	handle: document.querySelectorAll("#interactive-controls-select"),
