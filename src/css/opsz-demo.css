@@ -13,6 +13,7 @@
 	margin: 10rem auto;
 	width: var(--width);
 	user-select: none;
+	display: none;
 }
 
 .opsz-demo p {

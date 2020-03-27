@@ -216,21 +216,22 @@ const aboutInteractiveElement = document.querySelector(
 	".about-arapey-content-interactive"
 );
 
-const alignmentHandle = document.querySelector(
-	"#about-arapey-alignment-controls"
-);
-const alignmentInputs = alignmentHandle.querySelectorAll(".alignment-input");
+// TODO: Wasn't sure if we needed this later on?
+// const alignmentHandle = document.querySelector(
+// 	"#about-arapey-alignment-controls"
+// );
+// const alignmentInputs = alignmentHandle.querySelectorAll(".alignment-input");
 
-const handleAlignmentClick = e => {
-	aboutInteractiveElement.style.setProperty(
-		"--text-alignment",
-		e.target.value
-	);
-};
+// const handleAlignmentClick = e => {
+// 	aboutInteractiveElement.style.setProperty(
+// 		"--text-alignment",
+// 		e.target.value
+// 	);
+// };
 
-alignmentInputs.forEach(item =>
-	item.addEventListener("click", handleAlignmentClick)
-);
+// alignmentInputs.forEach(item =>
+// 	item.addEventListener("click", handleAlignmentClick)
+// );
 
 // Handle select box
 const selectElements = {

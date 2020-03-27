@@ -30,6 +30,17 @@
 	font-weight: var(--weight-regular);
 	max-width: var(--max-prose-content-width);
 	margin: 0 auto;
+	min-height: 225px;
+}
+
+@media screen and (max-width: 34em) {
+	.about-arapey-content {
+		text-align: center;
+		font-weight: var(--weight-regular);
+		max-width: var(--max-prose-content-width);
+		margin: 0 auto;
+		min-height: 400px;
+	}
 }
 
 .about-arapey-content-large {
@@ -62,6 +73,10 @@
 
 .about-arapey-content-interactive .interactive-controls-select-group {
 	margin: 0 auto;
+}
+
+.about-arapey-content-interactive .interactive-controls-list {
+	max-width: var(--max-prose-content-width);
 }
 
 .about-arapey-interactive-paragraph {
