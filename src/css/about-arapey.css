@@ -1,46 +1,15 @@
 .about-arapey-container {
 	--wght: var(--weight-regular);
 
-	margin: 5rem 0;
-}
-
-.about-arapey-container article {
-	margin-top: 8rem;
-	margin-bottom: 11rem;
-}
-
-@media screen and (max-width: 45em) {
-	.about-arapey-container {
-		padding: 1rem;
-		margin-bottom: 1rem;
-	}
-
-	.about-arapey-container .interactive-controls-list {
-		padding: 0;
-	}
-
-	.about-arapey-container article {
-		margin-top: 3rem;
-		margin-bottom: 3rem;
-	}
+	margin: 16rem auto;
 }
 
 .about-arapey-content {
 	text-align: center;
 	font-weight: var(--weight-regular);
 	max-width: var(--max-prose-content-width);
-	margin: 0 auto;
+	margin: 0 auto 10rem auto;
 	min-height: 225px;
-}
-
-@media screen and (max-width: 34em) {
-	.about-arapey-content {
-		text-align: center;
-		font-weight: var(--weight-regular);
-		max-width: var(--max-prose-content-width);
-		margin: 0 auto;
-		min-height: 400px;
-	}
 }
 
 .about-arapey-content-large {
@@ -80,21 +49,22 @@
 }
 
 .about-arapey-interactive-paragraph {
+	max-width: var(--max-content-width);
 	text-align: var(--text-alignment);
 	font-weight: var(--wght);
 	color: var(--arapey-red);
 	transition: font-weight 200ms;
+	margin: 0 auto;
+	min-height: 33rem; /* Match default text at larhest size/weight */
+	max-height: 80vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
 }
 
 @media screen and (max-width: 64em) {
-	.about-arapey-content-interactive .interactive-controls-list-container {
-		padding: 1rem;
-		padding-right: 2.25rem;
-	}
-
-	.label-text {
-		white-space: normal;
-		min-width: 4.5em;
-		padding-right: 1.75rem;
+	.about-arapey-interactive-paragraph.interactive-controls-text {
+		font-size: calc(var(--font-size) * 0.2vw);
 	}
 }
