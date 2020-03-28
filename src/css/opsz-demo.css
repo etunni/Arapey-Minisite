@@ -35,25 +35,26 @@
 	display: flex;
 	align-items: center;
 	color: var(--arapey-blue);
+	justify-content: flex-end;
 }
 
 .without-opsz h3 {
-	justify-content: flex-end;
+	justify-content: flex-start;
 }
 
 .with-opsz {
 	font-optical-sizing: none;
-	background: var(--arapey-white);
-}
-
-.without-opsz {
-	--opsz: 12;
-
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
+}
+
+.without-opsz {
+	--opsz: 12;
+
+	background: var(--arapey-white);
 }
 
 .opsz-slider-window {
