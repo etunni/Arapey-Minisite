@@ -23,6 +23,10 @@
 	color: var(--arapey-green);
 }
 
+.about-variable-fonts-interactive .interactive-controls-badge {
+	color: var(--arapey-blue);
+}
+
 .interactive-controls-badge::after {
 	content: "";
 	position: absolute;
