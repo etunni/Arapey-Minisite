@@ -8,7 +8,7 @@
 	font-weight: 300;
 	line-height: 1.25;
 	position: relative;
-	margin: 10rem auto;
+	margin: 16rem auto;
 	width: var(--width);
 	user-select: none;
 	font-optical-sizing: none;
@@ -150,3 +150,9 @@
 		margin: 0 0 2.25rem 0;
 	}
 } */
+
+/* Helper element to determine width */
+.opsz-demo-control {
+	max-width: var(--max-prose-content-width);
+	margin: 0 auto;
+}

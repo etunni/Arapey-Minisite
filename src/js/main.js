@@ -748,11 +748,11 @@ const setViewportValues = () => {
 	fontsInUse.perc = fontsInUse.uvEnd - fontsInUse.start;
 
 	// Determine opsz container width
-	// const opszWidth =
-	// 	document.querySelector(".opsz-text .prose-content").offsetWidth - 48; // 48 = 3rem = handle size
-	// document
-	// 	.querySelector(".opsz-demo")
-	// 	.style.setProperty("--width", `${opszWidth}px`);
+	const opszWidth =
+		document.querySelector(".opsz-demo-control").offsetWidth - 48; // 48 = 3rem = handle size
+	document
+		.querySelector(".opsz-demo")
+		.style.setProperty("--width", `${opszWidth}px`);
 };
 
 const designFeatures = {
