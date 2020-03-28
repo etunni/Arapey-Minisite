@@ -60,24 +60,7 @@
 	z-index: 1;
 	overflow: hidden;
 	width: var(--offset);
-	border-right: 2px solid var(--arapey-blue);
-}
-
-.opsz-slider-handle {
-	position: absolute;
-	width: 2rem;
-	height: 2rem;
-	background: var(--arapey-blue);
-	border-radius: 50%;
-	left: var(--offset);
-	top: 50%;
-	transform: translate(calc(-50% - 1px), -50%);
-	z-index: 2;
-	cursor: grab;
-}
-
-.opsz-slider-handle.dragging {
-	cursor: grabbing;
+	border-right: 1px solid var(--arapey-blue);
 }
 
 .opsz-small {
