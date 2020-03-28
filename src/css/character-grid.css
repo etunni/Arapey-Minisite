@@ -12,16 +12,16 @@
 
 .character-grid-inner-container {
 	display: flex;
+	min-height: 32rem;
+	height: 50vh;
 }
 
 .character-grid {
+	width: 50%;
 	list-style-type: none;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, var(--character-grid-cell));
 	font-size: var(--character-grid-font-size);
-	flex: 1; /* We don't want both of the elements to take in the space they need.  */
-	min-height: 50vh;
-	height: 50vh;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	margin: 0;
@@ -72,14 +72,12 @@
 }
 
 .character-grid-zoom {
-	font-size: 35vw;
-	flex: 1;
+	width: 50%;
+	font-size: 30vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-variation-settings: "wght" var(--weight-grid-slider);
-	min-height: 50vh;
-	height: 50vh;
 }
 
 .interactive-controls-tick-slider-container {
@@ -90,7 +88,7 @@
 	margin: 4rem auto 10rem auto;
 }
 
-@media screen and (max-width: 64em) {
+/* @media screen and (max-width: 64em) {
 	.character-grid {
 		height: 60vh;
 	}
@@ -120,4 +118,4 @@
 		flex: auto;
 		font-size: 12rem;
 	}
-}
+} */
