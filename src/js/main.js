@@ -184,14 +184,17 @@ grid.onmousemove = throttle(setGridCharacter, 100);
 const setupBadge = (slider, value) => {
 	const sliderContainer = slider.closest(`.${slider.name}-container`);
 	const badge = sliderContainer.querySelector(".interactive-controls-badge");
+	const thumbWidth = 16;
 	const badgeOffset =
-		slider.offsetWidth / (parseFloat(slider.max) - parseFloat(slider.min));
+		(slider.offsetWidth - thumbWidth) /
+		(parseFloat(slider.max) - parseFloat(slider.min));
 
 	if (!badge) return;
 
 	const badgePosition =
 		(parseFloat(value) - parseFloat(slider.min)) * badgeOffset -
-		badge.offsetWidth / 2;
+		badge.offsetWidth / 2 +
+		thumbWidth / 2;
 
 	badge.textContent = Math.round(value);
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
