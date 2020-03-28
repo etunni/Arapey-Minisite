@@ -8,20 +8,21 @@
 .character-grid-section {
 	max-width: var(--max-content-width);
 	margin: 16rem auto;
+	padding: 0 2rem;
 }
 
 .character-grid-inner-container {
 	display: flex;
+	min-height: 32rem;
+	height: 50vh;
 }
 
 .character-grid {
+	width: 50%;
 	list-style-type: none;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, var(--character-grid-cell));
 	font-size: var(--character-grid-font-size);
-	flex: 1; /* We don't want both of the elements to take in the space they need.  */
-	min-height: 50vh;
-	height: 50vh;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	margin: 0;
@@ -72,14 +73,12 @@
 }
 
 .character-grid-zoom {
-	font-size: 35vw;
-	flex: 1;
+	width: 50%;
+	font-size: 30vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-variation-settings: "wght" var(--weight-grid-slider);
-	min-height: 50vh;
-	height: 50vh;
 }
 
 .interactive-controls-tick-slider-container {
@@ -87,37 +86,22 @@
 }
 
 .character-grid-section .interactive-controls-list {
-	margin: 4rem auto 10rem auto;
-}
-
-@media screen and (max-width: 64em) {
-	.character-grid {
-		height: 60vh;
-	}
-
-	.character-grid-inner-container {
-		padding: 1.5rem;
-	}
-
-	.character-grid-section .interactive-controls-list {
-		margin: 4rem auto 4rem auto;
-	}
+	max-width: var(--max-prose-content-width);
+	margin: 6em auto 0 auto;
 }
 
 @media screen and (max-width: 45em) {
 	.character-grid-inner-container {
-		flex-direction: column;
-		padding: 0;
+		flex-direction: column-reverse;
 	}
 
-	.character-grid {
-		height: 55vh;
-		min-height: auto;
-		flex: auto;
+	.character-grid,
+	.character-grid-zoom {
+		width: 100%;
 	}
 
 	.character-grid-zoom {
-		flex: auto;
-		font-size: 12rem;
+		font-size: 60vw;
+		padding-bottom: 3rem;
 	}
 }
