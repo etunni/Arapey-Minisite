@@ -748,11 +748,11 @@ const setViewportValues = () => {
 	fontsInUse.perc = fontsInUse.uvEnd - fontsInUse.start;
 
 	// Determine opsz container width
-	// const opszWidth =
-	// 	document.querySelector(".opsz-text .prose-content").offsetWidth - 48; // 48 = 3rem = handle size
-	// document
-	// 	.querySelector(".opsz-demo")
-	// 	.style.setProperty("--width", `${opszWidth}px`);
+	const opszWidth =
+		document.querySelector(".opsz-demo-control").offsetWidth - 48; // 48 = 3rem = handle size
+	document
+		.querySelector(".opsz-demo")
+		.style.setProperty("--width", `${opszWidth}px`);
 };
 
 const designFeatures = {
@@ -775,32 +775,25 @@ designFeatures.container.addEventListener(
 
 // Swiper for opsz demo
 const swiper = document.querySelector(".opsz-demo");
-const swiperHandle = document.querySelector(".opsz-slider-handle");
 const calculateSwiperOffset = () => {
 	const x = mouse.x - swiper.offsetLeft;
 	const perc = (x / (swiper.offsetWidth / 100)).toFixed(2);
 	const clampedPerc = Math.max(1, Math.min(perc, 100));
 	swiper.style.setProperty("--offset", `${clampedPerc}%`);
 };
-swiperHandle.addEventListener("mousedown", e => {
+swiper.addEventListener("mousemove", e => {
 	e.preventDefault();
-	swiperHandle.classList.add("dragging");
 	mouse.dragCallback = () => calculateSwiperOffset();
-	mouse.endCallback = () => {
-		swiperHandle.classList.remove("dragging");
-	};
 });
-swiperHandle.addEventListener(
+swiper.addEventListener("mouseleave", () => {
+	mouse.dragCallback = false;
+});
+swiper.addEventListener(
 	"touchmove",
 	e => {
-		swiperHandle.classList.add("dragging");
 		mouse.x = e.touches[0].clientX;
 		mouse.y = e.touches[0].clientY;
 		calculateSwiperOffset();
-
-		mouse.endCallback = () => {
-			swiperHandle.classList.remove("dragging");
-		};
 	},
 	supportsPassive ? { passive: true } : false
 );

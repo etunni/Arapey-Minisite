@@ -1,18 +1,18 @@
 .opsz-demo {
 	--offset: 50%;
-	--width: 864px; /* Line up with prose content */
+	--width: 960px; /* Line up with prose content */
 
 	/* Simulate .prose */
 	--opsz: 12;
-	--WONK: 1;
 
 	font-weight: 300;
-	font-size: 1.375rem;
 	line-height: 1.25;
 	position: relative;
-	margin: 10rem auto;
+	margin: 16rem auto;
 	width: var(--width);
 	user-select: none;
+	font-optical-sizing: none;
+	cursor: url("../img/drag_arrow_blue_200313.svg") 25 0, auto;
 }
 
 .opsz-demo p {
@@ -31,24 +31,17 @@
 .opsz-demo h3 {
 	font-size: 1.25rem;
 	font-weight: bold;
-	text-transform: uppercase;
 	display: flex;
 	align-items: center;
 	color: var(--arapey-blue);
-}
-
-.without-opsz h3 {
 	justify-content: flex-end;
 }
 
-.with-opsz {
-	font-optical-sizing: none;
-	background: var(--arapey-white);
+.without-opsz h3 {
+	justify-content: flex-start;
 }
 
-.without-opsz {
-	--opsz: 12;
-
+.with-opsz {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -56,41 +49,28 @@
 	bottom: 0;
 }
 
+.without-opsz {
+	--opsz: 12;
+
+	background: var(--arapey-white);
+}
+
 .opsz-slider-window {
 	position: relative;
 	z-index: 1;
 	overflow: hidden;
 	width: var(--offset);
-	border-right: 2px solid var(--arapey-blue);
-}
-
-.opsz-slider-handle {
-	position: absolute;
-	width: 2rem;
-	height: 2rem;
-	background: var(--arapey-blue);
-	border-radius: 50%;
-	left: var(--offset);
-	top: 50%;
-	transform: translate(calc(-50% - 1px), -50%);
-	z-index: 2;
-	cursor: grab;
-}
-
-.opsz-slider-handle.dragging {
-	cursor: grabbing;
+	border-right: 1px solid var(--arapey-blue);
 }
 
 .opsz-small {
-	line-height: 1.375;
-	font-size: 1rem;
+	font-size: 1.75rem;
 }
 
 .opsz-small-with {
-	--opsz: 12;
+	--opsz: 28;
 
-	line-height: 1.375;
-	font-size: 1rem;
+	font-size: 1.75rem;
 }
 
 .opsz-medium {
@@ -98,7 +78,7 @@
 }
 
 .opsz-medium-with {
-	--opsz: 32;
+	--opsz: 40;
 
 	font-size: 2.5rem;
 }
@@ -108,7 +88,7 @@
 }
 
 .opsz-large-with {
-	--opsz: 128;
+	--opsz: 80;
 
 	font-size: 5rem;
 }
@@ -129,20 +109,15 @@
 	}
 }
 
-@media screen and (max-width: 70em) {
-	.opsz-demo .happy {
-		left: 0;
-	}
-
-	.opsz-demo .sad {
-		right: 0;
-	}
-}
-
 @media screen and (max-width: 48em) {
+	.opsz-small,
+	.opsz-small-with {
+		font-size: 1.25rem;
+	}
+
 	.opsz-medium,
 	.opsz-medium-with {
-		font-size: 1.5rem;
+		font-size: 1.75rem;
 	}
 
 	.opsz-large,
@@ -153,4 +128,10 @@
 	.opsz-demo p {
 		margin: 0 0 2.25rem 0;
 	}
+}
+
+/* Helper element to determine width */
+.opsz-demo-control {
+	max-width: var(--max-prose-content-width);
+	margin: 0 auto;
 }
