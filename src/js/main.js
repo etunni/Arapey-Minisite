@@ -585,7 +585,7 @@ const initializeApp = () => {
 	// Animate top letterwave ("AAAAAA")
 	topWave.setup(".arapey-hero-canvas");
 	bottomWave.setup(".arapey-zzzz-canvas", "flat");
-	bottomWave.setLetter("Z", "c02020");
+	bottomWave.setLetter("Z");
 	setRAFInterval(() => {
 		topWave.renderWave();
 		bottomWave.renderWave();
