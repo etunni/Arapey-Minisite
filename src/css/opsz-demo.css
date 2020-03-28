@@ -12,6 +12,7 @@
 	width: var(--width);
 	user-select: none;
 	font-optical-sizing: none;
+	cursor: url("../img/drag_arrow_blue_200313.svg") 25 0, auto;
 }
 
 .opsz-demo p {

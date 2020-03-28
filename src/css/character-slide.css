@@ -13,11 +13,11 @@
 
 .character-slide-lists {
 	overflow-x: hidden;
-	cursor: url("../img/drag_arrow_green_200313.svg"), auto;
+	cursor: url("../img/drag_arrow_green_200313.svg") 25 0, auto;
 }
 
 .character-slide-lists.active {
-	cursor: url("../img/drag_arrow_green_200313.svg"), auto;
+	cursor: url("../img/drag_arrow_green_200313.svg") 25 0, auto;
 }
 
 .character-slide-list {
