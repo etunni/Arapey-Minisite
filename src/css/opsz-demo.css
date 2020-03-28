@@ -1,6 +1,6 @@
 .opsz-demo {
 	--offset: 50%;
-	--width: 864px; /* Line up with prose content */
+	--width: 960px; /* Line up with prose content */
 
 	/* Simulate .prose */
 	--opsz: 12;
@@ -109,7 +109,7 @@
 	font-size: 5rem;
 }
 
-/* @media screen and (max-width: 28rem) {
+@media screen and (max-width: 28rem) {
 	.with-opsz,
 	.without-opsz {
 		padding-left: 0.5rem;
@@ -125,20 +125,15 @@
 	}
 }
 
-@media screen and (max-width: 70em) {
-	.opsz-demo .happy {
-		left: 0;
-	}
-
-	.opsz-demo .sad {
-		right: 0;
-	}
-}
-
 @media screen and (max-width: 48em) {
+	.opsz-small,
+	.opsz-small-with {
+		font-size: 1.25rem;
+	}
+
 	.opsz-medium,
 	.opsz-medium-with {
-		font-size: 1.5rem;
+		font-size: 1.75rem;
 	}
 
 	.opsz-large,
@@ -149,7 +144,7 @@
 	.opsz-demo p {
 		margin: 0 0 2.25rem 0;
 	}
-} */
+}
 
 /* Helper element to determine width */
 .opsz-demo-control {
