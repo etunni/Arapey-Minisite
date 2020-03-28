@@ -4,15 +4,14 @@
 
 	/* Simulate .prose */
 	--opsz: 12;
-	--WONK: 1;
 
 	font-weight: 300;
-	font-size: 1.375rem;
 	line-height: 1.25;
 	position: relative;
 	margin: 10rem auto;
 	width: var(--width);
 	user-select: none;
+	font-optical-sizing: none;
 }
 
 .opsz-demo p {
@@ -42,7 +41,6 @@
 }
 
 .with-opsz {
-	font-optical-sizing: none;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -82,15 +80,13 @@
 }
 
 .opsz-small {
-	line-height: 1.375;
-	font-size: 1rem;
+	font-size: 1.75rem;
 }
 
 .opsz-small-with {
-	--opsz: 12;
+	--opsz: 28;
 
-	line-height: 1.375;
-	font-size: 1rem;
+	font-size: 1.75rem;
 }
 
 .opsz-medium {
@@ -98,7 +94,7 @@
 }
 
 .opsz-medium-with {
-	--opsz: 32;
+	--opsz: 40;
 
 	font-size: 2.5rem;
 }
@@ -108,12 +104,12 @@
 }
 
 .opsz-large-with {
-	--opsz: 128;
+	--opsz: 80;
 
 	font-size: 5rem;
 }
 
-@media screen and (max-width: 28rem) {
+/* @media screen and (max-width: 28rem) {
 	.with-opsz,
 	.without-opsz {
 		padding-left: 0.5rem;
@@ -153,4 +149,4 @@
 	.opsz-demo p {
 		margin: 0 0 2.25rem 0;
 	}
-}
+} */
