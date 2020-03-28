@@ -31,7 +31,6 @@
 .opsz-demo h3 {
 	font-size: 1.25rem;
 	font-weight: bold;
-	text-transform: uppercase;
 	display: flex;
 	align-items: center;
 	color: var(--arapey-blue);
