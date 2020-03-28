@@ -7,7 +7,7 @@
 
 .character-grid-section {
 	max-width: var(--max-content-width);
-	margin: 0 auto;
+	margin: 16rem auto;
 }
 
 .character-grid-inner-container {

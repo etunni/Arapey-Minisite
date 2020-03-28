@@ -2,6 +2,7 @@
 	/* Height also determines scale of letters */
 	--height: 50vh;
 
+	margin: 16rem auto;
 	text-align: center;
 }
 
