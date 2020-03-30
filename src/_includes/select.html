@@ -1,14 +1,32 @@
 <div class="interactive-controls-select-group">
-    <button type="button" class="interactive-controls-select-handle" id="{{ handle }}" value="Regular">
-        <span>Regular</span>
-        {% if color == "red" %}<span>{% includeWebpackAsset '../img/dropdown_arrow_red_200313.svg' %}</span>{% endif %}
-        {% if color == "green" %}<span>{% includeWebpackAsset '../img/dropdown_arrow_green_200313.svg' %}</span>{% endif %}
-    </button>
-    <ul class="interactive-controls-options-list">
-        {% for instance in instances %}
-        <li>
-            <button value="{{instance.name}}" data-opsz="{{ instance.axes.opsz }}" data-wght="{{ instance.axes.wght }}" type="button" class="interactive-controls-option">{{ instance.name }}</button>
-        </li>
-        {% endfor %}
-    </ul>
+	<button
+		type="button"
+		class="interactive-controls-select-handle"
+		id="{{ handle }}"
+		value="Regular"
+	>
+		<span>Regular</span>
+		{% if color == "red" %}<span
+			>{% includeWebpackAsset '../img/dropdown_arrow_red_200313.svg'
+			%}</span
+		>{% endif %} {% if color == "green" %}<span
+			>{% includeWebpackAsset '../img/dropdown_arrow_green_200313.svg'
+			%}</span
+		>{% endif %}
+	</button>
+	<ul class="interactive-controls-options-list">
+		{% for instance in instances %}
+		<li>
+			<button
+				value="{{instance.name}}"
+				data-opsz="{{ instance.axes.opsz }}"
+				data-wght="{{ instance.axes.wght }}"
+				type="button"
+				class="interactive-controls-option"
+			>
+				{{ instance.name }}
+			</button>
+		</li>
+		{% endfor %}
+	</ul>
 </div>

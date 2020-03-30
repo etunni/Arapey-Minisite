@@ -1,27 +1,38 @@
-{% comment %}
-    Usage:
-		{% include tick-slider.html labels: instances %}
-		{% include tick-slider.html with labelStart: "start" labelEnd: "end"  %}
-		{% include tick-slider.html with labelStart: "start" labelEnd: "end" labels: instances %}
+{% comment %} Usage: {% include tick-slider.html labels: instances %} {% include
+tick-slider.html with labelStart: "start" labelEnd: "end" %} {% include
+tick-slider.html with labelStart: "start" labelEnd: "end" labels: instances %}
 {% endcomment %}
 
 <li class="interactive-controls-list-item tick-list-item">
-    {% if labelStart %}<span class="label-text">{{ labelStart }}</span>{% endif %}
-    <div class="interactive-controls-tick-slider-container {{ name }}-container">
-		{% if badge %}<output class="interactive-controls-badge"></output>{% endif %}
+	{% if labelStart %}<span class="label-text">{{ labelStart }}</span>{% endif
+	%}
+	<div
+		class="interactive-controls-tick-slider-container {{ name }}-container"
+	>
+		{% if badge %}<output class="interactive-controls-badge"></output>{%
+		endif %}
 
-        <input type="range" value="{{ value }}" name="{{ name }}" min="{{ min }}" max="{{ max }}" step="any" class="interactive-controls-slider interactive-controls-tick-slider {{ name }}">
+		<input
+			type="range"
+			value="{{ value }}"
+			name="{{ name }}"
+			min="{{ min }}"
+			max="{{ max }}"
+			step="any"
+			class="interactive-controls-slider interactive-controls-tick-slider {{ name }}"
+		/>
 
-            {% if labels %}
-                <div class="ticks">
-                    {% for label in labels %}
-                        <span class="tick">
-                            <span>{{ label.name }}</span>
-                        </span>
-                    {% endfor %}
-                </div>
-            {% endif %}
-            {% if labelCenter %} <div class="label-text-center">{{ labelCenter }}</div>{% endif %}
-    </div>
-    {% if labelEnd %}<span class="label-text">{{ labelEnd }}</span>{% endif %}
+		{% if labels %}
+		<div class="ticks">
+			{% for label in labels %}
+			<span class="tick">
+				<span>{{ label.name }}</span>
+			</span>
+			{% endfor %}
+		</div>
+		{% endif %} {% if labelCenter %}
+		<div class="label-text-center">{{ labelCenter }}</div>
+		{% endif %}
+	</div>
+	{% if labelEnd %}<span class="label-text">{{ labelEnd }}</span>{% endif %}
 </li>

@@ -1,18 +1,17 @@
+{% comment %} Usage: {% include toggle.html with color: "color-color" %} {%
+endcomment %} {% if color %} {% capture counter %}switch-{% increment counter
+%}{% endcapture %}
 
-{% comment %}
-    Usage:
-        {% include toggle.html with color: "color-color" %}
-{% endcomment %}
-
-{% if color %}
-    {% capture counter %}switch-{% increment counter %}{% endcapture %}
-
-
-    <input id="{{ counter }}" type="checkbox" class="interactive-controls-checkbox" {{ checked }}  />
-    <label
-        for="{{ counter }}"
-        class="interactive-controls-toggle {{ color }}"
-    ></label>
+<input
+	id="{{ counter }}"
+	type="checkbox"
+	class="interactive-controls-checkbox"
+	{{
+	checked
+	}}
+/>
+<label
+	for="{{ counter }}"
+	class="interactive-controls-toggle {{ color }}"
+></label>
 {% endif %}
-
-
