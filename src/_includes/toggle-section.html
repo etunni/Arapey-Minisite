@@ -1,8 +1,10 @@
 <section class="toggle-block toggle-block-{{ color }}">
-    <p contenteditable="" spellcheck="false" class="toggle-block-morphing-text">{{ content }}</p>
-    <div class="toggle-content">
-        <span class="toggle-label">Display thin</span>
-        {% include toggle.html with color: toggle-color checked: checked %} 
-        <span class="toggle-label">Display black</span>
-    </div>
+	<p contenteditable="" spellcheck="false" class="toggle-block-morphing-text">
+		{{ content }}
+	</p>
+	<div class="toggle-content">
+		<span class="toggle-label">Display thin</span>
+		{% include toggle.html with color: toggle-color checked: checked %}
+		<span class="toggle-label">Display black</span>
+	</div>
 </section>
