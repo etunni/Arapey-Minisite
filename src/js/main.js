@@ -310,7 +310,6 @@ const characterSlide = {
 			() => (characterSlide.shouldSlide = false)
 		);
 		characterSlideListContainer.addEventListener("mouseout", () => {
-			console.log("mouseend");
 			characterSlide.shouldSlide = true;
 			characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
 		});
