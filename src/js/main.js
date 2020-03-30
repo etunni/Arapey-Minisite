@@ -184,14 +184,17 @@ grid.onmousemove = throttle(setGridCharacter, 100);
 const setupBadge = (slider, value) => {
 	const sliderContainer = slider.closest(`.${slider.name}-container`);
 	const badge = sliderContainer.querySelector(".interactive-controls-badge");
+	const thumbWidth = 16;
 	const badgeOffset =
-		slider.offsetWidth / (parseFloat(slider.max) - parseFloat(slider.min));
+		(slider.offsetWidth - thumbWidth) /
+		(parseFloat(slider.max) - parseFloat(slider.min));
 
 	if (!badge) return;
 
 	const badgePosition =
 		(parseFloat(value) - parseFloat(slider.min)) * badgeOffset -
-		badge.offsetWidth / 2;
+		badge.offsetWidth / 2 +
+		thumbWidth / 2;
 
 	badge.textContent = Math.round(value);
 	badge.style.setProperty("--badge-position-x", `${badgePosition}px`);
@@ -211,26 +214,6 @@ const handleToggle = e => {
 };
 
 toggles.forEach(toggle => toggle.addEventListener("change", handleToggle));
-
-const aboutInteractiveElement = document.querySelector(
-	".about-arapey-content-interactive"
-);
-
-const alignmentHandle = document.querySelector(
-	"#about-arapey-alignment-controls"
-);
-const alignmentInputs = alignmentHandle.querySelectorAll(".alignment-input");
-
-const handleAlignmentClick = e => {
-	aboutInteractiveElement.style.setProperty(
-		"--text-alignment",
-		e.target.value
-	);
-};
-
-alignmentInputs.forEach(item =>
-	item.addEventListener("click", handleAlignmentClick)
-);
 
 // Handle select box
 const selectElements = {
@@ -602,7 +585,7 @@ const initializeApp = () => {
 	// Animate top letterwave ("AAAAAA")
 	topWave.setup(".arapey-hero-canvas");
 	bottomWave.setup(".arapey-zzzz-canvas", "flat");
-	bottomWave.setLetter("Z", "c02020");
+	bottomWave.setLetter("Z");
 	setRAFInterval(() => {
 		topWave.renderWave();
 		bottomWave.renderWave();
@@ -772,7 +755,7 @@ const setViewportValues = () => {
 
 	// Determine opsz container width
 	const opszWidth =
-		document.querySelector(".opsz-text .prose-content").offsetWidth - 48; // 48 = 3rem = handle size
+		document.querySelector(".opsz-demo-control").offsetWidth - 48; // 48 = 3rem = handle size
 	document
 		.querySelector(".opsz-demo")
 		.style.setProperty("--width", `${opszWidth}px`);
@@ -798,32 +781,25 @@ designFeatures.container.addEventListener(
 
 // Swiper for opsz demo
 const swiper = document.querySelector(".opsz-demo");
-const swiperHandle = document.querySelector(".opsz-slider-handle");
 const calculateSwiperOffset = () => {
 	const x = mouse.x - swiper.offsetLeft;
 	const perc = (x / (swiper.offsetWidth / 100)).toFixed(2);
 	const clampedPerc = Math.max(1, Math.min(perc, 100));
 	swiper.style.setProperty("--offset", `${clampedPerc}%`);
 };
-swiperHandle.addEventListener("mousedown", e => {
+swiper.addEventListener("mousemove", e => {
 	e.preventDefault();
-	swiperHandle.classList.add("dragging");
 	mouse.dragCallback = () => calculateSwiperOffset();
-	mouse.endCallback = () => {
-		swiperHandle.classList.remove("dragging");
-	};
 });
-swiperHandle.addEventListener(
+swiper.addEventListener("mouseleave", () => {
+	mouse.dragCallback = false;
+});
+swiper.addEventListener(
 	"touchmove",
 	e => {
-		swiperHandle.classList.add("dragging");
 		mouse.x = e.touches[0].clientX;
 		mouse.y = e.touches[0].clientY;
 		calculateSwiperOffset();
-
-		mouse.endCallback = () => {
-			swiperHandle.classList.remove("dragging");
-		};
 	},
 	supportsPassive ? { passive: true } : false
 );

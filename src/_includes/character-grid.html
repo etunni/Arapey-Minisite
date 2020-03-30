@@ -2,12 +2,15 @@
 	<section class="character-grid-inner-container interactive-controls-text">
 		<ol class="character-grid">
 			{% for char in charset %}
-			<li class="character-grid-item" data-character="{{ char }}">{{ char }}</li>
+			<li class="character-grid-item" data-character="{{ char }}">
+				{{ char }}
+			</li>
 			{% endfor %}
 		</ol>
 		<div class="character-grid-zoom"></div>
 	</section>
 	<ul class="interactive-controls-list">
-		{% include tick-slider.html value: 600 labels: weight-instances name: "weight-grid-slider" min: 100 max: 900 badge: true %}
+		{% include tick-slider.html value: 600 labels: weight-instances name:
+		"weight-grid-slider" min: 100 max: 900 badge: true %}
 	</ul>
 </section>

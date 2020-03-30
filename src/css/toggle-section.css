@@ -11,7 +11,7 @@
 	--opsz: 128;
 
 	/* allow for smooth transition when toggling */
-	transition: font-weight 0.25s ease-in;
+	transition: font-weight 0.65s ease-out;
 }
 
 .toggle-block .toggle-block-morphing-text {

@@ -114,7 +114,6 @@
 	text-align: right;
 	font-size: 1.25rem;
 	padding-right: 0.5rem;
-	min-width: 6em; /* Picked to match the widest label */
 }
 
 .tick-list-item {
@@ -159,16 +158,28 @@
 	font-weight: var(--weight-semi-bold);
 }
 
-.weather-section .interactive-controls-tick-slider::-webkit-slider-thumb {
+.weather-section ::-webkit-slider-thumb {
 	background-color: var(--arapey-green);
 }
 
-.weather-section .interactive-controls-tick-slider::-moz-range-thumb {
+.weather-section ::-moz-range-thumb {
 	background-color: var(--arapey-green);
 }
 
-.weather-section .interactive-controls-tick-slider::-ms-thumb {
+.weather-section ::-ms-thumb {
 	background-color: var(--arapey-green);
+}
+
+.about-variable-fonts-interactive ::-webkit-slider-thumb {
+	background-color: var(--arapey-blue);
+}
+
+.about-variable-fonts-interactive ::-moz-range-thumb {
+	background-color: var(--arapey-blue);
+}
+
+.about-variable-fonts-interactive ::-ms-thumb {
+	background-color: var(--arapey-blue);
 }
 
 .ticks {

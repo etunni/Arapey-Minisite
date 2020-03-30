@@ -1,11 +1,15 @@
+.fonts-in-use-container {
+	padding: 10rem 0;
+	overflow-x: hidden;
+}
 .fonts-in-use {
 	--offset: 0;
 	--scale-factor: 55vw;
 	--offset-factor: 0;
 
-	margin: 10rem auto;
+	margin: 0 auto 10rem auto;
 	position: relative;
-	overflow: hidden;
+	overflow: visible;
 	width: 100vw;
 	padding-top: 60%;
 }
@@ -23,12 +27,15 @@
 
 .svg-container svg {
 	height: calc(var(--height) / 100 * var(--scale-factor));
-	transform: translate(-50%, calc(var(--offset-factor) * var(--offset) * 1%));
+	transform: translate(
+		-50%,
+		calc(var(--offset-factor) * var(--offset) * 2.5%)
+	);
 }
 
 .five-star-rating {
 	--height: 10;
-	--offset-factor: 1;
+	--offset-factor: 3;
 
 	top: 0%;
 	left: 50%;
@@ -74,6 +81,7 @@
 
 	top: 77%;
 	left: 10%;
+	z-index: 10;
 }
 
 .magazine {
