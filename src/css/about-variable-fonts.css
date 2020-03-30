@@ -106,39 +106,3 @@ code .int-value {
 code .string-value {
 	color: var(--arapey-green);
 }
-
-.arapey-styles-container {
-	margin-top: 2.5rem;
-}
-
-.arapey-styles-container h2 {
-	margin-bottom: 1rem;
-}
-
-.arapey-styles-list-container {
-	display: flex;
-	font-size: 1.25rem;
-}
-
-.arapey-styles-container ul {
-	font-weight: var(--weight-regular);
-}
-
-.arapey-styles-container li {
-	margin-bottom: 0.5em;
-}
-
-.arapey-styles-container ul + ul {
-	font-weight: var(--weight-bold);
-	margin-left: 3.5rem;
-}
-
-@media screen and (max-width: 45em) {
-	.arapey-styles-container {
-		padding: 2rem;
-	}
-
-	.arapey-styles-list-container {
-		font-size: 1rem;
-	}
-}
