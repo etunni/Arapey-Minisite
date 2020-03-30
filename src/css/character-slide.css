@@ -1,7 +1,7 @@
 .character-slide-section {
 	--wght: var(--weight-regular);
 
-	margin: 10rem auto;
+	margin: 16rem auto;
 	user-select: none;
 }
 
