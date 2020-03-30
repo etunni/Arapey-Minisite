@@ -63,6 +63,7 @@ font.load(null, fontTimeOut).then(
 		setViewportValues();
 		initializeApp();
 		aboutFonts.init();
+		characterSlide.init();
 	},
 	() => {
 		// Font didn't load
@@ -70,6 +71,7 @@ font.load(null, fontTimeOut).then(
 		setViewportValues();
 		initializeApp();
 		aboutFonts.init();
+		characterSlide.init();
 	}
 );
 
@@ -280,6 +282,13 @@ const onClickOutside = () => {
 
 window.addEventListener("click", onClickOutside);
 
+const characterSlideSection = document.querySelector(
+	".character-slide-section"
+);
+const characterSlideListContainer = characterSlideSection.querySelector(
+	".character-slide-lists"
+);
+
 // Sliding wall of characters
 // TODO: avoid layout thrashing by caching offset values,
 //       especially in the loop
@@ -291,95 +300,108 @@ const characterSlide = {
 	scrollLeft: 0,
 	momentumID: null,
 	slideSpeed: -1,
-	dir: "right"
-};
-const characterSlideSection = document.querySelector(
-	".character-slide-section"
-);
-const characterSlideListContainer = characterSlideSection.querySelector(
-	".character-slide-lists"
-);
-characterSlideListContainer.addEventListener("mouseover", () => {
-	characterSlide.shouldSlide = false;
-});
-characterSlideListContainer.addEventListener("mouseout", () => {
-	characterSlide.shouldSlide = true;
-	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
-});
+	dir: "right",
+	init: function() {
+		this.addListeners();
+	},
+	addListeners: function() {
+		characterSlideListContainer.addEventListener(
+			"mouseover",
+			() => (characterSlide.shouldSlide = false)
+		);
+		characterSlideListContainer.addEventListener("mouseout", () => {
+			characterSlide.shouldSlide = true;
+			characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
+		});
+		characterSlideListContainer.addEventListener(
+			"mouseover",
+			() => (characterSlide.shouldSlide = false)
+		);
+		characterSlideListContainer.addEventListener(
+			"mouseup",
+			this.stopCharacterSlider
+		);
+		characterSlideListContainer.addEventListener(
+			"mouseleave",
+			this.stopCharacterSlider
+		);
 
-characterSlideListContainer.addEventListener("touchend", () => {
-	characterSlide.shouldSlide = true;
-	characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
-});
+		characterSlideListContainer.addEventListener(
+			"mousedown",
+			this.onPressCharacterSlide
+		);
+		characterSlideListContainer.addEventListener(
+			"touchstart",
+			this.onPressCharacterSlide
+		);
 
-const onPressCharacterSlide = e => {
-	characterSlide.isDown = true;
-	characterSlide.shouldSlide = false;
+		characterSlideListContainer.addEventListener(
+			"touchmove",
+			this.onMoveCharacterSlide
+		);
+		characterSlideListContainer.addEventListener(
+			"mousemove",
+			this.onMoveCharacterSlide
+		);
 
-	characterSlide.oldX = e.pageX;
-	characterSlide.x = e.pageX - e.currentTarget.offsetLeft;
-	characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling in the scroll container
-	characterSlideListContainer.classList.add("active");
-};
+		characterSlideListContainer.addEventListener("touchend", () => {
+			characterSlide.shouldSlide = true;
+			characterSlide.slideSpeed = characterSlide.lastSlideSpeed;
+		});
+	},
+	onPressCharacterSlide: function(e) {
+		characterSlide.isDown = true;
+		characterSlide.shouldSlide = false;
 
-const onMoveCharacterSlide = e => {
-	if (!characterSlide.isDown) return;
+		characterSlide.oldX = e.pageX;
+		characterSlide.x = e.pageX - e.currentTarget.offsetLeft;
+		characterSlide.scrollLeft = e.currentTarget.scrollLeft; // keep pos of scrolling in the scroll container
+		characterSlideListContainer.classList.add("active");
+	},
+	onMoveCharacterSlide: function(e) {
+		if (!characterSlide.isDown) return;
 
-	const slideDistance = e.pageX - characterSlide.x;
-	characterSlide.slideSpeed = e.pageX - characterSlide.oldX;
-	characterSlide.oldX = e.pageX;
-	e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
-};
+		const slideDistance = e.pageX - characterSlide.x;
+		characterSlide.slideSpeed = e.pageX - characterSlide.oldX;
+		characterSlide.oldX = e.pageX;
+		e.currentTarget.scrollLeft = characterSlide.scrollLeft - slideDistance;
+	},
+	stopCharacterSlider: function() {
+		characterSlide.isDown = false;
 
-characterSlideListContainer.addEventListener(
-	"mousedown",
-	onPressCharacterSlide
-);
-
-characterSlideListContainer.addEventListener(
-	"touchstart",
-	onPressCharacterSlide
-);
-
-characterSlideListContainer.addEventListener("mousemove", onMoveCharacterSlide);
-characterSlideListContainer.addEventListener("touchmove", onMoveCharacterSlide);
-
-const stopCharacterSlider = () => {
-	characterSlide.isDown = false;
-	characterSlideListContainer.classList.remove("active");
-	cancelAnimationFrame(characterSlide.momentumID);
-	loop();
-};
-characterSlideListContainer.addEventListener("mouseup", stopCharacterSlider);
-characterSlideListContainer.addEventListener("mouseleave", stopCharacterSlider);
-const loop = () => {
-	const factor = 0.9;
-	if (characterSlide.slideSpeed > 1.5 || characterSlide.slideSpeed < -1.5) {
-		// Finish momentum slide
-		characterSlide.slideSpeed *= factor;
-		characterSlide.lastSlideSpeed = characterSlide.slideSpeed;
-	} else {
-		// Done slowing down, round last speed to a sane minimum
-		if (characterSlide.shouldSlide) {
-			characterSlide.slideSpeed = characterSlide.slideSpeed >= 0 ? 1 : -1;
+		characterSlideListContainer.classList.remove("active");
+		cancelAnimationFrame(characterSlide.momentumID);
+		characterSlide.loop();
+	},
+	loop: function() {
+		const factor = 0.9;
+		if (this.slideSpeed > 1.5 || this.slideSpeed < -1.5) {
+			// Finish momentum slide
+			this.slideSpeed *= factor;
+			this.lastSlideSpeed = this.slideSpeed;
 		} else {
-			characterSlide.slideSpeed = 0;
+			// Done slowing down, round last speed to a sane minimum
+			if (this.shouldSlide) {
+				this.slideSpeed = this.slideSpeed >= 0 ? 1 : -1;
+			} else {
+				this.slideSpeed = 0;
+			}
 		}
-	}
 
-	// If edge is reached, reverse scroll direction
-	if (
-		characterSlideListContainer.scrollWidth -
-			characterSlideSection.scrollWidth ===
-			characterSlideListContainer.scrollLeft ||
-		characterSlideListContainer.scrollLeft === 0
-	) {
-		characterSlide.slideSpeed = characterSlide.slideSpeed * -1;
-		characterSlide.lastSlideSpeed = characterSlide.slideSpeed;
-	}
+		// If edge is reached, reverse scroll direction
+		if (
+			characterSlideListContainer.scrollWidth -
+				characterSlideSection.scrollWidth ===
+				characterSlideListContainer.scrollLeft ||
+			characterSlideListContainer.scrollLeft === 0
+		) {
+			this.slideSpeed = this.slideSpeed * -1;
+			this.lastSlideSpeed = this.slideSpeed;
+		}
 
-	characterSlideListContainer.scrollLeft -= characterSlide.slideSpeed;
-	characterSlide.momentumID = requestAnimationFrame(() => loop());
+		characterSlideListContainer.scrollLeft -= this.slideSpeed;
+		this.momentumID = requestAnimationFrame(() => characterSlide.loop());
+	}
 };
 
 const capsSelectionList = characterSlideSection.querySelector(
@@ -592,7 +614,7 @@ const initializeApp = () => {
 	}, 100);
 
 	// Slide wall of characters
-	loop();
+	characterSlide.loop();
 };
 
 // General mouse object.
