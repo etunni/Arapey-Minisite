@@ -10,7 +10,6 @@
 }
 
 .about-arapey-content {
-	text-align: center;
 	font-weight: var(--weight-regular);
 	max-width: var(--max-prose-content-width);
 	margin: 0 auto 10rem auto;
@@ -27,13 +26,8 @@
 	line-height: 1.5;
 }
 
-.about-arapey-title {
-	--opsz: 128;
-
-	color: var(--arapey-red);
-	font-size: 4rem;
-	font-weight: var(--weight-bold);
-	margin-bottom: 2rem;
+.about-arapey-content h2 {
+	text-align: center;
 }
 
 .arapey-pronounced {
@@ -41,7 +35,6 @@
 }
 
 .about-arapey-content-interactive {
-	--text-alignment: center;
 	--font-size: 0;
 }
 
@@ -55,7 +48,6 @@
 
 .about-arapey-interactive-paragraph {
 	max-width: var(--max-content-width);
-	text-align: var(--text-alignment);
 	font-weight: var(--wght);
 	color: var(--arapey-red);
 	transition: font-weight 200ms;
@@ -66,6 +58,7 @@
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
+	text-align: center;
 }
 
 @media screen and (max-width: 64em) {
