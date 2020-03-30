@@ -369,7 +369,6 @@ const characterSlide = {
 	},
 	stopCharacterSlider: function() {
 		characterSlide.isDown = false;
-		console.log("mouseup", this);
 
 		characterSlideListContainer.classList.remove("active");
 		cancelAnimationFrame(characterSlide.momentumID);
