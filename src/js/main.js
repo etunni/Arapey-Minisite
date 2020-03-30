@@ -60,15 +60,15 @@ font.load(null, fontTimeOut).then(
 	() => {
 		// Font has loaded
 		document.documentElement.classList.add("fonts-loaded");
-		initializeApp();
 		setViewportValues();
+		initializeApp();
 		aboutFonts.init();
 	},
 	() => {
 		// Font didn't load
 		document.documentElement.classList.add("fonts-failed");
-		initializeApp();
 		setViewportValues();
+		initializeApp();
 		aboutFonts.init();
 	}
 );
@@ -181,19 +181,19 @@ grid.onmousemove = throttle(setGridCharacter, 100);
 // badge.offsetWidth, as they won't change unless the viewport
 // size changes (in which we can recalculate them, see comment
 // around initializeApp)
+const thumbWidth = 16;
 const setupBadge = (slider, value) => {
 	const sliderContainer = slider.closest(`.${slider.name}-container`);
 	const badge = sliderContainer.querySelector(".interactive-controls-badge");
-	const thumbWidth = 16;
 	const badgeOffset =
-		(slider.offsetWidth - thumbWidth) /
+		(slider.dataset.width - thumbWidth) /
 		(parseFloat(slider.max) - parseFloat(slider.min));
 
 	if (!badge) return;
 
 	const badgePosition =
 		(parseFloat(value) - parseFloat(slider.min)) * badgeOffset -
-		badge.offsetWidth / 2 +
+		badgeWidth / 2 +
 		thumbWidth / 2;
 
 	badge.textContent = Math.round(value);
@@ -736,18 +736,10 @@ window.onscroll = throttle(() => {
 	}
 }, 100);
 
-const sliders = {
-	elements: document.querySelectorAll(".interactive-controls-slider")
-};
-
 // Update variables related to the viewport
+let badgeWidth = 0;
+const sliders = document.querySelectorAll(".interactive-controls-slider");
 const setViewportValues = () => {
-	// Recalculate letterWave canvas dimensions
-	topWave.resizeCanvas();
-	bottomWave.resizeCanvas();
-
-	sliders.elements.forEach(slider => setupBadge(slider, slider.value));
-
 	fontsInUse.start = fontsInUse.element.offsetTop - window.innerHeight;
 	fontsInUse.uvEnd =
 		fontsInUse.element.offsetTop + fontsInUse.element.offsetHeight;
@@ -759,6 +751,14 @@ const setViewportValues = () => {
 	document
 		.querySelector(".opsz-demo")
 		.style.setProperty("--width", `${opszWidth}px`);
+
+	sliders.forEach(slider => {
+		slider.dataset.width = slider.offsetWidth;
+	});
+
+	// All badges are equal width, so just query the first one
+	badgeWidth = document.querySelector(".interactive-controls-badge")
+		.offsetWidth;
 };
 
 const designFeatures = {
@@ -804,4 +804,11 @@ swiper.addEventListener(
 	supportsPassive ? { passive: true } : false
 );
 
-window.onresize = throttle(setViewportValues, 100);
+window.onresize = throttle(() => {
+	setViewportValues();
+	// Recalculate letterWave canvas dimensions
+	topWave.resizeCanvas();
+	bottomWave.resizeCanvas();
+	// Recalculate badge positions
+	sliders.forEach(slider => setupBadge(slider, slider.value));
+}, 100);
