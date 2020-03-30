@@ -753,15 +753,17 @@ window.onscroll = throttle(() => {
 	}
 }, 100);
 
+const sliders = {
+	elements: document.querySelectorAll(".interactive-controls-slider")
+};
+
 // Update variables related to the viewport
 const setViewportValues = () => {
 	// Recalculate letterWave canvas dimensions
 	topWave.resizeCanvas();
 	bottomWave.resizeCanvas();
 
-	const sliders = document.querySelectorAll(".interactive-controls-slider");
-
-	sliders.forEach(slider => setupBadge(slider, slider.value));
+	sliders.elements.forEach(slider => setupBadge(slider, slider.value));
 
 	fontsInUse.start = fontsInUse.element.offsetTop - window.innerHeight;
 	fontsInUse.uvEnd =
