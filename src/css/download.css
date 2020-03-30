@@ -1,6 +1,6 @@
 .arapey-styles-container {
 	max-width: var(--max-prose-content-width);
-	margin: 0 auto;
+	margin: 10rem auto;
 }
 
 .arapey-styles-container h2 {
@@ -25,6 +25,21 @@
 	margin-left: 3.5rem;
 }
 
+.download-link {
+	display: inline-block;
+	text-align: center;
+	padding: 0.5em 1em;
+	font-size: 2rem;
+	background: var(--arapey-green);
+	color: var(--arapey-white);
+	text-decoration: none;
+	border-radius: 3px;
+	font-weight: var(--weight-medium);
+}
+
+.download-link:hover {
+	text-decoration: underline;
+}
 @media screen and (max-width: 45em) {
 	.arapey-styles-container {
 		padding: 2rem;

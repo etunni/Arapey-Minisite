@@ -64,12 +64,14 @@
 
 .arapey-hero-text h2 {
 	font-weight: var(--weight-light);
+	margin: 0;
 }
 
-.arapey-hero-text span {
+.arapey-hero-text p {
 	font-size: 1.25rem;
 	font-weight: var(--weight-light);
 	color: var(--arapey-red);
+	margin: 1rem 0;
 }
 
 .arapey-hero-canvas {
