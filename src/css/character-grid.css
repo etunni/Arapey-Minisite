@@ -15,6 +15,7 @@
 	display: flex;
 	min-height: 32rem;
 	height: 50vh;
+	margin-bottom: 6rem;
 }
 
 .character-grid {
@@ -79,15 +80,6 @@
 	justify-content: center;
 	align-items: center;
 	font-variation-settings: "wght" var(--weight-grid-slider);
-}
-
-.interactive-controls-tick-slider-container {
-	position: relative;
-}
-
-.character-grid-section .interactive-controls-list {
-	max-width: var(--max-prose-content-width);
-	margin: 6em auto 0 auto;
 }
 
 @media screen and (max-width: 45em) {
