@@ -117,7 +117,8 @@
 	font-weight: var(--weight-bold);
 	text-align: right;
 	font-size: 1.25rem;
-	padding-right: 0.5rem;
+	padding-right: 1rem;
+	padding-top: 3rem;
 }
 
 .tick-list-item {
