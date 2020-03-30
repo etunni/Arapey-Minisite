@@ -44,26 +44,24 @@ button {
 	color: var(--arapey-blue);
 }
 
-.arapey-title-blue {
-	--opsz: 128;
-
-	font-size: 4rem;
-	font-weight: var(--weight-semi-bold);
-	color: var(--arapey-blue);
-}
-
-.arapey-title-green {
-	--opsz: 128;
-
-	font-size: 4rem;
-	font-weight: var(--weight-semi-bold);
-	color: var(--arapey-green);
-}
-
+.arapey-title-blue,
+.arapey-title-green,
 .arapey-title-red {
 	--opsz: 128;
 
 	font-size: 4rem;
 	font-weight: var(--weight-semi-bold);
+	line-height: 1;
+}
+
+.arapey-title-blue {
+	color: var(--arapey-blue);
+}
+
+.arapey-title-green {
+	color: var(--arapey-green);
+}
+
+.arapey-title-red {
 	color: var(--arapey-red);
 }

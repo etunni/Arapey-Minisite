@@ -1,6 +1,7 @@
 .about-variable-fonts-section {
 	margin-top: 4rem;
 }
+
 @media screen and (max-width: 45em) {
 	.about-variable-fonts-section {
 		margin-top: 0;
@@ -13,7 +14,6 @@
 .about-variable-fonts-container {
 	font-size: 1.5rem;
 	line-height: 1.5;
-	text-align: center;
 	padding: 2rem;
 	max-width: var(--max-prose-content-width);
 	margin: 0 auto;
@@ -22,6 +22,7 @@
 .about-variable-fonts-container h1 {
 	margin-bottom: 0;
 	color: var(--arapey-blue);
+	text-align: center;
 }
 
 .about-variable-fonts-container p {
