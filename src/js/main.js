@@ -738,6 +738,7 @@ window.onscroll = throttle(() => {
 
 // Update variables related to the viewport
 let badgeWidth = 0;
+const sliders = document.querySelectorAll(".interactive-controls-slider");
 const setViewportValues = () => {
 	fontsInUse.start = fontsInUse.element.offsetTop - window.innerHeight;
 	fontsInUse.uvEnd =
@@ -751,7 +752,6 @@ const setViewportValues = () => {
 		.querySelector(".opsz-demo")
 		.style.setProperty("--width", `${opszWidth}px`);
 
-	const sliders = document.querySelectorAll(".interactive-controls-slider");
 	sliders.forEach(slider => {
 		slider.dataset.width = slider.offsetWidth;
 	});
@@ -805,8 +805,10 @@ swiper.addEventListener(
 );
 
 window.onresize = throttle(() => {
+	setViewportValues();
 	// Recalculate letterWave canvas dimensions
 	topWave.resizeCanvas();
 	bottomWave.resizeCanvas();
-	setViewportValues();
+	// Recalculate badge positions
+	sliders.forEach(slider => setupBadge(slider, slider.value));
 }, 100);
