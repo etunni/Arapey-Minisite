@@ -759,6 +759,10 @@ const setViewportValues = () => {
 	topWave.resizeCanvas();
 	bottomWave.resizeCanvas();
 
+	const sliders = document.querySelectorAll(".interactive-controls-slider");
+
+	sliders.forEach(slider => setupBadge(slider, slider.value));
+
 	fontsInUse.start = fontsInUse.element.offsetTop - window.innerHeight;
 	fontsInUse.uvEnd =
 		fontsInUse.element.offsetTop + fontsInUse.element.offsetHeight;
