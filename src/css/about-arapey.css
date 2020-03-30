@@ -26,13 +26,7 @@
 	line-height: 1.5;
 }
 
-.about-arapey-title {
-	--opsz: 128;
-
-	color: var(--arapey-red);
-	font-size: 4rem;
-	font-weight: var(--weight-bold);
-	margin-bottom: 2rem;
+.about-arapey-content h2 {
 	text-align: center;
 }
 
