@@ -814,15 +814,12 @@ async function getWeather() {
 	);
 	const data = await response.json();
 
-	const minTemperature = 0;
-	const maxTemperature = 50;
-
 	// slim down output
 	const weather = ({ main: { temp, humidity }, wind }) => ({
 		temperature: {
 			current: Math.round(temp),
-			max: maxTemperature,
-			min: minTemperature
+			max: 0,
+			min: 50
 		},
 		humidity: {
 			current: humidity,
