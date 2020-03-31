@@ -2,8 +2,10 @@
 	/* Height also determines scale of letters */
 	--height: 50vh;
 
-	margin: 16rem auto;
+	margin: 8rem auto;
 	text-align: center;
+	background: var(--arapey-light-gray);
+	padding: 8rem 0;
 }
 
 .floating-letter-container {
