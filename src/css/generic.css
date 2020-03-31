@@ -37,6 +37,7 @@ button {
 
 [contenteditable] {
 	outline: 0;
+	word-break: break-word;
 }
 
 .emphasized {
