@@ -4,20 +4,22 @@
 }
 
 .arapey-styles-container h2 {
-	margin-bottom: 1rem;
+	margin: 0;
 }
 
 .arapey-styles-list-container {
 	display: flex;
 	font-size: 1.25rem;
+	margin: 6rem 0;
 }
 
 .arapey-styles-container ul {
 	font-weight: var(--weight-regular);
+	margin: 0;
 }
 
-.arapey-styles-container li {
-	margin-bottom: 0.5em;
+.arapey-styles-container li + li {
+	margin-top: 0.75em;
 }
 
 .arapey-styles-container ul + ul {
@@ -38,8 +40,9 @@
 }
 
 .download-link:hover {
-	text-decoration: underline;
+	background: var(--arapey-black);
 }
+
 @media screen and (max-width: 45em) {
 	.arapey-styles-container {
 		padding: 2rem;
