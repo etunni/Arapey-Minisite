@@ -15,7 +15,8 @@ module.exports = {
 		ecmaFeatures: {
 			modules: true,
 			experimentalObjectRestSpread: true
-		}
+		},
+		ecmaVersion: 2017
 	},
 	rules: {
 		"prettier/prettier": "error",
