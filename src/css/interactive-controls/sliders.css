@@ -126,7 +126,7 @@
 }
 
 .tick-list-item + .tick-list-item {
-	margin-top: 6rem;
+	margin-top: 1rem;
 }
 
 .interactive-controls-tick-slider {

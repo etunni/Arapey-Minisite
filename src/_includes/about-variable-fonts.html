@@ -1,19 +1,21 @@
 <section class="about-variable-fonts-section">
 	<article class="about-variable-fonts-container">
-		<h1 class="arapey-title-blue">About variable fonts & Optical sizes</h1>
+		<h2 class="arapey-title-blue">
+			About variable fonts and optical sizes
+		</h2>
 		<p>
 			A <strong class="emphasized">variable font</strong> is a collection
 			of master styles, with one central ‘default’ master (usually the
-			Regular font style) and multiple registered “axes” which tie the
-			central master to the other masters. For example, the Weight axis
-			might connect a Light style master to the default style and through
-			to the Bold style master. The individual styles that can be located
-			along this axis are called instances.
+			Regular font style) and multiple ‘axes’ which tie the central master
+			to the other masters. For example, the Weight axis might connect a
+			Light style master to the default style and through to the Bold
+			style master. The individual styles that can be located along this
+			axis are called instances.
 		</p>
 		<p>
-			The <strong class="emphasized">Optical Size</strong> axis controls
-			the overall contrast between thicks and thins. But the Optical Size
-			axis goes a step further, however, and factors in additional changes
+			Many axes control just one aspect of a typeface But the
+			<strong class="emphasized">Optical Size</strong>
+			axis goes a step further, and factors in additional changes
 			depending on the size of the font. At smaller sizes, the
 			letterspacing opens up, x-height increases, and contrast decreases
 			to allow for easier reading.
@@ -41,41 +43,27 @@
 
 			<div class="code-container">
 				<code>
-					.arapey {<br />
-					<span class="property">font-family:</span>
-					<span class="string-value">"ArapeyVF;"</span><br />
+					* {<br />
+					<span class="property">--opsz:</span>
+					<span class="int-value">12;</span>
+					<br />
 					<span class="property">font-variation-settings:</span>
 					<span class="string-value">"opsz"</span>
+					<span class="string-value">var(--opsz);</span>
+					<br />
+					}<br />
+					<br />
+					<br />
+					.arapey {<br />
+					<span class="property">--opsz:</span>
 					<span class="int-value opsz-slider"></span>;<br />
+					<span class="property">font-family:</span>
+					<span class="string-value">"Arapey";</span><br />
 					<span class="property">font-weight:</span>
 					<span class="int-value wght-slider"></span>;<br />
 					}
 				</code>
 			</div>
-
-			<section class="arapey-styles-container">
-				<h2 class="arapey-title-blue">Arapey Styles</h2>
-				<div class="arapey-styles-list-container">
-					<ul>
-						<li>With 2 styles</li>
-						<li>9 Weights</li>
-						<li>2 Display Options</li>
-						<li>Weight range</li>
-						<li>Optical Sizes</li>
-					</ul>
-
-					<ul>
-						<li>Roman & Italic (available later)</li>
-						<li>
-							Thin, Extralight, Light, Regular, Medium, Semibold,
-							Bold, Extrabold, Black
-						</li>
-						<li>Display Thin, Display Black</li>
-						<li>100 — 900</li>
-						<li>12 — 128</li>
-					</ul>
-				</div>
-			</section>
 		</div>
 	</section>
 </section>

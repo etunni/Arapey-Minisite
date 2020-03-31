@@ -64,12 +64,14 @@
 
 .arapey-hero-text h2 {
 	font-weight: var(--weight-light);
+	margin: 0;
 }
 
-.arapey-hero-text span {
+.arapey-hero-text p {
 	font-size: 1.25rem;
 	font-weight: var(--weight-light);
 	color: var(--arapey-red);
+	margin: 1rem 0;
 }
 
 .arapey-hero-canvas {
@@ -113,7 +115,7 @@
 
 .get-arapey-button-sticky {
 	position: fixed;
-	left: 1rem;
+	left: calc(50% - (var(--max-content-width) * 0.5));
 	top: 1rem;
 	width: 7rem;
 	height: 7rem;
@@ -159,4 +161,10 @@
 	85.49% { transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 	90.69% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 	100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+}
+
+@media (max-width: 75rem) {
+	.get-arapey-button-sticky {
+		left: 0.5rem;
+	}
 }
