@@ -827,7 +827,7 @@ async function getWeather() {
 			wind
 		},
 		time: {
-			current: "2:00"
+			max: 24
 		}
 	});
 
@@ -852,14 +852,18 @@ const fns = {
 			text: `Wind N. at ${wind.speed} km/h ${current}% Humidity`
 		};
 	},
-	time: () => {
+	time: ({ max }) => {
 		const date = new Date();
 		const hours = date.getHours();
-		const minutes = date.getMinutes();
+		const minutes = `00${date.getMinutes()}`.slice(-2);
+
+		const maxFontWeight = 900;
+		const steps = (maxFontWeight - 100) / max;
+		const weight = Math.round(100 + steps * hours);
 
 		return {
-			weight: 400,
-			text: `Thursday 14:00`
+			weight,
+			text: `Thursday ${hours}:${minutes}`
 		};
 	}
 };
