@@ -1,0 +1,18 @@
+footer {
+	background: var(--arapey-light-gray-transparent);
+}
+
+footer > div {
+	max-width: var(--max-prose-content-width);
+	margin: 0 auto;
+	padding: 6rem 2rem;
+	font-size: 1.25rem;
+}
+
+footer p {
+	margin-top: 1rem;
+}
+
+footer a {
+	color: inherit;
+}
