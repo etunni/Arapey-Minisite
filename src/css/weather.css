@@ -1,6 +1,6 @@
 .weather-section {
 	--temperature-slider: 500;
-	--wind-slider: 500;
+	--humidity-slider: 500;
 	--time-slider: 500;
 
 	padding: 2rem;
@@ -30,9 +30,9 @@
 	font-weight: var(--temperature-slider);
 }
 
-.weather-content-container .wind {
+.weather-content-container .humidity {
 	font-size: 5rem;
-	font-weight: var(--wind-slider);
+	font-weight: var(--humidity-slider);
 }
 
 .weather-content-container .time {
@@ -62,9 +62,9 @@
 		font-weight: var(--temperature-slider);
 	}
 
-	.weather-content-container .wind {
+	.weather-content-container .humidity {
 		font-size: 3rem;
-		font-weight: var(--wind-slider);
+		font-weight: var(--humidity-slider);
 	}
 
 	.weather-content-container .time {

@@ -18,7 +18,7 @@
 }
 
 .temperature-slider-container .interactive-controls-badge,
-.wind-slider-container .interactive-controls-badge,
+.humidity-slider-container .interactive-controls-badge,
 .time-slider-container .interactive-controls-badge {
 	color: var(--arapey-green);
 }

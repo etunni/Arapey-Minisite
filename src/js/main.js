@@ -63,6 +63,7 @@ font.load(null, fontTimeOut).then(
 		setViewportValues();
 		initializeApp();
 		aboutFonts.init();
+		getWeather();
 		characterSlide.init();
 	},
 	() => {
@@ -71,6 +72,7 @@ font.load(null, fontTimeOut).then(
 		setViewportValues();
 		initializeApp();
 		aboutFonts.init();
+		getWeather();
 		characterSlide.init();
 	}
 );
@@ -825,6 +827,99 @@ swiper.addEventListener(
 	},
 	supportsPassive ? { passive: true } : false
 );
+
+const weatherSection = document.querySelector(".weather-section");
+
+async function getWeather() {
+	const response = await fetch(
+		"https://api.openweathermap.org/data/2.5/weather?q=Salto,uy?&units=metric&APPID=b0142355ff1172118bcf173d1bd9f022"
+	);
+	const data = await response.json();
+
+	// slim down output
+	const weather = ({ main: { temp, humidity }, wind }) => ({
+		temperature: {
+			current: Math.round(temp),
+			max: 50,
+			min: 0
+		},
+		humidity: {
+			current: humidity,
+			max: 100,
+			wind
+		},
+		time: {
+			max: 24
+		}
+	});
+
+	syncWeatherDataToDOM(weatherDOM(weather(data)));
+}
+
+const fns = {
+	temperature: ({ current, max }) => {
+		const maxFontWeight = 900;
+		const steps = (maxFontWeight - 100) / max;
+		const weight = 100 + steps * current;
+
+		return { weight, text: `${current}°C` };
+	},
+	humidity: ({ current, max, wind }) => {
+		const maxFontWeight = 900;
+		const steps = (maxFontWeight - 100) / max;
+		const weight = 100 + steps * current;
+
+		return {
+			weight,
+			text: `Wind N. at ${wind.speed} km/h ${current}% Humidity`
+		};
+	},
+	time: ({ max }) => {
+		const date = new Date();
+		const hours = date.getHours();
+		const minutes = `00${date.getMinutes()}`.slice(-2);
+
+		const maxFontWeight = 900;
+		const steps = (maxFontWeight - 100) / max;
+		const weight = Math.round(100 + steps * hours);
+
+		return {
+			weight,
+			text: `Thursday ${hours}:${minutes}`
+		};
+	}
+};
+
+const weatherDOM = data => {
+	return Object.entries(data).map(([key, value]) => ({
+		[key]: {
+			slider: `${key}-slider`,
+			element: `${key}`,
+			style: `--${key}-slider`,
+			[key]: function() {
+				return fns[key](value);
+			},
+			value
+		}
+	}));
+};
+
+const syncWeatherDataToDOM = data => {
+	return data.map(item => {
+		const key = Object.keys(item);
+		const values = item[key][key]();
+
+		const element = weatherSection.querySelector(`.${item[key].element}`);
+		const slider = weatherSection.querySelector(`.${item[key].slider}`);
+
+		element.textContent = values.text;
+
+		element.style.setProperty(item[key].style, values.weight);
+		slider.value = values.weight;
+
+		setupBadge(slider, values.weight);
+	});
+};
 
 window.onresize = throttle(() => {
 	setViewportValues();
