@@ -1,0 +1,9 @@
+footer {
+	background: var(--arapey-light-gray);
+}
+
+footer > div {
+	max-width: var(--max-prose-content-width);
+	margin: 0 auto;
+	padding: 3rem;
+}
