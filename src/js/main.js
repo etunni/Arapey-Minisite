@@ -818,8 +818,8 @@ async function getWeather() {
 	const weather = ({ main: { temp, humidity }, wind }) => ({
 		temperature: {
 			current: Math.round(temp),
-			max: 0,
-			min: 50
+			max: 50,
+			min: 0
 		},
 		humidity: {
 			current: humidity,
@@ -888,7 +888,7 @@ const syncWeatherDataToDOM = data => {
 
 		element.textContent = values.text;
 
-		element.style.setProperty(item[key].style, values);
+		element.style.setProperty(item[key].style, values.weight);
 		slider.value = values.weight;
 
 		setupBadge(slider, values.weight);
