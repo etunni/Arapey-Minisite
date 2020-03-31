@@ -10,10 +10,11 @@
 }
 
 .about-arapey-content {
-	font-weight: var(--weight-regular);
+	font-size: 1.5rem;
+	line-height: 1.5;
+	padding: 2rem;
 	max-width: var(--max-prose-content-width);
-	margin: 0 auto 10rem auto;
-	min-height: 225px;
+	margin: 16rem auto;
 }
 
 .about-arapey-content-large {
