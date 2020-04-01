@@ -100,7 +100,7 @@ const setupInputs = () => {
 			varset(slider.name, slider.value);
 			setupBadge(slider, slider.value);
 
-			if (slider.name == "opsz-slider" || slider.name == "wght-slider")
+			if (slider.name == "wght-slider")
 				aboutFonts.syncCodeBlock(slider.name, slider.value);
 
 			slider.oninput = e => {
@@ -114,10 +114,7 @@ const setupInputs = () => {
 
 				setupBadge(slider, e.target.value);
 
-				if (
-					slider.name == "opsz-slider" ||
-					slider.name == "wght-slider"
-				)
+				if (slider.name == "wght-slider")
 					aboutFonts.syncCodeBlock(slider.name, e.target.value);
 			};
 		}
