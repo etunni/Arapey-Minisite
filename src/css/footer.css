@@ -2,14 +2,27 @@ footer {
 	background: var(--arapey-light-gray-transparent);
 }
 
-footer > div {
+.footer-inner {
 	max-width: var(--max-prose-content-width);
 	margin: 0 auto;
 	padding: 6rem 2rem;
 	font-size: 1.25rem;
+	display: flex;
 }
 
-footer p {
+footer .credits {
+	margin: 0 2rem;
+}
+
+footer .contrib {
+	white-space: nowrap;
+}
+
+footer svg {
+	height: 3.5rem;
+}
+
+footer p + p {
 	margin-top: 1rem;
 }
 
