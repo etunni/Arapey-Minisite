@@ -59,21 +59,18 @@ const font = new FontFaceObserver(fontName);
 font.load(null, fontTimeOut).then(
 	() => {
 		// Font has loaded
-		document.documentElement.classList.add("fonts-loaded");
-		setViewportValues();
-		initializeApp();
-		aboutFonts.init();
-		getWeather();
-		characterSlide.init();
+		setTimeout(() => {
+			document.documentElement.classList.add("fonts-loaded");
+			setViewportValues();
+			initializeApp();
+			aboutFonts.init();
+			getWeather();
+			characterSlide.init();
+		}, 1);
 	},
 	() => {
 		// Font didn't load
 		document.documentElement.classList.add("fonts-failed");
-		setViewportValues();
-		initializeApp();
-		aboutFonts.init();
-		getWeather();
-		characterSlide.init();
 	}
 );
 

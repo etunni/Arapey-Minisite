@@ -8,10 +8,21 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: hotpink;
+	background: var(--arapey-white);
 	font-family: monospace;
 	pointer-events: none;
 	user-select: none;
+}
+
+.loading-message-loading {
+	animation: flash 500ms infinite ease-in-out alternate;
+	font-size: 2rem;
+}
+
+@keyframes flash {
+	to {
+		opacity: 0;
+	}
 }
 
 .loading-message-failed,
