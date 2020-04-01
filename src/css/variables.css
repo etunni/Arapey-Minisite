@@ -21,7 +21,7 @@
 
 	/* Content */
 	--max-content-width: 75rem;
-	--max-prose-content-width: 60rem;
+	--max-prose-content-width: 56rem;
 }
 
 @media screen and (max-width: 64em) {

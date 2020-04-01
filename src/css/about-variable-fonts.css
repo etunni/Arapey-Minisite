@@ -1,11 +1,11 @@
 .about-variable-fonts-section {
 	margin-top: 4rem;
+	padding: 2rem;
 }
 
 .about-variable-fonts-container {
 	font-size: 1.5rem;
 	line-height: 1.5;
-	padding: 2rem;
 	max-width: var(--max-prose-content-width);
 	margin: 0 auto;
 }

@@ -1,7 +1,9 @@
-.opsz-demo {
+.opsz-demo-container {
 	--offset: 50%;
 	--width: 960px; /* Line up with prose content */
+}
 
+.opsz-demo {
 	/* Simulate .prose */
 	--opsz: 12;
 
@@ -23,8 +25,6 @@
 .with-opsz,
 .without-opsz {
 	padding-top: 1rem;
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
 	width: var(--width);
 }
 

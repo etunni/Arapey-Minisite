@@ -1,11 +1,11 @@
 footer {
 	background: var(--arapey-light-gray-transparent);
+	padding: 10rem 2rem;
 }
 
 .footer-inner {
 	max-width: var(--max-prose-content-width);
 	margin: 0 auto;
-	padding: 6rem 2rem;
 	font-size: 1.25rem;
 	display: flex;
 }

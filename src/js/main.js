@@ -770,8 +770,7 @@ const setViewportValues = () => {
 	fontsInUse.perc = fontsInUse.uvEnd - fontsInUse.start;
 
 	// Determine opsz container width
-	const opszWidth =
-		document.querySelector(".opsz-demo-control").offsetWidth - 48; // 48 = 3rem = handle size
+	const opszWidth = document.querySelector(".opsz-demo-control").offsetWidth;
 	document
 		.querySelector(".opsz-demo")
 		.style.setProperty("--width", `${opszWidth}px`);
@@ -804,21 +803,22 @@ designFeatures.container.addEventListener(
 );
 
 // Swiper for opsz demo
+const swiperContainer = document.querySelector(".opsz-demo-container");
 const swiper = document.querySelector(".opsz-demo");
 const calculateSwiperOffset = () => {
 	const x = mouse.x - swiper.offsetLeft;
 	const perc = (x / (swiper.offsetWidth / 100)).toFixed(2);
-	const clampedPerc = Math.max(1, Math.min(perc, 100));
+	const clampedPerc = Math.max(0, Math.min(perc, 100));
 	swiper.style.setProperty("--offset", `${clampedPerc}%`);
 };
-swiper.addEventListener("mousemove", e => {
+swiperContainer.addEventListener("mousemove", e => {
 	e.preventDefault();
 	mouse.dragCallback = () => calculateSwiperOffset();
 });
-swiper.addEventListener("mouseleave", () => {
+swiperContainer.addEventListener("mouseleave", () => {
 	mouse.dragCallback = false;
 });
-swiper.addEventListener(
+swiperContainer.addEventListener(
 	"touchmove",
 	e => {
 		mouse.x = e.touches[0].clientX;
@@ -828,8 +828,8 @@ swiper.addEventListener(
 	supportsPassive ? { passive: true } : false
 );
 
+// Put actual weather info in weight slider section
 const weatherSection = document.querySelector(".weather-section");
-
 async function getWeather() {
 	const response = await fetch(
 		"https://api.openweathermap.org/data/2.5/weather?q=Salto,uy?&units=metric&APPID=b0142355ff1172118bcf173d1bd9f022"

@@ -7,14 +7,14 @@
 	--wght: var(--weight-regular);
 
 	margin: 16rem auto;
+	padding: 2rem;
 }
 
 .about-arapey-content {
 	font-size: 1.5rem;
 	line-height: 1.5;
-	padding: 2rem;
 	max-width: var(--max-prose-content-width);
-	margin: 16rem auto;
+	margin: 0 auto 16rem auto;
 }
 
 .about-arapey-content-large {
