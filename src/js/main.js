@@ -831,7 +831,7 @@ async function getWeather() {
 	const data = await response.json();
 
 	// slim down output
-	const weather = ({ main: { temp, humidity }, wind }) => ({
+	const weather = ({ main: { temp, humidity }, wind, dt, timezone }) => ({
 		temperature: {
 			current: Math.round(temp),
 			max: 50,
@@ -843,7 +843,8 @@ async function getWeather() {
 			wind
 		},
 		time: {
-			max: 24
+			max: 24,
+			time: dt + timezone - 2 * 60 * 60
 		}
 	});
 
@@ -868,8 +869,8 @@ const fns = {
 			text: `Wind N. at ${wind.speed} km/h<br>${current}% Humidity`
 		};
 	},
-	time: ({ max }) => {
-		const date = new Date();
+	time: ({ max, time }) => {
+		const date = new Date(time * 1000);
 		const hours = date.getHours();
 		const minutes = `00${date.getMinutes()}`.slice(-2);
 
@@ -877,9 +878,13 @@ const fns = {
 		const steps = (maxFontWeight - 100) / max;
 		const weight = Math.round(100 + steps * hours);
 
+		const day = new Intl.DateTimeFormat("en-US", {
+			weekday: "long"
+		}).format(date);
+
 		return {
 			weight,
-			text: `Thursday ${hours}:${minutes}`
+			text: `${day} ${hours}:${minutes}`
 		};
 	}
 };
