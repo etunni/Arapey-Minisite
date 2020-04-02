@@ -14,9 +14,20 @@
 	user-select: none;
 }
 
-.loading-message-loading {
-	animation: flash 500ms infinite ease-in-out alternate;
-	font-size: 2rem;
+.loading-message-loading svg {
+	width: 6rem;
+}
+
+.dot1 {
+	animation: flash 300ms infinite ease-in-out alternate;
+}
+
+.dot2 {
+	animation: flash 300ms -100ms infinite ease-in-out alternate;
+}
+
+.dot3 {
+	animation: flash 300ms -200ms infinite ease-in-out alternate;
 }
 
 @keyframes flash {
