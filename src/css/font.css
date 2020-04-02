@@ -2,6 +2,10 @@
 	font-family: "Arapey";
 	src: url("../fonts/ArapeyVF.woff2");
 	font-weight: 100 900;
+
+	/* Not very useful on a specimen site, and it's effects are negated
+	   by FFO, but we'd like a perfect perf score :-) */
+	font-display: swap;
 }
 
 body {
