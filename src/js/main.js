@@ -321,19 +321,19 @@ const characterSlide = {
 			"mouseleave",
 			this.stopCharacterSlider
 		);
-
 		characterSlideListContainer.addEventListener(
 			"mousedown",
 			this.onPressCharacterSlide
 		);
 		characterSlideListContainer.addEventListener(
 			"touchstart",
-			this.onPressCharacterSlide
+			this.onPressCharacterSlide,
+			supportsPassive ? { passive: true } : false
 		);
-
 		characterSlideListContainer.addEventListener(
 			"touchmove",
-			this.onMoveCharacterSlide
+			this.onMoveCharacterSlide,
+			supportsPassive ? { passive: true } : false
 		);
 		characterSlideListContainer.addEventListener(
 			"mousemove",
@@ -663,14 +663,19 @@ const aboutFontsSection = document.querySelector(
 const aboutFonts = {
 	init() {
 		this.parentContainerEl.addEventListener("mousedown", this.onMouseDown);
-		this.parentContainerEl.addEventListener("touchstart", this.onMouseDown);
+		this.parentContainerEl.addEventListener(
+			"touchstart",
+			this.onMouseDown,
+			supportsPassive ? { passive: true } : false
+		);
 		this.parentContainerEl.addEventListener(
 			"mousemove",
 			this.onDragCharacter
 		);
 		this.parentContainerEl.addEventListener(
 			"touchmove",
-			this.onDragCharacter
+			this.onDragCharacter,
+			supportsPassive ? { passive: true } : false
 		);
 		this.parentContainerEl.addEventListener(
 			"mouseup",
@@ -685,8 +690,16 @@ const aboutFonts = {
 			this.onDropCharacter
 		);
 		this.weightSlider.addEventListener("input", this.onDragInput);
-		this.weightSlider.addEventListener("touchstart", this.onDragInput);
-		this.weightSlider.addEventListener("touchmove", this.onDragInput);
+		this.weightSlider.addEventListener(
+			"touchstart",
+			this.onDragInput,
+			supportsPassive ? { passive: true } : false
+		);
+		this.weightSlider.addEventListener(
+			"touchmove",
+			this.onDragInput,
+			supportsPassive ? { passive: true } : false
+		);
 	},
 	parentContainerEl: aboutFontsSection.querySelector(
 		".character-slider-container"
