@@ -430,6 +430,7 @@ const letterWave = {
 	darkenFactor: 2, // How much to darken bolder weight
 	cursorSize: 1,
 	// Internal stuff:
+	mapType: "",
 	letters: [],
 	waveOffset: 0,
 	canvas: null,
@@ -442,9 +443,10 @@ const letterWave = {
 	columns: 0,
 	setup(selector, mapType) {
 		this.canvas = document.querySelector(selector);
+		this.mapType = mapType;
 		this.setupCanvas();
 		this.setupLetterPositions();
-		this.setupWeightMap(mapType);
+		this.setupWeightMap();
 		this.preRenderChars();
 	},
 	setLetter(letter, color) {
@@ -514,10 +516,10 @@ const letterWave = {
 		}
 	},
 	// Array weights to loop through
-	setupWeightMap(mapType) {
+	setupWeightMap() {
 		this.weightMap = [];
 		for (let i = 0; i <= this.steps; i++) {
-			if (mapType === "flat") {
+			if (this.mapType === "flat") {
 				this.weightMap.push(0);
 			} else {
 				this.weightMap.push(i);
@@ -551,20 +553,26 @@ const letterWave = {
 			}
 
 			// Determine weight based on cursor distance
-			const topOffset = this.canvas.getBoundingClientRect().top; // TODO: perf heavy!
-			const spotLightRatio = this.columns / this.rows;
-			const weightX = Math.abs((letter.x - mouse.x) / this.columns);
-			const weightY = Math.abs(
-				(letter.y - mouse.y + topOffset) / this.rows
-			);
-			let spotLightWeight = Math.round(
-				Math.hypot(weightX * spotLightRatio, weightY) * this.cursorSize
-			);
-			spotLightWeight =
-				this.steps - Math.min(Math.max(spotLightWeight, 0), this.steps);
-
-			// Determine weight based on wave
-			const waveWeight = this.weightMap[count++ % this.weightMap.length];
+			let spotLightWeight = 0;
+			let waveWeight = 0;
+			if (this.mapType === "flat") {
+				const topOffset = this.canvas.getBoundingClientRect().top; // TODO: perf heavy!
+				const spotLightRatio = this.columns / this.rows;
+				const weightX = Math.abs((letter.x - mouse.x) / this.columns);
+				const weightY = Math.abs(
+					(letter.y - mouse.y + topOffset) / this.rows
+				);
+				spotLightWeight = Math.round(
+					Math.hypot(weightX * spotLightRatio, weightY) *
+						this.cursorSize
+				);
+				spotLightWeight =
+					this.steps -
+					Math.min(Math.max(spotLightWeight, 0), this.steps);
+			} else {
+				// Determine weight based on wave
+				waveWeight = this.weightMap[count++ % this.weightMap.length];
+			}
 
 			const weight = Math.max(waveWeight, spotLightWeight);
 
