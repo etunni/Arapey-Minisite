@@ -865,7 +865,7 @@ const fns = {
 
 		return {
 			weight,
-			text: `Wind N. at ${wind.speed} km/h ${current}% Humidity`
+			text: `Wind N. at ${wind.speed} km/h<br>${current}% Humidity`
 		};
 	},
 	time: ({ max }) => {
@@ -906,7 +906,7 @@ const syncWeatherDataToDOM = data => {
 		const element = weatherSection.querySelector(`.${item[key].element}`);
 		const slider = weatherSection.querySelector(`.${item[key].slider}`);
 
-		element.textContent = values.text;
+		element.innerHTML = values.text;
 
 		element.style.setProperty(item[key].style, values.weight);
 		slider.value = values.weight;
