@@ -53,12 +53,11 @@
 	color: var(--arapey-red);
 	transition: font-weight 200ms;
 	margin: 0 auto;
-	min-height: 33rem; /* Match default text at larhest size/weight */
-	max-height: 80vh;
+	height: 33rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	overflow: hidden;
+	overflow: auto;
 	text-align: center;
 }
 
