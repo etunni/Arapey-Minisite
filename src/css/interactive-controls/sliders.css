@@ -206,6 +206,7 @@
 	background: gray;
 	margin-top: 0.5rem;
 	font-size: 1.25rem;
+	user-select: none;
 }
 
 .tick span {
@@ -213,4 +214,5 @@
 	white-space: nowrap;
 	font-size: 1rem;
 	font-weight: var(--weight-medium);
+	cursor: pointer;
 }

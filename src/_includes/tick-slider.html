@@ -22,11 +22,17 @@ tick-slider.html with labelStart: "start" labelEnd: "end" labels: instances %}
 			class="interactive-controls-slider interactive-controls-tick-slider {{ name }}"
 		/>
 
-		{% if labels %}
+		{% if labels %} {% assign range = (max | minus: min) %} {% assign steps
+		= (labels | size | minus: 1) %} {% assign stepval = range | divided_by:
+		steps %}
 		<div class="ticks">
 			{% for label in labels %}
 			<span class="tick">
-				<span>{{ label.name }}</span>
+				<span
+					class="tick-label"
+					data-value="{{ forloop.index | minus: 1 | times: stepval | plus: 100 }}"
+					>{{ label.name }}</span
+				>
 			</span>
 			{% endfor %}
 		</div>

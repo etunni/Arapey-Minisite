@@ -66,6 +66,7 @@ font.load(null, fontTimeOut).then(
 			aboutFonts.init();
 			getWeather();
 			characterSlide.init();
+			sliderEnhancements();
 		}, 1);
 	},
 	() => {
@@ -949,3 +950,18 @@ window.onresize = throttle(() => {
 	// Recalculate badge positions
 	sliders.forEach(slider => setupBadge(slider, slider.value));
 }, 100);
+
+const sliderEnhancements = () => {
+	const elements = document.querySelectorAll(".ticks");
+	elements.forEach(el => {
+		el.addEventListener("click", e => {
+			if (e.target.classList.contains("tick-label")) {
+				const input = e.target
+					.closest(".interactive-controls-tick-slider-container")
+					.querySelector("input");
+				input.value = e.target.dataset.value;
+				setupBadge(input, e.target.dataset.value);
+			}
+		});
+	});
+};
