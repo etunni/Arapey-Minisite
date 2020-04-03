@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link
-			rel="preload"
-			href="{% webpackAssetPath '../fonts/ArapeyVF.woff2' %}"
-			as="font"
-			type="font/woff2"
-			crossorigin
-		/>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -18,16 +11,17 @@
 		<title>
 			{{ site.title or renderData.title or title or metadata.title }}
 		</title>
-		<link
-			rel="stylesheet"
-			href="{% webpackAssetPath '../css/main.css' %}"
-		/>
 		<link rel="icon" href="{% webpackAssetPath '../img/favicon.svg' %}" />
 		<link rel="dns-prefetch" href="https://api.openweathermap.org" />
-		<script defer src="{% webpackAssetPath '../js/main.js' %}"></script>
+		<style>
+			{% includeWebpackAsset '../css/main.css' %}
+		</style>
 	</head>
 
 	<body>
 		{{ content }}
+		<script>
+			{% includeWebpackAsset '../js/main.js' %}
+		</script>
 	</body>
 </html>
