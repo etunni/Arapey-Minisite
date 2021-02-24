@@ -961,6 +961,8 @@ const sliderEnhancements = () => {
 					.querySelector("input");
 				input.value = e.target.dataset.value;
 				setupBadge(input, e.target.dataset.value);
+				const event = new Event("input");
+				input.dispatchEvent(event);
 			}
 		});
 	});
