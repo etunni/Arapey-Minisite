@@ -1,4 +1,6 @@
-# Arapey
+# Arapey Font Specimen Website
+
+[etunni.github.io/Arapey-Minisite](https://etunni.github.io/Arapey-Minisite)
 
 This is the [Eleventy-based](https://www.11ty.dev/) specimen site for the Arapey variable font by Eduardo Tunni. It was developed by Marciano Schildmeijer and Roel Nieskens at Kabisa. It was built using the [Specimen Skeleton](https://github.com/kabisa/specimen-skeleton).
 
